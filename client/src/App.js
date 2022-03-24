@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import Badge from "react-bootstrap/esm/Badge";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
+import Home from './components/shared/Home';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import NoMatch from './components/shared/NoMatch';
+import NavBar from './components/shared/NavBar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <NavBar />
+      <>
+       <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='*' element={<NoMatch/>}/>
+      </Routes>
+      </>
+
     </div>
   );
 }
