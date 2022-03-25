@@ -10,4 +10,4 @@ react bootstrap,
 proxy set to localhost:3001,
 folder structure,
 
-3. 
+3. Custom hooks to provide Authentication data
