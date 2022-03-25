@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 
+
 const NavBar = ()=>{
     // if (user)=>  logout 
     // if (!user)=>  login/register 
@@ -18,13 +19,13 @@ const NavBar = ()=>{
     const auth = useContext(AuthContext)
     const renderRightNav = ()=>{
         if(auth.user){
-          return  <p style={{color: 'white'}} href to="/"><Badge>Logout</Badge></p>
+          return  <p style={{color: 'white'}} href="/"><Badge>Logout</Badge></p>
         }
-        // else
-        // return <>
-        //    <Link style={{color: 'white'}} to='/register'><Badge>Register</Badge></Link>
+        else
+        return <>
+           <Nav.Link as={Link} to="/register" style={{color: 'white'}} ><Badge>Register</Badge></Nav.Link>
 
-        // </>
+        </>
     }
     return (
 
@@ -42,7 +43,7 @@ const NavBar = ()=>{
         >
           <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>
           <NavDropdown.Item style={{color: 'white'}} href="/login"><Badge>Login</Badge></NavDropdown.Item>
-          <NavDropdown.Item style={{color: 'white'}} href="/register"><Badge>Register</Badge></NavDropdown.Item>
+          {/* <NavDropdown.Item style={{color: 'white'}} href="/register"><Badge>Register</Badge></NavDropdown.Item> */}
           
           <NavDropdown.Item>{renderRightNav()}</NavDropdown.Item>
               
