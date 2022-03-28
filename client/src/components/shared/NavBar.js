@@ -23,44 +23,68 @@ const NavBar = ()=>{
         if(auth.user){
           return  (
             <>
-            <Badge onClick={auth.handleLogout }>Logout</Badge>
-            <br/>
 
 
-            <Badge style={{color: 'white'}} href="/feed">Feed</Badge>
+            {/* <Badge style={{color: 'white'}} >Feed</Badge> */}
+            <Badge><Link to ='/feed' style={{color: 'white'}}>Feed </Link></Badge>
+
               </>  
               )
            }
           return (
             <>
-            <Badge style={{color: 'white'}} href="/login">Login</Badge>
-            <br/>
+            {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
+            <Badge><Link to ='/login' style={{color: 'white'}}>Login </Link></Badge>
 
 
 
-            <Badge style={{color: 'white'}} href="/register">Register</Badge>
+
+
+
 
           
                         
              </>
 
           )
-          
-        // else
-        // return <>
-        //     <a style={{color: 'white'}} href="/register"><Badge>Register</Badge></a>
-        //     <br/>
-        //     <a style={{color: 'white'}} href="/login"><Badge>Login</Badge></a>
-
-
-
-        // </>
     }
+    const renderLeftNav = ()=>{
+
+      if(auth.user){
+        return  (
+          <>
+          <Badge onClick={auth.handleLogout }>Logout</Badge>
+
+
+
+
+
+
+
+            </>  
+            )
+         }
+        return (
+          <>
+
+
+
+
+          {/* <Badge style={{color: 'white'}} href="/register">Register</Badge> */}
+          <Badge><Link to ='/register' style={{color: 'white'}}>Register </Link></Badge>
+
+
+        
+                      
+           </>
+
+        )
+  }
 
     // const renderLeft = ()=>{
     //     if( auth.user) {
     //         return (
-    //             <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>
+    //             <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>123
     //         )
     //     }
     // }
@@ -84,6 +108,8 @@ const NavBar = ()=>{
           
           
           <NavDropdown.Item>{renderRightNav()}</NavDropdown.Item>
+          <NavDropdown.Item>{renderLeftNav()}</NavDropdown.Item>
+
 
           {/* <NavDropdown.Item><Badge onClick={auth.handleLogout } >Logout</Badge></NavDropdown.Item>
 
