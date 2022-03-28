@@ -35,8 +35,10 @@ const AuthProvider = ({children})=>{
         //need correct email and password for this to work
         try {
             let res = await axios.post('/api/auth/sign_in',user)
+            console.log(res)
+
             setUser(res.data.data)
-            navigate('/')
+            navigate('/feed')
 
         }catch(err){
             // A lot of work in error handling should be done here
@@ -45,8 +47,23 @@ const AuthProvider = ({children})=>{
         }
     }
 
+    //logout
+    const handleLogout = async ()=>{
+        //need correct email and password for this to work
+        try {
+            let res = await axios.delete('/api/auth/sign_out')
+            setUser(null)
+            navigate('/')
+
+        }catch(err){
+ 
+            alert('Error: Unable to logout.')
+
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{user, handleRegister, handleLogin}}> 
+        <AuthContext.Provider value={{user, setUser,  handleRegister, handleLogin, handleLogout}}> 
             {children}
         </AuthContext.Provider>
     )

@@ -13,19 +13,34 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import NoMatch from './components/shared/NoMatch';
 import NavBar from './components/shared/NavBar';
+import FetchUser from './components/auth/FetchUser';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import Feed from './components/auth/Feed';
+
 
 function App() {
   return (
     <div >
       <NavBar />
+
+      <FetchUser>
       <>
        <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
+         {/* UNPROTECTED */}
+         <Route path='/login' element={<Login/>}/>
+         <Route path='/register' element={<Register/>}/>
+          <Route path='/' element={<Home/>}/>
+
+          {/* PROTECTED */}
+        <Route element={<ProtectedRoute/>}>
+          <Route path='/feed' element={<Feed/>}/>
+       </Route>
+
+
       <Route path='*' element={<NoMatch/>}/>
       </Routes>
       </>
+      </FetchUser>
 
     </div>
   );
