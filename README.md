@@ -3,14 +3,14 @@
 1. Using rails 6.1.4.7 and ruby 3.0.2
 
 2. This starter Project includes 
-devise_token_auth, 
-react, 
-react-router, 
-axios, 
-react bootstrap, 
-proxy set to localhost:3001,
-folder structure,
-custom hooks to provide Authentication data.
+- devise_token_auth
+- react
+- react-router
+- axios
+- react bootstrap
+- proxy set to localhost:3001
+- folder structure 
+- custom hooks to provide Authentication data
 
 
 # Getting started
@@ -25,7 +25,7 @@ custom hooks to provide Authentication data.
 
 
 # Rails things
-1. Renaming our database in the config/database.yml file 
+1. Renaming our database in the config/database.yml file (lines: 26/60/84-86)
 2. bundle
 3. $ rails db:create db:migrate (db:seed if needed)
 4. $ rails s -p 3001
