@@ -30,4 +30,5 @@ const Home = ()=>{
         </Card>
     )
 } 
+
 export default Home
