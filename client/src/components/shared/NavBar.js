@@ -58,12 +58,11 @@ const NavBar = () => {
       </>
     );
   };
-
-        <div>
-             <Navbar sticky="top" variant="dark" bg="dark"  expand='lg'>
-  <Container fluid>
-    <Navbar.Brand href="/">Starter App</Navbar.Brand>
-
+  return (
+    <div>
+      <Navbar sticky="top" variant="dark" bg="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="/">Starter App</Navbar.Brand>
 
           <NavDropdown
             id="nav-dropdown-dark-example"
