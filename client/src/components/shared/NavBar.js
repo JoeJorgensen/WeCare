@@ -35,15 +35,7 @@ const NavBar = ()=>{
             <>
             {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
             <Badge><Link to ='/login' style={{color: 'white'}}>Login </Link></Badge>
-
-
-
-
-
-
-
-          
-                        
+              
              </>
 
           )
