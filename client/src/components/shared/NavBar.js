@@ -59,19 +59,11 @@ const NavBar = () => {
     );
   };
 
-  // const renderLeft = ()=>{
-  //     if( auth.user) {
-  //         return (
-  //             <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>123
-  //         )
-  //     }
-  // }
-  return (
-    <div>
-      <Navbar sticky="top" variant="dark" bg="dark" expand="lg">
-        <Container fluid>
-          <Navbar.Brand href="/">Starter App</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-dark-example" />
+        <div>
+             <Navbar sticky="top" variant="dark" bg="dark"  expand='lg'>
+  <Container fluid>
+    <Navbar.Brand href="/">Starter App</Navbar.Brand>
+
 
           <NavDropdown
             id="nav-dropdown-dark-example"
