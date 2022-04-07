@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  img: MyString
+  current_amount: 1.5
+  goal: 1.5
+  expiration: 2022-04-07 14:10:58
+  user: one
+
+two:
+  name: MyString
+  description: MyText
+  img: MyString
+  current_amount: 1.5
+  goal: 1.5
+  expiration: 2022-04-07 14:10:58
+  user: two
