@@ -58,11 +58,19 @@ const NavBar = () => {
       </>
     );
   };
+
+  // const renderLeft = ()=>{
+  //     if( auth.user) {
+  //         return (
+  //             <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>123
+  //         )
+  //     }
+  // }
   return (
     <div>
       <Navbar sticky="top" variant="dark" bg="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/">Starter App</Navbar.Brand>
+          <Navbar.Brand href="/">We Care</Navbar.Brand>
 
           <NavDropdown
             id="nav-dropdown-dark-example"
