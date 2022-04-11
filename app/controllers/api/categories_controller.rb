@@ -1,5 +1,5 @@
 class Api::CategoriesController < ApplicationController
-    before_action :setCategory
+    before_action :setCategory, only: [:show, :update, :destroy]
 
     def index
 
@@ -13,7 +13,7 @@ class Api::CategoriesController < ApplicationController
 
     def create
     @category = Category.new(category_params)
-    if(@category)
+    if(@category.save)
         render json: @category
     else
         render json: error {@category.errors.full_messages}, status: 422
@@ -28,11 +28,10 @@ class Api::CategoriesController < ApplicationController
         else
             render json: error {@category.errors.full_messages}, status: 422
         end
-        end
     end
 
    def destroy
-    render json: @cate.destroy
+    render json: @category.destroy
    end
 
     private 
