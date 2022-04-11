@@ -1,66 +1,81 @@
-import { useContext, useState } from "react"
-import Badge from "react-bootstrap/esm/Badge"
-import Button from "react-bootstrap/esm/Button"
-import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../providers/AuthProvider"
-import Card from "../Card"
+import { useContext, useState } from "react";
+import { parsePath, useParams } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Form, Button } from "react-bootstrap";
+import Card from "../../providers/Card";
 
-const Register = ()=>{
-    const [email, setEmail] = useState('testx@test.com')
-    const [name, setName] = useState('test')
-    const [password, setPassword] = useState('123456')
+const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const auth = useContext(AuthContext);
+  // not need but nice for UX
+  // const [confirmPassword, setConfirmPassword] = useState('')
 
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // with devise_token_auth
+    // email must be 'valid' email and unique
+    // password must be greater than = 6 chars in length
+    auth.handleRegister({ email, password, name });
+  };
+  return (
+    <Card>
+      <div className="head">
+        <h1 className="heading">Register</h1>
+        <br />
+        <Form onSubmit={handleSubmit} className="container">
+          <div className=" mainbox2 form-outline mb-4">
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="name"
+              id="form2Example4"
+              className="form-control"
+              placeholder="Name"
+            />
+          </div>
+          <div className="mainbox2">
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="form2Example3"
+              className="form-control"
+              placeholder="Email"
+            />
+          </div>
 
-    const auth = useContext(AuthContext)
+          <br />
+          <div className="mainbox2">
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              type="password"
+              className="form-control"
+            />
+          </div>
+          <br />
+          <br />
+          <button
+            type="button"
+            className="signin btn btn-primary btn-block mb-4"
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Register
+          </button>
+          <div className="col">
+            {/* <!-- Simple link --> */}
+            <a href="/troubleshoot">Having Trouble?</a>
+          </div>
 
-
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-        auth.handleRegister({email, password})
-    }
-
-    return (
-
-
-        <div>
-            <Card>
-            <h1>Register</h1>
-            <form>
-            <Badge>
-                <h5>Name</h5>
-                </Badge>
-                <br/>
-                <br/>
-
-                <input value={name} onChange={(e)=> setName(e.target.value)}/>
-                <br/>
-                <br/>
-
-                <Badge>
-                <h5>Email</h5>
-                </Badge>
-                <br/>
-                <br/>
-
-                <input value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                <br/>
-                <br/>
-                <Badge>
-                <h5>Password</h5>
-                </Badge>
-                <br/>
-                <br/>
-
-                <input value={password} onChange={(e)=> setPassword(e.target.value)}/>
-                <br/>
-                <br/>
-
-                <Button onClick={handleSubmit}>Register</Button>
-            </form>
-            </Card>
-        </div>
-    )
-} 
-export default Register
+          <hr></hr>
+        </Form>
+      </div>
+    </Card>
+  );
+};
+export default Register;

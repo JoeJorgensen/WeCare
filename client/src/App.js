@@ -1,47 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 import Badge from "react-bootstrap/esm/Badge";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
-import Home from './components/shared/Home';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
-import NoMatch from './components/shared/NoMatch';
-import NavBar from './components/shared/NavBar';
-import FetchUser from './components/auth/FetchUser';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import Feed from './components/auth/Feed';
-
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import Home from "./components/shared/Home";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import NoMatch from "./components/shared/NoMatch";
+import NavBar from "./components/shared/NavBar";
+import FetchUser from "./components/auth/FetchUser";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Feed from "./components/auth/Feed";
+import MyDonation from "./components/auth/MyDonation";
+import Fundraiser from "./components/auth/Fundraiser";
+import About from "./components/auth/About";
+import MyProfile from "./components/auth/MyProfile";
+import Categories from "./components/auth/Categories";
+import TroubleShoot from "./components/auth/TroubleShoot";
 
 function App() {
   return (
-    <div >
+    <div>
       <NavBar />
 
       <FetchUser>
-      <>
-       <Routes>
-         {/* UNPROTECTED */}
-         <Route path='/login' element={<Login/>}/>
-         <Route path='/register' element={<Register/>}/>
-          <Route path='/' element={<Home/>}/>
+        <>
+          <Routes>
+            {/* UNPROTECTED */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/home" element={<Home />} />
 
-          {/* PROTECTED */}
-        <Route element={<ProtectedRoute/>}>
-          <Route path='/feed' element={<Feed/>}/>
-       </Route>
+            {/* PROTECTED */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/mydonations" element={<MyDonation />} />
+              <Route path="/fundraiser" element={<Fundraiser />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/myprofile" element={<MyProfile />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/troubleshoot" element={<TroubleShoot />} />
+            </Route>
 
-
-      <Route path='*' element={<NoMatch/>}/>
-      </Routes>
-      </>
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </>
       </FetchUser>
-
     </div>
   );
 }

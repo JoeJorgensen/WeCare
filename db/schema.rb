@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_213034) do
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "img"
+    t.string "image"
     t.float "current_amount"
     t.float "goal"
     t.datetime "expiration"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_213034) do
 
   create_table "updates", force: :cascade do |t|
     t.text "comment"
-    t.string "img"
+    t.string "image"
     t.bigint "campaign_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
