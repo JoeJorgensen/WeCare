@@ -1,43 +1,43 @@
 class Api::DonationsController < ApplicationController
-  before_action :set_campaign, only: [:show,:update,:destroy]
+  before_action :set_donation, only: [:show,:update,:destroy]
 
   def index
-    render json: Campaign.all
+    render json: Donation.all
   end
 
   def show
-    render json: @campaign
+    render json: @donation
   end
 
   def create
-    campaign = Campaign.new(campaign_params)
-    if campaign.save
-      render json: campaign
+    donation = Donation.new(donation_params)
+    if donation.save
+      render json: donation
     else
-      render json: {errors: campaign.errors.full_messages}, status: 422
+      render json: {errors: donation.errors.full_messages}, status: 422
     end
   end
 
   def update
-    if @campaign.update(campaign_params)
-      render json: @campaign
+    if @donation.update(donation_params)
+      render json: @donation
     else
-      render json: {errors: @campaign.errors.full_messages}, status: 422
+      render json: {errors: @donation.errors.full_messages}, status: 422
     end
   end
 
   def destroy
-    render json: @campaign.destroy
+    render json: @donation.destroy
   end
 
   private 
 
-  def campaign_params
-    params.require(:campaign).permit(:name, :age)
+  def donation_params
+    params.require(:donation).permit(:text, :amount, :anonymous, :user_id, :campaign_id)
   end  
 
-  def set_campaign
-    @campaign = Campaign.find(params[:id])
+  def set_donation
+    @donation = donation.find(params[:id])
   end
 
 end

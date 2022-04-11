@@ -1,56 +1,91 @@
-import { useContext, useState } from "react"
-import Badge from "react-bootstrap/esm/Badge"
-import Button from "react-bootstrap/esm/Button"
-import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../providers/AuthProvider"
-import Card from "../Card"
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Form, Button } from "react-bootstrap";
+import Card from "../../providers/Card";
 
-const Login = ()=>{
-    const [email, setEmail] = useState('testx@test.com')
-    const [password, setPassword] = useState('123456')
-    
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const navigate = useNavigate()
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const auth = useContext(AuthContext);
+  // not need but nice for UX
+  // const [confirmPassword, setConfirmPassword] = useState('')
 
-    const auth = useContext(AuthContext)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    auth.handleLogin({ email, password });
+  };
+  return (
+    <Card>
+      <div className=" head">
+        <h1 className="login">Login</h1>
 
+        <Form onSubmit={handleSubmit} className="container">
+          <div className="mainbox">
+            {/* <!-- Email input --> */}
+            <div className="form-outline mb-4">
+              {/* <label class="form-label" for="form2Example1">Email address:</label> */}
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                id="form2Example1"
+                className="form-control"
+                placeholder="Email Address"
+              />
+            </div>
 
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-        auth.handleLogin({email, password})
-    }
+            {/* <!-- Password input --> */}
+            <div className="form-outline mb-4">
+              {/* <label class="form-label" for="form2Example2">Password:</label> */}
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                id="form2Example2"
+                className="form-control"
+                placeholder="Password"
+              />
+            </div>
 
-    return (
+            {/* <!-- 2 column grid layout for inline styling --> */}
+            <div className="row mb-4">
+              <div className="col d-flex justify-content-center">
+                {/* <!-- Checkbox --> */}
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="form2Example31"
+                  />
+                  <label className="form-check-label" form="form2Example31">
+                    {" "}
+                    Remember me{" "}
+                  </label>
+                </div>
+              </div>
 
+              <div className="col">
+                {/* <!-- Simple link --> */}
+                <a href="/troubleshoot">Forgot password?</a>
+              </div>
+            </div>
 
-        <div>
-            <Card>
-            <h1>Login</h1>
-            <form>
-
-                <Badge>
-                <h5>Email</h5>
-                </Badge>
-                <br/>
-                <br/>
-
-                <input value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                <br/>
-                <br/>
-                <Badge>
-                <h5>Password</h5>
-                </Badge>
-                <br/>
-                <br/>
-
-                <input value={password} onChange={(e)=> setPassword(e.target.value)}/>
-                <br/>
-                <br/>
-
-                <Button onClick={handleSubmit}>Login</Button>
-            </form>
-            </Card>
-        </div>
-    )
-} 
-export default Login
+            {/* <!-- Submit button --> */}
+            <button
+              type="button"
+              className=" signin btn btn-primary btn-block mb-4"
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+            >
+              Sign in
+            </button>
+          </div>
+          <hr></hr>
+        </Form>
+      </div>
+    </Card>
+  );
+};
+export default Login;
