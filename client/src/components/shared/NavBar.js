@@ -31,9 +31,6 @@ const NavBar = () => {
       <>
         {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
         <Badge>
-          <Link to="/login" style={{ color: "white" }}>
-            Login{" "}
-          </Link>
         </Badge>
       </>
     );
@@ -42,18 +39,21 @@ const NavBar = () => {
     if (auth.user) {
       return (
         <>
-          <Badge onClick={auth.handleLogout}>Logout</Badge>
+          <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
         </>
       );
     }
     return (
       <>
         {/* <Badge style={{color: 'white'}} href="/register">Register</Badge> */}
-        <Badge>
-          <Link to="/register" style={{ color: "white" }}>
+
+          <Nav.Link href="/register" >
             Register{" "}
-          </Link>
-        </Badge>
+          </Nav.Link>
+
+          <Nav.Link href="/login" >
+            Login{" "}
+          </Nav.Link>
       </>
     );
   };
@@ -90,6 +90,7 @@ const NavBar = () => {
                   My Profile{" "}
                 </NavDropdown.Item>
               </NavDropdown>
+              {renderLeftNav()}
             </Nav>
           </Navbar.Collapse>
         </Container>
