@@ -20,11 +20,10 @@ const NavBar = () => {
       return (
         <>
           {/* <Badge style={{color: 'white'}} >Feed</Badge> */}
-          <Badge>
-            <Link to="/feed" style={{ color: "white" }}>
-              Feed{" "}
-            </Link>
-          </Badge>
+
+          <Link to="/feed" style={{ color: "white" }}>
+            Feed{" "}
+          </Link>
         </>
       );
     }
@@ -68,27 +67,31 @@ const NavBar = () => {
   // }
   return (
     <div>
-      <Navbar sticky="top" variant="dark" bg="dark" expand="lg">
-        <Container fluid>
-          <Navbar.Brand href="/">We Care</Navbar.Brand>
-
-          <NavDropdown
-            id="nav-dropdown-dark-example"
-            align={{ sm: "end" }}
-            title="Menu"
-            menuVariant="dark"
-          >
-            <NavDropdown.Item style={{ color: "white" }} href="/">
-              <Badge>Home</Badge>
-            </NavDropdown.Item>
-
-            <NavDropdown.Item>{renderRightNav()}</NavDropdown.Item>
-            <NavDropdown.Item>{renderLeftNav()}</NavDropdown.Item>
-
-            {/* <NavDropdown.Item><Badge onClick={auth.handleLogout } >Logout</Badge></NavDropdown.Item>
-
-          <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item> */}
-          </NavDropdown>
+      <Navbar bg="dark" expand="lg" variant="dark">
+        <Container>
+          <Navbar.Brand href="/feed">WeCare</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+              <NavDropdown title="Fundraising" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/categories">
+                  Categories
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="mydonations">
+                  My Donations
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/myprofile">
+                  My Profile{" "}
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>

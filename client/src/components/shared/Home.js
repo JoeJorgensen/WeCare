@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Badge from "react-bootstrap/esm/Badge";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import Card from "../Card";
+import Card from "../../providers/Card";
 
 const Home = () => {
   // let auth = useContext(AuthContext)

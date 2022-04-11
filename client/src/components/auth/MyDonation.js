@@ -1,36 +1,24 @@
 import Card from "../../providers/Card";
 
-const Feed = () => {
+const myDonation = () => {
   return (
     <Card>
       <div>
         <h1>We Care</h1>
         <hr></hr>
         <h2>
-          <u>Wallet Balance:</u>
+          <u>My Donations:</u>
         </h2>
-        <h3>$100.05</h3>
-        <h2>Urgent Fundraising:</h2>
+        <h3>$500.50</h3>
+
+        <h2>My Donations</h2>
         <hr></hr>
         <ul>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
+          <li>Donation 1</li>
+          <li>Donation 1</li>
+          <li>Donation 1</li>
         </ul>
-        <h2>Coming to a end:</h2>
-        <hr></hr>
-        <ul>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-        </ul>
-        <h2>Prayers from Good People</h2>
-        <hr></hr>
-        <ul>
-          <li>Comment 1</li>
-          <li>Comment 1</li>
-          <li>Comment 1</li>
-        </ul>
+
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in
@@ -45,4 +33,4 @@ const Feed = () => {
     </Card>
   );
 };
-export default Feed;
+export default myDonation;

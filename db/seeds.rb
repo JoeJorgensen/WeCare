@@ -11,13 +11,13 @@ u1 = User.create(name: 'testx', email: 'testx@test.com', password: '123456', ima
 u2 = User.create(name: 'testx1', email: 'testx1@test.com', password: '123456', image: '', balance: 80.00)
 
 c1 = Campaign.create(name: 'Matt Hays Memorial Fund', description: 'Matt Hays Memorial', image: '', current_amount: 5000.00, goal: 15000.00, expiration: 'May 3rd 2020 10:10', user_id:u1.id)
-c2 = Campaign.create(name: 'Barn Fire', description: 'Barn all burnt up', image: '', current_amount: 2000.00, goal: 20000.00, expiration: 'June 16th 2020 10:10', user_id:u2.id)
+c2 = Campaign.create(name: 'Barn Fire', description: 'Barn has been burnt up', image: '', current_amount: 2000.00, goal: 20000.00, expiration: 'June 16th 2020 10:10', user_id:u2.id)
 
 d1 = Donation.create(comment: 'Hope everything is good', amount: 100.00, anonymous: false, user_id:u1.id, campaign_id:c1.id)
-d2 = Donation.create(comment: 'oh no, the barn', amount: 300.00, anonymous: false, user_id:u2.id, campaign_id:c2.id)
+d2 = Donation.create(comment: 'Oh no, the barn', amount: 300.00, anonymous: false, user_id:u2.id, campaign_id:c2.id)
 
 up1 = Update.create(comment: 'Memorial will be held on May 10th', image:'', campaign_id:c1.id)
-up2 = Update.create(comment: 'barn alittle better', image:'', campaign_id:c2.id)
+up2 = Update.create(comment: 'Barn is getting fixed', image:'', campaign_id:c2.id)
 
 cat1 = Category.create(name:'Memorial')
 cat2 = Category.create(name:'Home Renivation')
