@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     resources :categories 
     resources :campaign_categories
     resources :users
-    resources :updates
     resources :campaigns do
-     resources :donations
+      resources :donations
+      resources :updates
       end
       get '/donations', to: 'donations#index_of_all'
   end
