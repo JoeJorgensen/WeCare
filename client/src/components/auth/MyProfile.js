@@ -5,9 +5,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 import "filepond/dist/filepond.min.css";
 
-// Import the Image EXIF Orientation and Image Preview plugins
-// Note: These need to be installed separately
-// `npm i filepond-plugin-image-preview filepond-plugin-image-exif-orientation --save`
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
@@ -19,7 +16,7 @@ import Card from "../../providers/Card";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-function Profile() {
+function MyProfile() {
   const [files, setFiles] = useState([]);
   const [name, setName] = useState("");
 
@@ -30,6 +27,7 @@ function Profile() {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     let data = new FormData();
     data.append("fileYO", files[0].file);
@@ -97,4 +95,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default MyProfile;
