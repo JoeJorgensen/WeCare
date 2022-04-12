@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       resources :updates
       end
       get '/donations', to: 'donations#index_of_all'
+      put '/update_image', to: 'users#update_image'
   end
-
 end
