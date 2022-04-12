@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { parsePath, useParams } from "react-router-dom";
+import { parsePath, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Form, Button } from "react-bootstrap";
 import Card from "../../providers/Card";
@@ -9,6 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const auth = useContext(AuthContext);
+  const navigate = useNavigate()
   // not need but nice for UX
   // const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -18,6 +19,7 @@ const Register = () => {
     // email must be 'valid' email and unique
     // password must be greater than = 6 chars in length
     auth.handleRegister({ email, password, name });
+    navigate('/feed')
   };
   return (
     <Card>
