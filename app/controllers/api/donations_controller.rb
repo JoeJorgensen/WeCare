@@ -1,8 +1,13 @@
 class Api::DonationsController < ApplicationController
+  before_action :set_campaign, only: [:create, :index]
   before_action :set_donation, only: [:show,:update,:destroy]
 
-  def index
+  def index_of_all
     render json: Donation.all
+  end
+
+  def index
+    render json: @campaign.donations.all
   end
 
   def show
@@ -10,7 +15,7 @@ class Api::DonationsController < ApplicationController
   end
 
   def create
-    donation = Donation.new(donation_params)
+    donation = @campaign.donations.new(donation_params)
     if donation.save
       render json: donation
     else
@@ -33,11 +38,15 @@ class Api::DonationsController < ApplicationController
   private 
 
   def donation_params
-    params.require(:donation).permit(:text, :amount, :anonymous, :user_id, :campaign_id)
+    params.require(:donation).permit(:comment, :amount, :anonymous, :user_id, :campaign_id)
   end  
 
+  def set_campaign
+    @campaign = Campaign.find(params[:campaign_id])
+  end
+
   def set_donation
-    @donation = donation.find(params[:id])
+    @donation = Donation.find(params[:id])
   end
 
 end
