@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.2.1",
     "antd": "^4.19.5",
     "axios": "^0.26.1",
+    "axios-hooks": "^3.0.1",
     "bootstrap": "5.1.3",
     "devise-axios": "^1.0.24",
     "filepond": "^4.30.3",
