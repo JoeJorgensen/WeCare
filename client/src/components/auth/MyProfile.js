@@ -61,9 +61,10 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
-      {user.id}
-      {user.name}
-      {!user.image && <p>no name</p>}
+      <Badge>{user.name}</Badge>
+      <br/>
+       {!user.name && <p>no name</p>}
+     
 
 
       {user.image && <img src={user.image} width={300} />}
