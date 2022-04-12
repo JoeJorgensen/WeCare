@@ -29,20 +29,31 @@ function Profile() {
     setFiles(files);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleImage = async (e) => {
     let data = new FormData();
     data.append("fileYO", files[0].file);
     data.append("name", name);
     // axios call
     try {
       console.log("trying to update with data:");
-      let res = await axios.put("/api/users/update_image", data);
+      let res = await axios.put("/api/update_image", data);
       setUser(res.data);
     } catch (err) {
-      alert("error occured updating");
+      alert("error occurred updating");
+      console.log(err)
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault() 
+    try{
+      let res = await axios.put(`/api/users/${user.id}`, {name})
+      setUser(res.data)
+    }catch(err){
+      alert('error updating user info')
+    }finally{handleImage()}
+  }
+
   return (
     <div className="App">
       <br />
