@@ -21,7 +21,7 @@ const AuthProvider = ({children})=>{
         try {
             let res = await axios.post('/api/auth',user)
             setUser(res.data.data)
-            navigate('/')
+            navigate('/feed')
 
         }catch(err){
             // A lot of work in error handling should be done here
