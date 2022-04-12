@@ -11,4 +11,8 @@ Rails.application.routes.draw do
       get '/donations', to: 'donations#index_of_all'
   end
 
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> c18c4ac35d80af8f8a3ed1c366cb52cbf8287334
