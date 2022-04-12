@@ -30,8 +30,7 @@ const NavBar = () => {
     return (
       <>
         {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
-        <Badge>
-        </Badge>
+        <Badge></Badge>
       </>
     );
   };
@@ -47,13 +46,9 @@ const NavBar = () => {
       <>
         {/* <Badge style={{color: 'white'}} href="/register">Register</Badge> */}
 
-          <Nav.Link href="/register" >
-            Register{" "}
-          </Nav.Link>
+        <Nav.Link href="/register">Register </Nav.Link>
 
-          <Nav.Link href="/login" >
-            Login{" "}
-          </Nav.Link>
+        <Nav.Link href="/login">Login </Nav.Link>
       </>
     );
   };
@@ -73,22 +68,27 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/home">Home</Nav.Link>
+              {/* <Nav.Link href="/home">Home</Nav.Link> */}
+              <Nav.Link href="/feed">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/feed">Feed</Nav.Link>
 
-              <NavDropdown bg="dark" variant ='dark' title="Fundraising" id="basic-nav-dropdown">
+              <NavDropdown
+                bg="dark"
+                variant="dark"
+                title="Fundraising"
+                id="basic-nav-dropdown"
+              >
                 <NavDropdown.Item href="/categories">
                   Categories
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
-                <NavDropdown.Item href="mydonations">
+                <NavDropdown.Item href="/my_donations">
                   My Donations
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/myprofile">
+                <NavDropdown.Item href="/my_profile">
                   My Profile{" "}
                 </NavDropdown.Item>
               </NavDropdown>

@@ -1,19 +1,17 @@
 import Card from "../../providers/Card";
 
-const Fundraiser = () => {
+const CampaignShow = () => {
   return (
     <Card>
       <div>
-        <h1>Fundraising title</h1>
+        <h1>
+          <u>Fundraising Show</u>
+        </h1>
+
         <hr></hr>
         <h2>
           <u>Date Created | Category</u>
         </h2>
-        <h3>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in
-          metus vulputate eu scelerisque felis.
-        </h3>
 
         <h2>Updates</h2>
         <hr></hr>
@@ -43,4 +41,4 @@ const Fundraiser = () => {
     </Card>
   );
 };
-export default Fundraiser;
+export default CampaignShow;
