@@ -1,6 +1,7 @@
 import axios from "axios";
 import useAxios from "axios-hooks";
 import { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
@@ -28,13 +29,12 @@ const Campaigns = () => {
   const renderData = () => {
     return campaigns.map((c) => {
       return (
+        <Card style={{margin:'15px'}}>
         <div
           key={c.id}
-          style={{
-            border: "1px solid",
-            margin: "10px",
-          }}
+          
         >
+          <img src={c.image} />
           <p>Name: {c.name}</p>
           <p>Description: {c.description}</p>
           <p>Current Amount: ${c.current_amount}</p>
@@ -42,6 +42,7 @@ const Campaigns = () => {
           <p>Expiration: {c.expiration}</p>
           <Link to={`/campaign_show/${c.id}`}>show</Link>
         </div>
+        </Card>
       );
     });
   };
