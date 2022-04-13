@@ -44,7 +44,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/my_profile" element={<MyProfile />} />
               <Route path="/categories" element={<Categories />} />
-              <Route path="/campaign_show" element={<CampaignShow />} />
+              <Route path="/campaign_show/:id" element={<CampaignShow />} />
             </Route>
 
             <Route path="*" element={<NoMatch />} />
