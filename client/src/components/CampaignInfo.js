@@ -1,6 +1,6 @@
 import axios from "axios";
 import useAxios from "axios-hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 
@@ -11,6 +11,9 @@ const Campaigns = () => {
   console.log("Campaign Info Being Called:");
   console.log('campaigns', campaigns);
 
+  useEffect (()=>{
+    getCampaigns()
+  }, [])
 
   const getCampaigns = async () => {
     try {
@@ -22,7 +25,6 @@ const Campaigns = () => {
   }
 
   const renderData = () => {
-    getCampaigns()
     return campaigns.map((c) => {
       return (
         <div key={c.id} style={{
