@@ -37,19 +37,21 @@ function MyProfile() {
       setUser(res.data);
     } catch (err) {
       alert("error occurred updating");
-      console.log(err)
+      console.log(err);
     }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault() 
-    try{
-      let res = await axios.put(`/api/users/${user.id}`, {name})
-      setUser(res.data)
-    }catch(err){
-      alert('error updating user info')
-    }finally{handleImage()}
-  }
+    e.preventDefault();
+    try {
+      let res = await axios.put(`/api/users/${user.id}`, { name });
+      setUser(res.data);
+    } catch (err) {
+      alert("error updating user info");
+    } finally {
+      handleImage();
+    }
+  };
 
   return (
     <div className="App">
@@ -65,14 +67,12 @@ function MyProfile() {
       {user.name}
       {!user.image && <p>no name</p>}
 
-
       {user.image && <img src={user.image} width={300} />}
       {!user.image && <p>no image</p>}
       <Card>
         <form>
           <Badge bg="dark">
             <h1>Update Profile</h1>
-        
           </Badge>
           <br />
           <br />

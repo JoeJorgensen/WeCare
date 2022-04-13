@@ -1,4 +1,5 @@
 import Card from "../../providers/Card";
+import MyDonation from "../MyDonationInfo";
 
 const myDonation = () => {
   return (
@@ -13,6 +14,7 @@ const myDonation = () => {
 
         <h2>My Donations</h2>
         <hr></hr>
+        <MyDonation />
         <ul>
           <li>Donation 1</li>
           <li>Donation 1</li>

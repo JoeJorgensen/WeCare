@@ -9,6 +9,8 @@ User.destroy_all
 
 u1 = User.create(name: 'testx', email: 'testx@test.com', password: '123456', image: '', balance: 50.00)
 u2 = User.create(name: 'testx1', email: 'testx1@test.com', password: '123456', image: '', balance: 80.00)
+u3 = User.create(name: 'testx123', email: 'testx123@test.com', password: '123456', image: '' )
+
 
 c1 = Campaign.create(name: 'Matt Hays Memorial Fund', description: 'Matt Hays Memorial', image: '', current_amount: 5000.00, goal: 15000.00, expiration: 'May 3rd 2020 10:10', user_id:u1.id)
 c2 = Campaign.create(name: 'Barn Fire', description: 'Barn has been burnt up', image: '', current_amount: 2000.00, goal: 20000.00, expiration: 'June 16th 2020 10:10', user_id:u2.id)

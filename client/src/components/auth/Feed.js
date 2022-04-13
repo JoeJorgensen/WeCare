@@ -2,7 +2,7 @@ import Card from "../../providers/Card";
 import useAxios from "axios-hooks";
 import AxiosContainer from "../../providers/AxiosContainer";
 import StringifyJSON from "../../providers/StringifyJSON";
-import Campaigns from "../CampaignInfo";
+import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 
 const Feed = () => {
@@ -13,12 +13,12 @@ const Feed = () => {
         <hr></hr>
         <h2>
           <u>Wallet Balance:</u>
-          {WalletBalance()}
+          <WalletBalance />
         </h2>
-        <h3>$100.05</h3>
+
         <h2>Urgent Fundraising:</h2>
         <hr></hr>
-        {Campaigns()}
+        <CampaignInfo />
         <ul>
           <li>Fundraising 1</li>
           <li>Fundraising 1</li>

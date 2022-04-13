@@ -10,5 +10,6 @@ Rails.application.routes.draw do
       end
       get '/donations', to: 'donations#index_of_all'
       put '/update_image', to: 'users#update_image'
+      get 'user_donations', to: 'donations#user_donations'
   end
 end
