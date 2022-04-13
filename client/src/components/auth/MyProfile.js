@@ -78,6 +78,21 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
+      {user.image && (
+        <img
+          style={{
+            borderRadius: "50%",
+            width: "200px",
+            height: "200px",
+            aspectRatio: "auto",
+          }}
+          src={user.image}
+          width={300}
+        />
+      )}
+      <br/>
+      <br/>
+
       <Badge>
         <h5>{user.name}</h5>
       </Badge>
@@ -91,18 +106,6 @@ function MyProfile() {
       <br />
       <br />
 
-      {user.image && (
-        <img
-          style={{
-            borderRadius: "50%",
-            width: "200px",
-            height: "200px",
-            aspectRatio: "auto",
-          }}
-          src={user.image}
-          width={300}
-        />
-      )}
       {!user.image && <p>no image</p>}
       <Card>
         <form onSubmit={handleSubmit}>
