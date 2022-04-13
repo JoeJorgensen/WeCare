@@ -7,8 +7,6 @@ import "filepond/dist/filepond.min.css";
 
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-// import FilePondPluginImageCrop from "filepond-plugin-image-crop";
-// import FilePondPluginImageTransform from 'filepond-plugin-image-transform'
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import axios from "axios";
@@ -22,8 +20,6 @@ import Card from "../../providers/Card";
 registerPlugin(
   FilePondPluginImageExifOrientation,
   FilePondPluginImagePreview
-  // FilePondPluginImageCrop,
-  // FilePondPluginImageTransform,
 );
 
 function MyProfile() {
@@ -81,10 +77,10 @@ function MyProfile() {
       {user.image && (
         <img
           style={{
+            objectFit: 'cover',
             borderRadius: "50%",
             width: "200px",
             height: "200px",
-            aspectRatio: "auto",
           }}
           src={user.image}
           width={300}
