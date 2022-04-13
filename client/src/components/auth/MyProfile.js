@@ -83,16 +83,14 @@ function MyProfile() {
           style={{
             borderRadius: "50%",
             width: "200px",
-            height: "200px",
-            aspectRatio: "auto",
+            height: "200px"
           }}
           src={user.image}
           width={300}
         />
       )}
       <br/>
-      <br/>
-
+      
       <Badge>
         <h5>{user.name}</h5>
       </Badge>
