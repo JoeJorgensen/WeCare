@@ -89,6 +89,7 @@ function MyProfile() {
       <br/>
       <br/>
 
+      
       <Badge>
         <h5>{user.name}</h5>
       </Badge>
