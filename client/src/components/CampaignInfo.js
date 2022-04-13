@@ -8,10 +8,6 @@ const Campaigns = () => {
   console.log("Campaign Info Being Called:");
   console.log(campaigns);
 
-  const renderOneCamp = (campObj) => {
-    return { ...campObj };
-  };
-
   return (
     <AxiosContainer title={"Campaigns"} loading={loading} error={error}>
       <StringifyJSON data={campaigns} />

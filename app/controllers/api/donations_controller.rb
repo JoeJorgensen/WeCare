@@ -1,9 +1,14 @@
 class Api::DonationsController < ApplicationController
+  before_action :authenticate_user!, only:[:user_donations]
   before_action :set_campaign, only: [:create, :index]
   before_action :set_donation, only: [:show,:update,:destroy]
 
   def index_of_all
     render json: Donation.all
+  end
+
+  def user_donations
+    render json: current_user.donations
   end
 
   def index

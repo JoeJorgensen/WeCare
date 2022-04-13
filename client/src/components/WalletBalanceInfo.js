@@ -1,17 +1,14 @@
 import useAxios from "axios-hooks";
+import { useContext } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
+import { AuthContext } from "../providers/AuthProvider";
 
 const WalletBalance = () => {
-  const [{ data: users, loading, error }, refetch] = useAxios("/api/users");
-  console.log("User Info Being Called:");
-  console.log(users);
+  // need to grab User from AuthProvider
+  const auth = useContext(AuthContext);
 
-  return (
-    <AxiosContainer title={"Users"} loading={loading} error={error}>
-      <StringifyJSON data={users} />
-    </AxiosContainer>
-  );
+  return <p> ${auth.user.balance} </p>;
 };
 
 export default WalletBalance;
