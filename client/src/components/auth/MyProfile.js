@@ -62,8 +62,10 @@ function MyProfile() {
       <br />
       <br />
       <Badge>{user.name}</Badge>
-      <br/>
        {!user.name && <p>no name</p>}
+      <br/>
+      <br/>
+
      
 
 
