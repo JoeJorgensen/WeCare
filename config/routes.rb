@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       get 'user_donations', to: 'donations#user_donations'
       get '/order_by_expd', to: 'campaigns#order_by_expd'
       get 'user_donations', to:'donations#user_donations'
+      get 'donation_by_user/:id', to:'donations#donation_by_user'
+
   end
   get '*other', to: 'static#index'
 end

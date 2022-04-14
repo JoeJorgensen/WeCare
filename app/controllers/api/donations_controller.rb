@@ -13,6 +13,11 @@ class Api::DonationsController < ApplicationController
     render json: Donation.user_donations(current_user.id)
   end
 
+  def donation_by_user
+    puts params[:id]
+    render json: Donation.donation_by_user(params[:id].to_i)
+  end
+
   def index
     render json: @campaign.donations.all
   end
