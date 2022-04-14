@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 
-u1 = User.create(name: 'testx', email: 'testx@test.com', password: '123456', image: '', balance: 50.00)
+u1 = User.create(name: 'testx', email: 'testx@test.com', password: '123456', image: '', balance: 50.00, bio: 'I am a pretty neat guy!')
 u2 = User.create(name: 'testx1', email: 'testx1@test.com', password: '123456', image: '', balance: 80.00)
 u3 = User.create(name: 'testx123', email: 'testx123@test.com', password: '123456', image: '' )
 
