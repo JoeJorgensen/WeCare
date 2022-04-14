@@ -1,0 +1,27 @@
+{
+  "name": "wecare",
+  "version": "1.0.0",
+  "description": "1. Using rails 6.1.4.7 and ruby 3.0.2",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeJorgensen/WeCare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeJorgensen/WeCare/issues"
+  },
+  "homepage": "https://github.com/JoeJorgensen/WeCare#readme"
+}
