@@ -15,4 +15,5 @@ Rails.application.routes.draw do
       get '/user_donations', to:'donations#user_donations'
       get '/user_with_campaigns', to: 'donations#user_with_campaigns'
   end
+  get '*other', to: 'static#index'
 end

@@ -16,6 +16,7 @@ import Badge from "react-bootstrap/esm/Badge";
 import Alert from "react-bootstrap/esm/Alert";
 
 import Card from "../../providers/Card";
+import { Form } from "react-bootstrap";
 
 registerPlugin(
   FilePondPluginImageExifOrientation,
@@ -26,6 +27,7 @@ function MyProfile() {
   const { user, setUser } = useContext(AuthContext);
   const [files, setFiles] = useState(null);
   const [name, setName] = useState(user.name);
+  const [bio, setBio] = useState(user.bio);
 
   const handleUpdate = (files) => {
     setFiles(files);
@@ -47,10 +49,10 @@ function MyProfile() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleProfileSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.put(`/api/users/${user.id}`, { name });
+      let res = await axios.put(`/api/users/${user.id}`, { name, bio });
       setUser(res.data);
       if (files) {
         await handleImage();
@@ -86,14 +88,13 @@ function MyProfile() {
           width={300}
         />
       )}
-      <br/>
-      <br/>
+      <br />
+      <br />
 
-      
+
       <Badge>
-        <h5>{user.name}</h5>
+        <h5>{user.name ? user.name : <p>no name</p>}</h5>
       </Badge>
-      {!user.name && <p>no name</p>}
       <br />
       <br />
       <Badge>
@@ -102,10 +103,13 @@ function MyProfile() {
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
+      <Badge>
+      <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
+      </Badge>    
+   
 
-      {!user.image && <p>no image</p>}
       <Card>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleProfileSubmit}>
           <Badge bg="dark">
             <h1>Update Profile</h1>
           </Badge>
@@ -126,6 +130,18 @@ function MyProfile() {
 
           <br />
           <br />
+
+          <Badge>
+            <p style={{marginBottom: '0px'}}>Bio</p>
+          </Badge>
+          <br />
+          <br />
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <textarea as="textarea" rows={3} 
+            value={bio}
+            placeholder={user.bio}
+            onChange={(e) => setBio(e.target.value)}/>
+          </Form.Group>
 
           <Badge>
             <p style={{ marginBottom: "0px" }}>Image</p>
