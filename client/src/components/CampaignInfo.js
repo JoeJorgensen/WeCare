@@ -58,3 +58,10 @@ const Campaigns = () => {
 };
 
 export default Campaigns;
+
+// const Campaigns = () => {
+//   // need to grab User from AuthProvider
+//   const auth = useContext(AuthContext);
+
+//   return <p> ${auth.user.campaigns} </p>;
+// };
