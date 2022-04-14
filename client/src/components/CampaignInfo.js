@@ -17,7 +17,7 @@ const Campaigns = () => {
 
   const getCampaigns = async () => {
     try {
-      let res = await axios.get("/api/campaigns");
+      let res = await axios.get("/api/order_by_expd");
       setCampaigns(res.data);
     } catch (error) {
       alert("error occurred getting campaign data");

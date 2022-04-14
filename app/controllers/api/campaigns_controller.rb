@@ -3,10 +3,10 @@ class Api::CampaignsController < ApplicationController
   #defines the CRUD actions before using them
   before_action :set_campaign, only: [:show, :destroy, :update]
 
-  def expiration_date
-    render json: Campaign.expiration_date
+  def order_by_expd
+    render json: Campaign.order(:expiration)
   end
-  
+
    #finds all Campaigns in DB
   def index
   render json: Campaign.all

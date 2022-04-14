@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get '/donations', to: 'donations#index_of_all'
       put '/update_image', to: 'users#update_image'
       get 'user_donations', to: 'donations#user_donations'
-      get '/expiration_date', to: 'campaigns#expiration_date'
+      get '/order_by_expd', to: 'campaigns#order_by_expd'
+      get 'user_donations', to:'donations#user_donations'
   end
 end

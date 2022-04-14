@@ -4,6 +4,7 @@ import AxiosContainer from "../../providers/AxiosContainer";
 import StringifyJSON from "../../providers/StringifyJSON";
 import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
+import CommentInfo from "../CommentInfo";
 
 const Feed = () => {
   return (
@@ -34,6 +35,7 @@ const Feed = () => {
         <h2>Prayers from Good People</h2>
         <hr></hr>
         <ul>
+          <CommentInfo />
           <li>Comment 1</li>
           <li>Comment 1</li>
           <li>Comment 1</li>

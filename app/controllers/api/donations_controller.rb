@@ -3,12 +3,14 @@ class Api::DonationsController < ApplicationController
   before_action :set_campaign, only: [:create, :index]
   before_action :set_donation, only: [:show,:update,:destroy]
 
+
+
   def index_of_all
     render json: Donation.all
   end
 
   def user_donations
-    render json: current_user.donations
+    render json: Donation.user_donations(current_user.id)
   end
 
   def index
