@@ -51,7 +51,7 @@ const Campaigns = () => {
     //   <StringifyJSON data={campaigns} />
     // </AxiosContainer>
     <div>
-      {JSON.stringify(campaigns)}
+      {/* {JSON.stringify(campaigns)} */}
       {renderData()}
     </div>
   );
