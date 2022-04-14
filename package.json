@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@fullcalendar/react": "^5.11.0"
+  }
+}
