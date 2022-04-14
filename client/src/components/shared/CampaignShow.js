@@ -1,44 +1,70 @@
-import Card from "../../providers/Card";
+import axios from "axios";
+import Card from '../../providers/Card'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const CampaignShow = () => {
+  const params = useParams()
+  const [campaign, setCampaign] = useState([])
+  const [updates, setUpdates] = useState([])
+
+  useEffect(() => {
+    getCampaign()
+    getUpdates()
+  }, [])
+
+  const getCampaign = async () => {
+    try {
+      let res = await axios.get(`/api/campaigns/${params.id}`)
+      setCampaign(res.data)
+      console.log('campaign', res.data)
+    } catch (error) {
+      alert('error occurred getting campaign')
+      console.log(error)
+    }
+  }
+
+  const getUpdates = async () => {
+    try {
+      let res = await axios.get(`/api/campaigns/${params.id}/updates`)
+      setUpdates(res.data)
+      console.log('updates', res.data)
+    } catch (error) {
+      alert('error when getting updates')
+    }
+  }
+
+  const renderUpdates = () => {
+    return updates.map((u) => {
+      return (
+        <Card>
+          <p>Updates: {u.comment}</p>
+          <p> {u.image}</p>
+        </Card>
+      )
+    })
+  }
+
+  const renderCampaign = () => {
+    return (
+      <Card>
+        <p>Name: {campaign.name}</p>
+        <img src={campaign.img} />
+        {!campaign.image && <p>no image</p>}
+        <p>Description: {campaign.description}</p>
+        <p>Current Amount: ${campaign.current_amount}</p>
+        <p>Goal: ${campaign.goal}</p>
+        <p>Expiration: {campaign.expiration}</p>
+      </Card>
+    );
+  }
+
   return (
-    <Card>
-      <div>
-        <h1>
-          <u>Fundraising Show</u>
-        </h1>
+    <div>
+      {renderCampaign()}
+      {renderUpdates()}
+    </div>
+  )
 
-        <hr></hr>
-        <h2>
-          <u>Date Created | Category</u>
-        </h2>
-
-        <h2>Updates</h2>
-        <hr></hr>
-        <ul>
-          <li>Update 1</li>
-          <li>Update 1</li>
-          <li>Update 1</li>
-        </ul>
-        <h2>Prayers from good people</h2>
-        <hr></hr>
-        <ul>
-          <li>Prayer</li>
-          <li>Prayer 1</li>
-          <li>Prayer 1</li>
-        </ul>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in
-          metus vulputate eu scelerisque felis. Et netus et malesuada fames ac
-          turpis egestas integer eget. Nam at lectus urna duis convallis.
-          Vehicula ipsum a arcu cursus vitae congue. Risus in hendrerit gravida
-          rutrum quisque non tellus orci. Mi tempus imperdiet nulla malesuada
-          pellentesque. Cras fermentum odio eu feugiat pretium nibh ipsum
-          consequat nisl.
-        </p>
-      </div>
-    </Card>
-  );
 };
 export default CampaignShow;
