@@ -14,4 +14,5 @@ Rails.application.routes.draw do
       get '/order_by_expd', to: 'campaigns#order_by_expd'
       get 'user_donations', to:'donations#user_donations'
   end
+  get '*other', to: 'static#index'
 end
