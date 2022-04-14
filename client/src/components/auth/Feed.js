@@ -27,6 +27,8 @@ const Feed = () => {
         </ul>
         <h2>Coming to a end:</h2>
         <hr></hr>
+        <CampaignInfo />
+
         <ul>
           <li>Fundraising 1</li>
           <li>Fundraising 1</li>
@@ -40,7 +42,6 @@ const Feed = () => {
           <li>Comment 1</li>
           <li>Comment 1</li>
         </ul>
-   
       </div>
     </Card>
   );

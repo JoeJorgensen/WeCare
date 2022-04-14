@@ -15,7 +15,7 @@ const Comments = () => {
 
   const getComments = async () => {
     try {
-      let res = await axios.get("/api/donations");
+      let res = await axios.get("/api/user_with_campaigns");
       setComments(res.data);
     } catch (error) {
       alert("error occurred getting comments data");
@@ -24,6 +24,7 @@ const Comments = () => {
 
   const renderData = () => {
     return comments.map((c) => {
+      console.log(c);
       return (
         <div
           key={c.id}
@@ -32,9 +33,10 @@ const Comments = () => {
             margin: "10px",
           }}
         >
-          <p>Comment: {c.comment}</p>
-          <p>User: {c.user}</p>
-          <p>Campaign: {c.campaign}</p>
+          <h6>Donation Amount: ${c.amount}</h6>
+          <h6>Comment: {c.comment}</h6>
+          <h6>User: {c.username}</h6>
+          <h6>Campaign: {c.campaign_name}</h6>
 
           {/* <p>Image: {c.image}</p> */}
           {/* <p>Campaign ID: ${c.id}</p> */}
@@ -48,7 +50,7 @@ const Comments = () => {
     //   <StringifyJSON data={campaigns} />
     // </AxiosContainer>
     <div>
-      {JSON.stringify(comments)}
+      {/* {JSON.stringify(comments)} */}
       {renderData()}
     </div>
   );

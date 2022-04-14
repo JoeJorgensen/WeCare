@@ -29,18 +29,16 @@ const Campaigns = () => {
   const renderData = () => {
     return campaigns.map((c) => {
       return (
-        <Card style={{margin:'15px'}}>
-        <div
-          key={c.id}
-        >
-          <img src={c.image} />
-          <p>Name: {c.name}</p>
-          <p>Description: {c.description}</p>
-          <p>Current Amount: ${c.current_amount}</p>
-          <p>Goal: ${c.goal}</p>
-          <p>Expiration: {c.expiration}</p>
-          <Link to={`/campaign_show/${c.id}`}>show</Link>
-        </div>
+        <Card style={{ margin: "15px" }}>
+          <div key={c.id}>
+            <img src={c.image} />
+            <h6>Name: {c.name}</h6>
+            <h6>Description: {c.description}</h6>
+            <h6>Current Amount: ${c.current_amount}</h6>
+            <h6>Goal: ${c.goal}</h6>
+            <h6>Expiration: {c.expiration}</h6>
+            <Link to={`/campaign_show/${c.id}`}>show</Link>
+          </div>
         </Card>
       );
     });
