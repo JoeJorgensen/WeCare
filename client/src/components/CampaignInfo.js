@@ -32,7 +32,6 @@ const Campaigns = () => {
         <Card style={{margin:'15px'}}>
         <div
           key={c.id}
-          
         >
           <img src={c.image} />
           <p>Name: {c.name}</p>
