@@ -62,8 +62,8 @@ const NavBar = () => {
   // }
   return (
     <div>
-      <Navbar bg="dark" expand="lg" variant="dark">
-        <Container>
+      <Navbar sticky="top" bg="dark" expand="lg" variant="dark">
+        <Container fluid>
           <Navbar.Brand href="/feed">WeCare</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

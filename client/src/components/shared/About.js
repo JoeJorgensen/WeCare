@@ -1,3 +1,4 @@
+import { Badge } from "react-bootstrap";
 import Card from "../../providers/Card";
 
 const About = () => {
@@ -9,12 +10,25 @@ const About = () => {
         </h1>
         <hr></hr>
         <h3>
-          <ul>
-            <h3>Randy</h3>
-            <h3>Joe</h3>
-            <h3>Steve</h3>
-            <h3>Austin</h3>
-          </ul>
+
+            <Badge bg='info'>Randy</Badge>
+            <br/>
+            <br/>
+            <Badge bg='info'>Joe</Badge>
+            <br/>
+            <br/>
+            <Badge bg='info'>Steve</Badge>
+            <br/>
+            <br/>
+            <Badge bg='info'>Austin</Badge>
+            <br/>
+            <br/>
+
+
+
+
+            
+
         </h3>
       </div>
     </Card>

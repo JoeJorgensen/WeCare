@@ -1,10 +1,8 @@
 {
-
   "name": "wecare",
   "version": "1.0.0",
   "description": "1. Using rails 6.1.4.7 and ruby 3.0.2",
   "main": "index.js",
-
   "directories": {
     "lib": "lib",
     "test": "test"
