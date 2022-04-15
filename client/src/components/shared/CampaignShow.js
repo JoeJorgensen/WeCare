@@ -2,14 +2,16 @@ import axios from "axios";
 import Card from 'react-bootstrap/esm/Card'
 import Card1 from '../../providers/Card'
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Badge } from "react-bootstrap";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Badge, Button } from "react-bootstrap";
 
 const CampaignShow = () => {
   const params = useParams()
+  const navigate = useNavigate()
   const [campaign, setCampaign] = useState([])
   const [updates, setUpdates] = useState([])
   const [donations, setDonations] = useState([])
+
 
 
   useEffect(() => {
@@ -108,6 +110,7 @@ const CampaignShow = () => {
          <Card.Body>
            <Card.Title>{u.comment}</Card.Title>
          <Card.Img variant="top" src={u.image} /> 
+         <p>{u.created_at}</p>
          </Card.Body>
        </Card>
        </Card1>
@@ -144,8 +147,13 @@ const CampaignShow = () => {
             {campaign.description}
           </Card.Text>
           <Card.Text>
-           Ends: {campaign.expiration}
+          Created: {campaign.created_at}
           </Card.Text>
+          <Card.Text>
+            Ends: {campaign.expiration}
+             </Card.Text>
+          <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button>
+
         </Card.Body>
       </Card>
       </Card1>
