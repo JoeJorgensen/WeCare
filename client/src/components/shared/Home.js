@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Badge from "react-bootstrap/esm/Badge";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Card from "../../providers/Card";
 
@@ -11,30 +11,40 @@ const Home = () => {
   //         Welcome to the starter app!
   //     </p>
   // }
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  return (
-    <Card>
-      <div>
-        <h1>
-          Welcome to the starter app! Login or Register to access more features!
-        </h1>
+  const renderHome = () => {
+    if (auth.user) {
+      return navigate("/feed")
+  
+    }
+    return (
+      <Card>
+        <div>
+          <h1>Welcome to WeCare! Login or Register to access more features!</h1>
 
-        <Link to="/login">
-          <Badge style={{ color: "white" }}>
-            <h4>Login</h4>
-          </Badge>
-        </Link>
-        <br />
-        <br />
+          <Link to="/login">
+            <Badge style={{ color: "white" }}>
+              <h4>Login</h4>
+            </Badge>
+          </Link>
+          <br />
+          <br />
 
-        <Link to="/register">
-          <Badge style={{ color: "white" }}>
-            <h4>Register</h4>
-          </Badge>
-        </Link>
-      </div>
-    </Card>
-  );
+          <Link to="/register">
+            <Badge style={{ color: "white" }}>
+              <h4>Register</h4>
+            </Badge>
+          </Link>
+        </div>
+      </Card>
+    );
+  };
+
+  return <div>
+    {renderHome()}
+    </div>;
 };
 
 export default Home;
