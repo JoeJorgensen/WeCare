@@ -32,7 +32,9 @@ const MyDonation = () => {
             margin: "10px",
           }}
         >
-          <h6>Donation Amount: ${c.amount}</h6>
+          <h6>
+            Donation Amount: <u>${c.amount}</u>
+          </h6>
           <h6>Comment: {c.comment}</h6>
           <h6>Campaign: {c.name}</h6>
         </div>
