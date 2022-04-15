@@ -4,6 +4,7 @@ import Card1 from '../../providers/Card'
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Badge, Button } from "react-bootstrap";
+import Donate from "../auth/Donate";
 
 const CampaignShow = () => {
   const params = useParams()
@@ -39,24 +40,6 @@ const CampaignShow = () => {
     return donations.map((d)=> {
       return (
         
-
-
-        // <Card key ={d.id}>
-        //   <Badge bg = 'dark '><h6>Donations</h6></Badge>
-        //   <br/>
-        //   <br/>
-          
-        //   <Badge><h6>{d.name}</h6></Badge>
-          
-        //   <img src={d.image} />
-        //   <br/>
-        //   <br/>
-
-        //   <Badge bg='info'><p>{d.comment}</p></Badge>
-        //   <br/>
-        //   <br/>
-        //   <Badge bg='info'><h6>Donation: ${d.amount}</h6></Badge>
-        // </Card>
         <Card1 key={d.id} style={{display:'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
         <Card border="info" style={{ width: '18rem' }} >
         <Card.Img variant="top" src={d.image} />
@@ -152,8 +135,8 @@ const CampaignShow = () => {
           <Card.Text>
             Ends: {campaign.expiration}
              </Card.Text>
-          <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button>
-
+          {/* <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button> */}
+          <Donate />
         </Card.Body>
       </Card>
       </Card1>
