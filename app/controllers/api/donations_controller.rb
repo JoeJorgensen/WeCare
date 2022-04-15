@@ -16,7 +16,8 @@ class Api::DonationsController < ApplicationController
   def donation_by_user
     puts params[:id]
     render json: Donation.donation_by_user(params[:id].to_i)
-    
+  end
+
   def user_with_campaigns
     render json: Donation.user_with_campaign
   end

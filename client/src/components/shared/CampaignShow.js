@@ -10,11 +10,7 @@ const CampaignShow = () => {
   const [campaign, setCampaign] = useState([])
   const [updates, setUpdates] = useState([])
   const [donations, setDonations] = useState([])
-  const [user, setUser] = useState('')
 
-  
-
-  
 
   useEffect(() => {
     getCampaign()
@@ -122,13 +118,16 @@ const CampaignShow = () => {
     return (
       <Card1>
         <div>
-        <p>Name: {campaign.name}</p>
-        <img src={campaign.img} />
+        <Badge bg='dark' ><h6 style={{marginBottom:'0px'}}>{campaign.name}</h6></Badge>
+        <br/>
+        <br/>
+
+        <img src={campaign.image} />
         {!campaign.image && <p>no image</p>}
         <p>Description: {campaign.description}</p>
         <p>Current Amount: ${campaign.current_amount}</p>
         <p>Goal: ${campaign.goal}</p>
-        <p>Expiration: {campaign.expiration}</p>
+        <p>Ends: {campaign.expiration}</p>
         </div>
       </Card1>
     );
@@ -136,7 +135,6 @@ const CampaignShow = () => {
 
   return (
     <div>
-      {JSON.stringify(user)}
       {renderCampaign()}
       {renderUpdates()}
       {renderDonations()}
