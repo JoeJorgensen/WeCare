@@ -29,8 +29,8 @@ const Campaigns = () => {
   const renderData = () => {
     return campaigns.map((c) => {
       return (
-        <Card style={{ margin: "15px" }}>
-          <div key={c.id}>
+        <Card key={c.id} style={{ margin: "15px" }}>
+          <div>
             <img src={c.image} />
             <h6>Name: {c.name}</h6>
             <h6>Description: {c.description}</h6>

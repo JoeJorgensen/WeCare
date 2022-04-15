@@ -26,11 +26,11 @@ const MyDonation = () => {
     return myDonations.map((c) => {
       return (
         <div
-          key={c.id}
           style={{
             border: "1px solid",
             margin: "10px",
           }}
+          key={c.id}
         >
           <h6>Donation Amount: ${c.amount}</h6>
           <h6>Comment: {c.comment}</h6>

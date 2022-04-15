@@ -10,10 +10,10 @@ const About = () => {
         <hr></hr>
         <h3>
           <ul>
-            <li>Randy</li>
-            <li>Joe</li>
-            <li>Steve</li>
-            <l1>Austin</l1>
+            <h3>Randy</h3>
+            <h3>Joe</h3>
+            <h3>Steve</h3>
+            <h3>Austin</h3>
           </ul>
         </h3>
       </div>

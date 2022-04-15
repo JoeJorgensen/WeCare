@@ -6,6 +6,7 @@ import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
 
+
 const Feed = () => {
   return (
     <Card>
@@ -43,6 +44,7 @@ const Feed = () => {
           <li>Comment 1</li>
         </ul>
       </div>
+     
     </Card>
   );
 };
