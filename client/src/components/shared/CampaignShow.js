@@ -25,7 +25,7 @@ const CampaignShow = () => {
     try {
       let res = await axios.get(`/api/donation_by_user/${params.id}`)
     setDonations(res.data)
-    console.log('donations:', res.data)
+
     } catch (error) {
       alert('error getting donations')
     }
@@ -55,11 +55,11 @@ const CampaignShow = () => {
         //   <br/>
         //   <Badge bg='info'><h6>Donation: ${d.amount}</h6></Badge>
         // </Card>
-        <Card1 key={d.id}>
+        <Card1 key={d.id} style={{display:'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
         <Card border="info" style={{ width: '18rem' }} >
         <Card.Img variant="top" src={d.image} />
         <Card.Body>
-          <Card.Title>{d.name}</Card.Title>
+          <Badge bg='dark'><Card.Title style={{marginBottom:'0px'}}>{d.name}</Card.Title></Badge>
           <p>${d.amount}</p>
           <Card.Text>
             {d.comment}
@@ -79,7 +79,7 @@ const CampaignShow = () => {
     try {
       let res = await axios.get(`/api/campaigns/${params.id}/updates`)
       setUpdates(res.data)
-      console.log('updates', res.data)
+
     } catch (error) {
       alert('error when getting updates')
     }
@@ -89,17 +89,28 @@ const CampaignShow = () => {
   const renderUpdates = () => {
     return updates.map((u) => {
       return (
-        <Card1 key={u.id}>
-          <Badge bg='dark'>
-            <h6 style={{marginBottom:'0px'}}>Updates</h6>
-            </Badge>
-            <br/>
-            {u.comment}
-          <br/>
-          <br/>
+        // <Card1 key={u.id}>
 
-          <img src={u.image}/>
-        </Card1>
+        //   <Badge bg='dark'>
+        //     <h6 style={{marginBottom:'0px'}}>Updates</h6>
+        //     </Badge>
+        //     <br/>
+        //     {u.comment}
+        //   <br/>
+        //   <br/>
+
+        //   <img src={u.image}/>
+
+        // </Card1>
+
+         <Card1 key={u.id} style={{display: 'flex' , justifyContent: 'center', flexWrap: 'wrap'}}>
+         <Card border="info" style={{ width: '18rem' }} >
+         <Card.Body>
+           <Card.Title>{u.comment}</Card.Title>
+         <Card.Img variant="top" src={u.image} /> 
+         </Card.Body>
+       </Card>
+       </Card1>
       )
     })
   }
@@ -107,7 +118,7 @@ const CampaignShow = () => {
     try {
       let res = await axios.get(`/api/campaigns/${params.id}`)
       setCampaign(res.data)
-      console.log('campaign', res.data)
+
     } catch (error) {
       alert('error occurred getting campaign')
       console.log(error)
@@ -116,20 +127,30 @@ const CampaignShow = () => {
 
   const renderCampaign = () => {
     return (
-      <Card1>
-        <div>
-        <Badge bg='dark' ><h6 style={{marginBottom:'0px'}}>{campaign.name}</h6></Badge>
-        <br/>
-        <br/>
+     
+        <Card1 key={campaign.id} style={{display: 'flex' , flexWrap: 'wrap'}}>
+        <Card border="info" style={{ width: '50rem' }} >
+        <Card.Body>
+          <Badge bg="dark">
+            <Card.Title style={{marginBottom:'0px'}}>
+            {campaign.name}</Card.Title></Badge>
+            <br/>
+            <br/>
 
-        <img src={campaign.image} />
-        {!campaign.image && <p>no image</p>}
-        <p>Description: {campaign.description}</p>
-        <p>Current Amount: ${campaign.current_amount}</p>
-        <p>Goal: ${campaign.goal}</p>
-        <p>Ends: {campaign.expiration}</p>
-        </div>
+        <Card.Img variant="top" src={campaign.image} /> 
+          <p>Current: ${campaign.current_amount}</p>
+          <p>Goal: ${campaign.goal}</p>
+          <Card.Text>
+            {campaign.description}
+          </Card.Text>
+          <Card.Text>
+           Ends: {campaign.expiration}
+          </Card.Text>
+        </Card.Body>
+      </Card>
       </Card1>
+
+
     );
   }
 
