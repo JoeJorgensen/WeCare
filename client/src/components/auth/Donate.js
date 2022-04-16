@@ -1,6 +1,14 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Badge, Button, Form, FormControl, InputGroup, Modal } from "react-bootstrap";
+import {
+  Alert,
+  Badge,
+  Button,
+  Form,
+  FormControl,
+  InputGroup,
+  Modal,
+} from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Card from "../../providers/Card";
@@ -15,49 +23,75 @@ function Donate() {
   const [anonymous, setAnonymous] = useState(false);
   const [userBalance, setUserBalance] = useState(user.balance);
 
-
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  useEffect(() => {
+    newUserBalance();
+  }, []);
 
-  useEffect (()=>{
-    newUserBalance()
-  },[])
-
-  const newUserBalance = ()=>{
-    setUserBalance(user.balance - amount)
-  }
+  const newUserBalance = () => {
+    setUserBalance(user.balance - amount);
+  };
 
   const handleSubmit = async (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
-    if(!user) 
-    return(
+    if (!user)
+      return (
         <>
-        <p>Must be logged in to donate</p>
-        <Button>
-        <Link to= 'Login'/>
-
-        </Button>   
+          <p>Must be logged in to donate</p>
+          <Button>
+            <Link to="Login" />
+          </Button>
         </>
-    )
+      );
+
+    let donation = {
+      amount,
+      comment,
+      anonymous,
+      user_id: user.id,
+    };
+
     try {
-        console.log('User balance before donation:',user.balance )
-      let res = await axios.post(`/api/campaigns/${params.id}/donations`,{
-        amount,
-        comment,
-        anonymous,
-      }) 
-      console.log(res.data)
-    
-    //   setUserBalance(()=>newUserBalance())
-    //   let res1 = await axios.put(`/api/users/${user.id}`, {userBalance})
-    //   console.log('userBalance after donation:', user.balance)
-    //   console.log(res1.data)
+      console.log("User balance before donation:", user.balance);
+      console.log("campaign_id:", params.id);
+
+      let res = await axios.post(
+        `/api/campaigns/${params.id}/donations`,
+        donation
+      );
+      console.log(res.data);
+
+      setUserBalance(() => newUserBalance());
+      let res1 = await axios.put(`/api/users/${user.id}`, {
+        balance: userBalance,
+      });
+      console.log("userBalance after donation:", user.balance);
+      console.log(res1.data);
       console.log("donation:", setDonation);
     } catch (error) {
+      console.log(error);
       alert("error adding donation");
+    } finally {
+          handleClose();
+      window.scrollTo(0, 0);
+      return (
+        <>
+          <Alert show={show} variant="success">
+            <Alert.Heading>How's it going?!</Alert.Heading>
+            <p>Success! Thanks for your support!</p>
+            <hr />
+            <div className="d-flex justify-content-end">
+              <Button onClick={() => setShow(false)} variant="outline-success">
+                Close
+              </Button>
+            </div>
+          </Alert>
+        </>
+      );
+    
     }
   };
 
@@ -67,7 +101,7 @@ function Donate() {
         Donate
       </Button>
 
-      <Form >
+      <Form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Donation</Modal.Title>
@@ -112,14 +146,11 @@ function Donate() {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check 
-                type="checkbox" 
-                label="Appear anonymous" 
-                onChange={(e) => setAnonymous(true)}
-
+                <Form.Check
+                  type="checkbox"
+                  label="Appear anonymous"
+                  onChange={(e) => setAnonymous(true)}
                 />
-
-                
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -127,9 +158,7 @@ function Donate() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button onClick={handleSubmit} >
-              Submit
-            </Button>
+            <Button onClick={handleSubmit}>Submit</Button>
           </Modal.Footer>
         </Modal>
       </Form>
