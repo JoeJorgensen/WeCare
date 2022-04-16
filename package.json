@@ -1,13 +1,8 @@
 {
-  "dependencies": {
-    "@fullcalendar/react": "^5.11.0"
-  },
-  
   "name": "wecare",
   "version": "1.0.0",
   "description": "1. Using rails 6.1.4.7 and ruby 3.0.2",
   "main": "index.js",
-  
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -29,5 +24,4 @@
     "url": "https://github.com/JoeJorgensen/WeCare/issues"
   },
   "homepage": "https://github.com/JoeJorgensen/WeCare#readme"
-  
 }

@@ -25,7 +25,7 @@ registerPlugin(
 
 function MyProfile() {
   const { user, setUser } = useContext(AuthContext);
-  const [files, setFiles] = useState(null);
+  const [files, setFiles] = useState();
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
 
@@ -139,7 +139,7 @@ function MyProfile() {
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <textarea as="textarea" rows={3} 
             value={bio}
-            placeholder={user.bio}
+            placeholder='About user...'
             onChange={(e) => setBio(e.target.value)}/>
           </Form.Group>
 

@@ -6,6 +6,7 @@ import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
 
+
 const Feed = () => {
   return (
     <Card>
@@ -20,29 +21,16 @@ const Feed = () => {
         <h2>Urgent Fundraising:</h2>
         <hr></hr>
         <CampaignInfo />
-        <ul>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-        </ul>
+
         <h2>Coming to a end:</h2>
         <hr></hr>
         <CampaignInfo />
 
-        <ul>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-          <li>Fundraising 1</li>
-        </ul>
         <h2>Prayers from Good People</h2>
         <hr></hr>
-        <ul>
-          <CommentInfo />
-          <li>Comment 1</li>
-          <li>Comment 1</li>
-          <li>Comment 1</li>
-        </ul>
+        <CommentInfo />
       </div>
+     
     </Card>
   );
 };
