@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 
-const MyDonation = () => {
+const MyDonationInfo = () => {
   const [myDonations, setMyDonations] = useState([]);
   console.log("MyDonations Being Called:");
   console.log("donations", myDonations);
@@ -25,12 +25,12 @@ const MyDonation = () => {
   const renderData = () => {
     return myDonations.map((c) => {
       return (
-        <div
+        <div key={c.id}
           style={{
             border: "1px solid",
             margin: "10px",
           }}
-          key={c.id}
+          
         >
           <h6>
             Donation Amount: <u>${c.amount}</u>
@@ -50,4 +50,4 @@ const MyDonation = () => {
   );
 };
 
-export default MyDonation;
+export default MyDonationInfo;

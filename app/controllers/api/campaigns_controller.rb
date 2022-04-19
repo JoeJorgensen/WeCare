@@ -48,6 +48,6 @@ def set_campaign
 end
 
 def campaign_params
-  params.require(:campaign).permit(:name, :description, :image, :goal, :expiration, :user_id)
+  params.require(:campaign).permit(:name, :description, :image, :current_amount, :goal, :expiration, :user_id)
 end
 end
