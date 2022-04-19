@@ -40,19 +40,38 @@ const CampaignShow = () => {
     return donations.map((d)=> {
       return (
         
-        <Card1 key={d.id} style={{display:'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-        <Card border="info" style={{ width: '18rem' }} >
-        <Card.Img variant="top" src={d.image} />
-        <Card.Body>
+        <Card key={d.id} border="info" style={{ width: '18rem' }} >
+
+
+         <Card.Body>
+           <div style={{display:'flex-inline', textAlign: 'left',   justifyContent:'space-evenly' }}>
+        <Card.Img src={d.image}
+          width={300}
+          style={{
+            objectFit: 'cover',
+            borderRadius: "50%",
+            width: "50px",
+            height: "50px",
+            margin: "7px",
+          }}
+          
+          />
+      
           <Badge bg='dark'><Card.Title style={{marginBottom:'0px'}}>{d.name}</Card.Title></Badge>
-          <p>${d.amount}</p>
+          <br/>
+         </div> 
+         <h4>
+         <Badge>${d.amount}</Badge>
+         </h4>
+         <hr></hr>
           <Card.Text>
+           
             {d.comment}
           </Card.Text>
           {/* <Button variant="primary">Go somewhere</Button> */}
         </Card.Body>
       </Card>
-      </Card1>
+
       )
     })
   
@@ -74,29 +93,16 @@ const CampaignShow = () => {
   const renderUpdates = () => {
     return updates.map((u) => {
       return (
-        // <Card1 key={u.id}>
-
-        //   <Badge bg='dark'>
-        //     <h6 style={{marginBottom:'0px'}}>Updates</h6>
-        //     </Badge>
-        //     <br/>
-        //     {u.comment}
-        //   <br/>
-        //   <br/>
-
-        //   <img src={u.image}/>
-
-        // </Card1>
-
-         <Card1 key={u.id} style={{display: 'flex' , justifyContent: 'center', flexWrap: 'wrap'}}>
-         <Card border="info" style={{ width: '18rem' }} >
+         <Card key={u.id} border="info" style={{ width: '25rem' }} >
          <Card.Body>
-           <Card.Title>{u.comment}</Card.Title>
          <Card.Img variant="top" src={u.image} /> 
+         <br/>
+         <br/>
+
+           <Card.Title>{u.comment}</Card.Title>
          <p>{u.created_at}</p>
          </Card.Body>
        </Card>
-       </Card1>
       )
     })
   }
@@ -114,8 +120,8 @@ const CampaignShow = () => {
   const renderCampaign = () => {
     return (
      
-        <Card1 key={campaign.id} style={{display: 'flex' , flexWrap: 'wrap'}}>
-        <Card border="info" style={{ width: '50rem' }} >
+
+        <Card key={campaign.id} border="info" style={{ width: '50rem' }} >
         <Card.Body>
           <Badge bg="dark">
             <Card.Title style={{marginBottom:'0px'}}>
@@ -135,23 +141,79 @@ const CampaignShow = () => {
           <Card.Text>
             Ends: {campaign.expiration}
              </Card.Text>
+             {/* <Card.Text>
+            Category: {campaign.category}
+             </Card.Text> */}
           {/* <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button> */}
           <Donate />
         </Card.Body>
       </Card>
-      </Card1>
+
 
 
     );
   }
 
   return (
-    <div>
+    <Card1>
+    <div  style={{
+      //  alignItems: "center"
+        display: "inline-flex",
+        flexWrap: 'wrap', 
+        justifyContent: 'space-evenly',
+        gap: '30px ', 
+       }}>
+      
       {renderCampaign()}
-      {renderUpdates()}
-      {renderDonations()}
+
+      
+      
+      
+
+
+      
+
+      
     </div>
+
+    <br/>
+    <br/>
+    
+      <h2>
+       <Badge bg='dark'>
+            Updates
+        </Badge>
+      </h2>
+
+
+    <div  style={{
+      //  alignItems: "center"
+        display: "inline-flex",
+        flexWrap: 'wrap', 
+        justifyContent: 'space-evenly',
+        gap: '30px ', 
+       }}>
+   
+        {renderUpdates()}
+         </div>
+    
+      
+    <br/>
+    <br/>
+
+    <div  style={{
+      //  alignItems: "center"
+        display: "inline-flex",
+        flexWrap: 'wrap', 
+        justifyContent: 'space-evenly',
+        gap: '30px ', 
+       }}>
+         {renderDonations()}
+         </div>
+    
+</Card1>
   )
+
 
 };
 export default CampaignShow;

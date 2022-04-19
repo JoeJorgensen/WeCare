@@ -5,25 +5,48 @@ import StringifyJSON from "../../providers/StringifyJSON";
 import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
+import { Badge } from "react-bootstrap";
 
 
 const Feed = () => {
   return (
     <Card>
       <div>
-        <h1>We Care</h1>
+        <h1>
+        <Badge bg='dark'>We Care</Badge>
+        </h1>
         <hr></hr>
+        <br/>
+
         <h2>
-          <u>Wallet Balance:</u>
+          <Badge bg='info'>Wallet Balance</Badge>
+          <br/>
+          <br/>
+
           <WalletBalance />
         </h2>
-
-        <h2>Urgent Fundraising:</h2>
         <hr></hr>
+        <br/>
+
+        <h2>
+          <Badge bg='danger'>Urgent Fundraising</Badge>
+          </h2>
+        <br/>
+
         <CampaignInfo />
+        <br/>
+        <br/>
 
-        <h2>Coming to a end:</h2>
+
+
         <hr></hr>
+        <h2 >
+          <Badge bg='success' >
+          Coming to a end
+          </Badge>
+          </h2>
+        <br/>
+
         <CampaignInfo />
 
         <h2>Prayers from Good People</h2>

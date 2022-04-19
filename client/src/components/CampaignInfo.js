@@ -11,8 +11,8 @@ const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
   // const [{ data: campaigns, loading, error }, refetch] =
   //   useAxios("/api/campaigns");
-  console.log("Campaign Info Being Called:");
-  console.log("campaigns", campaigns);
+
+
 
   useEffect(() => {
     getCampaigns();
@@ -31,15 +31,11 @@ const Campaigns = () => {
     return campaigns.map((c) => {
       return (
         // <Card1 key={c.id} style={{ margin: "15px", alignContent: "center" }}>
-        <Card
+        <Card 
+        key ={c.id}
           border="info"
           style={{
-            width: "18rem",
-            display: "inline-flex",
-            // display: "space-around",
-            // alignContent: "space-evenly",
-            // justifyContent: ""
-            // flexWrap: "wrap",
+            width: "22rem"
           }}
         >
           <Card.Img src={c.image} />
@@ -69,9 +65,18 @@ const Campaigns = () => {
     // <AxiosContainer title={"Campaigns"} loading={loading} error={error}>
     //   <StringifyJSON data={campaigns} />
     // </AxiosContainer>
-    <div style={{ alignItems: "center" }}>
+    <div style={{
+      //  alignItems: "center"
+        display: "inline-flex",
+        flexWrap: 'wrap', 
+        justifyContent: 'space-evenly',
+        gap: '30px ', 
+       }}>
+
+
       {/* {JSON.stringify(campaigns)} */}
       {renderData()}
+      
     </div>
   );
 };

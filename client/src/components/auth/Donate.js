@@ -70,27 +70,27 @@ function Donate() {
       });
       console.log("userBalance after donation:", user.balance);
       console.log(res1.data);
-      console.log("donation:", setDonation);
+      console.log("donation:", donation);
     } catch (error) {
       console.log(error);
       alert("error adding donation");
     } finally {
-          handleClose();
+        //   handleClose();
       window.scrollTo(0, 0);
-      return (
-        <>
-          <Alert show={show} variant="success">
-            <Alert.Heading>How's it going?!</Alert.Heading>
-            <p>Success! Thanks for your support!</p>
-            <hr />
-            <div className="d-flex justify-content-end">
-              <Button onClick={() => setShow(false)} variant="outline-success">
-                Close
-              </Button>
-            </div>
-          </Alert>
-        </>
-      );
+    //   return (
+    //     <>
+    //       <Alert show={show} variant="success">
+    //         <Alert.Heading>How's it going?!</Alert.Heading>
+    //         <p>Success! Thanks for your support!</p>
+    //         <hr />
+    //         <div className="d-flex justify-content-end">
+    //           <Button onClick={() => setShow(false)} variant="outline-success">
+    //             Close
+    //           </Button>
+    //         </div>
+    //       </Alert>
+    //     </>
+    //   );
     
     }
   };
