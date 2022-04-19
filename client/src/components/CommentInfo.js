@@ -26,7 +26,7 @@ const Comments = () => {
 
   const renderData = () => {
     return comments.map((c) => {
-      console.log(c);
+      // console.log(c);
       return (
         // <div
         //   key={c.id}
