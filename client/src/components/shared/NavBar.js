@@ -18,13 +18,12 @@ const NavBar = () => {
   const renderRightNav = () => {
     if (auth.user) {
       return (
-        <>
-          {/* <Badge style={{color: 'white'}} >Feed</Badge> */}
-
-          <Link to="/feed" style={{ color: "white" }}>
-            Feed{" "}
-          </Link>
-        </>
+        <div style={{alignItems: 'center'}} class='navbar-nav'>
+          <Nav.Link href="/my_profile">
+                <img src="https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2" alt="img" width="30" height="28"/>
+                </Nav.Link>
+          <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
+        </div>
       );
     }
     return (
@@ -37,9 +36,9 @@ const NavBar = () => {
   const renderLeftNav = () => {
     if (auth.user) {
       return (
-        <>
-          <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
-        </>
+        <div>
+
+        </div>
       );
     }
     return (
@@ -62,12 +61,12 @@ const NavBar = () => {
   // }
   return (
     <div>
-      <Navbar sticky="top" bg="dark" expand="lg" variant="dark">
+      <Navbar style={ {display: 'flex'} }sticky="top" bg="dark" expand="lg" variant="dark">
         <Container fluid>
-          <Navbar.Brand href="/feed">WeCare</Navbar.Brand>
+          <Navbar.Brand style={{ color: 'green', fontWeight: 'bold' }} href="/feed">WeCare</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+          <Navbar.Collapse style={{justifyContent:'space-between'}} id="basic-navbar-nav">
+            <Nav>
               {/* <Nav.Link href="/home">Home</Nav.Link> */}
               <Nav.Link href="/feed">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
@@ -87,13 +86,12 @@ const NavBar = () => {
                 <NavDropdown.Item href="/my_donations">
                   My Donations
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/my_profile">
-                  My Profile{" "}
-                </NavDropdown.Item>
               </NavDropdown>
               {renderLeftNav()}
-            </Nav>
+             </Nav>
+              {renderRightNav()}
+               
+            
           </Navbar.Collapse>
         </Container>
       </Navbar>

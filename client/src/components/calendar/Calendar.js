@@ -48,7 +48,7 @@ export default function Calendar() {
         plugins={[dayGridPlugin]}
         events={renderData()}
         aspectRatio={3.25}
-        timeZone="mountain standard time"
+        timeZone="UTC"
       />
    
     </div>
