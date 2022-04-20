@@ -19,16 +19,6 @@ const myDonation = () => {
         <hr></hr>
         <MyDonation />
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in
-          metus vulputate eu scelerisque felis. Et netus et malesuada fames ac
-          turpis egestas integer eget. Nam at lectus urna duis convallis.
-          Vehicula ipsum a arcu cursus vitae congue. Risus in hendrerit gravida
-          rutrum quisque non tellus orci. Mi tempus imperdiet nulla malesuada
-          pellentesque. Cras fermentum odio eu feugiat pretium nibh ipsum
-          consequat nisl.
-        </p>
       </div>
       
     </Card>

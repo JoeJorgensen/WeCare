@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Badge, Button } from "react-bootstrap";
 import Donate from "../auth/Donate";
+import WalletBalance from "../WalletBalanceInfo";
 
 const CampaignShow = () => {
   const params = useParams()
@@ -39,7 +40,9 @@ const CampaignShow = () => {
   const renderDonations = ()=>{
     return donations.map((d)=> {
       return (
-        
+       
+
+
         <Card key={d.id} border="info" style={{ width: '18rem' }} >
 
 
@@ -156,6 +159,15 @@ const CampaignShow = () => {
 
   return (
     <Card1>
+
+      <h4>
+        <Badge bg='dark'>
+          Wallet Balance:
+        </Badge>
+         <WalletBalance />
+      </h4>
+        
+
     <div  style={{
       //  alignItems: "center"
         display: "inline-flex",
