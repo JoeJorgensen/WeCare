@@ -3,6 +3,7 @@ import useAxios from "axios-hooks";
 import { useEffect, useState } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
+import { Card, Button, Badge } from "react-bootstrap";
 
 const MyDonationInfo = () => {
   const [myDonations, setMyDonations] = useState([]);
@@ -25,12 +26,12 @@ const MyDonationInfo = () => {
   const renderData = () => {
     return myDonations.map((c) => {
       return (
-        <div key={c.id}
+        <div
+          key={c.id}
           style={{
             border: "1px solid",
             margin: "10px",
           }}
-          
         >
           <h6>
             Donation Amount: <u>${c.amount}</u>

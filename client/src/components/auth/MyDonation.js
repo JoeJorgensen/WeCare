@@ -18,11 +18,8 @@ const myDonation = () => {
         <h2>My Donations</h2>
         <hr></hr>
         <MyDonation />
-
       </div>
-      
     </Card>
-    
   );
 };
 export default myDonation;
