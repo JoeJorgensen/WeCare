@@ -25,7 +25,7 @@ const Home = () => {
           <h1>Welcome to WeCare! Login or Register to access more features!</h1>
 
           <Link to="/login">
-            <Badge style={{ color: "white" }}>
+            <Badge pill style={{ color: "white" }}>
               <h4>Login</h4>
             </Badge>
           </Link>
@@ -33,7 +33,7 @@ const Home = () => {
           <br />
 
           <Link to="/register">
-            <Badge style={{ color: "white" }}>
+            <Badge pill style={{ color: "white" }}>
               <h4>Register</h4>
             </Badge>
           </Link>

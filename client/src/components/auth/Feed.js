@@ -12,13 +12,13 @@ const Feed = () => {
     <Card>
       <div>
         <h1>
-          <Badge bg="dark">We Care</Badge>
+          <Badge pill bg="dark" >We Care</Badge>
         </h1>
         <hr></hr>
         <br />
 
         <h2>
-          <Badge bg="info">Wallet Balance</Badge>
+          <Badge  pill bg="info">Wallet Balance</Badge>
           <br />
           <br />
 
@@ -28,7 +28,7 @@ const Feed = () => {
         <br />
 
         <h2>
-          <Badge bg="danger">Urgent Fundraising</Badge>
+          <Badge  pill bg="danger">Urgent Fundraising</Badge>
         </h2>
         <br />
 
@@ -38,7 +38,7 @@ const Feed = () => {
 
         <hr></hr>
         <h2>
-          <Badge bg="success">Coming to a end</Badge>
+          <Badge pill bg="success">Coming to a end</Badge>
         </h2>
         <br />
 

@@ -11,16 +11,16 @@ const About = () => {
         <hr></hr>
         <h3>
 
-            <Badge bg='info'>Randy</Badge>
+            <Badge pill bg='info'>Randy</Badge>
             <br/>
             <br/>
-            <Badge bg='info'>Joe</Badge>
+            <Badge pill bg='info'>Joe</Badge>
             <br/>
             <br/>
-            <Badge bg='info'>Steve</Badge>
+            <Badge pill bg='info'>Steve</Badge>
             <br/>
             <br/>
-            <Badge bg='info'>Austin</Badge>
+            <Badge pill bg='info'>Austin</Badge>
             <br/>
             <br/>
 
