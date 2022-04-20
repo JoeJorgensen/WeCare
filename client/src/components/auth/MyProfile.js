@@ -97,9 +97,13 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
-      <Badge>
-        <h5>Balance: ${user.balance}</h5>
+        <h5>
+          <Badge>
+       Wallet Balance: 
       </Badge>
+      <br/>
+      ${user.balance}
+      </h5>
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
