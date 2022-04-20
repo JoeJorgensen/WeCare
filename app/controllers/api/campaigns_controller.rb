@@ -20,6 +20,26 @@ class Api::CampaignsController < ApplicationController
   #creates a Campaign in DB
   def create 
     campaign = Campaign.new(campaign_params)
+    file = params[:file]
+    # binding.pry
+    # CREATE AN IMAGE TO CLOUDINARY
+    #check if we have a file, if we do try to save 
+    if file 
+        begin
+            # try to save img (file) to cloudinary
+            # if .env not setup correctly this will fail
+            cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+            # binding.pry
+            puts '===cloud_image==='
+            puts cloud_image
+            campaign.image = cloud_image['secure_url']
+        rescue => e
+            # image did not save to cloudinary
+            render json: {errors:e}, status: 422
+            # exit function for now
+            return
+        end
+      end
     if(campaign.save)
       render json: campaign
     else
@@ -48,6 +68,6 @@ def set_campaign
 end
 
 def campaign_params
-  params.require(:campaign).permit(:name, :description, :image, :goal, :expiration, :user_id)
+  params.permit(:name, :description, :image, :goal, :expiration, :user_id, :current_amount)
 end
 end

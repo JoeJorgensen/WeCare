@@ -104,9 +104,9 @@ function MyProfile() {
       <br />
       <br />
       <Badge>
-      <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
-      </Badge>    
-   
+        <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
+      </Badge>
+
 
       <Card>
         <form onSubmit={handleProfileSubmit}>
@@ -132,15 +132,15 @@ function MyProfile() {
           <br />
 
           <Badge>
-            <p style={{marginBottom: '0px'}}>Bio</p>
+            <p style={{ marginBottom: '0px' }}>Bio</p>
           </Badge>
           <br />
           <br />
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <textarea as="textarea" rows={3} 
-            value={bio}
-            placeholder='About user...'
-            onChange={(e) => setBio(e.target.value)}/>
+            <textarea as="textarea" rows={3}
+              value={bio}
+              placeholder='About user...'
+              onChange={(e) => setBio(e.target.value)} />
           </Form.Group>
 
           <Badge>

@@ -81,8 +81,8 @@ const NavBar = () => {
                 <NavDropdown.Item href="/categories">
                   Categories
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
+                <NavDropdown.Item href="/new_campaign">
+                  New Campaign
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/my_donations">
                   My Donations
