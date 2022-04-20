@@ -50,14 +50,14 @@ const Comments = () => {
                   margin: "7px",
                 }}
               />
-              <Badge bg="dark">
+              <Badge pill bg="dark">
                 <Card.Title style={{ marginBottom: "0px" }}>
                   {c.username}
                 </Card.Title>
               </Badge>
             </div>
             <h4>
-              <Badge>${c.amount}</Badge>
+              <Badge pill>${c.amount}</Badge>
             </h4>
             <hr></hr>
             <Card.Text>{c.comment}</Card.Text>

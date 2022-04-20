@@ -27,7 +27,7 @@ const WalletBalance = () => {
           <h1>Welcome to WeCare! Login or Register to access your wallet and more features!</h1>
   
           <Link to="/login">
-            <Badge style={{ color: "white" }}>
+            <Badge  pill style={{ color: "white" }}>
               <h4>Login</h4>
             </Badge>
           </Link>
@@ -35,7 +35,7 @@ const WalletBalance = () => {
           <br />
   
           <Link to="/register">
-            <Badge style={{ color: "white" }}>
+            <Badge pill style={{ color: "white" }}>
               <h4>Register</h4>
             </Badge>
           </Link>

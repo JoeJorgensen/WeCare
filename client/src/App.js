@@ -24,6 +24,7 @@ import TroubleShoot from "./components/shared/TroubleShoot";
 import CampaignShow from "./components/shared/CampaignShow";
 import Donate from "./components/auth/Donate";
 import LandingPage from "./components/shared/LandingPage";
+import NewCampaign from "./components/auth/NewCampaign";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
               <Route path="/my_donations" element={<MyDonation />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/my_profile" element={<MyProfile />} />
+              <Route path="/new_campaign" element={<NewCampaign />} />
             </Route>
 
             <Route path="*" element={<NoMatch />} />

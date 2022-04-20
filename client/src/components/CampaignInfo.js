@@ -34,17 +34,26 @@ const Campaigns = () => {
           key={c.id} 
            
           border="info"
+
           style={{
+            // borderRadius: "10%",
             width: "22rem",
           
           }}
           onClick={()=> navigate(`/campaign_show/${c.id}`)}
         >
-          <Card.Img src={c.image} />
+          <Card.Img src={c.image} 
+          //  style={{
+          //   objectFit: 'cover',
+          //   borderRadius: "10%",
+          //   width: "22rem",
+          //   height: "200px", 
+          // }}
+          />
           <Card.Body>
             <Card.Title> 
               
-                <Badge bg='dark'>
+                <Badge pill bg='dark'>
                   {c.name}
                 </Badge>
               
@@ -55,7 +64,7 @@ const Campaigns = () => {
             </Card.Text>
             <Card.Text>
               <h6>
-              <Badge bg='info'>
+              <Badge pill bg='info'>
                 Current Amount: ${c.current_amount}
               </Badge>
               </h6>
@@ -64,7 +73,7 @@ const Campaigns = () => {
             <Card.Text>
                <h6>
         
-              <Badge bg='info'>
+              <Badge  pill bg='info'>
               Goal: ${c.goal}
               </Badge>
             </h6>

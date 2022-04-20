@@ -45,8 +45,11 @@ function Donate() {
       return (
         <>
           <p>Must be logged in to donate</p>
-          <Button>
-            <Link to="Login" />
+          <Button pill>
+            <Link to="/login" />
+          </Button>
+          <Button pill>
+            <Link to="/register" />
           </Button>
         </>
       );
@@ -113,7 +116,7 @@ function Donate() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button pill variant="primary" onClick={handleShow}>
         Donate
       </Button>
 
@@ -171,7 +174,7 @@ function Donate() {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button  pill variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button onClick={handleSubmit}>Submit</Button>
