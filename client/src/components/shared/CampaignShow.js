@@ -32,47 +32,7 @@ const CampaignShow = () => {
   const renderDonations = () => {
     return donations.map((d) => {
       return (
-        <Card key={d.id} border="info" style={{ width: "18rem" }}>
-          <Card.Body>
-            <div
-              style={{
-                display: "flex-inline",
-                textAlign: "left",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <Card.Img
-                src={d.image}
-                width={300}
-                style={{
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  width: "50px",
-                  height: "50px",
-                  margin: "7px",
-                }}
-              />
-
-              <Badge bg="dark">
-                <Card.Title style={{ marginBottom: "0px" }}>
-                  {d.name}
-                </Card.Title>
-              </Badge>
-              <br />
-            </div>
-            <h4>
-              <Badge>${d.amount}</Badge>
-            </h4>
-            <hr></hr>
-            <Card.Text>{d.comment}</Card.Text>
-            {/* <Button variant="primary">Go somewhere</Button> */}
-          </Card.Body>
-        </Card>
-      );
-    });
-  };
-
-<<<<<<< HEAD
+    
         <Card key={d.id} border="info" style={{ width: '18rem' }} >
 
 
@@ -112,8 +72,6 @@ const CampaignShow = () => {
 
 
   
-=======
->>>>>>> 33cfce1353cf6ab07865479d3ae5bcb04e82d144
   const getUpdates = async () => {
     try {
       let res = await axios.get(`/api/campaigns/${params.id}/updates`);
@@ -153,21 +111,11 @@ const CampaignShow = () => {
     return (
       <Card key={campaign.id} border="info" style={{ width: "50rem" }}>
         <Card.Body>
-<<<<<<< HEAD
           <Badge pill bg="dark">
             <Card.Title style={{marginBottom:'0px'}}>
             {campaign.name}</Card.Title></Badge>
             <br/>
             <br/>
-=======
-          <Badge bg="dark">
-            <Card.Title style={{ marginBottom: "0px" }}>
-              {campaign.name}
-            </Card.Title>
-          </Badge>
-          <br />
-          <br />
->>>>>>> 33cfce1353cf6ab07865479d3ae5bcb04e82d144
 
           <Card.Img variant="top" src={campaign.image} />
           <p>Current: ${campaign.current_amount}</p>
@@ -188,15 +136,10 @@ const CampaignShow = () => {
   return (
     <Card1>
       <h4>
-<<<<<<< HEAD
         <Badge pill bg='dark'>
           Wallet Balance:
         </Badge>
          <WalletBalance />
-=======
-        <Badge bg="dark">Wallet Balance:</Badge>
-        <WalletBalance />
->>>>>>> 33cfce1353cf6ab07865479d3ae5bcb04e82d144
       </h4>
 
       <div
@@ -215,13 +158,9 @@ const CampaignShow = () => {
       <br />
 
       <h2>
-<<<<<<< HEAD
        <Badge pill bg='dark'>
             Updates
         </Badge>
-=======
-        <Badge bg="dark">Updates</Badge>
->>>>>>> 33cfce1353cf6ab07865479d3ae5bcb04e82d144
       </h2>
 
       <div

@@ -104,17 +104,10 @@ function MyProfile() {
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
-<<<<<<< HEAD
       <Badge pill>
       <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
       </Badge>    
    
-=======
-      <Badge>
-        <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
-      </Badge>
-
->>>>>>> 33cfce1353cf6ab07865479d3ae5bcb04e82d144
 
       <Card>
         <form onSubmit={handleProfileSubmit}>
