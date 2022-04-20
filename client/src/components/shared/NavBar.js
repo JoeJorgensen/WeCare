@@ -16,7 +16,7 @@ const NavBar = () => {
   const renderRightNav = () => {
     if (auth.user) {
       return (
-        <div style={{ alignItems: "center" }} class="navbar-nav">
+        <div style={{ alignItems: "center" }} className="navbar-nav">
           <Nav.Link href="/my_profile">
             {user.image && (
               <img
@@ -31,7 +31,7 @@ const NavBar = () => {
               />
             )}
           </Nav.Link>
-          <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
+          
         </div>
       );
     }
