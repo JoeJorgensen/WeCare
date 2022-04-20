@@ -31,7 +31,6 @@ const NavBar = () => {
               />
             )}
           </Nav.Link>
-          
         </div>
       );
     }
@@ -64,10 +63,7 @@ const NavBar = () => {
         variant="dark"
       >
         <Container fluid>
-          <Navbar.Brand
-            style={{ color: "green", fontWeight: "bold" }}
-            href="/feed"
-          >
+          <Navbar.Brand style={{ color: "green", fontWeight: "bold" }} href="/">
             WeCare
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

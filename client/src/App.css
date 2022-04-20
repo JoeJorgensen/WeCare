@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.landingPage {
+  position: relative;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.landingPageText {
+  position: absolute;
+  top: 60%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.landingPageText2 {
+  position: absolute;
+  top: 60%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.landingImage {
+  width: 100%;
+  filter: brightness(60%);
+}
+
+.landingPageText3 {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color: white;
+  filter: brightness(100%);
+}
