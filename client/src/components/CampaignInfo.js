@@ -1,18 +1,17 @@
 import axios from "axios";
 import useAxios from "axios-hooks";
 import { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card, Button, Badge } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 import Card1 from "../providers/Card";
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
+  const navigate = useNavigate()
   // const [{ data: campaigns, loading, error }, refetch] =
   //   useAxios("/api/campaigns");
-
-
 
   useEffect(() => {
     getCampaigns();
@@ -31,28 +30,48 @@ const Campaigns = () => {
     return campaigns.map((c) => {
       return (
         // <Card1 key={c.id} style={{ margin: "15px", alignContent: "center" }}>
-        <Card 
-        key ={c.id}
+        <Card
+          key={c.id} 
+           
           border="info"
           style={{
-            width: "22rem"
+            width: "22rem",
+          
           }}
+          onClick={()=> navigate(`/campaign_show/${c.id}`)}
         >
           <Card.Img src={c.image} />
           <Card.Body>
-            <Card.Title> {c.name}</Card.Title>
+            <Card.Title> 
+              
+                <Badge bg='dark'>
+                  {c.name}
+                </Badge>
+              
+              
+              </Card.Title>
             <Card.Text>
               <h6> {c.description}</h6>
+            </Card.Text>
+            <Card.Text>
               <h6>
-                Current Amount: <u>${c.current_amount}</u>
+              <Badge bg='info'>
+                Current Amount: ${c.current_amount}
+              </Badge>
               </h6>
-              <h6>
-                Goal: <u>${c.goal}</u>
-              </h6>
-              <h6>Expiration: {c.expiration}</h6>
-              <Link to={`/campaign_show/${c.id}`}>
-                <Button>show</Button>
-              </Link>
+            </Card.Text>
+
+            <Card.Text>
+               <h6>
+        
+              <Badge bg='info'>
+              Goal: ${c.goal}
+              </Badge>
+            </h6>
+            </Card.Text>
+
+            <Card.Text>
+               <h6>Expiration: {c.expiration}</h6>
             </Card.Text>
           </Card.Body>
         </Card>
@@ -65,18 +84,17 @@ const Campaigns = () => {
     // <AxiosContainer title={"Campaigns"} loading={loading} error={error}>
     //   <StringifyJSON data={campaigns} />
     // </AxiosContainer>
-    <div style={{
-      //  alignItems: "center"
+    <div
+      style={{
+        //  alignItems: "center"
         display: "inline-flex",
-        flexWrap: 'wrap', 
-        justifyContent: 'space-evenly',
-        gap: '30px ', 
-       }}>
-
-
+        flexWrap: "wrap",
+        justifyContent: "space-evenly",
+        gap: "30px ",
+      }}
+    >
       {/* {JSON.stringify(campaigns)} */}
       {renderData()}
-      
     </div>
   );
 };

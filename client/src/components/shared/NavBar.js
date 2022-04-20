@@ -11,41 +11,42 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Button from "react-bootstrap/esm/Button";
 
 const NavBar = () => {
-  // if (user)=>  logout
-  // if (!user)=>  login/register
-
   const auth = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const renderRightNav = () => {
     if (auth.user) {
       return (
-        <>
-          {/* <Badge style={{color: 'white'}} >Feed</Badge> */}
-
-          <Link to="/feed" style={{ color: "white" }}>
-            Feed{" "}
-          </Link>
-        </>
+        <div style={{ alignItems: "center" }} className="navbar-nav">
+          <Nav.Link href="/my_profile">
+            {user.image && (
+              <img
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                }}
+                src={user.image}
+                width={300}
+              />
+            )}
+          </Nav.Link>
+          
+        </div>
       );
     }
     return (
       <>
-        {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
         <Badge></Badge>
       </>
     );
   };
   const renderLeftNav = () => {
     if (auth.user) {
-      return (
-        <>
-          <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
-        </>
-      );
+      return <div></div>;
     }
     return (
       <>
-        {/* <Badge style={{color: 'white'}} href="/register">Register</Badge> */}
-
         <Nav.Link href="/register">Register </Nav.Link>
 
         <Nav.Link href="/login">Login </Nav.Link>
@@ -53,21 +54,28 @@ const NavBar = () => {
     );
   };
 
-  // const renderLeft = ()=>{
-  //     if( auth.user) {
-  //         return (
-  //             <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>123
-  //         )
-  //     }
-  // }
   return (
     <div>
-      <Navbar sticky="top" bg="dark" expand="lg" variant="dark">
+      <Navbar
+        style={{ display: "flex" }}
+        sticky="top"
+        bg="dark"
+        expand="lg"
+        variant="dark"
+      >
         <Container fluid>
-          <Navbar.Brand href="/feed">WeCare</Navbar.Brand>
+          <Navbar.Brand
+            style={{ color: "green", fontWeight: "bold" }}
+            href="/feed"
+          >
+            WeCare
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+          <Navbar.Collapse
+            style={{ justifyContent: "space-between" }}
+            id="basic-navbar-nav"
+          >
+            <Nav>
               {/* <Nav.Link href="/home">Home</Nav.Link> */}
               <Nav.Link href="/feed">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
@@ -87,13 +95,10 @@ const NavBar = () => {
                 <NavDropdown.Item href="/my_donations">
                   My Donations
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/my_profile">
-                  My Profile{" "}
-                </NavDropdown.Item>
               </NavDropdown>
               {renderLeftNav()}
             </Nav>
+            {renderRightNav()}
           </Navbar.Collapse>
         </Container>
       </Navbar>

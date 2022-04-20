@@ -26,21 +26,9 @@ const Comments = () => {
 
   const renderData = () => {
     return comments.map((c) => {
-      console.log(c);
+     
       return (
-        // <div
-        //   key={c.id}
-        //   style={{
-        //     border: "1px solid",
-        //     margin: "10px",
-        //   }}
-        // >
-        //   <h6>Donation Amount: ${c.amount}</h6>
-        //   <h6>Comment: {c.comment}</h6>
-        //   <h6>User: {c.username}</h6>
-        //   <h6>Campaign: {c.campaign_name}</h6>
-
-        // </div>
+       
 
         <Card key={c.id} border="info" style={{ width: "18rem" }}>
           <Card.Body>
@@ -74,7 +62,7 @@ const Comments = () => {
             <hr></hr>
             <Card.Text>{c.comment}</Card.Text>
             <Card.Text>{c.campaign_name}</Card.Text>
-            {/* <Button variant="primary">Go somewhere</Button> */}
+            
           </Card.Body>
         </Card>
       );
@@ -82,19 +70,17 @@ const Comments = () => {
   };
 
   return (
-    // <AxiosContainer title={"Campaigns"} loading={loading} error={error}>
-    //   <StringifyJSON data={campaigns} />
-    // </AxiosContainer>
+   
     <div
       style={{
-        //  alignItems: "center"
+        
         display: "inline-flex",
         flexWrap: "wrap",
         justifyContent: "space-evenly",
         gap: "30px ",
       }}
     >
-      {/* {JSON.stringify(comments)} */}
+      
       {renderData()}
     </div>
   );

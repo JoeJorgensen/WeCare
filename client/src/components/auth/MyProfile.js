@@ -1,20 +1,16 @@
 import React, { useContext, useState } from "react";
-
 import { FilePond, registerPlugin } from "react-filepond";
 import { AuthContext } from "../../providers/AuthProvider";
-
+import Nav from "react-bootstrap/Nav";
 import "filepond/dist/filepond.min.css";
-
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import axios from "axios";
-
 import Button from "react-bootstrap/esm/Button";
 import Badge from "react-bootstrap/esm/Badge";
 import Alert from "react-bootstrap/esm/Alert";
-
 import Card from "../../providers/Card";
 import { Form } from "react-bootstrap";
 
@@ -25,6 +21,7 @@ registerPlugin(
 
 function MyProfile() {
   const { user, setUser } = useContext(AuthContext);
+  const auth = useContext(AuthContext);
   const [files, setFiles] = useState();
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
@@ -97,9 +94,13 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
-      <Badge>
-        <h5>Balance: ${user.balance}</h5>
+        <h5>
+          <Badge>
+       Wallet Balance: 
       </Badge>
+      <br/>
+      ${user.balance}
+      </h5>
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
@@ -161,6 +162,7 @@ function MyProfile() {
           <Button type="submit">Update Profile</Button>
         </form>
       </Card>
+      <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
     </div>
   );
 }

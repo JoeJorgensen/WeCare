@@ -3,8 +3,9 @@ import useAxios from "axios-hooks";
 import { useEffect, useState } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
+import { Card, Button, Badge } from "react-bootstrap";
 
-const MyDonation = () => {
+const MyDonationInfo = () => {
   const [myDonations, setMyDonations] = useState([]);
   console.log("MyDonations Being Called:");
   console.log("donations", myDonations);
@@ -25,29 +26,70 @@ const MyDonation = () => {
   const renderData = () => {
     return myDonations.map((c) => {
       return (
-        <div
-          style={{
-            border: "1px solid",
-            margin: "10px",
-          }}
-          key={c.id}
-        >
-          <h6>
-            Donation Amount: <u>${c.amount}</u>
-          </h6>
-          <h6>Comment: {c.comment}</h6>
-          <h6>Campaign: {c.name}</h6>
-        </div>
+        <Card key={c.id} border="info" style={{ width: "25rem" }}>
+          <div>
+            <Card.Body>
+              <Card.Img
+                src={c.image}
+                // width={300}
+                // style={{
+                //   objectFit: "cover",
+                //   borderRadius: "50%",
+                //   width: "50px",
+                //   height: "50px",
+                //   margin: "7px",
+                // }}
+              />
+              <Card.Title>
+                <hr></hr>
+                <Badge bg="dark">
+                  <h6>Campaign: {c.name}</h6>
+                </Badge>
+                <h6>{c.description}</h6>
+
+                <Badge>
+                  <h6>
+                    Current Goal: <u>${c.current_amount}</u>
+                  </h6>
+                </Badge>
+                <br></br>
+                <br></br>
+                <Badge>
+                  <h6>
+                    Total Goal: <u>${c.goal}</u>
+                  </h6>
+                </Badge>
+                <br></br>
+                <br></br>
+                <Badge bg="success">
+                  <h6>
+                    Donation Amount: <u>${c.amount}</u>
+                  </h6>
+                </Badge>
+                <hr></hr>
+                <h6>Comment: {c.comment}</h6>
+              </Card.Title>
+            </Card.Body>
+          </div>
+        </Card>
       );
     });
   };
 
   return (
-    <div>
+    <div
+      style={{
+        //  alignItems: "center"
+        display: "inline-flex",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly",
+        gap: "30px ",
+      }}
+    >
       {/* {JSON.stringify(myDonations)} */}
       {renderData()}
     </div>
   );
 };
 
-export default MyDonation;
+export default MyDonationInfo;
