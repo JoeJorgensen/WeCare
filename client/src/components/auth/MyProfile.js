@@ -104,10 +104,17 @@ function MyProfile() {
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
+<<<<<<< HEAD
       <Badge pill>
       <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
       </Badge>    
    
+=======
+      <Badge>
+        <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
+      </Badge>
+
+>>>>>>> 33cfce1353cf6ab07865479d3ae5bcb04e82d144
 
       <Card>
         <form onSubmit={handleProfileSubmit}>
@@ -133,15 +140,15 @@ function MyProfile() {
           <br />
 
           <Badge>
-            <p style={{marginBottom: '0px'}}>Bio</p>
+            <p style={{ marginBottom: '0px' }}>Bio</p>
           </Badge>
           <br />
           <br />
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <textarea as="textarea" rows={3} 
-            value={bio}
-            placeholder='About user...'
-            onChange={(e) => setBio(e.target.value)}/>
+            <textarea as="textarea" rows={3}
+              value={bio}
+              placeholder='About user...'
+              onChange={(e) => setBio(e.target.value)} />
           </Form.Group>
 
           <Badge>

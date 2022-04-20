@@ -23,6 +23,7 @@ import Categories from "./components/auth/Categories";
 import TroubleShoot from "./components/shared/TroubleShoot";
 import CampaignShow from "./components/shared/CampaignShow";
 import Donate from "./components/auth/Donate";
+import NewCampaign from "./components/auth/NewCampaign";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
               <Route path="/my_donations" element={<MyDonation />} />
               <Route path="/donate" element={<Donate/>} />
               <Route path="/my_profile" element={<MyProfile />} />
+              <Route path="/new_campaign" element={<NewCampaign />} />
             </Route>
 
             <Route path="*" element={<NoMatch />} />
