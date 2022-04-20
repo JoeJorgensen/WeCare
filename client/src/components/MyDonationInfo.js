@@ -5,7 +5,7 @@ import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 import { Card, Button, Badge } from "react-bootstrap";
 
-const MyDonation = () => {
+const MyDonationInfo = () => {
   const [myDonations, setMyDonations] = useState([]);
   console.log("MyDonations Being Called:");
   console.log("donations", myDonations);
@@ -27,11 +27,11 @@ const MyDonation = () => {
     return myDonations.map((c) => {
       return (
         <div
+          key={c.id}
           style={{
             border: "1px solid",
             margin: "10px",
           }}
-          key={c.id}
         >
           <h6>
             Donation Amount: <u>${c.amount}</u>
@@ -51,4 +51,4 @@ const MyDonation = () => {
   );
 };
 
-export default MyDonation;
+export default MyDonationInfo;

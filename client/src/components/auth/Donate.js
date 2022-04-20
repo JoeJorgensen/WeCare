@@ -17,7 +17,7 @@ function Donate() {
   const params = useParams();
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
-  const [donation, setDonation] = useState([]);
+  const [campaignAmount, setCampaignAmount] = useState('')
   const [amount, setAmount] = useState(0);
   const [comment, setComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
@@ -27,12 +27,16 @@ function Donate() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    newUserBalance();
+    getCampaignInfo()
   }, []);
 
-  const newUserBalance = () => {
-    setUserBalance(user.balance - amount);
-  };
+
+
+  
+  const getCampaignInfo = async()=>{
+      let resX = await axios.get(`/api/campaigns/${params.id}`)
+        setCampaignAmount(resX.data)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,6 +61,13 @@ function Donate() {
     try {
       console.log("User balance before donation:", user.balance);
       console.log("campaign_id:", params.id);
+      console.log("campaign amount 1:", campaignAmount.current_amount);
+      console.log("NEW CAMPAIGN AMOUNT:",campaignAmount.current_amount + amount );
+
+
+      
+
+
 
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
@@ -64,10 +75,16 @@ function Donate() {
       );
       console.log(res.data);
 
-      setUserBalance(() => newUserBalance());
+
       let res1 = await axios.put(`/api/users/${user.id}`, {
-        balance: userBalance,
+        balance: user.balance - amount,
       });
+      let res2 = await axios.put(`/api/campaigns/${params.id}`, {current_amount: campaignAmount.current_amount + parseInt(amount) } );
+      console.log("campaign amount after donation:", campaignAmount.current_amount);
+
+
+
+
       console.log("userBalance after donation:", user.balance);
       console.log(res1.data);
       console.log("donation:", donation);
@@ -75,23 +92,22 @@ function Donate() {
       console.log(error);
       alert("error adding donation");
     } finally {
-        //   handleClose();
+        handleClose();
       window.scrollTo(0, 0);
-    //   return (
-    //     <>
-    //       <Alert show={show} variant="success">
-    //         <Alert.Heading>How's it going?!</Alert.Heading>
-    //         <p>Success! Thanks for your support!</p>
-    //         <hr />
-    //         <div className="d-flex justify-content-end">
-    //           <Button onClick={() => setShow(false)} variant="outline-success">
-    //             Close
-    //           </Button>
-    //         </div>
-    //       </Alert>
-    //     </>
-    //   );
-    
+      //   return (
+      //     <>
+      //       <Alert show={show} variant="success">
+      //         <Alert.Heading>How's it going?!</Alert.Heading>
+      //         <p>Success! Thanks for your support!</p>
+      //         <hr />
+      //         <div className="d-flex justify-content-end">
+      //           <Button onClick={() => setShow(false)} variant="outline-success">
+      //             Close
+      //           </Button>
+      //         </div>
+      //       </Alert>
+      //     </>
+      //   );
     }
   };
 
