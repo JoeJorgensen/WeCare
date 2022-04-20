@@ -11,40 +11,42 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Button from "react-bootstrap/esm/Button";
 
 const NavBar = () => {
-  // if (user)=>  logout
-  // if (!user)=>  login/register
-
   const auth = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const renderRightNav = () => {
     if (auth.user) {
       return (
-        <div style={{alignItems: 'center'}} class='navbar-nav'>
+        <div style={{ alignItems: "center" }} class="navbar-nav">
           <Nav.Link href="/my_profile">
-                <img src="https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2" alt="img" width="30" height="28"/>
-                </Nav.Link>
+            {user.image && (
+              <img
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                }}
+                src={user.image}
+                width={300}
+              />
+            )}
+          </Nav.Link>
           <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
         </div>
       );
     }
     return (
       <>
-        {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
         <Badge></Badge>
       </>
     );
   };
   const renderLeftNav = () => {
     if (auth.user) {
-      return (
-        <div>
-
-        </div>
-      );
+      return <div></div>;
     }
     return (
       <>
-        {/* <Badge style={{color: 'white'}} href="/register">Register</Badge> */}
-
         <Nav.Link href="/register">Register </Nav.Link>
 
         <Nav.Link href="/login">Login </Nav.Link>
@@ -52,20 +54,27 @@ const NavBar = () => {
     );
   };
 
-  // const renderLeft = ()=>{
-  //     if( auth.user) {
-  //         return (
-  //             <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>123
-  //         )
-  //     }
-  // }
   return (
     <div>
-      <Navbar style={ {display: 'flex'} }sticky="top" bg="dark" expand="lg" variant="dark">
+      <Navbar
+        style={{ display: "flex" }}
+        sticky="top"
+        bg="dark"
+        expand="lg"
+        variant="dark"
+      >
         <Container fluid>
-          <Navbar.Brand style={{ color: 'green', fontWeight: 'bold' }} href="/feed">WeCare</Navbar.Brand>
+          <Navbar.Brand
+            style={{ color: "green", fontWeight: "bold" }}
+            href="/feed"
+          >
+            WeCare
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse style={{justifyContent:'space-between'}} id="basic-navbar-nav">
+          <Navbar.Collapse
+            style={{ justifyContent: "space-between" }}
+            id="basic-navbar-nav"
+          >
             <Nav>
               {/* <Nav.Link href="/home">Home</Nav.Link> */}
               <Nav.Link href="/feed">Home</Nav.Link>
@@ -88,10 +97,8 @@ const NavBar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               {renderLeftNav()}
-             </Nav>
-              {renderRightNav()}
-               
-            
+            </Nav>
+            {renderRightNav()}
           </Navbar.Collapse>
         </Container>
       </Navbar>
