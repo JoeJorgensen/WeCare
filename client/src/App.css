@@ -48,6 +48,7 @@
   top: 60%;
   left: 45%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .landingPageText2 {
@@ -55,6 +56,7 @@
   top: 60%;
   left: 55%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .landingImage {
@@ -68,4 +70,31 @@
   left: 16px;
   color: white;
   filter: brightness(100%);
+}
+
+.campaignCards {
+  cursor: pointer;
+}
+
+.campaignCards:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.donationCards {
+  cursor: pointer;
+}
+
+.donationCards:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.commentCards {
+  cursor: pointer;
+}
+
+.commentCards:hover {
+  cursor: pointer;
+  filter: brightness(90%);
 }

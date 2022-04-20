@@ -63,7 +63,10 @@ const NavBar = () => {
         variant="dark"
       >
         <Container fluid>
-          <Navbar.Brand style={{ color: "green", fontWeight: "bold" }} href="/">
+          <Navbar.Brand
+            style={{ color: "green", fontWeight: "bold" }}
+            href="/feed"
+          >
             WeCare
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

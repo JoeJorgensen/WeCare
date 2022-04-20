@@ -7,18 +7,20 @@ import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
 import { Badge } from "react-bootstrap";
 import people from "../shared/Images/We-CareImg.jpg";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const nav = useNavigate();
   return (
     <div>
       <div className="landingPage">
         <img src={people} className="landingImage" alt="logo"></img>
 
         <Badge pill bg="success" className="landingPageText">
-          <h2>Login</h2>
+          <h2 onClick={() => nav("/login")}>Login</h2>
         </Badge>
         <Badge pill bg="success" className="landingPageText2">
-          <h2>Register</h2>
+          <h2 onClick={() => nav("/register")}>Register</h2>
         </Badge>
       </div>
       <Card>
