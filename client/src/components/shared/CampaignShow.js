@@ -13,12 +13,23 @@ const CampaignShow = () => {
   const [campaign, setCampaign] = useState([]);
   const [updates, setUpdates] = useState([]);
   const [donations, setDonations] = useState([]);
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
   }, []);
+
+  const copy = () => {
+    const e = document.createElement("input");
+    e.value = window.location.href;
+    document.body.appendChild(e);
+    e.select();
+    document.execCommand("copy");
+    document.body.removeChild(e);
+    setCopied(true);
+  }
 
   const getDonations = async () => {
     try {
@@ -130,6 +141,7 @@ const CampaignShow = () => {
              </Card.Text> */}
           {/* <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button> */}
           <Donate />
+          <button onClick={copy}>{!copied ? "Share Campaign" : "Link Copied!"}</button>
         </Card.Body>
       </Card>
     );
