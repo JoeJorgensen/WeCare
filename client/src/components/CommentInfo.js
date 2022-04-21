@@ -26,11 +26,13 @@ const Comments = () => {
 
   const renderData = () => {
     return comments.map((c) => {
-     
       return (
-       
-
-        <Card key={c.id} border="info" style={{ width: "18rem" }}>
+        <Card
+          className="commentCards"
+          key={c.id}
+          border="info"
+          style={{ width: "18rem" }}
+        >
           <Card.Body>
             <div
               style={{
@@ -62,7 +64,6 @@ const Comments = () => {
             <hr></hr>
             <Card.Text>{c.comment}</Card.Text>
             <Card.Text>{c.campaign_name}</Card.Text>
-            
           </Card.Body>
         </Card>
       );
@@ -70,17 +71,14 @@ const Comments = () => {
   };
 
   return (
-   
     <div
       style={{
-        
         display: "inline-flex",
         flexWrap: "wrap",
         justifyContent: "space-evenly",
         gap: "30px ",
       }}
     >
-      
       {renderData()}
     </div>
   );

@@ -26,7 +26,12 @@ const MyDonationInfo = () => {
   const renderData = () => {
     return myDonations.map((c) => {
       return (
-        <Card key={c.id} border="info" style={{ width: "25rem" }}>
+        <Card
+          className="donationCards"
+          key={c.id}
+          border="info"
+          style={{ width: "25rem" }}
+        >
           <div>
             <Card.Body>
               <Card.Img

@@ -31,7 +31,6 @@ const NavBar = () => {
               />
             )}
           </Nav.Link>
-          
         </div>
       );
     }
