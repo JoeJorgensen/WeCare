@@ -33,6 +33,23 @@ function Donate() {
     getCampaignInfo()
   }, []);
 
+  const donateSuccess = () =>{
+   return (
+          <>
+            <Alert show={show} variant="success">
+              <Alert.Heading>How's it going?!</Alert.Heading>
+              <p>Success! Thanks for your support!</p>
+              <hr />
+              <div className="d-flex justify-content-end">
+                <Button onClick={() => setShow(false)} variant="outline-success">
+                  Close
+                </Button>
+              </div>
+            </Alert>
+          </>
+        );
+
+  }
 
 
   
@@ -92,20 +109,7 @@ function Donate() {
     } finally {
         handleClose();
       window.scrollTo(0, 0);
-      //   return (
-      //     <>
-      //       <Alert show={show} variant="success">
-      //         <Alert.Heading>How's it going?!</Alert.Heading>
-      //         <p>Success! Thanks for your support!</p>
-      //         <hr />
-      //         <div className="d-flex justify-content-end">
-      //           <Button onClick={() => setShow(false)} variant="outline-success">
-      //             Close
-      //           </Button>
-      //         </div>
-      //       </Alert>
-      //     </>
-      //   );
+     donateSuccess()
     }
   };
 
