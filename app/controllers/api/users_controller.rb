@@ -32,7 +32,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update_image
-     
+
     file = params[:fileYO]
    
     # CREATE AN IMAGE TO CLOUDINARY
@@ -62,7 +62,7 @@ class Api::UsersController < ApplicationController
     else
         render json: {errors:current_user.errors.full_messages}, status: 422
     end
-end
+  end
 
   private
 

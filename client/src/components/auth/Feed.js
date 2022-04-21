@@ -1,7 +1,4 @@
 import Card from "../../providers/Card";
-import useAxios from "axios-hooks";
-import AxiosContainer from "../../providers/AxiosContainer";
-import StringifyJSON from "../../providers/StringifyJSON";
 import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
@@ -18,7 +15,7 @@ const Feed = () => {
         <br />
 
         <h2>
-          <Badge  pill bg="info">Wallet Balance</Badge>
+          <Badge pill bg="info">Wallet Balance</Badge>
           <br />
           <br />
 
@@ -28,7 +25,7 @@ const Feed = () => {
         <br />
 
         <h2>
-          <Badge  pill bg="danger">Urgent Fundraising</Badge>
+          <Badge pill bg="danger">Urgent Fundraising</Badge>
         </h2>
         <br />
 

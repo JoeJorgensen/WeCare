@@ -1,8 +1,6 @@
 import Card from "../../providers/Card";
 import MyDonation from "../MyDonationInfo";
 import Calendar from "../calendar/Calendar";
-import { useContext, AuthContext } from "react";
-// import Footer from "../Footer";
 
 const myDonation = () => {
 

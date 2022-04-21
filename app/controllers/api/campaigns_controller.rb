@@ -70,4 +70,5 @@ end
 def campaign_params
   params.permit(:name, :description, :image, :goal, :expiration, :user_id, :current_amount)
 end
+
 end

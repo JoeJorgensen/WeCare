@@ -21,7 +21,7 @@ const CampaignShow = () => {
     getDonations();
   }, []);
 
-  const copy = () => {
+  const copyURL = () => {
     const e = document.createElement("input");
     e.value = window.location.href;
     document.body.appendChild(e);
@@ -141,10 +141,10 @@ const CampaignShow = () => {
              </Card.Text> */}
           {/* <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button> */}
           <Donate />
-          <button onClick={copy}>{!copied ? "Share Campaign" : "Link Copied!"}</button>
+          <Button variant="outline-success" onClick={copyURL}>{!copied ? "Share Campaign" : "Link Copied!"}</Button>
         </Card.Body>
       </Card>
-    );
+    ); 
   };
 
   return (

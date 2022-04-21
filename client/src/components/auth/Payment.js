@@ -1,11 +1,9 @@
 import react, { useContext, useEffect, useState } from "react";
 import BraintreeDropin from "braintree-dropin-react";
-
 import braintree from "braintree-web-drop-in";
 
 import axios from "axios";
-import { Link, UNSAFE_NavigationContext, useParams } from "react-router-dom";
-// import BraintreeSubmitButton from "./PaymentSubmit";
+import { Link, useParams } from "react-router-dom";
 import {
   Button,
   Card,
@@ -19,7 +17,7 @@ import React from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Braintree = (props) => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [loaded, setLoaded] = useState(false);
   const [token, setToken] = useState("");

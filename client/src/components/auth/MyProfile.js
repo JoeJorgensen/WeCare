@@ -2,17 +2,17 @@ import React, { useContext, useState } from "react";
 import { FilePond, registerPlugin } from "react-filepond";
 import { AuthContext } from "../../providers/AuthProvider";
 import Nav from "react-bootstrap/Nav";
+import axios from "axios";
+import Button from "react-bootstrap/esm/Button";
+import Badge from "react-bootstrap/esm/Badge";
+import Card from "../../providers/Card";
+import { Form } from "react-bootstrap";
+
 import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import axios from "axios";
-import Button from "react-bootstrap/esm/Button";
-import Badge from "react-bootstrap/esm/Badge";
-import Alert from "react-bootstrap/esm/Alert";
-import Card from "../../providers/Card";
-import { Form } from "react-bootstrap";
 
 registerPlugin(
   FilePondPluginImageExifOrientation,
@@ -68,7 +68,7 @@ function MyProfile() {
       <br />
       <br />
 
-      <Badge  pill bg="dark">
+      <Badge pill bg="dark">
         <h1>Profile Page</h1>
       </Badge>
       <br />
@@ -94,20 +94,20 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
-        <h5>
-          <Badge pill>
-       Wallet Balance: 
-      </Badge>
-      <br/>
-      ${user.balance}
+      <h5>
+        <Badge pill>
+          Wallet Balance:
+        </Badge>
+        <br />
+        ${user.balance}
       </h5>
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
       <Badge pill>
-      <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
-      </Badge>    
-   
+        <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
+      </Badge>
+
 
       <Card>
         <form onSubmit={handleProfileSubmit}>
