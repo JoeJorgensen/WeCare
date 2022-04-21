@@ -9,7 +9,7 @@ import Card1 from "../providers/Card";
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const [{ data: campaigns, loading, error }, refetch] =
   //   useAxios("/api/campaigns");
 
@@ -31,47 +31,51 @@ const Campaigns = () => {
       return (
         // <Card1 key={c.id} style={{ margin: "15px", alignContent: "center" }}>
         <Card
-          key={c.id} 
-           
+          className="campaignCards"
+          key={c.id}
           border="info"
           style={{
+            // borderRadius: "10%",
             width: "22rem",
-          
           }}
-          onClick={()=> navigate(`/campaign_show/${c.id}`)}
+          onClick={() => navigate(`/campaign_show/${c.id}`)}
         >
-          <Card.Img src={c.image} />
+          <Card.Img
+            src={c.image}
+            //  style={{
+            //   objectFit: 'cover',
+            //   borderRadius: "10%",
+            //   width: "22rem",
+            //   height: "200px",
+            // }}
+          />
           <Card.Body>
-            <Card.Title> 
-              
-                <Badge bg='dark'>
-                  {c.name}
-                </Badge>
-              
-              
-              </Card.Title>
+            <Card.Title>
+              <Badge pill bg="dark">
+                {c.name}
+              </Badge>
+            </Card.Title>
             <Card.Text>
               <h6> {c.description}</h6>
             </Card.Text>
             <Card.Text>
               <h6>
-              <Badge bg='info'>
-                Current Amount: ${c.current_amount}
-              </Badge>
+                <Badge pill bg="info">
+                  Current Amount: ${c.current_amount}
+                </Badge>
               </h6>
             </Card.Text>
 
             <Card.Text>
-               <h6>
-        
-              <Badge bg='info'>
-              Goal: ${c.goal}
-              </Badge>
-            </h6>
+              <h6>
+                <Badge pill bg="info">
+                  Goal: ${c.goal}
+                </Badge>
+              </h6>
             </Card.Text>
 
             <Card.Text>
-               <h6>Expiration: {c.expiration}</h6>
+              <h6>Expiration: {c.expiration}</h6>
             </Card.Text>
           </Card.Body>
         </Card>

@@ -68,7 +68,7 @@ function MyProfile() {
       <br />
       <br />
 
-      <Badge bg="dark">
+      <Badge  pill bg="dark">
         <h1>Profile Page</h1>
       </Badge>
       <br />
@@ -89,13 +89,13 @@ function MyProfile() {
       <br />
 
 
-      <Badge>
+      <Badge pill>
         <h5>{user.name ? user.name : <p>no name</p>}</h5>
       </Badge>
       <br />
       <br />
         <h5>
-          <Badge>
+          <Badge pill>
        Wallet Balance: 
       </Badge>
       <br/>
@@ -104,14 +104,14 @@ function MyProfile() {
       {!user.balance && <p>You broke</p>}
       <br />
       <br />
-      <Badge>
-        <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
-      </Badge>
-
+      <Badge pill>
+      <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
+      </Badge>    
+   
 
       <Card>
         <form onSubmit={handleProfileSubmit}>
-          <Badge bg="dark">
+          <Badge pill bg="dark">
             <h1>Update Profile</h1>
           </Badge>
           <br />

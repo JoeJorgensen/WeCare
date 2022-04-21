@@ -26,11 +26,13 @@ const Comments = () => {
 
   const renderData = () => {
     return comments.map((c) => {
-     
       return (
-       
-
-        <Card key={c.id} border="info" style={{ width: "18rem" }}>
+        <Card
+          className="commentCards"
+          key={c.id}
+          border="info"
+          style={{ width: "18rem" }}
+        >
           <Card.Body>
             <div
               style={{
@@ -50,19 +52,18 @@ const Comments = () => {
                   margin: "7px",
                 }}
               />
-              <Badge bg="dark">
+              <Badge pill bg="dark">
                 <Card.Title style={{ marginBottom: "0px" }}>
                   {c.username}
                 </Card.Title>
               </Badge>
             </div>
             <h4>
-              <Badge>${c.amount}</Badge>
+              <Badge pill>${c.amount}</Badge>
             </h4>
             <hr></hr>
             <Card.Text>{c.comment}</Card.Text>
             <Card.Text>{c.campaign_name}</Card.Text>
-            
           </Card.Body>
         </Card>
       );
@@ -70,17 +71,14 @@ const Comments = () => {
   };
 
   return (
-   
     <div
       style={{
-        
         display: "inline-flex",
         flexWrap: "wrap",
         justifyContent: "space-evenly",
         gap: "30px ",
       }}
     >
-      
       {renderData()}
     </div>
   );

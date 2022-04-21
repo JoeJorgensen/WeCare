@@ -9,16 +9,19 @@ import {
   InputGroup,
   Modal,
 } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Card from "../../providers/Card";
+import Braintree, { PaymentContext } from "./Payment";
 
 function Donate() {
   const params = useParams();
+  const navigate = useNavigate()
+//   const {amount, setAmount} = useContext(PaymentContext)
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [campaignAmount, setCampaignAmount] = useState('')
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [comment, setComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [userBalance, setUserBalance] = useState(user.balance);
@@ -30,6 +33,23 @@ function Donate() {
     getCampaignInfo()
   }, []);
 
+  const donateSuccess = () =>{
+   return (
+          <>
+            <Alert show={show} variant="success">
+              <Alert.Heading>How's it going?!</Alert.Heading>
+              <p>Success! Thanks for your support!</p>
+              <hr />
+              <div className="d-flex justify-content-end">
+                <Button onClick={() => setShow(false)} variant="outline-success">
+                  Close
+                </Button>
+              </div>
+            </Alert>
+          </>
+        );
+
+  }
 
 
   
@@ -45,8 +65,11 @@ function Donate() {
       return (
         <>
           <p>Must be logged in to donate</p>
-          <Button>
-            <Link to="Login" />
+          <Button pill>
+            <Link to="/login" />
+          </Button>
+          <Button pill>
+            <Link to="/register" />
           </Button>
         </>
       );
@@ -64,11 +87,6 @@ function Donate() {
       console.log("campaign amount 1:", campaignAmount.current_amount);
       console.log("NEW CAMPAIGN AMOUNT:",campaignAmount.current_amount + amount );
 
-
-      
-
-
-
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
         donation
@@ -82,9 +100,6 @@ function Donate() {
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {current_amount: campaignAmount.current_amount + parseInt(amount) } );
       console.log("campaign amount after donation:", campaignAmount.current_amount);
 
-
-
-
       console.log("userBalance after donation:", user.balance);
       console.log(res1.data);
       console.log("donation:", donation);
@@ -94,28 +109,24 @@ function Donate() {
     } finally {
         handleClose();
       window.scrollTo(0, 0);
-      //   return (
-      //     <>
-      //       <Alert show={show} variant="success">
-      //         <Alert.Heading>How's it going?!</Alert.Heading>
-      //         <p>Success! Thanks for your support!</p>
-      //         <hr />
-      //         <div className="d-flex justify-content-end">
-      //           <Button onClick={() => setShow(false)} variant="outline-success">
-      //             Close
-      //           </Button>
-      //         </div>
-      //       </Alert>
-      //     </>
-      //   );
+     donateSuccess()
     }
   };
 
+  const renderCard = () => {
+      return(
+          <div>
+          <Braintree />
+          </div>
+      )
+  }
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="outline-success" onClick={handleShow}>
         Donate
       </Button>
+    
 
       <Form>
         <Modal show={show} onHide={handleClose}>
@@ -135,18 +146,14 @@ function Donate() {
                   <FormControl
                     value={amount}
                     required
-                    placeholder="ex. 200"
+                    placeholder="200"
                     onChange={(e) => setAmount(e.target.value)}
                     aria-label="Amount (to the nearest dollar)"
                   />
                   <InputGroup.Text>.00</InputGroup.Text>
                 </InputGroup>
-                {/* <Form.Control
-
-                  type="number"
-                  placeholder="name@example.com"
-                  autoFocus
-                /> */}
+                
+                
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -168,13 +175,17 @@ function Donate() {
                   onChange={(e) => setAnonymous(true)}
                 />
               </Form.Group>
+             
+                
+
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Braintree />
+            <Button  variant="outline-danger" onClick={handleClose}>
               Close
             </Button>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button variant="success" onClick={handleSubmit}>Submit</Button>
           </Modal.Footer>
         </Modal>
       </Form>

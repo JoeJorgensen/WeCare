@@ -23,8 +23,10 @@ import Categories from "./components/auth/Categories";
 import TroubleShoot from "./components/shared/TroubleShoot";
 import CampaignShow from "./components/shared/CampaignShow";
 import Donate from "./components/auth/Donate";
-import NewCampaign from "./components/auth/NewCampaign";
+import Payment from "./components/auth/Payment";
 
+import LandingPage from "./components/shared/LandingPage";
+import NewCampaign from "./components/auth/NewCampaign";
 
 function App() {
   return (
@@ -35,19 +37,22 @@ function App() {
         <>
           <Routes>
             {/* UNPROTECTED */}
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Home />} />
             <Route path="/troubleshoot" element={<TroubleShoot />} />
-              <Route path="/feed" element={<Feed />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/campaign_show/:id" element={<CampaignShow />} />
-              <Route path="/categories" element={<Categories />} />
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/campaign_show/:id" element={<CampaignShow />} />
+            <Route path="/categories" element={<Categories />} />
 
             {/* PROTECTED */}
             <Route element={<ProtectedRoute />}>
               <Route path="/my_donations" element={<MyDonation />} />
               <Route path="/donate" element={<Donate/>} />
+              <Route path="/payment" element={<Payment/>} />
+
               <Route path="/my_profile" element={<MyProfile />} />
               <Route path="/new_campaign" element={<NewCampaign />} />
             </Route>

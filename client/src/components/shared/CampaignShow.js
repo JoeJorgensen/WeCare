@@ -53,7 +53,7 @@ const CampaignShow = () => {
                 }}
               />
 
-              <Badge bg="dark">
+              <Badge pill bg="dark">
                 <Card.Title style={{ marginBottom: "0px" }}>
                   {d.name}
                 </Card.Title>
@@ -61,7 +61,7 @@ const CampaignShow = () => {
               <br />
             </div>
             <h4>
-              <Badge>${d.amount}</Badge>
+              <Badge pill>${d.amount}</Badge>
             </h4>
             <hr></hr>
             <Card.Text>{d.comment}</Card.Text>
@@ -111,7 +111,7 @@ const CampaignShow = () => {
     return (
       <Card key={campaign.id} border="info" style={{ width: "50rem" }}>
         <Card.Body>
-          <Badge bg="dark">
+          <Badge pill bg="dark">
             <Card.Title style={{ marginBottom: "0px" }}>
               {campaign.name}
             </Card.Title>
@@ -138,7 +138,9 @@ const CampaignShow = () => {
   return (
     <Card1>
       <h4>
-        <Badge bg="dark">Wallet Balance:</Badge>
+        <Badge pill bg="dark">
+          Wallet Balance:
+        </Badge>
         <WalletBalance />
       </h4>
 
@@ -158,7 +160,9 @@ const CampaignShow = () => {
       <br />
 
       <h2>
-        <Badge bg="dark">Updates</Badge>
+        <Badge pill bg="dark">
+          Updates
+        </Badge>
       </h2>
 
       <div

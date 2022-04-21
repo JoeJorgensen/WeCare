@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+
+.landingPage {
+  position: relative;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.landingPageText {
+  position: absolute;
+  top: 60%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.landingPageText2 {
+  position: absolute;
+  top: 60%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.landingImage {
+  width: 100%;
+  filter: brightness(60%);
+}
+
+.landingPageText3 {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color: white;
+  filter: brightness(100%);
+}
+
+.campaignCards {
+  cursor: pointer;
+}
+
+.campaignCards:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.donationCards {
+  cursor: pointer;
+}
+
+.donationCards:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.commentCards {
+  cursor: pointer;
+}
+
+.commentCards:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}

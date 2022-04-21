@@ -29,7 +29,6 @@ const NavBar = () => {
                 }}
                 src={user.image} width={300}/>)}
           </Nav.Link>
-          
         </div>
       );
     }
