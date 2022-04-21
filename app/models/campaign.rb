@@ -12,4 +12,10 @@ class Campaign < ApplicationRecord
   #   .from(campaigns)
   #   .order_by(expiration)
   # end
+
+  def self.expiration_over_50
+    Campaign.find_by_sql(["SELECT *
+    FROM campaigns
+    ORDER BY current_amount / goal"])
+  end 
 end

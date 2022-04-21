@@ -19,7 +19,6 @@ registerPlugin(
 
 const NewCampaign = () => {
   const { user } = useContext(AuthContext)
-  const navigate = useNavigate()
 
   const [files, setFiles] = useState('')
   const [categories, setCategories] = useState([])
@@ -28,7 +27,7 @@ const NewCampaign = () => {
   const [goal, setGoal] = useState(0)
   const [expiration, setExpiration] = useState('')
   const [description, setDescription] = useState('')
-  const [currentAmount, setCurrentAmount] = useState(0)
+  const [currentAmount] = useState(0)
   const [campaign, setCampaign] = useState([])
 
   useEffect(() => {

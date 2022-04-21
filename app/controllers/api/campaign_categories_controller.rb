@@ -11,8 +11,8 @@ before_action :set_campaign_category, only: [:update]
             render json: @campaign_category
         else
             render json: error {@campaign_category.errors.full_messages}, status: 422
-            end
         end
+    end
 
 
 
@@ -22,14 +22,10 @@ before_action :set_campaign_category, only: [:update]
             render json: @campaign_category 
         else
             render json: error {@campaign_category.errors.full_messages}, status: 422
-            end
+        end
     end
+
     private
-
-
-        # def set_campaign
-        #     @campaign = Campaign.find(params(campaign_id))
-        # end
 
         def set_campaign_category
             @campaign_category = CampaignCategory.find(params[:id])
@@ -37,6 +33,6 @@ before_action :set_campaign_category, only: [:update]
 
         def campaign_category_params
             params.require(:campaign_category).permit(:campaign_id, :category_id)
-    end
+        end
 
 end
