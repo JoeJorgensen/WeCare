@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  justify-content: center;
+  margin-top: 10px;
+}
+.image {
+ margin: 20px;
+ object-fit: cover;
+ border-radius: "50%";
+ width: "40px";
+ height: "40px";
+}
+
+.custom-div {
+  background-color: rgb(20,20,20);
+  height: 35px;
+  width: 100%;
+}
