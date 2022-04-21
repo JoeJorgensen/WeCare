@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       end
       get '/donations', to: 'donations#index_of_all'
       put '/update_image', to: 'users#update_image'
+      get '/braintree_token', to: 'braintree#token'
+      post '/payment', to: 'braintree#payment'
       get '/user_donations', to: 'donations#user_donations'
       get '/order_by_expd', to: 'campaigns#order_by_expd'
       get 'user_donations', to:'donations#user_donations'

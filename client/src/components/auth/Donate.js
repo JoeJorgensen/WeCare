@@ -9,16 +9,19 @@ import {
   InputGroup,
   Modal,
 } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Card from "../../providers/Card";
+import Braintree, { PaymentContext } from "./Payment";
 
 function Donate() {
   const params = useParams();
+  const navigate = useNavigate()
+//   const {amount, setAmount} = useContext(PaymentContext)
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [campaignAmount, setCampaignAmount] = useState('')
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [comment, setComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [userBalance, setUserBalance] = useState(user.balance);
@@ -67,11 +70,6 @@ function Donate() {
       console.log("campaign amount 1:", campaignAmount.current_amount);
       console.log("NEW CAMPAIGN AMOUNT:",campaignAmount.current_amount + amount );
 
-
-      
-
-
-
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
         donation
@@ -84,9 +82,6 @@ function Donate() {
       });
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {current_amount: campaignAmount.current_amount + parseInt(amount) } );
       console.log("campaign amount after donation:", campaignAmount.current_amount);
-
-
-
 
       console.log("userBalance after donation:", user.balance);
       console.log(res1.data);
@@ -114,11 +109,20 @@ function Donate() {
     }
   };
 
+  const renderCard = () => {
+      return(
+          <div>
+          <Braintree />
+          </div>
+      )
+  }
+
   return (
     <>
-      <Button pill variant="primary" onClick={handleShow}>
+      <Button variant="outline-success" onClick={handleShow}>
         Donate
       </Button>
+    
 
       <Form>
         <Modal show={show} onHide={handleClose}>
@@ -138,18 +142,14 @@ function Donate() {
                   <FormControl
                     value={amount}
                     required
-                    placeholder="ex. 200"
+                    placeholder="200"
                     onChange={(e) => setAmount(e.target.value)}
                     aria-label="Amount (to the nearest dollar)"
                   />
                   <InputGroup.Text>.00</InputGroup.Text>
                 </InputGroup>
-                {/* <Form.Control
-
-                  type="number"
-                  placeholder="name@example.com"
-                  autoFocus
-                /> */}
+                
+                
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -171,13 +171,17 @@ function Donate() {
                   onChange={(e) => setAnonymous(true)}
                 />
               </Form.Group>
+             
+                
+
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button  pill variant="secondary" onClick={handleClose}>
+            <Braintree />
+            <Button  variant="outline-danger" onClick={handleClose}>
               Close
             </Button>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button variant="success" onClick={handleSubmit}>Submit</Button>
           </Modal.Footer>
         </Modal>
       </Form>
