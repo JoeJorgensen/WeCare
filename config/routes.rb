@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get '/order_by_expd', to: 'campaigns#order_by_expd'
       get 'user_donations', to:'donations#user_donations'
       get '/donation_by_user/:id', to:'donations#donation_by_user'
-
+      get '/expiration_over_50', to: 'campaigns#campaign_expiration_over_50'
       get '/user_donations', to:'donations#user_donations'
       get '/user_with_campaigns', to: 'donations#user_with_campaigns'
   end
