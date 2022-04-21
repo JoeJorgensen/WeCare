@@ -1,7 +1,4 @@
 import Card from "../../providers/Card";
-import useAxios from "axios-hooks";
-import AxiosContainer from "../../providers/AxiosContainer";
-import StringifyJSON from "../../providers/StringifyJSON";
 import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
