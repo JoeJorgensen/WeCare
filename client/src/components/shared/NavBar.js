@@ -76,25 +76,13 @@ const NavBar = () => {
               {/* <Nav.Link href="/home">Home</Nav.Link> */}
               <Nav.Link href="/feed">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
-<<<<<<< HEAD
-              <Nav.Link href="/new_campaign">New Campaign</Nav.Link>
-              <Nav.Link href="/my_donations">My Donations</Nav.Link>
-=======
-
-              <NavDropdown
-                bg="dark"
-                variant="dark"
-                title="Fundraising"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/new_campaign">
+              <Nav.Link href="/new_campaign">
                   New Campaign
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/my_donations">
+                </Nav.Link>
+                <Nav.Link href="/my_donations">
                   My Donations
-                </NavDropdown.Item>
-              </NavDropdown>
->>>>>>> 7d33979ffd6300b5ec7292a6dfe4d74b8526e111
+                </Nav.Link>
+
               {renderLeftNav()}
             </Nav>
             {renderRightNav()}

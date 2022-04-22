@@ -127,7 +127,7 @@ const About = () => {
 
 
             <Badge className="container" pill bg="badge rounded-pill bg-success">Austin Kilgore</Badge>
-  
+            <h5>austin.s.kilgore@gmail.com</h5>
             <div className="container">
             <Nav.Link  href="https://github.com/MrKilgore94">
             {githubimg && (
