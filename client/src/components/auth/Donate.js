@@ -32,10 +32,10 @@ function Donate() {
 
   const donateSuccess = () => {
     return (
-      <>
+
         <Alert show={show} variant="success">
-          <Alert.Heading>How's it going?!</Alert.Heading>
-          <p>Success! Thanks for your support!</p>
+          <Alert.Heading>Success!</Alert.Heading>
+          <p> Thanks for your support!</p>
           <hr />
           <div className="d-flex justify-content-end">
             <Button onClick={() => setShow(false)} variant="outline-success">
@@ -43,7 +43,6 @@ function Donate() {
             </Button>
           </div>
         </Alert>
-      </>
     );
 
   }

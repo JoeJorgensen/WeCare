@@ -2,14 +2,20 @@ import axios from "axios";
 import useAxios from "axios-hooks";
 import { useEffect, useState } from "react";
 import { Badge, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import AxiosContainer from "../providers/AxiosContainer";
 import Card1 from "../providers/Card";
 import StringifyJSON from "../providers/StringifyJSON";
+import CampaignCard from "./Styling/CampaignCard";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
+  const navigate = useNavigate()
+
+
   console.log("Comment Info Being Called:");
   console.log("comments", comments);
+
 
   useEffect(() => {
     getComments();
@@ -24,9 +30,59 @@ const Comments = () => {
     }
   };
 
+
+  function styledCards() {
+    return (
+
+      <>
+          {comments.map((c) => (
+            <CampaignCard
+              onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
+              key={c.id}
+              hexa={'#1DB95F'}
+              title={c.username}
+              current_amount={c.amount}
+              description={c.comment}
+              image={c.image}
+              
+              
+            />
+          ))}
+
+
+      </>
+
+    );
+  }
+
   
   const renderData = () => {
     return comments.map((c) => {
+      if(c.anonymous)(
+        <Card
+        className="commentCards"
+        key={c.id}
+        border="info"
+        style={{ width: "18rem" }}
+      >
+        <Card.Body>
+          <div
+            style={{
+              display: "flex-inline",
+              textAlign: "left",
+              justifyContent: "space-evenly",
+            }}
+          >
+          </div>
+          <h4>
+            <Badge pill>${c.amount}</Badge>
+          </h4>
+          <hr></hr>
+          <Card.Text>{c.comment}</Card.Text>
+          <Card.Text>{c.campaign_name}</Card.Text>
+        </Card.Body>
+      </Card>
+      )
       return (
         <Card
           className="commentCards"
@@ -81,6 +137,7 @@ const Comments = () => {
       }}
     >
       {renderData()}
+      {/* {styledCards()} */}
     </div>
   );
 };

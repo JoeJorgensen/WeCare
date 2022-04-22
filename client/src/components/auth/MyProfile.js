@@ -107,7 +107,6 @@ function MyProfile() {
           
 
        
-        {!user.balance && <p>You broke</p>}
       </div>
       <br/>
       <br/>
