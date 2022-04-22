@@ -27,7 +27,8 @@ const Register = () => {
         <h1 className="heading">Register</h1>
         <br />
         <Form onSubmit={handleSubmit} className="container">
-          <div className=" mainbox2 form-outline mb-4">
+          <div className="mainbox">
+          <div className="form-outline mb-4">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -37,7 +38,7 @@ const Register = () => {
               placeholder="Name"
             />
           </div>
-          <div className="mainbox2">
+          <div className="form-outline mb-4">
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -48,8 +49,7 @@ const Register = () => {
             />
           </div>
 
-          <br />
-          <div className="mainbox2">
+          <div className="form-outline mb-4">
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -58,8 +58,7 @@ const Register = () => {
               className="form-control"
             />
           </div>
-          <br />
-          <br />
+
           <button
             type="button"
             className="signin btn btn-primary btn-block mb-4"
@@ -73,8 +72,9 @@ const Register = () => {
             {/* <!-- Simple link --> */}
             <a href="/troubleshoot">Having Trouble?</a>
           </div>
+          <hr/>
 
-          <hr></hr>
+          </div>
         </Form>
       </div>
     </Card>
