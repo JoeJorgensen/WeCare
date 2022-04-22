@@ -10,44 +10,49 @@ import { Badge } from "react-bootstrap";
 const Feed = () => {
   return (
     <Card>
-      <div>
-        <h1>
-          <Badge pill bg="dark" >We Care</Badge>
-        </h1>
-        <hr></hr>
+      <h2>
+        <Badge pill bg='success' >
+          Wallet Balance
+        </Badge>
         <br />
+      </h2>
 
-        <h2>
-          <Badge  pill bg="info">Wallet Balance</Badge>
-          <br />
-          <br />
-
+      <h2>
+        <Badge pill bg="dark">
           <WalletBalance />
-        </h2>
-        <hr></hr>
-        <br />
+        </Badge>
+      </h2>
 
-        <h2>
-          <Badge  pill bg="danger">Urgent Fundraising</Badge>
-        </h2>
-        <br />
+      <hr></hr>
+      <br />
 
-        <CampaignInfo />
-        <br />
-        <br />
+      <h2>
+        <Badge pill bg="danger">
+          Urgent Fundraising
+        </Badge>
+      </h2>
+      <br />
 
-        <hr></hr>
-        <h2>
-          <Badge pill bg="success">Coming to a end</Badge>
-        </h2>
-        <br />
+      <CampaignInfo />
+      <br />
+      <br />
 
-        <CampaignInfo />
+      <hr></hr>
+      <h2>
+        <Badge pill bg="success">
+          Coming to a end
+        </Badge>
+      </h2>
+      <br />
 
-        <h2>Prayers from Good People</h2>
-        <hr></hr>
-        <CommentInfo />
-      </div>
+      <CampaignInfo />
+
+      <hr></hr>
+      <h2>
+        <Badge pill>Prayers from Good People</Badge>
+      </h2>
+      <br />
+      <CommentInfo />
     </Card>
   );
 };

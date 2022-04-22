@@ -97,6 +97,7 @@ function Donate() {
       let res1 = await axios.put(`/api/users/${user.id}`, {
         balance: user.balance - amount,
       });
+      setUser(res1.data)
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {current_amount: campaignAmount.current_amount + parseInt(amount) } );
       console.log("campaign amount after donation:", campaignAmount.current_amount);
 
@@ -113,13 +114,6 @@ function Donate() {
     }
   };
 
-  const renderCard = () => {
-      return(
-          <div>
-          <Braintree />
-          </div>
-      )
-  }
 
   return (
     <>

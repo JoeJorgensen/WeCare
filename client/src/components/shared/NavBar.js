@@ -54,17 +54,17 @@ const NavBar = () => {
   };
 
   return (
-    <div>
       <Navbar
-        style={{ display: "flex" }}
-        sticky="top"
-        bg="dark"
+        
+        // bg="dark"
+        style={{backgroundColor:'rgba(0, 0, 0, .8)'}}
         expand="lg"
         variant="dark"
+        sticky="top"
       >
         <Container fluid>
           <Navbar.Brand
-            style={{ color: "green", fontWeight: "bold" }}
+            style={{ color: "#1DB95F", fontWeight: "bold" }}
             href="/feed"
           >
             WeCare
@@ -101,7 +101,6 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
   );
 };
 export default NavBar;
