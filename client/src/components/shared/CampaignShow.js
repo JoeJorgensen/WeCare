@@ -141,6 +141,7 @@ const CampaignShow = () => {
              </Card.Text> */}
           {/* <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button> */}
           <Donate />
+          <br/>
           <Button variant="outline-success" onClick={copyURL}>{!copied ? "Share Campaign" : "Link Copied!"}</Button>
         </Card.Body>
       </Card>

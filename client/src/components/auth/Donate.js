@@ -114,14 +114,15 @@ function Donate() {
   return (
     <>
       <Button variant="outline-success" onClick={handleShow}>
-        Donate
+        Donate 
       </Button>
 
 
       <Form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Donation</Modal.Title>
+            <Modal.Title>Pay with wallet</Modal.Title>
+            
           </Modal.Header>
           <Modal.Body>
             <Form>

@@ -161,7 +161,7 @@ const Braintree = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Pay with card</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
