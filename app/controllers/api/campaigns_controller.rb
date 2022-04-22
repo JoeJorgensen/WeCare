@@ -7,6 +7,10 @@ class Api::CampaignsController < ApplicationController
     render json: Campaign.order(:expiration)
   end
 
+  def campaign_expiration_over_50
+    render json: Campaign.expiration_over_50
+  end 
+
    #finds all Campaigns in DB
   def index
   render json: Campaign.all
@@ -70,4 +74,5 @@ end
 def campaign_params
   params.permit(:name, :description, :image, :goal, :expiration, :user_id, :current_amount)
 end
+
 end

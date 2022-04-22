@@ -85,9 +85,6 @@ const NavBar = () => {
                 title="Fundraising"
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="/categories">
-                  Categories
-                </NavDropdown.Item>
                 <NavDropdown.Item href="/new_campaign">
                   New Campaign
                 </NavDropdown.Item>

@@ -1,61 +1,58 @@
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Braintree, { PaymentContext } from "./Payment";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import {
   Alert,
-  Badge,
   Button,
   Form,
   FormControl,
   InputGroup,
   Modal,
 } from "react-bootstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
-import Card from "../../providers/Card";
-import Braintree, { PaymentContext } from "./Payment";
+
 
 function Donate() {
   const params = useParams();
-  const navigate = useNavigate()
-//   const {amount, setAmount} = useContext(PaymentContext)
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [campaignAmount, setCampaignAmount] = useState('')
   const [amount, setAmount] = useState('');
   const [comment, setComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
-  const [userBalance, setUserBalance] = useState(user.balance);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     getCampaignInfo()
+
   }, []);
 
-  const donateSuccess = () =>{
-   return (
-          <>
-            <Alert show={show} variant="success">
-              <Alert.Heading>How's it going?!</Alert.Heading>
-              <p>Success! Thanks for your support!</p>
-              <hr />
-              <div className="d-flex justify-content-end">
-                <Button onClick={() => setShow(false)} variant="outline-success">
-                  Close
-                </Button>
-              </div>
-            </Alert>
-          </>
-        );
+  const donateSuccess = () => {
+    return (
+      <>
+        <Alert show={show} variant="success">
+          <Alert.Heading>How's it going?!</Alert.Heading>
+          <p>Success! Thanks for your support!</p>
+          <hr />
+          <div className="d-flex justify-content-end">
+            <Button onClick={() => setShow(false)} variant="outline-success">
+              Close
+            </Button>
+          </div>
+        </Alert>
+      </>
+    );
 
   }
 
 
-  
-  const getCampaignInfo = async()=>{
-      let resX = await axios.get(`/api/campaigns/${params.id}`)
-        setCampaignAmount(resX.data)
+
+  const getCampaignInfo = async () => {
+    let resX = await axios.get(`/api/campaigns/${params.id}`)
+    setCampaignAmount(resX.data)
   }
 
   const handleSubmit = async (e) => {
@@ -85,7 +82,7 @@ function Donate() {
       console.log("User balance before donation:", user.balance);
       console.log("campaign_id:", params.id);
       console.log("campaign amount 1:", campaignAmount.current_amount);
-      console.log("NEW CAMPAIGN AMOUNT:",campaignAmount.current_amount + amount );
+      console.log("NEW CAMPAIGN AMOUNT:", campaignAmount.current_amount + amount);
 
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
@@ -108,19 +105,18 @@ function Donate() {
       console.log(error);
       alert("error adding donation");
     } finally {
-        handleClose();
+      handleClose();
       window.scrollTo(0, 0);
-     donateSuccess()
+      donateSuccess()
     }
   };
-
 
   return (
     <>
       <Button variant="outline-success" onClick={handleShow}>
         Donate
       </Button>
-    
+
 
       <Form>
         <Modal show={show} onHide={handleClose}>
@@ -146,8 +142,8 @@ function Donate() {
                   />
                   <InputGroup.Text>.00</InputGroup.Text>
                 </InputGroup>
-                
-                
+
+
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -169,14 +165,14 @@ function Donate() {
                   onChange={(e) => setAnonymous(true)}
                 />
               </Form.Group>
-             
-                
+
+
 
             </Form>
           </Modal.Body>
           <Modal.Footer>
             <Braintree />
-            <Button  variant="outline-danger" onClick={handleClose}>
+            <Button variant="outline-danger" onClick={handleClose}>
               Close
             </Button>
             <Button variant="success" onClick={handleSubmit}>Submit</Button>

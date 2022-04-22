@@ -1,11 +1,9 @@
 import Card from "../../providers/Card";
-import useAxios from "axios-hooks";
-import AxiosContainer from "../../providers/AxiosContainer";
-import StringifyJSON from "../../providers/StringifyJSON";
 import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
 import { Badge } from "react-bootstrap";
+import ExpirationInfo from "../ExpirationInfo";
 
 const Feed = () => {
   return (
@@ -18,32 +16,30 @@ const Feed = () => {
       </h2>
 
       <h2>
-        <Badge pill bg="dark">
+        <Badge pill bg="info">
           <WalletBalance />
         </Badge>
       </h2>
+    <br/>
+        <h2>
+          <Badge pill bg="danger">
+            Urgent Fundraising
+          </Badge>
+        </h2>
+        <br />
 
-      <hr></hr>
-      <br />
+        <ExpirationInfo />
+        <br />
+        <br />
 
-      <h2>
-        <Badge pill bg="danger">
-          Urgent Fundraising
-        </Badge>
-      </h2>
-      <br />
+        <hr></hr>
+        <h2>
+          <Badge pill bg="success">
+            Coming to an end
+          </Badge>
+        </h2>
+        <br />
 
-      <CampaignInfo />
-      <br />
-      <br />
-
-      <hr></hr>
-      <h2>
-        <Badge pill bg="success">
-          Coming to a end
-        </Badge>
-      </h2>
-      <br />
 
       <CampaignInfo />
 
