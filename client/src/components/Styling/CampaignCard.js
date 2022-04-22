@@ -183,8 +183,8 @@ const CampaignCard = ({ hexa, title, description, image, profile_image, current_
     <Content>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Current_amount>${current_amount}</Current_amount>
-      <Goal>${goal}</Goal>
+      <Current_amount>Current amount: ${current_amount}</Current_amount>
+      <Goal>Goal: ${goal}</Goal>
 
 
       <BottomBar background={hexa} />

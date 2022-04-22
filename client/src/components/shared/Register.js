@@ -72,7 +72,7 @@ const Register = () => {
             {/* <!-- Simple link --> */}
             <a href="/troubleshoot">Having Trouble?</a>
           </div>
-          <hr/>
+
 
           </div>
         </Form>
