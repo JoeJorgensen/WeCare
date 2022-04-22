@@ -34,7 +34,7 @@ const About = () => {
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
 
-            <Nav.Link href=" ">
+            {/* <Nav.Link href=" ">
             {linkedinimg && (
               <img style={{
                   objectFit: "cover",
@@ -52,7 +52,7 @@ const About = () => {
                   width: "40px",
                   height: "40px",
                  }}src={facebook} width={300}/>)}
-          </Nav.Link>
+          </Nav.Link> */}
           </div>
             <br/>
             <Badge className="container" pill bg="badge rounded-pill bg-success">Joe Jorgensen</Badge>
@@ -68,7 +68,7 @@ const About = () => {
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
 
-            <Nav.Link href=" ">
+            {/* <Nav.Link href=" ">
             {linkedinimg && (
               <img style={{
                   objectFit: "cover",
@@ -86,7 +86,7 @@ const About = () => {
                   width: "40px",
                   height: "40px",
                  }}src={facebook} width={300}/>)}
-          </Nav.Link>
+          </Nav.Link> */}
           </div>
             <br/>
             <Badge className="container" pill bg="badge rounded-pill bg-success">Steven Crass</Badge>
@@ -102,7 +102,7 @@ const About = () => {
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
 
-            <Nav.Link href=" ">
+            {/* <Nav.Link href=" ">
             {linkedinimg && (
               <img style={{
                   objectFit: "cover",
@@ -120,7 +120,7 @@ const About = () => {
                   width: "40px",
                   height: "40px",
                  }}src={facebook} width={300}/>)}
-          </Nav.Link>
+          </Nav.Link> */}
           </div>
             <br/>
 
@@ -147,16 +147,6 @@ const About = () => {
                   width: "40px",
                   height: "40px",
                  }}src={linkedinimg} width={300}/>)}
-          </Nav.Link>
-
-          <Nav.Link href=" ">
-            {facebook && (
-              <img style={{
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                 }}src={facebook} width={300}/>)}
           </Nav.Link>
 
           <Nav.Link href="https://www.youtube.com/channel/UCqr--mhPzgywG7FwIadN2zQ">
