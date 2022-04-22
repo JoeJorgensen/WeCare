@@ -24,11 +24,12 @@ const NewCampaign = () => {
   const [categories, setCategories] = useState([])
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
-  const [goal, setGoal] = useState(0)
+  const [goal, setGoal] = useState(null)
   const [expiration, setExpiration] = useState('')
   const [description, setDescription] = useState('')
   const [currentAmount] = useState(0)
   const [campaign, setCampaign] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     getCategories();
@@ -49,8 +50,8 @@ const NewCampaign = () => {
 
   const renderCategorySelect = () => {
     return (
-      <Form.Select value={category} onChange={(e) => setCategory(e.target.value)} label='Select' aria-label="Select Category">
-        <option hidden>Choose A Category...</option>
+      <Form.Select required value={category} onChange={(e) => setCategory(e.target.value)} label='Select' aria-label="Select Category" >
+        <option hidden></option>
         {categories.map((c) => (
           <option key={c.id} value={c.id}>{c.name}</option>
         ))}
@@ -72,6 +73,7 @@ const NewCampaign = () => {
       let res = await axios.post('/api/campaigns', data)
       setCampaign(res.data)
       console.log(campaign)
+      navigate('/feed')
     } catch (error) {
       alert('error occurred adding your new campaign')
       console.log(error)
@@ -87,6 +89,7 @@ const NewCampaign = () => {
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <FilePond
+              required
               allowImageCrop={true}
               allowImageTransform={true}
               imageCropAspectRatio={"1:1"}
@@ -100,7 +103,7 @@ const NewCampaign = () => {
             <h5>Fundraising Details</h5>
             <Form.Group>
               <Form.Label>Title</Form.Label>
-              <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Enter title" />
+              <Form.Control required value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Enter title" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Category</Form.Label>
@@ -108,15 +111,15 @@ const NewCampaign = () => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Goal</Form.Label>
-              <Form.Control value={goal} onChange={(e) => setGoal(e.target.value)} type="text" placeholder="Enter required amount" />
+              <Form.Control required value={goal} onChange={(e) => setGoal(e.target.value)} type="text" placeholder="Enter required amount" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Donation Expiration Date</Form.Label>
-              <Form.Control value={expiration} onChange={(e) => setExpiration(e.target.value)} type="date" name="Expiration" placeholder="Donation Expiration" />
+              <Form.Control required value={expiration} onChange={(e) => setExpiration(e.target.value)} type="date" name="Expiration" placeholder="Donation Expiration" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Description</Form.Label>
-              <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} as="textarea" rows={3} />
+              <Form.Control required value={description} onChange={(e) => setDescription(e.target.value)} as="textarea" rows={3} />
             </Form.Group>
             <hr />
             <Form.Group>
