@@ -1,17 +1,17 @@
 import axios from "axios";
-import useAxios from "axios-hooks";
 import { useEffect, useState } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import AxiosContainer from "../providers/AxiosContainer";
-import StringifyJSON from "../providers/StringifyJSON";
-import Card1 from "../providers/Card";
+import React from 'react';
+import CampaignCard from './Styling/CampaignCard';
+
+
+
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
   const navigate = useNavigate();
-  // const [{ data: campaigns, loading, error }, refetch] =
-  //   useAxios("/api/campaigns");
+
 
   useEffect(() => {
     getCampaigns();
@@ -24,11 +24,41 @@ const Campaigns = () => {
     } catch (error) {
       alert("error occurred getting campaign data");
     }
+
   };
+
+  function styledCards() {
+    return (
+
+      <>
+          {campaigns.map((c) => (
+            <CampaignCard
+              onClick={ () => navigate(`/campaign_show/${c.id}`)}
+              key={c.id}
+              hexa={'#1DB95F'}
+              title={c.name}
+              description={c.description}
+              current_amount={c.current_amount}
+              goal={c.goal}
+              image={c.image }
+              
+            />
+          ))}
+
+
+      </>
+
+    );
+  }
+
 
   const renderData = () => {
     return campaigns.map((c) => {
       return (
+
+        
+
+
         // <Card1 key={c.id} style={{ margin: "15px", alignContent: "center" }}>
         <Card
           className="campaignCards"
@@ -97,8 +127,11 @@ const Campaigns = () => {
         gap: "30px ",
       }}
     >
+
       {/* {JSON.stringify(campaigns)} */}
-      {renderData()}
+      {/* {renderData()} */}
+      {styledCards()}
+      
     </div>
   );
 };

@@ -30,9 +30,10 @@ import NewCampaign from "./components/auth/NewCampaign";
 
 function App() {
   return (
-    <div>
+    <div >
+     
       <NavBar />
-
+      <body style={{padding:'10px'}}>
       <FetchUser>
         <>
           <Routes>
@@ -61,6 +62,7 @@ function App() {
           </Routes>
         </>
       </FetchUser>
+      </body>
     </div>
   );
 }

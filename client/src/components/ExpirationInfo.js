@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 import Card1 from "../providers/Card";
+import CampaignCard from "./Styling/CampaignCard";
 
 const Expirations = () => {
   const [expiration, setExpiration] = useState([]);
@@ -26,6 +27,30 @@ const Expirations = () => {
       alert("error occurred getting campaign data");
     }
   };
+
+  function styledCards() {
+    return (
+
+      <>
+          {expiration.map((e) => (
+            <CampaignCard
+              onClick={ () => navigate(`/campaign_show/${e.id}`)}
+              key={e.id}
+              hexa={'#1DB95F'}
+              title={e.name}
+              description={e.description}
+              current_amount={e.current_amount}
+              goal={e.goal}
+              image={e.image }
+              
+            />
+          ))}
+
+
+      </>
+
+    );
+  }
 
   const renderData = () => {
     return expiration.map((c) => {
@@ -99,7 +124,8 @@ const Expirations = () => {
       }}
     >
       {/* {JSON.stringify(campaigns)} */}
-      {renderData()}
+      {/* {renderData()} */}
+      {styledCards()}
     </div>
   );
 };

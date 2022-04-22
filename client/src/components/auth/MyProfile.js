@@ -115,10 +115,13 @@ function MyProfile() {
             <h1>Update Profile</h1>
           </Badge>
           <br />
-          <br />
+          <br /> 
+          
+          <h5 >
           <Badge>
-            <p style={{ marginBottom: "0px" }}>Name</p>
+           Name
           </Badge>
+          </h5>
           <br />
           <br />
 
@@ -132,9 +135,12 @@ function MyProfile() {
           <br />
           <br />
 
+         <h5 >
           <Badge>
-            <p style={{ marginBottom: '0px' }}>Bio</p>
+           Bio
           </Badge>
+          </h5>
+
           <br />
           <br />
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

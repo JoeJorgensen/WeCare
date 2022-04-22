@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { ThemeProvider } from 'styled-components';
+import { Normalize } from 'styled-normalize';
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "antd/dist/antd.css";
 import AuthProvider from "./providers/AuthProvider";
@@ -14,6 +17,8 @@ initMiddleware();
 ReactDOM.render(
   <BrowserRouter>
     <AuthProvider>
+    <Normalize />
+
       <App />
     </AuthProvider>
   </BrowserRouter>,

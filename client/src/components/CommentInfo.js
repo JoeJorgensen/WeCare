@@ -24,6 +24,7 @@ const Comments = () => {
     }
   };
 
+  
   const renderData = () => {
     return comments.map((c) => {
       return (

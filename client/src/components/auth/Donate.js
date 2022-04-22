@@ -15,7 +15,7 @@ import {
 
 function Donate() {
   const params = useParams();
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [campaignAmount, setCampaignAmount] = useState('')
   const [amount, setAmount] = useState('');
@@ -27,6 +27,7 @@ function Donate() {
 
   useEffect(() => {
     getCampaignInfo()
+
   }, []);
 
   const donateSuccess = () => {
@@ -93,7 +94,8 @@ function Donate() {
       let res1 = await axios.put(`/api/users/${user.id}`, {
         balance: user.balance - amount,
       });
-      let res2 = await axios.put(`/api/campaigns/${params.id}`, { current_amount: campaignAmount.current_amount + parseInt(amount) });
+      setUser(res1.data)
+      let res2 = await axios.put(`/api/campaigns/${params.id}`, {current_amount: campaignAmount.current_amount + parseInt(amount) } );
       console.log("campaign amount after donation:", campaignAmount.current_amount);
 
       console.log("userBalance after donation:", user.balance);
