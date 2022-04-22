@@ -22,13 +22,17 @@ const Register = () => {
     navigate('/feed')
   };
   return (
-    <Card>
+    <Card >
       <div className="head">
         <h1 className="heading">Register</h1>
         <br />
         <Form onSubmit={handleSubmit} className="container">
+<<<<<<< HEAD
           <div className="mainbox">
           <div className="form-outline mb-4">
+=======
+          {/* <div className=" mainbox2 form-outline mb-4">
+>>>>>>> 1efb106c78b6caac76eeafa8133cf966efeca3bd
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -37,8 +41,13 @@ const Register = () => {
               className="form-control"
               placeholder="Name"
             />
+<<<<<<< HEAD
           </div>
           <div className="form-outline mb-4">
+=======
+          </div> */}
+          <div className="mainbox2">
+>>>>>>> 1efb106c78b6caac76eeafa8133cf966efeca3bd
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -49,7 +58,13 @@ const Register = () => {
             />
           </div>
 
+<<<<<<< HEAD
           <div className="form-outline mb-4">
+=======
+          <br />
+          
+          <div className="mainbox2">
+>>>>>>> 1efb106c78b6caac76eeafa8133cf966efeca3bd
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -81,3 +96,14 @@ const Register = () => {
   );
 };
 export default Register;
+
+
+
+
+
+
+
+
+
+
+

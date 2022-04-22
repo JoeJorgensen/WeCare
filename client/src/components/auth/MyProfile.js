@@ -24,11 +24,14 @@ function MyProfile() {
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
 
+   
   const handleUpdate = (files) => {
     setFiles(files);
   };
 
+
   const handleImage = async (e) => {
+    
     let data = new FormData();
     data.append("fileYO", files[0].file);
     data.append("name", name);
@@ -107,7 +110,6 @@ function MyProfile() {
           
 
        
-        {!user.balance && <p>You broke</p>}
       </div>
       <br/>
       <br/>

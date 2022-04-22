@@ -27,6 +27,7 @@ const NavBar = () => {
             
             </Nav> */}
           <Nav.Link href="/my_profile">
+            Profile {''}
             {user.image && (
               <img style={{
                   objectFit: "cover",

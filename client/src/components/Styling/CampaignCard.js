@@ -31,6 +31,36 @@ const Screenshot = styled.figure`
   }
 `;
 
+
+const Profile_image = styled.figure`
+z-index: 200;
+position: relative;
+margin: 0;
+padding: 0;
+objectFit: "cover"; 
+width: "50px";
+height: "50px";
+margin: "7px";
+background: url(${(props) => props.image }) 0 0 no-repeat;
+borderRadius: "50%";
+overflow: hidden;
+backface-visibility: hidden;
+transition: ${transition};
+
+&::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: ${transition};
+}
+`;
+
+
+
 const Content = styled.div`
   z-index: 200;
   position: relative;
@@ -130,13 +160,26 @@ const Style = styled.button`
         background: rgba(0, 0, 0, 0.1);
       }
     }
+
+    ${Profile_image} {
+        transform: translateY(4px) scale(0.92);
+        border-radius: ${borderRadius - 2}px;
+  
+        &::before {
+          background: rgba(0, 0, 0, 0.1);
+        }
+      }
   }
 `;
 
-const CampaignCard = ({ hexa, title, description, image, current_amount , goal, onClick}) => (
+const CampaignCard = ({ hexa, title, description, image, profile_image, current_amount , goal, onClick}) => (
   <Style onClick={onClick}>
     <Screenshot 
     image={image} />
+
+    <Profile_image 
+    profile_image={profile_image} />
+
     <Content>
       <Title>{title}</Title>
       <Description>{description}</Description>
