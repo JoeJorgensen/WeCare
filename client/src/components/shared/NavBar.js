@@ -28,17 +28,13 @@ const NavBar = () => {
             </Nav> */}
           <Nav.Link href="/my_profile">
             {user.image && (
-              <img
-                style={{
+              <img style={{
                   objectFit: "cover",
                   borderRadius: "50%",
                   width: "40px",
                   height: "40px",
                 }}
-                src={user.image}
-                width={300}
-              />
-            )}
+                src={user.image} width={300}/>)}
           </Nav.Link>
         </div>
       );
@@ -86,20 +82,13 @@ const NavBar = () => {
               {/* <Nav.Link href="/home">Home</Nav.Link> */}
               <Nav.Link href="/feed">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
-
-              <NavDropdown
-                bg="dark"
-                variant="dark"
-                title="Fundraising"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/new_campaign">
+              <Nav.Link href="/new_campaign">
                   New Campaign
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/my_donations">
+                </Nav.Link>
+                <Nav.Link href="/my_donations">
                   My Donations
-                </NavDropdown.Item>
-              </NavDropdown>
+                </Nav.Link>
+
               {renderLeftNav()}
               
 
