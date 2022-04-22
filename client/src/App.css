@@ -39,7 +39,9 @@
 
 .landingPage {
   position: relative;
-  text-align: center;
+  display: inline;
+  align-items: center;
+  justify-content: space-evenly;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -48,6 +50,9 @@
   top: 60%;
   left: 45%;
   transform: translate(-50%, -50%);
+  /* margin-right: 10px; */
+
+
   cursor: pointer;
 }
 
@@ -56,6 +61,8 @@
   top: 60%;
   left: 55%;
   transform: translate(-50%, -50%);
+margin-left: 10px;
+
   cursor: pointer;
 }
 

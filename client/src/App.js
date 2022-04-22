@@ -33,7 +33,7 @@ function App() {
     <div >
      
       <NavBar />
-      <body style={{padding:'10px'}}>
+
       <FetchUser>
         <>
           <Routes>
@@ -62,7 +62,7 @@ function App() {
           </Routes>
         </>
       </FetchUser>
-      </body>
+
     </div>
   );
 }

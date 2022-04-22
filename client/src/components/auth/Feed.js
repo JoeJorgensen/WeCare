@@ -8,7 +8,7 @@ import ExpirationInfo from "../ExpirationInfo";
 const Feed = () => {
   return (
     <Card>
-      <h2>
+      {/* <h2>
         <Badge pill bg='success' >
           Wallet Balance
         </Badge>
@@ -19,10 +19,10 @@ const Feed = () => {
         <Badge pill bg="info">
           <WalletBalance />
         </Badge>
-      </h2>
+      </h2> */}
     <br/>
         <h2>
-          <Badge pill bg="danger">
+          <Badge pill  bg='dark'>
             Urgent Fundraising
           </Badge>
         </h2>
@@ -34,7 +34,7 @@ const Feed = () => {
 
         <hr></hr>
         <h2>
-          <Badge pill bg="success">
+          <Badge pill bg="dark">
             Coming to an end
           </Badge>
         </h2>
@@ -45,7 +45,7 @@ const Feed = () => {
 
       <hr></hr>
       <h2>
-        <Badge pill>Prayers from Good People</Badge>
+        <Badge pill bg='dark'>Prayers from Good People</Badge>
       </h2>
       <br />
       <CommentInfo />

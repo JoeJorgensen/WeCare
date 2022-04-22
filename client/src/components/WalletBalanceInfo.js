@@ -14,11 +14,11 @@ const WalletBalance = () => {
 
     if (auth.user) {
       return (
-        <div>
+        <>
 
         ${auth.user.balance} 
 
-        </div> 
+        </> 
       )
     }
     return (

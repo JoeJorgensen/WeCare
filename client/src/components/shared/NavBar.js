@@ -9,6 +9,7 @@ import Container from "react-bootstrap/Container";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Button from "react-bootstrap/esm/Button";
+import WalletBalance from "../WalletBalanceInfo";
 
 const NavBar = () => {
   const auth = useContext(AuthContext);
@@ -16,7 +17,15 @@ const NavBar = () => {
   const renderRightNav = () => {
     if (auth.user) {
       return (
-        <div style={{ alignItems: "center" }} className="navbar-nav">
+        <div style={{display:'flex', alignItems: "center" }} className="navbar-nav">
+            {/* <Nav bg="dark" variant='dark'>
+              
+              Wallet Balance:
+
+             <WalletBalance />
+              
+            
+            </Nav> */}
           <Nav.Link href="/my_profile">
             {user.image && (
               <img
@@ -36,7 +45,6 @@ const NavBar = () => {
     }
     return (
       <>
-        <Badge></Badge>
       </>
     );
   };
@@ -93,10 +101,19 @@ const NavBar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               {renderLeftNav()}
-            </Nav>
+              
+
+             
+            
+
+            </Nav> 
+           
             {renderRightNav()}
-          </Navbar.Collapse>
+            
+          </Navbar.Collapse> 
+
         </Container>
+       
       </Navbar>
   );
 };

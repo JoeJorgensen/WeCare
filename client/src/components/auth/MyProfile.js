@@ -13,11 +13,9 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+import AddFunds from "./AddFunds";
 
-registerPlugin(
-  FilePondPluginImageExifOrientation,
-  FilePondPluginImagePreview
-);
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 function MyProfile() {
   const { user, setUser } = useContext(AuthContext);
@@ -64,7 +62,7 @@ function MyProfile() {
   };
 
   return (
-    <div className="App">
+    <Card>
       <br />
       <br />
 
@@ -76,7 +74,7 @@ function MyProfile() {
       {user.image && (
         <img
           style={{
-            objectFit: 'cover',
+            objectFit: "cover",
             borderRadius: "50%",
             width: "200px",
             height: "200px",
@@ -88,26 +86,40 @@ function MyProfile() {
       <br />
       <br />
 
-
       <Badge pill>
         <h5>{user.name ? user.name : <p>no name</p>}</h5>
       </Badge>
+      <hr></hr>
       <br />
       <br />
-      <h5>
-        <Badge pill>
-          Wallet Balance:
-        </Badge>
-        <br />
-        ${user.balance}
-      </h5>
-      {!user.balance && <p>You broke</p>}
+
+      <div style={{ display: "inline-flex", alignItems:'center' }}>
+        <h5 style={{margin:'5px'}}>
+          <Badge pill>Wallet Balance</Badge>
+          </h5>
+
+          <div style={{
+            border:'1px ',
+            borderRadius:'3px'
+          }}>
+            ${user.balance}
+          </div>
+          
+
+       
+        {!user.balance && <p>You broke</p>}
+      </div>
+      <br/>
+      <br/>
+
+      <AddFunds />
+      <hr></hr>
+
       <br />
       <br />
       <Badge pill>
         <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
       </Badge>
-
 
       <Card>
         <form onSubmit={handleProfileSubmit}>
@@ -115,12 +127,10 @@ function MyProfile() {
             <h1>Update Profile</h1>
           </Badge>
           <br />
-          <br /> 
-          
-          <h5 >
-          <Badge>
-           Name
-          </Badge>
+          <br />
+
+          <h5>
+            <Badge>Name</Badge>
           </h5>
           <br />
           <br />
@@ -135,19 +145,20 @@ function MyProfile() {
           <br />
           <br />
 
-         <h5 >
-          <Badge>
-           Bio
-          </Badge>
+          <h5>
+            <Badge>Bio</Badge>
           </h5>
 
           <br />
           <br />
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <textarea as="textarea" rows={3}
+            <textarea
+              as="textarea"
+              rows={3}
               value={bio}
-              placeholder='About user...'
-              onChange={(e) => setBio(e.target.value)} />
+              placeholder="About user..."
+              onChange={(e) => setBio(e.target.value)}
+            />
           </Form.Group>
 
           <Badge>
@@ -169,7 +180,7 @@ function MyProfile() {
         </form>
       </Card>
       <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
-    </div>
+    </Card>
   );
 }
 
