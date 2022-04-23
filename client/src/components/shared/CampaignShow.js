@@ -19,6 +19,7 @@ const CampaignShow = () => {
     getCampaign();
     getUpdates();
     getDonations();
+    // campaign
   }, []);
 
   const copyURL = () => {

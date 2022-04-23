@@ -42,8 +42,43 @@ const Braintree = (props) => {
     let resX = await axios.get(`/api/campaigns/${params.id}`)
       setCampaignAmount(resX.data)
 }
+const insufficientFunds = () => {
+   if(amount <= 0 ) {
+    return (
+      <>
+        <Button variant="success"  disabled>
+          Add Amount
+        </Button>
+      </>
+    );
+  }; 
+
+    return (
+      <BraintreeSubmitButton/>
+    )
+};
 
   const BraintreeSubmitButton = ({ onClick, isDisabled, text }) => {
+    if(amount <= 0 ) {
+      return (
+
+         <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="outline-danger"
+          onClick={handleClose}
+          style={{ margin: "4px" }}
+        >
+          Close
+        </Button>
+          <Button 
+           style={{ margin: "4px" }}
+          variant="success"  
+          disabled>
+            Add Amount
+          </Button>
+        </div>
+      );
+    }; 
     return (
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
@@ -117,7 +152,9 @@ const Braintree = (props) => {
       alert("error adding donation");
     } finally {
       handleClose();
+      document.location.reload()
       window.scrollTo(0, 0);
+
     }
   };
 

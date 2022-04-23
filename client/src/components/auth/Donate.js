@@ -10,49 +10,72 @@ import {
   FormControl,
   InputGroup,
   Modal,
+  OverlayTrigger,
+  Popover,
 } from "react-bootstrap";
-
 
 function Donate() {
   const params = useParams();
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
-  const [campaignAmount, setCampaignAmount] = useState('')
-  const [amount, setAmount] = useState('');
+  const [campaignAmount, setCampaignAmount] = useState("");
+  const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    getCampaignInfo()
-
+    getCampaignInfo();
   }, []);
+
+  const insufficientFunds = () => {
+    if (amount > user.balance) {
+      return (
+        <>
+          <Button variant="success" onClick={handleSubmit} disabled>
+            Insufficient Funds
+          </Button>
+        </>
+      );
+    } else if (amount == 0) {
+      return (
+        <>
+          <Button variant="success" onClick={handleSubmit} disabled>
+            Add Amount
+          </Button>
+        </>
+      );
+    }
+
+    return (
+      <Button variant="success" onClick={handleSubmit}>
+        Submit
+      </Button>
+    );
+  };
 
   const donateSuccess = () => {
     return (
-
-        <Alert show={show} variant="success">
-          <Alert.Heading>Success!</Alert.Heading>
-          <p> Thanks for your support!</p>
-          <hr />
-          <div className="d-flex justify-content-end">
-            <Button onClick={() => setShow(false)} variant="outline-success">
-              Close
-            </Button>
-          </div>
-        </Alert>
+      <Alert show={show} variant="success">
+        <Alert.Heading>Success!</Alert.Heading>
+        <p> Thanks for your support!</p>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant="outline-success">
+            Close
+          </Button>
+        </div>
+      </Alert>
     );
-
-  }
-
-
+  };
 
   const getCampaignInfo = async () => {
-    let resX = await axios.get(`/api/campaigns/${params.id}`)
-    setCampaignAmount(resX.data)
-  }
+    let resX = await axios.get(`/api/campaigns/${params.id}`);
+    setCampaignAmount(resX.data);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,7 +104,10 @@ function Donate() {
       console.log("User balance before donation:", user.balance);
       console.log("campaign_id:", params.id);
       console.log("campaign amount 1:", campaignAmount.current_amount);
-      console.log("NEW CAMPAIGN AMOUNT:", campaignAmount.current_amount + amount);
+      console.log(
+        "NEW CAMPAIGN AMOUNT:",
+        campaignAmount.current_amount + amount
+      );
 
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
@@ -89,13 +115,17 @@ function Donate() {
       );
       console.log(res.data);
 
-
       let res1 = await axios.put(`/api/users/${user.id}`, {
-        balance: user.balance - amount,
+        balance: Math.max(0, (user.balance -= amount)),
       });
-      setUser(res1.data)
-      let res2 = await axios.put(`/api/campaigns/${params.id}`, {current_amount: campaignAmount.current_amount + parseInt(amount) } );
-      console.log("campaign amount after donation:", campaignAmount.current_amount);
+      setUser(res1.data);
+      let res2 = await axios.put(`/api/campaigns/${params.id}`, {
+        current_amount: (campaignAmount.current_amount += parseInt(amount)),
+      });
+      console.log(
+        "campaign amount after donation:",
+        campaignAmount.current_amount
+      );
 
       console.log("userBalance after donation:", user.balance);
       console.log(res1.data);
@@ -106,22 +136,21 @@ function Donate() {
     } finally {
       handleClose();
       window.scrollTo(0, 0);
-      donateSuccess()
+      document.location.reload()
+      donateSuccess();
     }
   };
 
   return (
     <>
       <Button variant="outline-success" onClick={handleShow}>
-        Donate 
+        Donate
       </Button>
-
 
       <Form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Pay with wallet</Modal.Title>
-            
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -136,14 +165,12 @@ function Donate() {
                   <FormControl
                     value={amount}
                     required
-                    placeholder="200"
+                    placeholder="ex. 200"
                     onChange={(e) => setAmount(e.target.value)}
                     aria-label="Amount (to the nearest dollar)"
                   />
                   <InputGroup.Text>.00</InputGroup.Text>
                 </InputGroup>
-
-
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -165,17 +192,15 @@ function Donate() {
                   onChange={(e) => setAnonymous(true)}
                 />
               </Form.Group>
-
-
-
             </Form>
           </Modal.Body>
           <Modal.Footer>
             <Braintree />
+
             <Button variant="outline-danger" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="success" onClick={handleSubmit}>Submit</Button>
+            {insufficientFunds()}
           </Modal.Footer>
         </Modal>
       </Form>
