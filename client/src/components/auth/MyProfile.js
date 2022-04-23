@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FilePond, registerPlugin } from "react-filepond";
 import { AuthContext } from "../../providers/AuthProvider";
 import Nav from "react-bootstrap/Nav";
@@ -20,15 +20,25 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 function MyProfile() {
   const { user, setUser } = useContext(AuthContext);
   const auth = useContext(AuthContext);
-  const [files, setFiles] = useState();
+  const [files, setFiles] = useState([]);
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
 
+  useEffect(()=>{
+    getUserInfo()
+  },[])
    
   const handleUpdate = (files) => {
     setFiles(files);
   };
 
+
+
+  const getUserInfo= async()=>{
+
+    let res = await axios.get(`/api/users/${user.id}`)
+    setUser(res.data)
+  }
 
   const handleImage = async (e) => {
     
@@ -155,9 +165,9 @@ function MyProfile() {
           <br />
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <textarea
+              value={bio}
               as="textarea"
               rows={3}
-              value={bio}
               placeholder="About user..."
               onChange={(e) => setBio(e.target.value)}
             />
@@ -170,6 +180,7 @@ function MyProfile() {
           <br />
 
           <FilePond
+              
             allowImageCrop={true}
             allowImageTransform={true}
             imageCropAspectRatio={"1:1"}

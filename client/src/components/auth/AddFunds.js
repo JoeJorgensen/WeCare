@@ -36,6 +36,26 @@ const AddFunds = (props) => {
 
 
   const BraintreeSubmitButton = ({ onClick, isDisabled, text }) => {
+    if(amount < 1 ) {
+      return (
+
+         <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="outline-danger"
+          onClick={handleClose}
+          style={{ margin: "4px" }}
+        >
+          Close
+        </Button>
+          <Button 
+           style={{ margin: "4px" }}
+          variant="success"  
+          disabled>
+            Add Amount
+          </Button>
+        </div>
+      );
+    }; 
     return (
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
@@ -57,7 +77,6 @@ const AddFunds = (props) => {
       </div>
     );
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

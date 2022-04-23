@@ -3,6 +3,7 @@ import { parsePath, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Form, Button } from "react-bootstrap";
 import Card from "../../providers/Card";
+import axios from "axios";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -13,11 +14,9 @@ const Register = () => {
   // not need but nice for UX
   // const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // with devise_token_auth
-    // email must be 'valid' email and unique
-    // password must be greater than = 6 chars in length
+     
     auth.handleRegister({ email, password, name });
     navigate('/feed')
   };
