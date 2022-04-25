@@ -40,11 +40,11 @@ function Donate() {
           </Button>
         </>
       );
-    } else if (amount == 0) {
+    } else if (amount <= 0) {
       return (
         <>
           <Button variant="success" onClick={handleSubmit} disabled>
-            Add Amount
+            Add greater than 0
           </Button>
         </>
       );
