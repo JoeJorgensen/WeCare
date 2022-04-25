@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
      
     auth.handleRegister({ email, password, name });
-    navigate('/feed')
+    navigate('/')
   };
   return (
     <Card >

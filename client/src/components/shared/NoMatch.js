@@ -7,7 +7,7 @@ const NoMatch = () => (
     <Alert variant="danger" dismissible>
       <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
       <p>
-        Page not found.... Return <Link to="/feed"> Home</Link>{" "}
+        Page not found.... Return <Link to="/"> Home</Link>{" "}
       </p>
     </Alert>
   </Card>

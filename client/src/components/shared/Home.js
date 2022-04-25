@@ -16,7 +16,7 @@ const Home = () => {
 
   const renderHome = () => {
     if (auth.user) {
-      return navigate("/feed")
+      return navigate("")
   
     }
     return (
