@@ -52,7 +52,7 @@ const CampaignShow = () => {
               onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
               key={c.id}
               hexa={'#1DB95F'}
-              title={c.username}
+              title={c.name}
                 
               date={DateTime.fromISO(c.created_at).toFormat('DD')}
               current_amount={c.amount}
@@ -60,7 +60,7 @@ const CampaignShow = () => {
               description={c.comment}
               image={c.image}
               
-              
+
             />
           ))}
 
