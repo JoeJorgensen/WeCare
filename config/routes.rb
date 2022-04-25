@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get '/expiration_over_50', to: 'campaigns#campaign_expiration_over_50'
       get '/user_donations', to:'donations#user_donations'
       get '/user_with_campaigns', to: 'donations#user_with_campaigns'
+      get '/user_campaign_updates', to: 'users#campaign_updates'
   end
   get '*other', to: 'static#index'
 end
