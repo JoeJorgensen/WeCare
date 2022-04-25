@@ -1,5 +1,3 @@
-
-   
 import Card from "../../providers/Card";
 import useAxios from "axios-hooks";
 import AxiosContainer from "../../providers/AxiosContainer";
@@ -10,31 +8,23 @@ import CommentInfo from "../CommentInfo";
 import { Badge } from "react-bootstrap";
 import people from "../shared/Images/We-CareImg.jpg";
 import { useNavigate } from "react-router-dom";
+import LandingPageImg from "./LandingPageImg";
 
 const LandingPage = () => {
   const nav = useNavigate();
   return (
     <div>
-      <div className="landingPage">
-        <img src={people} className="landingImage" alt="logo"></img>
-
-        <Badge pill bg="success" className="landingPageText">
-          <h2 onClick={() => nav("/login")}>Login</h2>
-        </Badge>
-        <Badge pill bg="success" className="landingPageText2">
-          <h2 onClick={() => nav("/register")}>Register</h2>
-        </Badge>
+      <div>
+        <LandingPageImg />
       </div>
       <Card>
         <div>
-          
-
           <br />
 
           <br />
 
           <h2>
-            <Badge bg="dark">Urgent Fundraising</Badge>
+            <Badge bg="primary">Urgent Fundraising</Badge>
           </h2>
           <br />
 
@@ -52,9 +42,9 @@ const LandingPage = () => {
 
           <hr></hr>
           <h2>
-          <Badge bg="dark">Prayers from good people</Badge>
+            <Badge bg="dark">Prayers from good people</Badge>
           </h2>
-          <br/>
+          <br />
           <CommentInfo />
         </div>
       </Card>

@@ -73,7 +73,7 @@ const NewCampaign = () => {
       let res = await axios.post('/api/campaigns', data)
       setCampaign(res.data)
       console.log(campaign)
-      navigate('/feed')
+      navigate('/')
     } catch (error) {
       alert('error occurred adding your new campaign')
       console.log(error)
