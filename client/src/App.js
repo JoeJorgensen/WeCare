@@ -40,9 +40,9 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/troubleshoot" element={<TroubleShoot />} />
-            <Route path="/feed" element={<Feed />} />
+            {/* <Route path="/feed" element={<Feed />} /> */}
             <Route path="/about" element={<About />} />
             <Route path="/campaign_show/:id" element={<CampaignShow />} />
             <Route path="/categories" element={<Categories />} />

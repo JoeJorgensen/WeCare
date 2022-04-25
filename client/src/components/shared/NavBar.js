@@ -70,7 +70,7 @@ const NavBar = () => {
         <Container fluid>
           <Navbar.Brand
             style={{ color: "#1DB95F", fontWeight: "bold" }}
-            href="/feed"
+            href="/"
           >
             WeCare
           </Navbar.Brand>
@@ -81,7 +81,7 @@ const NavBar = () => {
           >
             <Nav>
               {/* <Nav.Link href="/home">Home</Nav.Link> */}
-              <Nav.Link href="/feed">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/new_campaign">
                   New Campaign

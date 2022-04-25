@@ -20,6 +20,8 @@ const Feed = () => {
           <WalletBalance />
         </Badge>
       </h2> */}
+
+      <WalletBalance />
       <br />
       <h2>
         <Badge pill bg="dark">
