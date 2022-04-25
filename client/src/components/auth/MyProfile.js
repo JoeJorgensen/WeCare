@@ -24,24 +24,20 @@ function MyProfile() {
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
 
-  useEffect(()=>{
-    getUserInfo()
-  },[])
-   
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
   const handleUpdate = (files) => {
     setFiles(files);
   };
 
-
-
-  const getUserInfo= async()=>{
-
-    let res = await axios.get(`/api/users/${user.id}`)
-    setUser(res.data)
-  }
+  const getUserInfo = async () => {
+    let res = await axios.get(`/api/users/${user.id}`);
+    setUser(res.data);
+  };
 
   const handleImage = async (e) => {
-    
     let data = new FormData();
     data.append("fileYO", files[0].file);
     data.append("name", name);
@@ -106,23 +102,22 @@ function MyProfile() {
       <br />
       <br />
 
-      <div style={{ display: "inline-flex", alignItems:'center' }}>
-        <h5 style={{margin:'5px'}}>
+      <div style={{ display: "inline-flex", alignItems: "center" }}>
+        <h5 style={{ margin: "5px" }}>
           <Badge pill>Wallet Balance</Badge>
-          </h5>
+        </h5>
 
-          <div style={{
-            border:'1px ',
-            borderRadius:'3px'
-          }}>
-            ${user.balance}
-          </div>
-          
-
-       
+        <div
+          style={{
+            border: "1px ",
+            borderRadius: "3px",
+          }}
+        >
+          ${user.balance}
+        </div>
       </div>
-      <br/>
-      <br/>
+      <br />
+      <br />
 
       <AddFunds />
       <hr></hr>
@@ -180,7 +175,6 @@ function MyProfile() {
           <br />
 
           <FilePond
-              
             allowImageCrop={true}
             allowImageTransform={true}
             imageCropAspectRatio={"1:1"}
@@ -192,7 +186,6 @@ function MyProfile() {
           <Button type="submit">Update Profile</Button>
         </form>
       </Card>
-      <Nav.Link onClick={auth.handleLogout}>Logout</Nav.Link>
     </Card>
   );
 }

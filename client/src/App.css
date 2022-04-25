@@ -50,8 +50,8 @@
   top: 60%;
   left: 45%;
   transform: translate(-50%, -50%);
-  /* margin-right: 10px; */
 
+  /* margin-right: 10px; */
 
   cursor: pointer;
 }
@@ -61,7 +61,7 @@
   top: 60%;
   left: 55%;
   transform: translate(-50%, -50%);
-margin-left: 10px;
+  margin-left: 10px;
 
   cursor: pointer;
 }
@@ -104,4 +104,28 @@ margin-left: 10px;
 .commentCards:hover {
   cursor: pointer;
   filter: brightness(93%);
+}
+
+.footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: black;
+  position: bottom;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 17vh;
+  color: white;
+}
+
+.footerPNG {
+  display: inline-flex;
+  height: 35px;
+  cursor: pointer;
+  align-content: end;
+}
+
+.footerPngAlignment {
+  display: flex;
+  justify-content: flex-end;
 }
