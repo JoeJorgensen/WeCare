@@ -20,32 +20,33 @@ const Feed = () => {
           <WalletBalance />
         </Badge>
       </h2> */}
-    <br/>
-        <h2>
-          <Badge pill  bg='dark'>
-            Urgent Fundraising
-          </Badge>
-        </h2>
-        <br />
+      <br />
+      <h2>
+        <Badge pill bg="dark">
+          Urgent Fundraising
+        </Badge>
+      </h2>
+      <br />
 
-        <ExpirationInfo />
-        <br />
-        <br />
+      <ExpirationInfo />
+      <br />
+      <br />
 
-        <hr></hr>
-        <h2>
-          <Badge pill bg="dark">
-            Coming to an end
-          </Badge>
-        </h2>
-        <br />
-
+      <hr></hr>
+      <h2>
+        <Badge pill bg="dark">
+          Coming to an end
+        </Badge>
+      </h2>
+      <br />
 
       <CampaignInfo />
 
       <hr></hr>
       <h2>
-        <Badge pill bg='dark'>Prayers from Good People</Badge>
+        <Badge pill bg="dark">
+          Prayers from Good People
+        </Badge>
       </h2>
       <br />
       <CommentInfo />

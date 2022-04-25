@@ -1,5 +1,3 @@
-
-   
 import Card from "../../providers/Card";
 import useAxios from "axios-hooks";
 import AxiosContainer from "../../providers/AxiosContainer";
@@ -27,8 +25,6 @@ const LandingPage = () => {
       </div>
       <Card>
         <div>
-          
-
           <br />
 
           <br />
@@ -52,9 +48,9 @@ const LandingPage = () => {
 
           <hr></hr>
           <h2>
-          <Badge bg="dark">Prayers from good people</Badge>
+            <Badge bg="dark">Prayers from good people</Badge>
           </h2>
-          <br/>
+          <br />
           <CommentInfo />
         </div>
       </Card>
