@@ -148,6 +148,7 @@ const AddFunds = (props) => {
                 <InputGroup.Text>$</InputGroup.Text>
 
                 <FormControl
+                 type='number'
                   value={amount}
                   required
                   placeholder="200"

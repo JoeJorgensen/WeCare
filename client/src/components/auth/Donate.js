@@ -163,6 +163,7 @@ function Donate() {
                   <InputGroup.Text>$</InputGroup.Text>
 
                   <FormControl
+                    type='number'
                     value={amount}
                     required
                     placeholder="ex. 200"
