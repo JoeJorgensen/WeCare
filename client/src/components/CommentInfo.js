@@ -1,5 +1,6 @@
 import axios from "axios";
 import useAxios from "axios-hooks";
+import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 import { Badge, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import AxiosContainer from "../providers/AxiosContainer";
 import Card1 from "../providers/Card";
 import StringifyJSON from "../providers/StringifyJSON";
 import CampaignCard from "./Styling/CampaignCard";
+import DonationCard from "./Styling/DonationCard";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
@@ -30,18 +32,29 @@ const Comments = () => {
     }
   };
 
+    const formattedDate = (dateTime) =>{
+    dateTime.toDateString( {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }
+      )
+    }
 
   function styledCards() {
     return (
 
       <>
           {comments.map((c) => (
-            <CampaignCard
+            <DonationCard
               onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
               key={c.id}
-              hexa={'#1DB95F'}
+
               title={c.username}
+                
+              date={DateTime.fromISO(c.created_at).toFormat('DD')}
               current_amount={c.amount}
+              
               description={c.comment}
               image={c.image}
               
@@ -136,8 +149,8 @@ const Comments = () => {
         gap: "30px ",
       }}
     >
-      {renderData()}
-      {/* {styledCards()} */}
+      {/* {renderData()} */}
+      {styledCards()}
     </div>
   );
 };

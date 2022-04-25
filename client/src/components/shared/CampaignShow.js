@@ -6,6 +6,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Badge, Button } from "react-bootstrap";
 import Donate from "../auth/Donate";
 import WalletBalance from "../WalletBalanceInfo";
+import DonationCard from "../Styling/DonationCard";
+import { DateTime } from "luxon";
 
 const CampaignShow = () => {
   const params = useParams();
@@ -40,6 +42,33 @@ const CampaignShow = () => {
       alert("error getting donations");
     }
   };
+
+  function styledDonation() {
+    return (
+
+      <>
+          {donations.map((c) => (
+            <DonationCard
+              onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
+              key={c.id}
+              hexa={'#1DB95F'}
+              title={c.username}
+                
+              date={DateTime.fromISO(c.created_at).toFormat('DD')}
+              current_amount={c.amount}
+              
+              description={c.comment}
+              image={c.image}
+              
+              
+            />
+          ))}
+
+
+      </>
+
+    );
+  }
 
   const renderDonations = () => {
     return donations.map((d) => {
@@ -203,7 +232,7 @@ const CampaignShow = () => {
           gap: "30px ",
         }}
       >
-        {renderDonations()}
+        {styledDonation()}
       </div>
     </Card1>
   );
