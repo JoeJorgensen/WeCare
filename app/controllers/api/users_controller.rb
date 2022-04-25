@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:update_image, :update, :show, :destroy]
+  before_action :authenticate_user!, only: [:update_image, :update, :show, :destroy, :campaign_updates]
   
 
   def index
@@ -63,6 +63,11 @@ class Api::UsersController < ApplicationController
         render json: {errors:current_user.errors.full_messages}, status: 422
     end
   end
+
+  def campaign_updates
+    render json: current_user.campaign_updates
+  end
+
 
   private
 

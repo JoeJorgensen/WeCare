@@ -26,6 +26,7 @@ import Payment from "./components/auth/Payment";
 import Footer from "./components/shared/Footer";
 import LandingPage from "./components/shared/LandingPage";
 import NewCampaign from "./components/auth/NewCampaign";
+import MyCampaigns from "./components/auth/MyCampaigns";
 
 function App() {
   return (
@@ -54,6 +55,8 @@ function App() {
 
               <Route path="/my_profile" element={<MyProfile />} />
               <Route path="/new_campaign" element={<NewCampaign />} />
+              <Route path="/my_campaigns" element={<MyCampaigns />} />
+
             </Route>
 
             <Route path="*" element={<NoMatch />} />

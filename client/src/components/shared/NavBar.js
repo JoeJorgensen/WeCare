@@ -92,6 +92,7 @@ const NavBar = () => {
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/new_campaign">New Campaign</Nav.Link>
             <Nav.Link href="/my_donations">My Donations</Nav.Link>
+            <Nav.Link href="/my_campaigns">My Campaigns</Nav.Link>
 
             {renderLeftNav()}
           </Nav>
