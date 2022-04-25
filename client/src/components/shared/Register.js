@@ -10,69 +10,67 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const auth = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // not need but nice for UX
   // const [confirmPassword, setConfirmPassword] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     
+
     auth.handleRegister({ email, password, name });
-    navigate('/')
+    navigate("/");
   };
   return (
-    <Card >
+    <Card style={{ height: "73vh" }}>
       <div className="head">
         <h1 className="heading">Register</h1>
         <br />
         <Form onSubmit={handleSubmit} className="container">
           <div className="mainbox">
-          <div className="form-outline mb-4">
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              type="name"
-              id="form2Example4"
-              className="form-control"
-              placeholder="Name"
-            />
-          </div>
-          <div className="form-outline mb-4">
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              id="form2Example3"
-              className="form-control"
-              placeholder="Email"
-            />
-          </div>
+            <div className="form-outline mb-4">
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="name"
+                id="form2Example4"
+                className="form-control"
+                placeholder="Name"
+              />
+            </div>
+            <div className="form-outline mb-4">
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                id="form2Example3"
+                className="form-control"
+                placeholder="Email"
+              />
+            </div>
 
-          <div className="form-outline mb-4">
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              type="password"
-              className="form-control"
-            />
-          </div>
+            <div className="form-outline mb-4">
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                type="password"
+                className="form-control"
+              />
+            </div>
 
-          <button
-            type="button"
-            className="signin btn btn-primary btn-block mb-4"
-            onClick={(e) => {
-              handleSubmit(e);
-            }}
-          >
-            Register
-          </button>
-          <div className="col">
-            {/* <!-- Simple link --> */}
-            <a href="/troubleshoot">Having Trouble?</a>
-          </div>
-
-
+            <button
+              type="button"
+              className="signin btn btn-primary btn-block mb-4"
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+            >
+              Register
+            </button>
+            <div className="col">
+              {/* <!-- Simple link --> */}
+              <a href="/troubleshoot">Having Trouble?</a>
+            </div>
           </div>
         </Form>
       </div>
@@ -80,14 +78,3 @@ const Register = () => {
   );
 };
 export default Register;
-
-
-
-
-
-
-
-
-
-
-

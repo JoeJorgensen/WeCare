@@ -15,7 +15,7 @@ const Login = () => {
     auth.handleLogin({ email, password });
   };
   return (
-    <Card>
+    <Card style={{ height: "73vh" }}>
       <div className=" head">
         <h1 className="login">Login</h1>
 

@@ -15,7 +15,6 @@ import NoMatch from "./components/shared/NoMatch";
 import NavBar from "./components/shared/NavBar";
 import FetchUser from "./components/auth/FetchUser";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import Feed from "./components/auth/Feed";
 import MyDonation from "./components/auth/MyDonation";
 import About from "./components/shared/About";
 import MyProfile from "./components/auth/MyProfile";

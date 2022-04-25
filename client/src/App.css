@@ -50,6 +50,7 @@
   top: 60%;
   left: 45%;
   transform: translate(-50%, -50%);
+
   /* margin-right: 10px; */
 
   cursor: pointer;
@@ -109,11 +110,11 @@
   margin-top: 1rem;
   padding: 1rem;
   background-color: black;
-
+  position: bottom;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 15%;
+  height: 17vh;
   color: white;
 }
 

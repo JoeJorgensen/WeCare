@@ -17,8 +17,11 @@ const NavBar = () => {
   const renderRightNav = () => {
     if (auth.user) {
       return (
-        <div style={{display:'flex', alignItems: "center" }} className="navbar-nav">
-            {/* <Nav bg="dark" variant='dark'>
+        <div
+          style={{ display: "flex", alignItems: "center" }}
+          className="navbar-nav"
+        >
+          {/* <Nav bg="dark" variant='dark'>
               
               Wallet Balance:
 
@@ -26,24 +29,32 @@ const NavBar = () => {
               
             
             </Nav> */}
-          <Nav.Link href="/my_profile">
-            Profile {''}
-            {user.image && (
-              <img style={{
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                }}
-                src={user.image} width={300}/>)}
-          </Nav.Link>
+          <NavDropdown
+            drop={"start"}
+            title={
+              user.image && (
+                <img
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                  }}
+                  src={user.image}
+                  width={300}
+                />
+              )
+            }
+          >
+            <NavDropdown.Item href="/my_profile">Edit Profile</NavDropdown.Item>
+            <NavDropdown.Item onClick={auth.handleLogout}>
+              Logout
+            </NavDropdown.Item>
+          </NavDropdown>
         </div>
       );
     }
-    return (
-      <>
-      </>
-    );
+    return <></>;
   };
   const renderLeftNav = () => {
     if (auth.user) {
@@ -59,52 +70,36 @@ const NavBar = () => {
   };
 
   return (
-      <Navbar
-        
-        // bg="dark"
-        style={{backgroundColor:'rgba(0, 0, 0, .8)'}}
-        expand="lg"
-        variant="dark"
-        sticky="top"
-      >
-        <Container fluid>
-          <Navbar.Brand
-            style={{ color: "#1DB95F", fontWeight: "bold" }}
-            href="/"
-          >
-            WeCare
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            style={{ justifyContent: "space-between" }}
-            id="basic-navbar-nav"
-          >
-            <Nav>
-              {/* <Nav.Link href="/home">Home</Nav.Link> */}
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/new_campaign">
-                  New Campaign
-                </Nav.Link>
-                <Nav.Link href="/my_donations">
-                  My Donations
-                </Nav.Link>
+    <Navbar
+      // bg="dark"
+      style={{ backgroundColor: "rgba(0, 0, 0, .8)" }}
+      expand="lg"
+      variant="dark"
+      sticky="top"
+    >
+      <Container fluid>
+        <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} href="/">
+          WeCare
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse
+          style={{ justifyContent: "space-between" }}
+          id="basic-navbar-nav"
+        >
+          <Nav>
+            {/* <Nav.Link href="/home">Home</Nav.Link> */}
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/new_campaign">New Campaign</Nav.Link>
+            <Nav.Link href="/my_donations">My Donations</Nav.Link>
 
-              {renderLeftNav()}
-              
+            {renderLeftNav()}
+          </Nav>
 
-             
-            
-
-            </Nav> 
-           
-            {renderRightNav()}
-            
-          </Navbar.Collapse> 
-
-        </Container>
-       
-      </Navbar>
+          {renderRightNav()}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 export default NavBar;

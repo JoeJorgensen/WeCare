@@ -15,7 +15,7 @@ const LandingPage = () => {
   return (
     <div>
       <div>
-      <LandingPageImg />
+        <LandingPageImg />
       </div>
       <Card>
         <div>
@@ -24,7 +24,7 @@ const LandingPage = () => {
           <br />
 
           <h2>
-            <Badge bg="dark">Urgent Fundraising</Badge>
+            <Badge bg="primary">Urgent Fundraising</Badge>
           </h2>
           <br />
 
