@@ -23,4 +23,12 @@ class User < ActiveRecord::Base
     where campaigns.user_id = ?', self.id])
   end
 
+  def users_campaigns_donated_to
+    User.find_by_sql (['SELECT d.user_id, d.campaign_id, d.id as donation_id, d.amount, c.name, u.name as user_name
+    FROM donations as d
+    INNER JOIN campaigns AS c ON d.campaign_id = c.id
+    INNER JOIN users AS u ON d.user_id = u.id
+    WHERE d.user_id = ?', self.id])
+  end
+
 end

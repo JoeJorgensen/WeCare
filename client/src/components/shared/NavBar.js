@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Button from "react-bootstrap/esm/Button";
 import WalletBalance from "../WalletBalanceInfo";
+import Logo from "./Images/WecareLogo.png";
 
 const NavBar = () => {
   const auth = useContext(AuthContext);
@@ -34,14 +35,11 @@ const NavBar = () => {
             title={
               user.image && (
                 <img
-                
                   style={{
-
                     objectFit: "cover",
                     borderRadius: "50%",
                     width: "40px",
                     height: "40px",
-
                   }}
                   src={user.image}
                   width={300}
@@ -81,6 +79,11 @@ const NavBar = () => {
       sticky="top"
     >
       <Container fluid>
+        <img
+          className="=weCareLogo"
+          src={Logo}
+          style={{ height: "50px" }}
+        ></img>
         <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} href="/">
           WeCare
         </Navbar.Brand>
