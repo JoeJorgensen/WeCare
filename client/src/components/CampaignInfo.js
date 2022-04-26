@@ -33,6 +33,7 @@ const Campaigns = () => {
       <>
           {campaigns.map((c) => (
             <CampaignCard
+              onClick={ () => navigate(`/campaign_show/${c.id}`)}
               key={c.id}
               title={c.name}
               description={c.description}
