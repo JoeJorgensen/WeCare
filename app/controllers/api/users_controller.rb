@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:update_image, :update, :show, :destroy, :campaign_updates, :campaigns_by_user]
+  before_action :set_user, only: [:users_campaigns_donated_to]
   
 
   def index
@@ -72,9 +73,17 @@ class Api::UsersController < ApplicationController
     render json: current_user.updates_by_campaign
   end
 
+  def users_campaigns_donated_to
+    render json: @user.users_campaigns_donated_to
+  end 
+
   private
 
  
+  def set_user
+    puts params[:id]
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :bio, :image, :balance)

@@ -9,15 +9,14 @@ import Card1 from "../providers/Card";
 import StringifyJSON from "../providers/StringifyJSON";
 import CampaignCard from "./Styling/CampaignCard";
 import DonationCard from "./Styling/DonationCard";
+import { Pagination } from "react-bootstrap";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   console.log("Comment Info Being Called:");
   console.log("comments", comments);
-
 
   useEffect(() => {
     getComments();
@@ -32,70 +31,56 @@ const Comments = () => {
     }
   };
 
-    const formattedDate = (dateTime) =>{
-    dateTime.toDateString( {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      }
-      )
-    }
+  const formattedDate = (dateTime) => {
+    dateTime.toDateString({
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+  };
 
   function styledCards() {
     return (
-
       <>
-          {comments.map((c) => (
-            <DonationCard
-              onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
-              key={c.id}
-
-              title={c.username}
-                
-              date={DateTime.fromISO(c.created_at).toFormat('DD')}
-
-              
-              description={c.comment}
-              image={c.image}
-              
-              
-            />
-          ))}
-
-
+        {comments.map((c) => (
+          <DonationCard
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.id}
+            title={c.username}
+            date={DateTime.fromISO(c.created_at).toFormat("DD")}
+            description={c.comment}
+            image={c.image}
+          />
+        ))}
       </>
-
     );
   }
 
-  
   const renderData = () => {
     return comments.map((c) => {
-      if(c.anonymous)(
+      if (c.anonymous)
         <Card
-        className="commentCards"
-        key={c.id}
-        border="info"
-        style={{ width: "18rem" }}
-      >
-        <Card.Body>
-          <div
-            style={{
-              display: "flex-inline",
-              textAlign: "left",
-              justifyContent: "space-evenly",
-            }}
-          >
-          </div>
-          <h4>
-            <Badge pill>${c.amount}</Badge>
-          </h4>
-          <hr></hr>
-          <Card.Text>{c.comment}</Card.Text>
-          <Card.Text>{c.campaign_name}</Card.Text>
-        </Card.Body>
-      </Card>
-      )
+          className="commentCards"
+          key={c.id}
+          border="info"
+          style={{ width: "18rem" }}
+        >
+          <Card.Body>
+            <div
+              style={{
+                display: "flex-inline",
+                textAlign: "left",
+                justifyContent: "space-evenly",
+              }}
+            ></div>
+            <h4>
+              <Badge pill>${c.amount}</Badge>
+            </h4>
+            <hr></hr>
+            <Card.Text>{c.comment}</Card.Text>
+            <Card.Text>{c.campaign_name}</Card.Text>
+          </Card.Body>
+        </Card>;
       return (
         <Card
           className="commentCards"

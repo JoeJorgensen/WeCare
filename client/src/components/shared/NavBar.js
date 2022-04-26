@@ -10,6 +10,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Button from "react-bootstrap/esm/Button";
 import WalletBalance from "../WalletBalanceInfo";
+import ProfilePic from "../shared/Images/DefaultProfile.png";
+
+import Logo from "./Images/WecareLogo.png";
 
 const NavBar = () => {
   const auth = useContext(AuthContext);
@@ -32,21 +35,19 @@ const NavBar = () => {
           <NavDropdown
             drop={"start"}
             title={
-              user.image && (
+              
                 <img
-                
                   style={{
-
                     objectFit: "cover",
                     borderRadius: "50%",
                     width: "40px",
                     height: "40px",
-
                   }}
-                  src={user.image}
+                  src={ user.image ? user.image : ProfilePic }
+                  
                   width={300}
                 />
-              )
+              
             }
           >
             <NavDropdown.Item href="/my_profile">Edit Profile</NavDropdown.Item>
@@ -81,6 +82,11 @@ const NavBar = () => {
       sticky="top"
     >
       <Container fluid>
+        <img
+          className="=weCareLogo"
+          src={Logo}
+          style={{ height: "50px" }}
+        ></img>
         <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} href="/">
           WeCare
         </Navbar.Brand>

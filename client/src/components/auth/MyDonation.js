@@ -1,13 +1,14 @@
 import Card from "../../providers/Card";
 import MyDonation from "../MyDonationInfo";
 import Calendar from "../calendar/Calendar";
+import Logo from "../shared/Images/WecareLogo.png";
 
 const myDonation = () => {
-
   return (
     <Card>
       <div>
-        <h1>We Care</h1>
+        <img style={{ height: "145px" }} src={Logo}></img>
+        <h1>My Donations</h1>
         <hr></hr>
         <Calendar />
         <h2>My Donations</h2>
