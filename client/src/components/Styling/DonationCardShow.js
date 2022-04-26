@@ -86,7 +86,7 @@ const Current_amount = styled.span`
 
 const Style = styled.button`
   padding: 0;
-  margin: 0;
+  margin: 10px;
   position: relative;
   flex-shrink: 0;
   width: ${cardWidth}px;

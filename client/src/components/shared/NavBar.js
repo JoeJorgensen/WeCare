@@ -34,11 +34,14 @@ const NavBar = () => {
             title={
               user.image && (
                 <img
+                
                   style={{
+
                     objectFit: "cover",
                     borderRadius: "50%",
                     width: "40px",
                     height: "40px",
+
                   }}
                   src={user.image}
                   width={300}
