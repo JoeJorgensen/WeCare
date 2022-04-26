@@ -11,25 +11,21 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
-registerPlugin(
-  FilePondPluginImageExifOrientation,
-  FilePondPluginImagePreview
-);
-
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 const NewCampaign = () => {
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
-  const [files, setFiles] = useState('')
-  const [categories, setCategories] = useState([])
-  const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('')
-  const [goal, setGoal] = useState(null)
-  const [expiration, setExpiration] = useState('')
-  const [description, setDescription] = useState('')
-  const [currentAmount] = useState(0)
-  const [campaign, setCampaign] = useState([])
-  const navigate = useNavigate()
+  const [files, setFiles] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [goal, setGoal] = useState(null);
+  const [expiration, setExpiration] = useState("");
+  const [description, setDescription] = useState("");
+  const [currentAmount] = useState(0);
+  const [campaign, setCampaign] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCategories();
@@ -37,12 +33,12 @@ const NewCampaign = () => {
 
   const getCategories = async () => {
     try {
-      let res = await axios.get('/api/categories')
-      setCategories(res.data)
+      let res = await axios.get("/api/categories");
+      setCategories(res.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const handleUpdate = (files) => {
     setFiles(files);
@@ -50,42 +46,50 @@ const NewCampaign = () => {
 
   const renderCategorySelect = () => {
     return (
-      <Form.Select required value={category} onChange={(e) => setCategory(e.target.value)} label='Select' aria-label="Select Category" >
+      <Form.Select
+        required
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        label="Select"
+        aria-label="Select Category"
+      >
         <option hidden></option>
         {categories.map((c) => (
-          <option key={c.id} value={c.id}>{c.name}</option>
+          <option key={c.id} value={c.id}>
+            {c.name}
+          </option>
         ))}
       </Form.Select>
     );
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    let data = new FormData()
-    data.append('name', title)
-    data.append('description', description)
-    data.append('current_amount', currentAmount)
-    data.append('goal', goal)
-    data.append('expiration', expiration)
-    data.append('user_id', user.id)
+    e.preventDefault();
+    let data = new FormData();
+    data.append("name", title);
+    data.append("description", description);
+    data.append("current_amount", currentAmount);
+    data.append("goal", goal);
+    data.append("expiration", expiration);
+    data.append("user_id", user.id);
     data.append("file", files[0].file);
     try {
-      let res = await axios.post('/api/campaigns', data)
-      setCampaign(res.data)
-      console.log(campaign)
-      navigate('/')
+      let res = await axios.post("/api/campaigns", data);
+      setCampaign(res.data);
+      console.log(campaign);
+      navigate("/");
     } catch (error) {
-      alert('error occurred adding your new campaign')
-      console.log(error)
+      alert("error occurred adding your new campaign");
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div>
-      <div>
+      <div style={{ textAlign: "center" }}>
         <h1>Create New Fundraising</h1>
       </div>
-      <div>
+      <div style={{ textAlign: "center" }}>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <FilePond
@@ -99,11 +103,17 @@ const NewCampaign = () => {
               labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
             />
           </Form.Group>
-          <div style={{ border: '1px solid' }}>
+          <div style={{ border: "1px solid" }}>
             <h5>Fundraising Details</h5>
             <Form.Group>
               <Form.Label>Title</Form.Label>
-              <Form.Control required value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Enter title" />
+              <Form.Control
+                required
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                type="text"
+                placeholder="Enter title"
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Category</Form.Label>
@@ -111,15 +121,34 @@ const NewCampaign = () => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Goal</Form.Label>
-              <Form.Control required value={goal} onChange={(e) => setGoal(e.target.value)} type="text" placeholder="Enter required amount" />
+              <Form.Control
+                required
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+                type="text"
+                placeholder="Enter required amount"
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Donation Expiration Date</Form.Label>
-              <Form.Control required value={expiration} onChange={(e) => setExpiration(e.target.value)} type="date" name="Expiration" placeholder="Donation Expiration" />
+              <Form.Control
+                required
+                value={expiration}
+                onChange={(e) => setExpiration(e.target.value)}
+                type="date"
+                name="Expiration"
+                placeholder="Donation Expiration"
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Description</Form.Label>
-              <Form.Control required value={description} onChange={(e) => setDescription(e.target.value)} as="textarea" rows={3} />
+              <Form.Control
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                as="textarea"
+                rows={3}
+              />
             </Form.Group>
             <hr />
             <Form.Group>
@@ -132,14 +161,10 @@ const NewCampaign = () => {
             </Form.Group>
             <Button type="submit">Submit</Button>
           </div>
-
         </Form>
-
-
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default NewCampaign
+export default NewCampaign;
