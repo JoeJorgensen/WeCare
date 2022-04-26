@@ -10,6 +10,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Button from "react-bootstrap/esm/Button";
 import WalletBalance from "../WalletBalanceInfo";
+import ProfilePic from "../shared/Images/DefaultProfile.png";
+
 
 const NavBar = () => {
   const auth = useContext(AuthContext);
@@ -32,7 +34,7 @@ const NavBar = () => {
           <NavDropdown
             drop={"start"}
             title={
-              user.image && (
+              
                 <img
                   style={{
                     objectFit: "cover",
@@ -40,10 +42,11 @@ const NavBar = () => {
                     width: "40px",
                     height: "40px",
                   }}
-                  src={user.image}
+                  src={ user.image ? user.image : ProfilePic }
+                  
                   width={300}
                 />
-              )
+              
             }
           >
             <NavDropdown.Item href="/my_profile">Edit Profile</NavDropdown.Item>

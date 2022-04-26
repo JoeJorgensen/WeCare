@@ -14,13 +14,16 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import AddFunds from "./AddFunds";
+// import DefaultProfilePic from "../shared/ProfilePic";
+import ProfilePic from "../shared/Images/DefaultProfile.png"
+
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 function MyProfile() {
   const { user, setUser } = useContext(AuthContext);
   const auth = useContext(AuthContext);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState("");
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
 
@@ -80,7 +83,6 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
-      {user.image && (
         <img
           style={{
             objectFit: "cover",
@@ -88,10 +90,10 @@ function MyProfile() {
             width: "200px",
             height: "200px",
           }}
-          src={user.image}
+          src={ user.image ? user.image : ProfilePic }
           width={300}
         />
-      )}
+      
       <br />
       <br />
 
