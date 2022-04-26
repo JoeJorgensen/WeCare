@@ -3,11 +3,14 @@ import Card from "react-bootstrap/esm/Card";
 import Card1 from "../../providers/Card";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Badge, Button } from "react-bootstrap";
+import { Badge, Button, Pagination } from "react-bootstrap";
 import Donate from "../auth/Donate";
 import WalletBalance from "../WalletBalanceInfo";
 import DonationCard from "../Styling/DonationCard";
 import { DateTime } from "luxon";
+import LargeCampaignCard from "../Styling/LargeCampaignCard";
+import DonationCardShow from "../Styling/DonationCardShow";
+
 
 const CampaignShow = () => {
   const params = useParams();
@@ -48,14 +51,14 @@ const CampaignShow = () => {
 
       <>
           {donations.map((c) => (
-            <DonationCard
+            <DonationCardShow
               onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
               key={c.id}
               hexa={'#1DB95F'}
               title={c.name}
                 
               date={DateTime.fromISO(c.created_at).toFormat('DD')}
-              current_amount={c.amount}
+              current_amount= { c.amount}
               
               description={c.comment}
               image={c.image}
@@ -148,6 +151,28 @@ const CampaignShow = () => {
     }
   };
 
+  function styledCampaign() {
+    return (
+
+      <>
+        
+            <LargeCampaignCard
+              key={campaign.id}
+              title={campaign.name}
+              description={campaign.description}
+              current_amount={campaign.current_amount}
+              goal={campaign.goal}
+              image={campaign.image }
+              
+            />
+        
+
+
+      </>
+
+    );
+  }
+
   const renderCampaign = () => {
     return (
       <Card key={campaign.id} border="info" style={{ width: "50rem" }}>
@@ -179,26 +204,68 @@ const CampaignShow = () => {
   };
 
   return (
-    <Card1>
+    <>
       <h4>
         <Badge pill bg="dark">
           Wallet Balance:
         </Badge>
         <WalletBalance />
       </h4>
-
-      <div
-        style={{
-          //  alignItems: "center"
-          display: "inline-flex",
-          flexWrap: "wrap",
-          justifyContent: "space-evenly",
-          gap: "30px ",
-        }}
-      >
-        {renderCampaign()}
+      <div >
+        <Donate />
       </div>
+      
+      <div style={{
+        margin:'20px',
+        display: "flex",
+        // flexWrap: "wrap",
+        // flexDirection: 'column',
+        justifyContent: "space-evenly",
+        // alignContent: 'stretch',
 
+        // alignItems:'flex-end',
+        // gap: "60px ",
+
+
+        
+        }}>
+            <div style={{ textAlign:'left'}}>
+                {styledCampaign()}
+            </div>
+    
+            <div style={{ 
+              // textAlign:'right', 
+              display:'flex',  
+              flexDirection: 'column',
+              alignContent: 'stretch'
+              // flexBasis: 'auto',
+              
+              }}>
+                
+                   {styledDonation()}
+               
+             <Pagination>
+            <Pagination.Prev />
+            <Pagination.Next />
+
+
+           </Pagination>
+
+            </div>
+            
+         
+        
+       
+
+           
+        {/* {renderCampaign()} */}
+        
+
+    
+
+      </div>
+      
+   
       <br />
       <br />
 
@@ -234,7 +301,7 @@ const CampaignShow = () => {
       >
         {styledDonation()}
       </div>
-    </Card1>
+    </>
   );
 };
 export default CampaignShow;
