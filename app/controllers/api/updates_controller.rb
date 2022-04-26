@@ -16,6 +16,26 @@ class Api::UpdatesController < ApplicationController
   #creates a Update in DB
   def create 
     update = Update.new(update_params)
+    file = params[:image]
+    # binding.pry
+    # CREATE AN IMAGE TO CLOUDINARY
+    #check if we have a file, if we do try to save 
+    if file 
+        begin
+            # try to save img (file) to cloudinary
+            # if .env not setup correctly this will fail
+            cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+            # binding.pry
+            puts '===cloud_image==='
+            puts cloud_image
+            update.image = cloud_image['secure_url']
+        rescue => e
+            # image did not save to cloudinary
+            render json: {errors:e}, status: 401
+            # exit function for now
+            return
+        end
+      end
     if(update.save)
       render json: update
     else
@@ -48,7 +68,7 @@ class Api::UpdatesController < ApplicationController
   end
   
   def update_params
-    params.require(:update).permit(:comment, :image, :campaign_id)
+    params.permit(:comment, :image, :campaign_id)
   end
   
 end
