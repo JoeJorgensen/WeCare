@@ -19,11 +19,4 @@ class Campaign < ApplicationRecord
     ORDER BY current_amount / goal"])
   end 
 
-  # def self.updates_by_campaign(id)
-  #   Campaign.find_by_sql(['select updates.comment, updates.image
-  #   from updates
-  #   inner join campaigns on updates.campaign_id = campaigns.id
-  #   where updates.campaign_id = ?', id])
-  # end
-
 end
