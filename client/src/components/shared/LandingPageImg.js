@@ -12,7 +12,9 @@ const LandingPageImg = () => {
   const nav = useNavigate();
   const renderImg = () => {
     if (auth.user) {
+
       return <></>;
+      
     }
     return (
       <div className="landingPage">

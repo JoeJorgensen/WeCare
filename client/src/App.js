@@ -27,6 +27,7 @@ import Footer from "./components/shared/Footer";
 import LandingPage from "./components/shared/LandingPage";
 import NewCampaign from "./components/auth/NewCampaign";
 import MyCampaigns from "./components/auth/MyCampaigns";
+import ProfileShow from "./components/shared/ProfileShow";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/campaign_show/:id" element={<CampaignShow />} />
             <Route path="/categories" element={<Categories />} />
+            <Route path="/profile_show/:id" element={<ProfileShow />} />
 
             {/* PROTECTED */}
             <Route element={<ProtectedRoute />}>
@@ -56,7 +58,6 @@ function App() {
               <Route path="/my_profile" element={<MyProfile />} />
               <Route path="/new_campaign" element={<NewCampaign />} />
               <Route path="/my_campaigns" element={<MyCampaigns />} />
-
             </Route>
 
             <Route path="*" element={<NoMatch />} />

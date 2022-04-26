@@ -37,7 +37,7 @@ const Screenshot = styled.figure`
 const Content = styled.div`
   z-index: 200;
   position: relative;
-  padding: 20px 20px 30px;
+  padding: 10px 10px 25px;
 `;
 
 const Title = styled.span`
@@ -63,7 +63,8 @@ const Date = styled.span`
   font-size: 0.875em;
   color: #999999;
   transition: ${transition};
-  transition-delay: 0.02s;
+  transition-delay: 0.04s;
+
 `;
 
 const BottomBar = styled.span`
@@ -79,14 +80,16 @@ const BottomBar = styled.span`
 const Current_amount = styled.span`
   display: block;
   font-size: 0.875em;
-  color: #999999;
+  color: black;
   transition: ${transition};
+  transition-delay: 0.04s;
+
 
 `;
 
 const Style = styled.button`
-  padding: 0;
-  margin: 0;
+  padding: 5px;
+  margin: 10px;
   position: relative;
   flex-shrink: 0;
   width: ${cardWidth}px;
@@ -114,7 +117,8 @@ const Style = styled.button`
       transform: translateY(-10px);
     }
     ${Date} {
-        transform: translateY(-30px) translateX(-35px)
+        transform: translateY(-10px);
+
 
 
       }
@@ -162,23 +166,33 @@ const DonationCardShow = ({
     <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
       <Screenshot image={image} />
       <Title>{title}</Title>
-      <Current_amount> ${ current_amount}</Current_amount>
+
 
     </div>
 
-    <div style={{ display:'flex', justifyContent:'center'}}>
-         <Date>{date}</Date>
+
+
+    <div style={{ display:'flex', justifyContent:'space-evenly'}}>
+
+      <Current_amount> ${current_amount}</Current_amount>
+      <Date>{date}</Date> 
     </div>
      
-
+        <div style={{textAlign:'right'}}>
+            
+        </div>
+        
     <hr></hr>
-    <Content>
+    <Content >
       <Description>{description}</Description>
 
 
 
-      <BottomBar background={'#035EB6'} />
+
+
+
     </Content>
+      <BottomBar background={'#035EB6'} />
   </Style>
 );
 

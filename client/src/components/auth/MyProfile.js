@@ -162,7 +162,6 @@ function MyProfile() {
           <br />
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <textarea
-              value={bio}
               as="textarea"
               rows={3}
               placeholder="About user..."

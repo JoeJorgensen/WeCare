@@ -10,7 +10,8 @@ import DonationCard from "../Styling/DonationCard";
 import { DateTime } from "luxon";
 import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
-
+import CampaignCard from "../Styling/CampaignCard";
+import UpdateCard from "../Styling/UpdateCard";
 
 const CampaignShow = () => {
   const params = useParams();
@@ -18,7 +19,7 @@ const CampaignShow = () => {
   const [campaign, setCampaign] = useState([]);
   const [updates, setUpdates] = useState([]);
   const [donations, setDonations] = useState([]);
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     getCampaign();
@@ -35,7 +36,7 @@ const CampaignShow = () => {
     document.execCommand("copy");
     document.body.removeChild(e);
     setCopied(true);
-  }
+  };
 
   const getDonations = async () => {
     try {
@@ -48,28 +49,20 @@ const CampaignShow = () => {
 
   function styledDonation() {
     return (
-
       <>
-          {donations.map((c) => (
-            <DonationCardShow
-              onClick={ () => navigate(`/campaign_show/${c.campaign_id}`)}
-              key={c.id}
-              hexa={'#1DB95F'}
-              title={c.name}
-                
-              date={DateTime.fromISO(c.created_at).toFormat('DD')}
-              current_amount= { c.amount}
-              
-              description={c.comment}
-              image={c.image}
-              
-
-            />
-          ))}
-
-
+        {donations.map((c) => (
+          <DonationCardShow
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.id}
+            hexa={"#1DB95F"}
+            title={c.name}
+            date={DateTime.fromISO(c.created_at).toFormat("DD")}
+            current_amount={c.amount}
+            description={c.comment}
+            image={c.image}
+          />
+        ))}
       </>
-
     );
   }
 
@@ -125,6 +118,24 @@ const CampaignShow = () => {
     }
   };
 
+  function styledUpdates() {
+    return (
+      <>
+        {updates.map((c) => (
+          <UpdateCard
+            key={c.id}
+            hexa={"#1DB95F"}
+            title={c.name}
+            date={DateTime.fromISO(c.created_at).toFormat("DD")}
+            current_amount={c.amount}
+            description={c.comment}
+            image={c.image}
+          />
+        ))}
+      </>
+    );
+  }
+
   const renderUpdates = () => {
     return updates.map((u) => {
       return (
@@ -153,23 +164,16 @@ const CampaignShow = () => {
 
   function styledCampaign() {
     return (
-
       <>
-        
-            <LargeCampaignCard
-              key={campaign.id}
-              title={campaign.name}
-              description={campaign.description}
-              current_amount={campaign.current_amount}
-              goal={campaign.goal}
-              image={campaign.image }
-              
-            />
-        
-
-
+        <LargeCampaignCard
+          key={campaign.id}
+          title={campaign.name}
+          description={campaign.description}
+          current_amount={campaign.current_amount}
+          goal={campaign.goal}
+          image={campaign.image}
+        />
       </>
-
     );
   }
 
@@ -196,111 +200,100 @@ const CampaignShow = () => {
              </Card.Text> */}
           {/* <Button variant="primary" onClick={()=> navigate('/donate') }>Donate</Button> */}
           <Donate />
-          <br/>
-          <Button variant="outline-success" onClick={copyURL}>{!copied ? "Share Campaign" : "Link Copied!"}</Button>
+          <br />
+          <Button variant="outline-success" onClick={copyURL}>
+            {!copied ? "Share Campaign" : "Link Copied!"}
+          </Button>
         </Card.Body>
       </Card>
-    ); 
+    );
   };
 
   return (
     <>
-      <h4>
-        <Badge pill bg="dark">
-          Wallet Balance:
-        </Badge>
-        <WalletBalance />
-      </h4>
-      <div >
-        <Donate />
-      </div>
-      
-      <div style={{
-        margin:'20px',
-        display: "flex",
-        // flexWrap: "wrap",
-        // flexDirection: 'column',
-        justifyContent: "space-evenly",
-        // alignContent: 'stretch',
+      <div
+        style={{
+          // aside :{
+          //   width: '30%',
+          //   paddingLeft: '15px',
+          //   marginLeft: '15px',
+          //   float: 'right',
 
-        // alignItems:'flex-end',
-        // gap: "60px ",
+          // },
+          margin: "20px",
+          display: "flex",
+          // flexWrap: "wrap",
+          // flexDirection: 'column',
+          justifyContent: "space-evenly",
+          // alignContent: 'stretch',
 
+          // alignItems:'flex-end',
+          // gap: "60px ",
+        }}
+      >
+        <div
+          style={{
+            textAlign: "left",
+            marginLeft: "15px",
+            marginRight: "15px",
+          }}
+        >
+          {styledCampaign()}
+          <br />
+          <br />
+          {/* <h2
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <Badge pill bg="dark">
+              Updates
+            </Badge>
+          </h2> */}
+          {styledUpdates()}
+        </div>
 
-        
-        }}>
-            <div style={{ textAlign:'left'}}>
-                {styledCampaign()}
-            </div>
-    
-            <div style={{ 
-              // textAlign:'right', 
-              display:'flex',  
-              flexDirection: 'column',
-              alignContent: 'stretch'
-              // flexBasis: 'auto',
-              
-              }}>
-                
-                   {styledDonation()}
-               
-             <Pagination>
+        <aside
+          style={{
+            position: "sticky",
+            paddingLeft: "15px",
+            marginLeft: "15px",
+            marginRight: "15px",
+
+            float: "right",
+            textAlign: "center",
+            // display: "flex",
+            // flexDirection: "column",
+            // alignContent: "stretch",
+            // flexBasis: 'auto',
+          }}
+        >
+          <h4 style={{ textAlign: "center" }}>
+            <Badge pill>Wallet Balance</Badge>
+            <WalletBalance />
+          </h4>
+
+          <Donate />
+          <br />
+          <Button variant="outline-warning" onClick={copyURL}>
+            {!copied ? "Share Campaign" : "Link Copied!"}
+          </Button>
+          <br />
+          <br />
+
+          {styledDonation()}
+          <br />
+
+          <Pagination>
             <Pagination.Prev />
             <Pagination.Next />
-
-
-           </Pagination>
-
-            </div>
-            
-         
-        
-       
-
-           
+          </Pagination>
+        </aside>
         {/* {renderCampaign()} */}
-        
-
-    
-
-      </div>
-      
-   
-      <br />
-      <br />
-
-      <h2>
-        <Badge pill bg="dark">
-          Updates
-        </Badge>
-      </h2>
-
-      <div
-        style={{
-          //  alignItems: "center"
-          display: "inline-flex",
-          flexWrap: "wrap",
-          justifyContent: "space-evenly",
-          gap: "30px ",
-        }}
-      >
-        {renderUpdates()}
       </div>
 
       <br />
       <br />
-
-      <div
-        style={{
-          //  alignItems: "center"
-          display: "inline-flex",
-          flexWrap: "wrap",
-          justifyContent: "space-evenly",
-          gap: "30px ",
-        }}
-      >
-        {styledDonation()}
-      </div>
     </>
   );
 };
