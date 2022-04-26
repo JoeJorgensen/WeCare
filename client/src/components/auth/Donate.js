@@ -143,7 +143,7 @@ function Donate() {
 
   return (
     <>
-      <Button variant="outline-success" onClick={handleShow}>
+      <Button variant="outline-primary" onClick={handleShow}>
         Donate
       </Button>
 
