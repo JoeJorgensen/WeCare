@@ -148,7 +148,7 @@ const Style = styled.button`
   }
 `;
 
-const DonationCard = ({
+const DonationCardShow = ({
   hexa,
   current_amount,
   title,
@@ -159,10 +159,10 @@ const DonationCard = ({
   onClick,
 }) => (
   <Style onClick={onClick}>
-    <div style={{display:'inline-flex', alignItems:'center'}}>
+    <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
       <Screenshot image={image} />
       <Title>{title}</Title>
-      <Current_amount>{ current_amount}</Current_amount>
+      <Current_amount> ${ current_amount}</Current_amount>
 
     </div>
 
@@ -182,4 +182,4 @@ const DonationCard = ({
   </Style>
 );
 
-export default DonationCard;
+export default DonationCardShow;

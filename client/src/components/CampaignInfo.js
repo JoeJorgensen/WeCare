@@ -33,9 +33,7 @@ const Campaigns = () => {
       <>
           {campaigns.map((c) => (
             <CampaignCard
-              onClick={ () => navigate(`/campaign_show/${c.id}`)}
               key={c.id}
-              hexa={'#1DB95F'}
               title={c.name}
               description={c.description}
               current_amount={c.current_amount}

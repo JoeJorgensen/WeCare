@@ -31,9 +31,9 @@ const MyCampaigns = () => {
       console.log('updates', res.data)
       setUpdates(res.data)
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const renderCampaignInfo = () => {
     return campaignInfo.map((ci) => {
@@ -106,14 +106,17 @@ const MyCampaigns = () => {
 
   return (
     <>
-      <h1>My Campaigns</h1>
-      {renderCampaignInfo()}
-      <h1>My Updates</h1>
-      {renderUpdates()}
+   
+      
       {/* {<p>{JSON.stringify(updates)}</p>} */}
       {/* <p>{JSON.stringify(campaignInfo)}</p> */}
-    </>
-  )
-}
+      <h1>My Campaigns</h1>
+      {renderCampaignInfo()}        
 
-export default MyCampaigns
+      <h1>My Updates</h1>
+      {renderUpdates()}        
+    </>
+  );
+};
+
+export default MyCampaigns;
