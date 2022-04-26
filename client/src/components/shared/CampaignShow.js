@@ -11,6 +11,7 @@ import { DateTime } from "luxon";
 import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import CampaignCard from "../Styling/CampaignCard";
+import UpdateCard from "../Styling/UpdateCard";
 
 const CampaignShow = () => {
   const params = useParams();
@@ -117,13 +118,13 @@ const CampaignShow = () => {
     }
   };
 
-
   function styledUpdates() {
     return (
       <>
         {updates.map((c) => (
-          <CampaignCard
+          <UpdateCard
             key={c.id}
+            hexa={"#1DB95F"}
             title={c.name}
             date={DateTime.fromISO(c.created_at).toFormat("DD")}
             current_amount={c.amount}
@@ -134,7 +135,6 @@ const CampaignShow = () => {
       </>
     );
   }
-
 
   const renderUpdates = () => {
     return updates.map((u) => {
@@ -213,6 +213,13 @@ const CampaignShow = () => {
     <>
       <div
         style={{
+          // aside :{
+          //   width: '30%',
+          //   paddingLeft: '15px',
+          //   marginLeft: '15px',
+          //   float: 'right',
+
+          // },
           margin: "20px",
           display: "flex",
           // flexWrap: "wrap",
@@ -224,25 +231,56 @@ const CampaignShow = () => {
           // gap: "60px ",
         }}
       >
-        <div style={{ textAlign: "left" }}>{styledCampaign()}</div>
-
         <div
           style={{
-            // textAlign:'right',
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "stretch",
+            textAlign: "left",
+            marginLeft: "15px",
+            marginRight: "15px",
+          }}
+        >
+          {styledCampaign()}
+          <br />
+          <br />
+          {/* <h2
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <Badge pill bg="dark">
+              Updates
+            </Badge>
+          </h2> */}
+          {styledUpdates()}
+        </div>
+
+        <aside
+          style={{
+            position: "sticky",
+            paddingLeft: "15px",
+            marginLeft: "15px",
+            marginRight: "15px",
+
+            float: "right",
+            textAlign: "center",
+            // display: "flex",
+            // flexDirection: "column",
+            // alignContent: "stretch",
             // flexBasis: 'auto',
           }}
         >
           <h4 style={{ textAlign: "center" }}>
-            <Badge pill bg="dark">
-              Wallet Balance:
-            </Badge>
+            <Badge pill>Wallet Balance</Badge>
             <WalletBalance />
           </h4>
+
           <Donate />
           <br />
+          <Button variant="outline-warning" onClick={copyURL}>
+            {!copied ? "Share Campaign" : "Link Copied!"}
+          </Button>
+          <br />
+          <br />
+
           {styledDonation()}
           <br />
 
@@ -250,36 +288,12 @@ const CampaignShow = () => {
             <Pagination.Prev />
             <Pagination.Next />
           </Pagination>
-        </div>
-
+        </aside>
         {/* {renderCampaign()} */}
       </div>
 
       <br />
       <br />
-
-      <h2 style={{
-           textAlign:'center',
-        }}>
-        <Badge pill bg="dark" >
-          Updates
-        </Badge>
-      </h2>
-
-      <div
-        style={{
-           display: "flex",
-           alignContent: 'center'
-        }}
-      >
-        {styledUpdates()}
-        {renderUpdates()}
-      </div>
-
-      <br />
-      <br />
-
-     
     </>
   );
 };

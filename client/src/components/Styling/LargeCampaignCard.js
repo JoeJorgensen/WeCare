@@ -1,4 +1,5 @@
 import React from 'react';
+import { ProgressBar } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const cardWidth = 600;
@@ -183,9 +184,10 @@ const LargeCampaignCard = ({ hexa, title, description, image, profile_image, cur
     <Content>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Current_amount>Current amount: ${current_amount}</Current_amount>
+
       <Goal>Goal: ${goal}</Goal>
 
+      <ProgressBar variant="warning"  now={current_amount } max={goal} label={`$${current_amount}`}/>
 
       <BottomBar background={'#035EB6'} />
     </Content>

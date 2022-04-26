@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 import { Card, Button, Badge } from "react-bootstrap";
+import DonationCardShow from "./Styling/DonationCardShow";
+import { useNavigate } from "react-router-dom";
+import { DateTime } from "luxon";
 
 const MyDonationInfo = () => {
   const [myDonations, setMyDonations] = useState([]);
+  const navigate = useNavigate()
   console.log("MyDonations Being Called:");
   console.log("donations", myDonations);
 
@@ -22,6 +26,24 @@ const MyDonationInfo = () => {
       alert("error occurred getting donations data");
     }
   };
+  function styledDonation() {
+    return (
+      <>
+        {myDonations.map((c) => (
+          <DonationCardShow
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.id}
+            hexa={"#1DB95F"}
+            title={c.name}
+            date={DateTime.fromISO(c.created_at).toFormat("DD")}
+            current_amount={c.amount}
+            description={c.comment}
+            image={c.image}
+          />
+        ))}
+      </>
+    );
+  }
 
   const renderData = () => {
     return myDonations.map((c) => {
@@ -92,7 +114,8 @@ const MyDonationInfo = () => {
       }}
     >
       {/* {JSON.stringify(myDonations)} */}
-      {renderData()}
+      {styledDonation()}
+      {/* {renderData()} */}
     </div>
   );
 };
