@@ -21,11 +21,24 @@ const ProfileShow = () => {
     }
   };
 
+  const userProfileData = () => {
+    return profiles.map((p) => {
+      return (
+        <div>
+          {p.amount}
+          {p.name}
+          {p.campaign_id}
+        </div>
+      );
+    });
+  };
+
   return (
     <>
       <div style={{ height: "73vh" }}>
         <u>Test</u>
         <p>{JSON.stringify(profiles)}</p>
+        <p>{userProfileData()}</p>
       </div>
     </>
   );
