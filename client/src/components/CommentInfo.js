@@ -53,7 +53,7 @@ const Comments = () => {
               title={c.username}
                 
               date={DateTime.fromISO(c.created_at).toFormat('DD')}
-              current_amount={c.amount}
+
               
               description={c.comment}
               image={c.image}
