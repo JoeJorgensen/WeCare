@@ -35,19 +35,16 @@ const NavBar = () => {
           <NavDropdown
             drop={"start"}
             title={
-              
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                  }}
-                  src={ user.image ? user.image : ProfilePic }
-                  
-                  width={300}
-                />
-              
+              <img
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                }}
+                src={user.image ? user.image : ProfilePic}
+                width={300}
+              />
             }
           >
             <NavDropdown.Item href="/my_profile">Edit Profile</NavDropdown.Item>
@@ -82,13 +79,12 @@ const NavBar = () => {
       sticky="top"
     >
       <Container fluid>
-        <img
-          className="=weCareLogo"
-          src={Logo}
-          style={{ height: "50px" }}
-        ></img>
         <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} href="/">
-          WeCare
+          <img
+            className="=weCareLogo"
+            src={Logo}
+            style={{ height: "50px" }}
+          ></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
