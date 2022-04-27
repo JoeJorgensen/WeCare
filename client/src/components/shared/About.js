@@ -21,7 +21,7 @@ const About = () => {
         <hr></hr>
         <h3>
 
-            <Badge className="container" pill bg="badge rounded-pill bg-success">Randy Clements</Badge>
+            <Badge className="container" pill bg="badge rounded-pill bg-primary">Randy Clements</Badge>
             
             <div className="container">
             <Nav.Link  href="https://github.com/Randycl808">
@@ -55,7 +55,7 @@ const About = () => {
           </Nav.Link> */}
           </div>
             <br/>
-            <Badge className="container" pill bg="badge rounded-pill bg-success">Joe Jorgensen</Badge>
+            <Badge className="container" pill bg="badge rounded-pill bg-primary">Joe Jorgensen</Badge>
            
             <div className="container">
             <Nav.Link  href="https://github.com/JoeJorgensen">
@@ -89,7 +89,7 @@ const About = () => {
           </Nav.Link> */}
           </div>
             <br/>
-            <Badge className="container" pill bg="badge rounded-pill bg-success">Steven Crass</Badge>
+            <Badge className="container" pill bg="badge rounded-pill bg-primary">Steven Crass</Badge>
 
             <div className="container">
             <Nav.Link  href="https://github.com/TheSteveIsGreat">
@@ -126,7 +126,7 @@ const About = () => {
 
 
 
-            <Badge className="container" pill bg="badge rounded-pill bg-success">Austin Kilgore</Badge>
+            <Badge className="container" pill bg="badge rounded-pill bg-primary">Austin Kilgore</Badge>
             <h5>austin.s.kilgore@gmail.com</h5>
             <div className="container">
             <Nav.Link  href="https://github.com/MrKilgore94">
