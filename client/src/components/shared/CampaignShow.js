@@ -3,7 +3,7 @@ import Card from "react-bootstrap/esm/Card";
 import Card1 from "../../providers/Card";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Badge, Button, Pagination } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
 import Donate from "../auth/Donate";
 import WalletBalance from "../WalletBalanceInfo";
 import DonationCard from "../Styling/DonationCard";
@@ -12,6 +12,7 @@ import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import CampaignCard from "../Styling/CampaignCard";
 import UpdateCard from "../Styling/UpdateCard";
+import MyPagination from "../Pagination";
 // import '../Styling/Aside.css'
 
 const CampaignShow = () => {
@@ -21,13 +22,15 @@ const CampaignShow = () => {
   const [updates, setUpdates] = useState([]);
   const [donations, setDonations] = useState([]);
   const [copied, setCopied] = useState(false);
-
+  const [tagList, setTagList] = useState([])
+  const [currPage, setCurrPage] = useState(3);
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
-    // campaign
+    afterPageClicked(3)
   }, []);
+
 
   const copyURL = () => {
     const e = document.createElement("input");
@@ -39,13 +42,27 @@ const CampaignShow = () => {
     setCopied(true);
   };
 
-  const getDonations = async () => {
+  const getDonations = async (page_number) => {
+    setCurrPage(page_number)
     try {
       let res = await axios.get(`/api/donation_by_user/${params.id}`);
       setDonations(res.data);
+      // setTagList(res.data.id)
     } catch (error) {
       alert("error getting donations");
     }
+  };
+
+
+  const afterPageClicked = (page_number) => {
+    setCurrPage(page_number);
+    fetch(`https://dummyapi.io/data/api/tag?limit=10&page=${page_number}`, {
+      headers: {
+        "app-id": "60983c4f56c487f12fd13e23"
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => setTagList(data.data));
   };
 
   function styledDonation() {
@@ -63,6 +80,7 @@ const CampaignShow = () => {
             description={c.comment}
             image={c.image}
           />
+         
         ))}
       </>
     );
@@ -288,12 +306,21 @@ const CampaignShow = () => {
           <br />
 
           {styledDonation()}
-          <br />
 
-          <Pagination>
-            <Pagination.Prev />
-            <Pagination.Next />
-          </Pagination>
+
+          <MyPagination
+           totPages={3}
+          currPage={currPage}
+          pageClicked={(ele)=>{
+            getDonations(ele)
+          }}
+          >
+             <ul>
+        {tagList.map((ele, ind) => {
+          return <li key={ele + ind}>{ele}</li>;
+        })}
+      </ul>
+          </MyPagination>
         </aside>
         {/* {renderCampaign()} */}
       </div>
