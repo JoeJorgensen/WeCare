@@ -3,8 +3,14 @@ import Card from "../../providers/Card";
 import githubimg from "./Images/githubimg.png"
 import linkedinimg from "./Images/Linkedin.png"
 import facebook from "./Images/facebook.png"
-import twitch from "./Images/twitch.png"
-import youtube from "./Images/youtube.png"
+import twitter from "./Images/twitter.png"
+import behance from "./Images/Behance.png"
+import insta from "./Images/instagram.png"
+import google from "./Images/google.png"
+
+
+
+
 
 
 import "./AboutStyle.css"
@@ -34,7 +40,7 @@ const About = () => {
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
 
-            {/* <Nav.Link href=" ">
+            <Nav.Link href=" ">
             {linkedinimg && (
               <img style={{
                   objectFit: "cover",
@@ -51,9 +57,54 @@ const About = () => {
                   borderRadius: "50%",
                   width: "40px",
                   height: "40px",
-                 }}src={facebook} width={300}/>)}
-          </Nav.Link> */}
+                 }}src={facebook} width={50}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {twitter && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={twitter} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {behance && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={behance} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {insta && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={insta} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {google && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={google} width={300}/>)}
+          </Nav.Link>
           </div>
+
+
+
+
+
             <br/>
             <Badge className="container" pill bg="badge rounded-pill bg-primary">Joe Jorgensen</Badge>
            
@@ -68,7 +119,7 @@ const About = () => {
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
 
-            {/* <Nav.Link href=" ">
+            <Nav.Link href=" ">
             {linkedinimg && (
               <img style={{
                   objectFit: "cover",
@@ -86,7 +137,47 @@ const About = () => {
                   width: "40px",
                   height: "40px",
                  }}src={facebook} width={300}/>)}
-          </Nav.Link> */}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {twitter && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={twitter} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {behance && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={behance} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {insta && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={insta} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {google && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={google} width={300}/>)}
+          </Nav.Link>
           </div>
             <br/>
             <Badge className="container" pill bg="badge rounded-pill bg-primary">Steven Crass</Badge>
@@ -102,7 +193,7 @@ const About = () => {
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
 
-            {/* <Nav.Link href=" ">
+            <Nav.Link href="https://www.linkedin.com/in/stevecrass/">
             {linkedinimg && (
               <img style={{
                   objectFit: "cover",
@@ -120,7 +211,47 @@ const About = () => {
                   width: "40px",
                   height: "40px",
                  }}src={facebook} width={300}/>)}
-          </Nav.Link> */}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {twitter && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={twitter} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {behance && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={behance} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {insta && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={insta} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {google && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={google} width={300}/>)}
+          </Nav.Link>
           </div>
             <br/>
 
@@ -149,25 +280,57 @@ const About = () => {
                  }}src={linkedinimg} width={300}/>)}
           </Nav.Link>
 
-          <Nav.Link href="https://www.youtube.com/channel/UCqr--mhPzgywG7FwIadN2zQ">
-            {youtube && (
+          <Nav.Link href=" ">
+            {facebook && (
               <img style={{
                   objectFit: "cover",
                   borderRadius: "50%",
                   width: "40px",
                   height: "40px",
-                 }}src={youtube} width={300}/>)}
+                 }}src={facebook} width={300}/>)}
           </Nav.Link>
 
-          <Nav.Link href="https://www.twitch.tv/mr_kilgore_gaming">
-            {twitch && (
+          <Nav.Link href=" ">
+            {twitter && (
               <img style={{
                   objectFit: "cover",
                   borderRadius: "50%",
                   width: "40px",
                   height: "40px",
-                 }}src={twitch} width={300}/>)}
+                 }}src={twitter} width={300}/>)}
           </Nav.Link>
+
+          <Nav.Link href=" ">
+            {behance && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={behance} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {insta && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={insta} width={300}/>)}
+          </Nav.Link>
+
+          <Nav.Link href=" ">
+            {google && (
+              <img style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                 }}src={google} width={300}/>)}
+          </Nav.Link>
+
+
           </div>
             <br/>
 
