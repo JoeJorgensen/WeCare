@@ -269,13 +269,13 @@ const CampaignShow = () => {
 
             flexDirection: "column",
             alignItems: "center",
-            // alignContent: "center",
+            alignContent: "center",
 
             // flexBasis: 'auto',
           }}
         >
           <h4 >
-            <Badge pill >Wallet Balance</Badge>
+            <Badge bg='denim' pill >Wallet Balance</Badge>
             <WalletBalance />
           </h4>
 

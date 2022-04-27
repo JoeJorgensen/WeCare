@@ -189,7 +189,7 @@ const CampaignCard = ({ hexa, title, description, image, profile_image, current_
         <br/>
 
       <div style={{marginTop:'5px', marginBottom:'5px'}}>
-      <ProgressBar  variant="warning"  now={current_amount } max={goal} label={`$${current_amount}`}/>
+      <ProgressBar  variant="mustard"  now={current_amount } max={goal} label={`$${current_amount}`}/>
       </div>
 
 
