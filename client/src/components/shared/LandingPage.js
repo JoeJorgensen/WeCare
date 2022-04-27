@@ -28,7 +28,7 @@ const LandingPage = () => {
           <h2>A place to fundraise for the most important ot events</h2>
           <br></br>
           <h2>
-            <Badge pill bg="primary">Urgent Fundraising</Badge>
+            <Badge bg="denim">Urgent Fundraising</Badge>
           </h2>
           <br />
 
@@ -38,7 +38,7 @@ const LandingPage = () => {
 
           <hr></hr>
           <h2>
-            <Badge pill >Coming to an end</Badge>
+            <Badge bg="denim">Coming to an end</Badge>
           </h2>
           <br />
 
@@ -46,7 +46,7 @@ const LandingPage = () => {
 
           <hr></hr>
           <h2>
-            <Badge pill >Prayers from good people</Badge>
+            <Badge bg="denim">Prayers from good people</Badge>
           </h2>
           <br />
           <CommentInfo />

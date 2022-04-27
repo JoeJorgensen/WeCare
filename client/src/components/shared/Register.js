@@ -58,15 +58,14 @@ const Register = () => {
               />
             </div>
 
-            <button
-              type="button"
-              className="signin btn btn-primary btn-block mb-4"
+            <Button
+              bg="denim"
               onClick={(e) => {
                 handleSubmit(e);
               }}
             >
               Register
-            </button>
+            </Button>
             <div className="col">
               {/* <!-- Simple link --> */}
               <a href="/troubleshoot">Having Trouble?</a>

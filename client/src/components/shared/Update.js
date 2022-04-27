@@ -10,11 +10,11 @@ import axios from "axios";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-const Update = ({id}) => {
+const Update = ({ id }) => {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
-  const [comment, setComment] = useState('')
- 
+  const [comment, setComment] = useState("");
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleUpdate = (image) => {
@@ -32,7 +32,7 @@ const Update = ({id}) => {
       alert("error occurred adding your new campaign");
       console.log(error);
     } finally {
-      handleClose()
+      handleClose();
       window.location.reload();
       // window.scrollTo(0)
     }
@@ -41,7 +41,7 @@ const Update = ({id}) => {
   return (
     <div>
       <div>
-        <Button variant="outline-success" onClick={handleShow}>
+        <Button variant="outline-mustard" onClick={handleShow}>
           Add Update
         </Button>
       </div>
@@ -57,23 +57,24 @@ const Update = ({id}) => {
           <div>
             <Modal.Body>
               <Form>
-                  <Form.Label>Image</Form.Label>
-                  <FilePond
-                    required
-                    allowImageCrop={true}
-                    allowImageTransform={true}
-                    imageCropAspectRatio={"1:1"}
-                    image={image}
-                    allowMultiple={true}
-                    onupdatefiles={handleUpdate}
-                    labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-                  />
+                <Form.Label>Image</Form.Label>
+                <FilePond
+                  required
+                  allowImageCrop={true}
+                  allowImageTransform={true}
+                  imageCropAspectRatio={"1:1"}
+                  image={image}
+                  allowMultiple={true}
+                  onupdatefiles={handleUpdate}
+                  labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                />
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlTextarea1"
                 >
                   <Form.Label>Comment</Form.Label>
-                  <Form.Control onChange={(e)=>setComment(e.target.value)}
+                  <Form.Control
+                    onChange={(e) => setComment(e.target.value)}
                     as="textarea"
                     rows={3}
                     placeholder="Write a meaningful comment..."
@@ -93,7 +94,6 @@ const Update = ({id}) => {
               </Button>
             </Modal.Footer>
           </div>
-
         </Modal>
       </div>
 
@@ -109,9 +109,8 @@ const Update = ({id}) => {
           labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
         /> */}
       </div>
-
     </div>
   );
-}
+};
 
-export default Update
+export default Update;

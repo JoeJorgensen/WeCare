@@ -1,0 +1,35 @@
+$primary: #065eb6;
+$secondary: #8f5325;
+$success: #3e8d63;
+$info: #7854e4;
+$warning: #b8c924;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #343a40;
+
+//custom color to be mapped
+$accent: #da6d25;
+$denim: #065eb6;
+$mustard: #ffd446;
+$black: #231f20;
+$brightWhite: #ffffff;
+
+// this is used to map colors. change accordingly.
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+  // add any additional color below
+  accent: $accent,
+  denim: $denim,
+  mustard: $mustard,
+  brightWhite: $brightWhite,
+  // now bg-accent,btn-accent,etc.. can be called,
+);
+
+@import "~bootstrap/scss/bootstrap.scss";
