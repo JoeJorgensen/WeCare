@@ -187,7 +187,7 @@ const LargeCampaignCard = ({ hexa, title, description, image, profile_image, cur
 
       <Goal>Goal: ${goal}</Goal>
 
-      <ProgressBar variant="warning"  now={current_amount } max={goal} label={`$${current_amount}`}/>
+      <ProgressBar variant="mustard"  now={current_amount } max={goal} label={`$${current_amount}`}/>
 
       <BottomBar background={'#035EB6'} />
     </Content>
