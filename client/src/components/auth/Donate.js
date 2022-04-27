@@ -135,7 +135,7 @@ function Donate() {
       alert("error adding donation");
     } finally {
       handleClose();
-      window.scrollTo(0, 0);
+
       document.location.reload()
       donateSuccess();
     }

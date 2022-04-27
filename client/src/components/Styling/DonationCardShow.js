@@ -161,10 +161,12 @@ const DonationCardShow = ({
   image,
  
   onClick,
+  onClickImg,
+
 }) => (
   <Style onClick={onClick}>
     <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
-      <Screenshot image={image} />
+      <Screenshot onClick={onClickImg} image={image} />
       <Title>{title}</Title>
 
 
@@ -178,9 +180,7 @@ const DonationCardShow = ({
       <Date>{date}</Date> 
     </div>
      
-        <div style={{textAlign:'right'}}>
-            
-        </div>
+       
         
     <hr></hr>
     <Content >

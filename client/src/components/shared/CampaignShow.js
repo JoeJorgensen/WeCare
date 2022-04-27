@@ -12,6 +12,7 @@ import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import CampaignCard from "../Styling/CampaignCard";
 import UpdateCard from "../Styling/UpdateCard";
+// import '../Styling/Aside.css'
 
 const CampaignShow = () => {
   const params = useParams();
@@ -52,6 +53,7 @@ const CampaignShow = () => {
       <>
         {donations.map((c) => (
           <DonationCardShow
+            onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             key={c.id}
             hexa={"#1DB95F"}
@@ -232,6 +234,7 @@ const CampaignShow = () => {
         }}
       >
         <div
+        className='main'
           style={{
             textAlign: "left",
             marginLeft: "15px",
@@ -253,23 +256,26 @@ const CampaignShow = () => {
           {styledUpdates()}
         </div>
 
-        <aside
+        <aside className='sidebar'
           style={{
-            position: "sticky",
+            
+            display:'flex',
             paddingLeft: "15px",
             marginLeft: "15px",
             marginRight: "15px",
 
-            float: "right",
+            // float: "right",
             textAlign: "center",
-            // display: "flex",
-            // flexDirection: "column",
-            // alignContent: "stretch",
+
+            flexDirection: "column",
+            alignItems: "center",
+            // alignContent: "center",
+
             // flexBasis: 'auto',
           }}
         >
-          <h4 style={{ textAlign: "center" }}>
-            <Badge pill>Wallet Balance</Badge>
+          <h4 >
+            <Badge pill >Wallet Balance</Badge>
             <WalletBalance />
           </h4>
 
