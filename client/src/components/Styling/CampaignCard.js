@@ -84,9 +84,6 @@ const Description = styled.span`
   transition-delay: 0.04s;
 `;
 const Current_amount = styled.span`
-  display: block;
-  font-size: 0.875em;
-  color: #999999;
   transition: ${transition};
   transition-delay: 0.06s;
 `;
@@ -109,6 +106,7 @@ const BottomBar = styled.span`
   border-radius: 0 0 ${borderRadius}px ${borderRadius}px;
   transition: ${transition};
 `;
+
 
 const Style = styled.button`
   padding: 0;
@@ -144,13 +142,13 @@ const Style = styled.button`
         transform: translateY(-14px);
       }
       ${Goal} {
-        transform: translateY(-16px);
+        transform: translateY(-14px);
       }
       
 
     ${BottomBar} {
       border-radius: ${borderRadius - 2}px;
-      transform: translateY(-14px) scale(0.9);
+      transform: translateY(-14px) scale(0.88);
     }
 
     ${Screenshot} {
@@ -184,10 +182,14 @@ const CampaignCard = ({ hexa, title, description, image, profile_image, current_
     <Content>
       <Title>{title}</Title>
       <Description>{description}</Description>
+
       {/* <Current_amount>Current amount: ${current_amount}</Current_amount> */}
       <Goal>Goal: ${goal}</Goal>
-      <ProgressBar variant="warning"  now={current_amount } max={goal} label={`$${current_amount}`}/>
+        <br/>
 
+      <div style={{marginTop:'5px', marginBottom:'5px'}}>
+      <ProgressBar  variant="warning"  now={current_amount } max={goal} label={`$${current_amount}`}/>
+      </div>
 
 
       <BottomBar background={'#035EB6'} />
