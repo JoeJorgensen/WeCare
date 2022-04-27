@@ -21,13 +21,20 @@ const ProfileShow = () => {
     }
   };
 
+  //User campaigns that they donated to rendering
   const userProfileData = () => {
     return profiles.map((p) => {
       return (
-        <div>
-          {p.amount}
+        <div key={p.id}>
           {p.name}
+          {p.user_name}
+          {p.amount}
           {p.campaign_id}
+          {p.user_id}
+          {p.image}
+          {p.campaign_image}
+          {p.comment}
+          {p.created_at}
         </div>
       );
     });
@@ -36,7 +43,7 @@ const ProfileShow = () => {
   return (
     <>
       <div style={{ height: "73vh" }}>
-        <u>Test</u>
+        <h1>Profile Show</h1>
         <p>{JSON.stringify(profiles)}</p>
         <p>{userProfileData()}</p>
       </div>

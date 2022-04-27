@@ -10,10 +10,10 @@ User.destroy_all
 u1 = User.create(name: 'testx', email: 'testx@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 50.00, bio: 'I am a pretty neat guy')
 u2 = User.create(name: 'testx1', email: 'testx1@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 80.00)
 u3 = User.create(name: 'testx123', email: 'testx123@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 120.00)
-u4 = User.create(name: 'Austin', email: 'austin@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 1000.00 )
-u5 = User.create(name: 'Joe', email: 'joe@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 1000.00 )
-u6 = User.create(name: 'Steve', email: 'steve@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 1000.00 )
-u7 = User.create(name: 'Randy', email: 'randy@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 1000.00 )
+u4 = User.create(name: 'Austin', email: 'austin@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 100000.00 )
+u5 = User.create(name: 'Joe', email: 'joe@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 100000.00 )
+u6 = User.create(name: 'Steve', email: 'steve@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 100000.00 )
+u7 = User.create(name: 'Randy', email: 'randy@test.com', password: '123456', image: 'https://www.icba.org/images/default-source/events/convention--icba-live/2022/icons/speaker-bio-icon.png?sfvrsn=28e71d17_2', balance: 100000.00 )
 
 
 
