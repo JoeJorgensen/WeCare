@@ -1,15 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Badge, Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Update from "../shared/Update";
+import CampaignCard from "../Styling/CampaignCard";
+import UpdateCard from "../Styling/UpdateCard";
+import { DateTime } from "luxon";
+import Card from "../../providers/Card";
+import Logo from "../shared/Images/WecareLogo.png";
+import Update from "../shared/Update.js";
 
-const MyCampaigns = () => {
+
+const MyCampaigns = (props) => {
   const navigate = useNavigate();
   const [campaignInfo, setCampaignInfo] = useState([]);
   const [updates, setUpdates] = useState([]);
-  const [image, setImage] = useState("");
-  const [comment, setComment] = useState("");
 
   useEffect(() => {
     getUserCampaigns();
@@ -37,43 +40,21 @@ const MyCampaigns = () => {
   };
 
   const renderCampaignInfo = () => {
-    return campaignInfo.map((ci) => {
-      console.log(ci.id);
+    return campaignInfo.map((c) => {
+      console.log(c.id);
       return (
-        <Card
-          onClick={() => navigate(`/campaign_show/${ci.id}`)}
-          className="donationCards"
-          key={ci.id}
-          border="info"
-          style={{ width: "25rem" }}
-        >
-          <Card.Body>
-            <Card.Img src={ci.image} />
-            <Card.Title>
-              <hr></hr>
-              <Badge bg="denim">
-                <h6>Campaign: {ci.name}</h6>
-              </Badge>
-              <h6>{ci.description}</h6>
-
-              <Badge bg="denim">
-                <h6>
-                  Current Goal: <u>${ci.current_amount}</u>
-                </h6>
-              </Badge>
-              <br></br>
-              <br></br>
-              <Badge bg="denim">
-                <h6>
-                  Total Goal: <u>${ci.goal}</u>
-                </h6>
-              </Badge>
-              <br />
-              <br />
-            </Card.Title>
-            <Update id={ci.id} />
-          </Card.Body>
-        </Card>
+        <>
+          <CampaignCard
+            onClick={() => navigate(`/campaign_show/${c.id}`)}
+            key={c.id}
+            title={c.name}
+            description={c.description}
+            current_amount={c.current_amount}
+            goal={c.goal}
+            image={c.image}
+          />
+          <Update />
+        </>
       );
     });
   };
@@ -83,39 +64,29 @@ const MyCampaigns = () => {
     return updates.map((u) => {
       console.log(u.id);
       return (
-        <Card
-          onClick={() => navigate(`/campaign_show/${u.id}`)}
-          className="donationCards"
+        <UpdateCard
+          onClick={() => navigate(`/campaign_show/${u.campaign_id}`)}
           key={u.id}
-          border="info"
-          style={{ width: "40rem" }}
-        >
-          <div>
-            <Card.Body>
-              <Card.Img src={u.image} />
-              <Card.Title>
-                <hr></hr>
-                Campaign: {u.campaign_name}
-                <Badge bg="denim">Update: {u.comment}</Badge>
-                <Badge bg="denim">Created At: {u.created_at}</Badge>
-              </Card.Title>
-            </Card.Body>
-          </div>
-        </Card>
+          image={u.image}
+          description={u.comment}
+          date={DateTime.fromISO(u.created_at).toFormat("DD")}
+        />
       );
     });
   };
 
   return (
-    <>
-      {/* {<p>{JSON.stringify(updates)}</p>} */}
-      {/* <p>{JSON.stringify(campaignInfo)}</p> */}
+    <Card>
+    <div>
+      <img style={{ height: "145px" }} src={Logo}></img>
       <h1>My Campaigns</h1>
+      <hr />
       {renderCampaignInfo()}
-
       <h1>My Updates</h1>
+      <hr />
       {renderUpdates()}
-    </>
+    </div>
+    </Card>
   );
 };
 

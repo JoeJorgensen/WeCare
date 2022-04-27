@@ -41,7 +41,7 @@ const Update = ({ id }) => {
   return (
     <div>
       <div>
-        <Button variant="outline-mustard" onClick={handleShow}>
+        <Button variant="outline-mustard" onClick={handleShow} style={{margin: '10px'}}>
           Add Update
         </Button>
       </div>

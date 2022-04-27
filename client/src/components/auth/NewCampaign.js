@@ -85,11 +85,13 @@ const NewCampaign = () => {
   };
 
   return (
-    <div>
+    <div style={{width: '75%', margin: 'auto'}}>
       <div style={{ textAlign: "center" }}>
         <h1>Create New Fundraising</h1>
       </div>
-      <div style={{ textAlign: "center" }}>
+      <div style={{ 
+        textAlign: "center"
+     }}>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <FilePond
@@ -103,7 +105,7 @@ const NewCampaign = () => {
               labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
             />
           </Form.Group>
-          <div style={{ border: "1px solid" }}>
+          <div style={{ border: "1px solid", padding: '10px' }}>
             <h5>Fundraising Details</h5>
             <Form.Group>
               <Form.Label>Title</Form.Label>

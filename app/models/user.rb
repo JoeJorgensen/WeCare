@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def updates_by_campaign
-    User.find_by_sql(['select updates.id, campaigns.name as campaign_name, updates.comment, updates.image, updates.created_at
+    User.find_by_sql(['select updates.campaign_id, updates.id, campaigns.name as campaign_name, updates.comment, updates.image, updates.created_at
     from campaigns
     inner join updates on updates.campaign_id = campaigns.id
     where campaigns.user_id = ?', self.id])
