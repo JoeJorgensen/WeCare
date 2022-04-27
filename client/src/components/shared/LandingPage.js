@@ -10,6 +10,7 @@ import people from "../shared/Images/We-CareImg.jpg";
 import { useNavigate } from "react-router-dom";
 import LandingPageImg from "./LandingPageImg";
 import Logo from "./Images/WecareLogo.png";
+import ExpirationInfo from "../ExpirationInfo";
 
 const LandingPage = () => {
   const nav = useNavigate();
@@ -25,14 +26,14 @@ const LandingPage = () => {
             <img style={{ height: "145px" }} src={Logo}></img>
             <h1> WeCare</h1>
           </div>
-          <h2>A place to fundraise for the most important ot events</h2>
+          <h2>A place to fundraise for the most important of events</h2>
           <br></br>
           <h2>
             <Badge bg="denim">Urgent Fundraising</Badge>
           </h2>
           <br />
 
-          <CampaignInfo />
+          <ExpirationInfo />
           <br />
           <br />
 

@@ -15,8 +15,7 @@ import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import AddFunds from "./AddFunds";
 // import DefaultProfilePic from "../shared/ProfilePic";
-import ProfilePic from "../shared/Images/DefaultProfile.png"
-
+import ProfilePic from "../shared/Images/DefaultProfile.png";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
@@ -83,21 +82,21 @@ function MyProfile() {
       </Badge>
       <br />
       <br />
-        <img
-          style={{
-            objectFit: "cover",
-            borderRadius: "50%",
-            width: "200px",
-            height: "200px",
-          }}
-          src={ user.image ? user.image : ProfilePic }
-          width={300}
-        />
-      
+      <img
+        style={{
+          objectFit: "cover",
+          borderRadius: "50%",
+          width: "200px",
+          height: "200px",
+        }}
+        src={user.image ? user.image : ProfilePic}
+        width={300}
+      />
+
       <br />
       <br />
 
-      <Badge pill>
+      <Badge pill bg="denim">
         <h5>{user.name ? user.name : <p>no name</p>}</h5>
       </Badge>
       <hr></hr>
@@ -106,7 +105,9 @@ function MyProfile() {
 
       <div style={{ display: "inline-flex", alignItems: "center" }}>
         <h5 style={{ margin: "5px" }}>
-          <Badge pill>Wallet Balance</Badge>
+          <Badge pill bg="denim">
+            Wallet Balance
+          </Badge>
         </h5>
 
         <div
@@ -126,7 +127,7 @@ function MyProfile() {
 
       <br />
       <br />
-      <Badge pill>
+      <Badge pill bg="denim">
         <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
       </Badge>
 
@@ -139,7 +140,7 @@ function MyProfile() {
           <br />
 
           <h5>
-            <Badge>Name</Badge>
+            <Badge bg="denim">Name</Badge>
           </h5>
           <br />
           <br />
@@ -155,7 +156,7 @@ function MyProfile() {
           <br />
 
           <h5>
-            <Badge>Bio</Badge>
+            <Badge bg="denim">Bio</Badge>
           </h5>
 
           <br />
@@ -169,7 +170,7 @@ function MyProfile() {
             />
           </Form.Group>
 
-          <Badge>
+          <Badge bg="denim">
             <p style={{ marginBottom: "0px" }}>Image</p>
           </Badge>
           <br />
