@@ -14,6 +14,7 @@ import CampaignCard from "../Styling/CampaignCard";
 import UpdateCard from "../Styling/UpdateCard";
 import MyPagination from "../Pagination";
 // import '../Styling/Aside.css'
+import ProfilePic from "../shared/Images/DefaultProfile.png"
 
 const CampaignShow = () => {
   const params = useParams();
@@ -66,24 +67,23 @@ const CampaignShow = () => {
   };
 
   function styledDonation() {
-    return (
-      <>
-        {donations.map((c) => (
-          <DonationCardShow
-            onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
-            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
-            key={c.id}
-            hexa={"#1DB95F"}
-            title={c.name}
-            date={DateTime.fromISO(c.created_at).toFormat("DD")}
-            current_amount={c.amount}
-            description={c.comment}
-            image={c.image}
-          />
-         
-        ))}
-      </>
-    );
+      return (
+        <>
+          {donations.map((c) => (
+            <DonationCardShow
+              onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
+              onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+              key={c.id}
+              hexa={"#1DB95F"}
+              title={c.anonymous ? 'Anonymous' : `${c.name}`}
+              date={DateTime.fromISO(c.created_at).toFormat("DD")}
+              current_amount={c.amount}
+              description={c.comment}
+              image={c.anonymous ? ProfilePic : c.image}
+            />
+          ))}
+        </>
+      )
   }
 
   const renderDonations = () => {
@@ -252,7 +252,7 @@ const CampaignShow = () => {
         }}
       >
         <div
-        className='main'
+          className='main'
           style={{
             textAlign: "left",
             marginLeft: "15px",
@@ -276,8 +276,8 @@ const CampaignShow = () => {
 
         <aside className='sidebar'
           style={{
-            
-            display:'flex',
+
+            display: 'flex',
             paddingLeft: "15px",
             marginLeft: "15px",
             marginRight: "15px",
@@ -309,17 +309,17 @@ const CampaignShow = () => {
 
 
           <MyPagination
-           totPages={3}
-          currPage={currPage}
-          pageClicked={(ele)=>{
-            getDonations(ele)
-          }}
+            totPages={3}
+            currPage={currPage}
+            pageClicked={(ele) => {
+              getDonations(ele)
+            }}
           >
-             <ul>
-        {tagList.map((ele, ind) => {
-          return <li key={ele + ind}>{ele}</li>;
-        })}
-      </ul>
+            <ul>
+              {tagList.map((ele, ind) => {
+                return <li key={ele + ind}>{ele}</li>;
+              })}
+            </ul>
           </MyPagination>
         </aside>
         {/* {renderCampaign()} */}
@@ -327,6 +327,7 @@ const CampaignShow = () => {
 
       <br />
       <br />
+      <p>{JSON.stringify(donations)}</p>
     </>
   );
 };

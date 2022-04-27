@@ -156,6 +156,7 @@ const NewCampaign = () => {
             <Form.Group>
               <Form.Check
                 required
+                type="checkbox"
                 label="Agree to terms and conditions"
                 feedback="You must agree before submitting."
                 feedbackType="invalid"
