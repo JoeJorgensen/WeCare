@@ -10,7 +10,7 @@ import axios from "axios";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-const Update = ({ id }) => {
+const Update = ( { id, addUpdate }) => {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
   const [comment, setComment] = useState("");
@@ -27,14 +27,13 @@ const Update = ({ id }) => {
     data.append("comment", comment);
     data.append("image", image[0].file);
     try {
-      await axios.post(`/api/campaigns/${id}/updates`, data);
+      let res = await axios.post(`/api/campaigns/${id}/updates`, data);
+      addUpdate(res.data)
     } catch (error) {
       alert("error occurred adding your new campaign");
       console.log(error);
     } finally {
       handleClose();
-      window.location.reload();
-      // window.scrollTo(0)
     }
   };
 
@@ -59,7 +58,6 @@ const Update = ({ id }) => {
               <Form>
                 <Form.Label>Image</Form.Label>
                 <FilePond
-                  required
                   allowImageCrop={true}
                   allowImageTransform={true}
                   imageCropAspectRatio={"1:1"}
@@ -95,19 +93,6 @@ const Update = ({ id }) => {
             </Modal.Footer>
           </div>
         </Modal>
-      </div>
-
-      <div>
-        {/* <FilePond
-          required
-          allowImageCrop={true}
-          allowImageTransform={true}
-          imageCropAspectRatio={"1:1"}
-          image={image}
-          allowMultiple={true}
-          onupdatefiles={handleUpdate}
-          labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-        /> */}
       </div>
     </div>
   );

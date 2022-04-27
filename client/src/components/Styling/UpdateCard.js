@@ -159,7 +159,7 @@ const UpdateCard = ({
  
   onClick,
 }) => (
-  <Style >
+  <Style onClick={onClick} >
     <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
       <Screenshot image={image} />
       <Title>{title}</Title>
