@@ -1,6 +1,5 @@
 import { Badge } from "react-bootstrap";
 import Card from "../../providers/Card";
-<<<<<<< HEAD
 import githubimg from "./Images/githubimg.png"
 import linkedinimg from "./Images/Linkedin.png"
 import facebook from "./Images/facebook.png"
@@ -12,15 +11,6 @@ import google from "./Images/google.png"
 
 
 
-=======
-import githubimg from "./Images/githubimg.png";
-import linkedinimg from "./Images/Linkedin.png";
-import facebook from "./Images/facebook.png";
-import twitter from "./Images/Twitter.png";
-import behance from "./Images/Behance.png";
-import insta from "./Images/instagram.png";
-import google from "./Images/google.png";
->>>>>>> c0a20c3c5ed4dd9bc3f93583fc4da78fc14b24af
 
 import "./AboutStyle.css";
 import Nav from "react-bootstrap/Nav";
