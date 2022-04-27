@@ -9,7 +9,7 @@ import Logo from "../shared/Images/WecareLogo.png";
 import Update from "../shared/Update.js";
 
 
-const MyCampaigns = (props) => {
+const MyCampaigns = () => {
   const navigate = useNavigate();
   const [campaignInfo, setCampaignInfo] = useState([]);
   const [updates, setUpdates] = useState([]);
@@ -39,9 +39,12 @@ const MyCampaigns = (props) => {
     }
   };
 
+  const addUpdate = (update) => {
+    setUpdates([...updates, update])
+  }
+
   const renderCampaignInfo = () => {
     return campaignInfo.map((c) => {
-      console.log(c.id);
       return (
         <>
           <CampaignCard
@@ -53,20 +56,20 @@ const MyCampaigns = (props) => {
             goal={c.goal}
             image={c.image}
           />
-          <Update />
+          <Update id={c.id} addUpdate={addUpdate}/>
         </>
       );
     });
   };
 
   const renderUpdates = () => {
-    console.log(updates);
     return updates.map((u) => {
       console.log(u.id);
       return (
         <UpdateCard
           onClick={() => navigate(`/campaign_show/${u.campaign_id}`)}
           key={u.id}
+          title={u.title}
           image={u.image}
           description={u.comment}
           date={DateTime.fromISO(u.created_at).toFormat("DD")}

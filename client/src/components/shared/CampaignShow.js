@@ -3,7 +3,7 @@ import Card from "react-bootstrap/esm/Card";
 import Card1 from "../../providers/Card";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Badge, Button, Pagination } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
 import Donate from "../auth/Donate";
 import WalletBalance from "../WalletBalanceInfo";
 import DonationCard from "../Styling/DonationCard";
@@ -12,6 +12,8 @@ import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import CampaignCard from "../Styling/CampaignCard";
 import UpdateCard from "../Styling/UpdateCard";
+import DonationPagination from "../DonationPagination";
+import Pagination from "../Pagination";
 // import '../Styling/Aside.css'
 
 const CampaignShow = () => {
@@ -21,13 +23,20 @@ const CampaignShow = () => {
   const [updates, setUpdates] = useState([]);
   const [donations, setDonations] = useState([]);
   const [copied, setCopied] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [donationsPerPage] = useState(3)
+
+
+
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
-    // campaign
+
   }, []);
+
 
   const copyURL = () => {
     const e = document.createElement("input");
@@ -41,32 +50,42 @@ const CampaignShow = () => {
 
   const getDonations = async () => {
     try {
+      setLoading(true);
       let res = await axios.get(`/api/donation_by_user/${params.id}`);
       setDonations(res.data);
+      setLoading(false)
+
     } catch (error) {
       alert("error getting donations");
     }
   };
 
-  function styledDonation() {
-    return (
-      <>
-        {donations.map((c) => (
-          <DonationCardShow
-            onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
-            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
-            key={c.id}
-            hexa={"#1DB95F"}
-            title={c.name}
-            date={DateTime.fromISO(c.created_at).toFormat("DD")}
-            current_amount={c.amount}
-            description={c.comment}
-            image={c.image}
-          />
-        ))}
-      </>
-    );
-  }
+    const indexOfLastDonation = currentPage * donationsPerPage;
+    const indexOfFirstDonation = indexOfLastDonation - donationsPerPage;
+    const currentDonations = donations.slice(indexOfFirstDonation, indexOfLastDonation)
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+  // function styledDonation() {
+  //   return (
+  //     <>
+  //       {donations.map((c) => (
+  //         <DonationCardShow
+  //           onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
+  //           onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+  //           key={c.id}
+  //           hexa={"#1DB95F"}
+  //           title={c.name}
+  //           date={DateTime.fromISO(c.created_at).toFormat("DD")}
+  //           current_amount={c.amount}
+  //           description={c.comment}
+  //           image={c.image}
+  //         />
+         
+  //       ))}
+  //     </>
+  //   );
+  // }
 
   const renderDonations = () => {
     return donations.map((d) => {
@@ -211,6 +230,8 @@ const CampaignShow = () => {
     );
   };
 
+
+
   return (
     <>
       <div
@@ -287,13 +308,19 @@ const CampaignShow = () => {
           <br />
           <br />
 
-          {styledDonation()}
-          <br />
+          {/* {styledDonation()} */}
 
-          <Pagination>
-            <Pagination.Prev />
-            <Pagination.Next />
-          </Pagination>
+           <DonationPagination
+           donations={currentDonations} 
+           loading={loading}
+           /> 
+           <Pagination
+           donationsPerPage={donationsPerPage} 
+           totalDonations={donations.length}
+           paginate={paginate}
+           />
+
+
         </aside>
         {/* {renderCampaign()} */}
       </div>

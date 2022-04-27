@@ -24,7 +24,8 @@ const LandingPage = () => {
           <br />
           <div style={{ display: "inline-flex" }}>
             <img style={{ height: "145px" }} src={Logo}></img>
-            <h1> WeCare</h1>
+
+
           </div>
           <h2>A place to fundraise for the most important of events</h2>
           <br></br>
