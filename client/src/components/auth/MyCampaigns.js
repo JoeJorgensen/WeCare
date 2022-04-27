@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Badge, Button, Card } from "react-bootstrap"
+import { useNavigate } from "react-router-dom";
 import Update from "../shared/Update"
 
 
 const MyCampaigns = () => {
+  const navigate = useNavigate()
   const [campaignInfo, setCampaignInfo] = useState([])
   const [updates, setUpdates] = useState([])
   const [image, setImage] = useState('')
@@ -37,8 +39,10 @@ const MyCampaigns = () => {
 
   const renderCampaignInfo = () => {
     return campaignInfo.map((ci) => {
+      console.log(ci.id)
       return (
         <Card
+        onClick={ () => navigate(`/campaign_show/${ci.id}`)}
           className="donationCards"
           key={ci.id}
           border="info"
@@ -68,7 +72,7 @@ const MyCampaigns = () => {
                 <br />
                 <br />
               </Card.Title>
-              <Update />
+              <Update id={ci.id} />
             </Card.Body>
         </Card>
       );
@@ -76,9 +80,13 @@ const MyCampaigns = () => {
   }
 
   const renderUpdates = () => {
+    console.log(updates)
     return updates.map((u) => {
+      console.log(u.id)
       return (
         <Card
+        onClick={ () => navigate(`/campaign_show/${u.id}`)}
+
           className="donationCards"
           key={u.id}
           border="info"
@@ -92,6 +100,10 @@ const MyCampaigns = () => {
 
                 <Badge>
                     Update: {u.comment}
+                </Badge>
+
+                <Badge>
+                    Created At: {u.created_at}
                 </Badge>
 
               </Card.Title>

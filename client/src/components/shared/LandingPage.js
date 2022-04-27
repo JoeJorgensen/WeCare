@@ -5,10 +5,11 @@ import StringifyJSON from "../../providers/StringifyJSON";
 import CampaignInfo from "../CampaignInfo";
 import WalletBalance from "../WalletBalanceInfo";
 import CommentInfo from "../CommentInfo";
-import { Badge } from "react-bootstrap";
+import { Badge, Pagination } from "react-bootstrap";
 import people from "../shared/Images/We-CareImg.jpg";
 import { useNavigate } from "react-router-dom";
 import LandingPageImg from "./LandingPageImg";
+import Logo from "./Images/WecareLogo.png";
 
 const LandingPage = () => {
   const nav = useNavigate();
@@ -20,9 +21,12 @@ const LandingPage = () => {
       <Card>
         <div>
           <br />
-
-          <br />
-
+          <div style={{ display: "inline-flex" }}>
+            <img style={{ height: "145px" }} src={Logo}></img>
+            <h1> WeCare</h1>
+          </div>
+          <h2>A place to fundraise for the most important ot events</h2>
+          <br></br>
           <h2>
             <Badge pill bg="primary">Urgent Fundraising</Badge>
           </h2>

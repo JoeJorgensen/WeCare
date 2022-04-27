@@ -47,7 +47,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/campaign_show/:id" element={<CampaignShow />} />
             <Route path="/categories" element={<Categories />} />
-            <Route path="/profile_show" element={<ProfileShow />} />
+            <Route path="/profile_show/:id" element={<ProfileShow />} />
 
             {/* PROTECTED */}
             <Route element={<ProtectedRoute />}>
