@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import styled from 'styled-components';
+import Update from '../shared/Update';
 
 const cardWidth = 320;
 const borderRadius = 8;
