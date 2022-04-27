@@ -69,7 +69,7 @@ const ProfileShow = () => {
 
   return (
     <>
-      <div style={{ height: "73vh" }}>
+      <div>
         <h1>Profile Show</h1>
         <p>{JSON.stringify(donations)}</p>
         <p>{JSON.stringify(users)}</p>
