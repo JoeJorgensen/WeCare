@@ -1,6 +1,11 @@
 import axios from "axios";
+import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Card from "../../providers/Card";
+import CampaignCard from "../Styling/CampaignCard";
+import DonationCardShow from "../Styling/DonationCardShow";
+import ProfileCard from "../Styling/Theme/ProfileCard";
 
 const ProfileShow = () => {
   const [donations, setDonations] = useState([]);
@@ -8,7 +13,7 @@ const ProfileShow = () => {
   const [campaigns, setCampaigns] = useState([]);
 
   const params = useParams();
-
+  const navigate = useNavigate()
   useEffect(() => {
     getUserProfiles();
   }, []);
@@ -47,37 +52,87 @@ const ProfileShow = () => {
     });
   };
 
-  const userInfoData = () => {
-    return users.map((u) => {
-      return (
-        <div key={u.id}>
-          {u.bio} {u.image} {u.name} {u.id}
-        </div>
-      );
-    });
-  };
+  const userProfile =()=>{
+    return(
+      <div>
+      {users.map((c) => (
+        
+          <ProfileCard
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.id}
+            hexa={"#1DB95F"}
+            title={c.name}
 
-  const userCampaignData = () => {
-    return campaigns.map((c) => {
-      return (
-        <div key={c.id}>
-          {c.name} {c.description} {c.image} {c.current_amount} {c.id}
-        </div>
-      );
-    });
-  };
+
+            description={c.bio}
+            image={c.image}
+          />
+
+      ))}
+      
+       </div>
+    )
+  }
+
+
+  const usersDonations = ()=>{
+    return(
+      <div>
+      {donations.map((c) => (
+        
+          <DonationCardShow
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.donation_id}
+            hexa={"#1DB95F"}
+            title={c.name}
+            date={DateTime.fromISO(c.created_at).toFormat("DD")}
+            current_amount={c.amount}
+            description={c.comment}
+            image={c.campaign_image}
+          />
+
+      ))}
+      
+       </div>
+    )
+  }
+
+  
+  function usersCampaigns() {
+    return (
+
+      <>
+          {campaigns.map((c) => (
+            <CampaignCard
+              onClick={ () => navigate(`/campaign_show/${c.id}`)}
+              key={c.id}
+              title={c.name}
+              description={c.description}
+              current_amount={c.current_amount}
+              goal={c.goal}
+              image={c.image }
+              
+            />
+          ))}
+
+
+      </>
+
+    );
+  }
 
   return (
     <>
-      <div style={{ height: "73vh" }}>
-        <h1>Profile Show</h1>
-        <p>{JSON.stringify(donations)}</p>
-        <p>{JSON.stringify(users)}</p>
-        <p>{JSON.stringify(campaigns)}</p>
-        <p>Campaigns they donated to data:{userProfileData()}</p>
-        <p>Info about Users profile data:{userInfoData()}</p>
-        <p>Campaigns the profile clicked has created:{userCampaignData()}</p>
-      </div>
+      <Card >
+
+        {userProfile()}
+        <br/>
+        {usersDonations()}
+        <br/>
+
+        {usersCampaigns()}
+
+      </Card>
     </>
   );
 };

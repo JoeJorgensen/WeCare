@@ -34,6 +34,7 @@ const CampaignShow = () => {
     getCampaign();
     getUpdates();
     getDonations();
+    window.scrollTo(0, 0);
 
   }, []);
 
