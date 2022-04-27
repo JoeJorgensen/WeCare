@@ -1,6 +1,5 @@
 import { Badge } from "react-bootstrap";
 import Card from "../../providers/Card";
-<<<<<<< HEAD
 import githubimg from "./Images/githubimg.png"
 import linkedinimg from "./Images/Linkedin.png"
 import facebook from "./Images/facebook.png"
@@ -12,13 +11,6 @@ import google from "./Images/google.png"
 
 
 
-=======
-import githubimg from "./Images/githubimg.png";
-import linkedinimg from "./Images/Linkedin.png";
-import facebook from "./Images/facebook.png";
-import twitch from "./Images/twitch.png";
-import youtube from "./Images/youtube.png";
->>>>>>> d7f7466e046a0894c8ddf0e9069fb585142b0cad
 
 import "./AboutStyle.css";
 import Nav from "react-bootstrap/Nav";
@@ -35,10 +27,6 @@ const About = () => {
           <Badge className="container" pill bg="badge rounded-pill bg-denim">
             Randy Clements
           </Badge>
-
-<<<<<<< HEAD
-            <Badge className="container" pill bg="badge rounded-pill bg-primary">Randy Clements</Badge>
-            
             <div className="container">
             <Nav.Link  href="https://github.com/Randycl808">
             {githubimg && (
@@ -49,23 +37,6 @@ const About = () => {
                   height: "40px",
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
-=======
-          <div className="container">
-            <Nav.Link href="https://github.com/Randycl808">
-              {githubimg && (
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                  }}
-                  src={githubimg}
-                  width={300}
-                />
-              )}
-            </Nav.Link>
->>>>>>> d7f7466e046a0894c8ddf0e9069fb585142b0cad
 
             <Nav.Link href=" ">
             {linkedinimg && (
@@ -127,14 +98,13 @@ const About = () => {
                  }}src={google} width={300}/>)}
           </Nav.Link>
           </div>
-<<<<<<< HEAD
 
 
 
 
 
             <br/>
-            <Badge className="container" pill bg="badge rounded-pill bg-primary">Joe Jorgensen</Badge>
+            <Badge className="container" pill bg="badge rounded-pill bg-denim">Joe Jorgensen</Badge>
            
             <div className="container">
             <Nav.Link  href="https://github.com/JoeJorgensen">
@@ -146,28 +116,6 @@ const About = () => {
                   height: "40px",
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
-=======
-          <br />
-          <Badge className="container" pill bg="badge rounded-pill bg-denim">
-            Joe Jorgensen
-          </Badge>
-
-          <div className="container">
-            <Nav.Link href="https://github.com/JoeJorgensen">
-              {githubimg && (
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                  }}
-                  src={githubimg}
-                  width={300}
-                />
-              )}
-            </Nav.Link>
->>>>>>> d7f7466e046a0894c8ddf0e9069fb585142b0cad
 
             <Nav.Link href=" ">
             {linkedinimg && (
@@ -229,15 +177,8 @@ const About = () => {
                  }}src={google} width={300}/>)}
           </Nav.Link>
           </div>
-<<<<<<< HEAD
             <br/>
-            <Badge className="container" pill bg="badge rounded-pill bg-primary">Steven Crass</Badge>
-=======
-          <br />
-          <Badge className="container" pill bg="badge rounded-pill bg-denim">
-            Steven Crass
-          </Badge>
->>>>>>> d7f7466e046a0894c8ddf0e9069fb585142b0cad
+            <Badge className="container" pill bg="badge rounded-pill bg-denim">Steven Crass</Badge>
 
           <div className="container">
             <Nav.Link href="https://github.com/TheSteveIsGreat">
@@ -317,10 +258,9 @@ const About = () => {
           </div>
           <br />
 
-<<<<<<< HEAD
 
 
-            <Badge className="container" pill bg="badge rounded-pill bg-primary">Austin Kilgore</Badge>
+            <Badge className="container" pill bg="badge rounded-pill bg-denim">Austin Kilgore</Badge>
             <h5>austin.s.kilgore@gmail.com</h5>
             <div className="container">
             <Nav.Link  href="https://github.com/MrKilgore94">
@@ -332,27 +272,6 @@ const About = () => {
                   height: "40px",
                  }}src={githubimg} width={300}/>)}
           </Nav.Link>
-=======
-          <Badge className="container" pill bg="badge rounded-pill bg-denim">
-            Austin Kilgore
-          </Badge>
-          <h5>austin.s.kilgore@gmail.com</h5>
-          <div className="container">
-            <Nav.Link href="https://github.com/MrKilgore94">
-              {githubimg && (
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                  }}
-                  src={githubimg}
-                  width={300}
-                />
-              )}
-            </Nav.Link>
->>>>>>> d7f7466e046a0894c8ddf0e9069fb585142b0cad
 
             <Nav.Link href="https://www.linkedin.com/in/austin-kilgore-586760238/">
               {linkedinimg && (
@@ -369,28 +288,7 @@ const About = () => {
               )}
             </Nav.Link>
 
-<<<<<<< HEAD
-          <Nav.Link href=" ">
-            {facebook && (
-              <img style={{
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                 }}src={facebook} width={300}/>)}
-          </Nav.Link>
-
-          <Nav.Link href=" ">
-            {twitter && (
-              <img style={{
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                 }}src={twitter} width={300}/>)}
-          </Nav.Link>
-
-          <Nav.Link href=" ">
+          <Nav.Link href="https://www.behance.net/austinkilgore3">
             {behance && (
               <img style={{
                   objectFit: "cover",
@@ -400,7 +298,7 @@ const About = () => {
                  }}src={behance} width={300}/>)}
           </Nav.Link>
 
-          <Nav.Link href=" ">
+          <Nav.Link href="https://www.instagram.com/mr_kilgore_gaming/">
             {insta && (
               <img style={{
                   objectFit: "cover",
@@ -410,48 +308,6 @@ const About = () => {
                  }}src={insta} width={300}/>)}
           </Nav.Link>
 
-          <Nav.Link href=" ">
-            {google && (
-              <img style={{
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                 }}src={google} width={300}/>)}
-          </Nav.Link>
-
-
-=======
-            <Nav.Link href="https://www.youtube.com/channel/UCqr--mhPzgywG7FwIadN2zQ">
-              {youtube && (
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                  }}
-                  src={youtube}
-                  width={300}
-                />
-              )}
-            </Nav.Link>
-
-            <Nav.Link href="https://www.twitch.tv/mr_kilgore_gaming">
-              {twitch && (
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                  }}
-                  src={twitch}
-                  width={300}
-                />
-              )}
-            </Nav.Link>
->>>>>>> d7f7466e046a0894c8ddf0e9069fb585142b0cad
           </div>
           <br />
         </h3>
