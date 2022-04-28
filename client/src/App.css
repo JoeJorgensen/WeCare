@@ -107,14 +107,14 @@
 }
 
 .footer {
-  margin-top: 1rem;
   padding: 1rem;
   background-color: black;
   position: bottom;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 17vh;
+  height: 14vh;
+  margin-top: auto;
   color: white;
 }
 
@@ -137,7 +137,6 @@
 }
 
 .sidebar {
-  
   position: -webkit-sticky;
   position: sticky;
   top: 76px;

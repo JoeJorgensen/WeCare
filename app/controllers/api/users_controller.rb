@@ -74,8 +74,12 @@ class Api::UsersController < ApplicationController
   end
 
   def users_campaigns_donated_to
-    render json: @user.users_campaigns_donated_to
+    campaign = @user.campaigns.all
+    user = @user.user_filtered
+    render json: {donations:@user.users_campaigns_donated_to, campaigns:campaign, user:user}
   end 
+
+
 
   private
 
