@@ -55,12 +55,12 @@ const Campaigns = () => {
 
   return (
    
-    <div
+    <div className="carousel"
       style={{
         //  alignItems: "center"
-        display: "inline-flex",
-        flexWrap: "wrap",
-        justifyContent: "space-evenly",
+        // display: "inline-flex",
+        // flexWrap: "wrap",
+        // justifyContent: "space-evenly",
         // gap: "30px ",
       }}
     >
