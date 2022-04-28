@@ -31,4 +31,10 @@ class User < ActiveRecord::Base
     WHERE d.user_id = ?', self.id])
   end
 
+  def user_filtered
+    User.find_by_sql (['SELECT u.bio, u.image, u.name, u.id
+    FROM users as u
+    WHERE u.id = ?', self.id])
+  end
+
 end

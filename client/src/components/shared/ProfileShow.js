@@ -1,12 +1,19 @@
 import axios from "axios";
+import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Card from "../../providers/Card";
+import CampaignCard from "../Styling/CampaignCard";
+import DonationCardShow from "../Styling/DonationCardShow";
+import ProfileCard from "../Styling/Theme/ProfileCard";
 
 const ProfileShow = () => {
-  const [profiles, setProfiles] = useState([]);
+  const [donations, setDonations] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
 
   const params = useParams();
-
+  const navigate = useNavigate()
   useEffect(() => {
     getUserProfiles();
   }, []);
@@ -15,7 +22,12 @@ const ProfileShow = () => {
     try {
       let res = await axios.get(`/api/users_campaigns_donated_to/${params.id}`);
       console.log(res.data);
-      setProfiles(res.data);
+      //Profile clicked campaigns that they donated to
+      setDonations(res.data.donations);
+      //Profile clicked info (bio, img, ect)
+      setUsers(res.data.user);
+      //Profile clicked campaigns they created
+      setCampaigns(res.data.campaigns);
     } catch (error) {
       console.log(error);
     }
@@ -23,30 +35,104 @@ const ProfileShow = () => {
 
   //User campaigns that they donated to rendering
   const userProfileData = () => {
-    return profiles.map((p) => {
+    return donations.map((d) => {
       return (
-        <div key={p.id}>
-          {p.name}
-          {p.user_name}
-          {p.amount}
-          {p.campaign_id}
-          {p.user_id}
-          {p.image}
-          {p.campaign_image}
-          {p.comment}
-          {p.created_at}
+        <div key={d.id}>
+          {d.name}
+          {d.user_name}
+          {d.amount}
+          {d.campaign_id}
+          {d.user_id}
+          {d.image}
+          {d.campaign_image}
+          {d.comment}
+          {d.created_at}
         </div>
       );
     });
   };
 
+  const userProfile =()=>{
+    return(
+      <div>
+      {users.map((c) => (
+        
+          <ProfileCard
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.id}
+            hexa={"#1DB95F"}
+            title={c.name}
+
+
+            description={c.bio}
+            image={c.image}
+          />
+
+      ))}
+      
+       </div>
+    )
+  }
+
+
+  const usersDonations = ()=>{
+    return(
+      <div>
+      {donations.map((c) => (
+        
+          <DonationCardShow
+            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            key={c.donation_id}
+            hexa={"#1DB95F"}
+            title={c.name}
+            date={DateTime.fromISO(c.created_at).toFormat("DD")}
+            current_amount={c.amount}
+            description={c.comment}
+            image={c.campaign_image}
+          />
+
+      ))}
+      
+       </div>
+    )
+  }
+
+  
+  function usersCampaigns() {
+    return (
+
+      <>
+          {campaigns.map((c) => (
+            <CampaignCard
+              onClick={ () => navigate(`/campaign_show/${c.id}`)}
+              key={c.id}
+              title={c.name}
+              description={c.description}
+              current_amount={c.current_amount}
+              goal={c.goal}
+              image={c.image }
+              
+            />
+          ))}
+
+
+      </>
+
+    );
+  }
+
   return (
     <>
-      <div style={{ height: "73vh" }}>
-        <h1>Profile Show</h1>
-        <p>{JSON.stringify(profiles)}</p>
-        <p>{userProfileData()}</p>
-      </div>
+      <Card >
+
+        {userProfile()}
+        <br/>
+        {usersDonations()}
+        <br/>
+
+        {usersCampaigns()}
+
+      </Card>
     </>
   );
 };
