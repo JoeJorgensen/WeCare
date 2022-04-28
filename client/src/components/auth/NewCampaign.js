@@ -154,9 +154,9 @@ const NewCampaign = () => {
             <hr />
             <Form.Group>
 
+              <Form.Label>Agree to terms and conditions</Form.Label>
               <Form.Check
                 required
-                label = "Agree to terms and conditions"
                 type= "checkbox"
               />
 
