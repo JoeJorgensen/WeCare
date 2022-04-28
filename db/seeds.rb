@@ -17,7 +17,7 @@ u7 = User.create(name: 'Randy', email: 'randy@test.com', password: '123456', ima
 
 
 
-c1 = Campaign.create(name: 'Matt Hays Memorial Fund', description: 'Matt Hays Memorial', image: 'https://2dbdd5116ffa30a49aa8-c03f075f8191fb4e60e74b907071aee8.ssl.cf1.rackcdn.com/6879821_1447383818.6328.jpg', current_amount: 5000.00, goal: 15000.00, expiration: 'May 3rd 2023 10:10', user_id:u1.id, category_id:cat1.id)
+c1 = Campaign.create(name: 'Matt Hays Memorial Fund', description: 'Matt Hays Memorial', image: 'https://2dbdd5116ffa30a49aa8-c03f075f8191fb4e60e74b907071aee8.ssl.cf1.rackcdn.com/6879821_1447383818.6328.jpg', current_amount: 5000.00, goal: 15000.00, expiration: 'May 3rd 2023 10:10', user_id:u1.id)
 c2 = Campaign.create(name: 'Barn Fire', description: 'Barn has been burnt up', image: 'https://img.hobbyfarms.com/wp-content/uploads/2018/01/18040448/barn-fire-safety-1928639.jpg', current_amount: 2000.00, goal: 20000.00, expiration: 'June 16th 2023 10:10', user_id:u2.id)
 c3 = Campaign.create(name: 'House Fire', description: 'House has been burnt up', image: 'https://www.puroclean.com/wp-content/uploads/2019/08/AdobeStock_166647716-1.jpeg', current_amount: 4500.00, goal: 25000.00, expiration: 'April 1st 2013 10:10', user_id:u2.id)
 c4 = Campaign.create(name: 'New Business', description: 'Opening up a new Business in NYC', image: 'https://www.laytoncity.org/LC/CommunityCalendar/RenderImageOrFile/0abce416-ee2d-4da6-97ce-4f6d4e554867', current_amount: 1750.00, goal: 15000.00, expiration: 'December 1st 2023 10:10', user_id:u5.id)
