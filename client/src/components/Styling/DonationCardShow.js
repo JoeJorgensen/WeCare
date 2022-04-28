@@ -168,7 +168,7 @@ const DonationCardShow = ({
   <Style onClick={onClick}>
     <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
       <Screenshot onClick={onClickImg} image={image ? image : ProfilePic} />
-      <Title>{title}</Title>
+      <Title onClick={onClickImg}>{title}</Title>
 
 
     </div>
