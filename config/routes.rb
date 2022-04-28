@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get '/campaigns_by_user', to: 'users#campaigns_by_user'
       get '/updates_by_campaign', to: 'users#updates_by_campaign'
       get '/users_campaigns_donated_to/:id', to: 'users#users_campaigns_donated_to'
+      get '/campaign_plus_categories/:id', to: 'campaigns#campaign_plus_categories'
   end
   get '*other', to: 'static#index'
 end

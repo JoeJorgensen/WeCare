@@ -19,4 +19,12 @@ class Campaign < ApplicationRecord
     ORDER BY current_amount / goal"])
   end 
 
+  def self.campaign_plus_categories(id)
+    Campaign.find_by_sql(['select c.id, c.name, c.image, c.description, c.current_amount, c.goal, categories.name as category_name
+    from campaigns as c
+    inner join campaign_categories on c.id = campaign_categories.campaign_id
+    inner join categories on campaign_categories.id = categories.id
+    where c.id = ?', id])
+  end
+
 end

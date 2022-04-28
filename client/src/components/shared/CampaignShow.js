@@ -23,12 +23,14 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
+  const [categories, setCategories] = useState('')
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
     window.scrollTo(0, 0);
+    getCategories()
   }, []);
 
   const copyURL = () => {
@@ -39,6 +41,15 @@ const CampaignShow = () => {
     document.execCommand("copy");
     document.body.removeChild(e);
     setCopied(true);
+  };
+
+  const getCategories = async () => {
+    try {
+      let res = await axios.get("/api/categories");
+      setCategories(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getDonations = async () => {
@@ -118,6 +129,12 @@ const CampaignShow = () => {
     }
   };
 
+  const showCategory = () => {
+   return categories.map((c)=> {
+     return c.id = campaign.id
+   })
+  }
+
   function styledCampaign() {
     return (
       <>
@@ -134,28 +151,37 @@ const CampaignShow = () => {
   }
 
   return (
-
+<>
+<p>{JSON.stringify(categories)}</p>
       <div
         style={{
-          margin: "20px",
+          margin: "auto",
           display: "flex",
-          flexWrap:'wrap',
+          // flexWrap:'wrap',
           justifyContent: "space-evenly",
         }}
       >
+        
         <div
-
+          className="main"
           style={{
             textAlign: "left",
             marginLeft: "15px",
             marginRight: "15px",
+            margin: 'auto',
+            padding: 'auto'
           }}
         >
           {styledCampaign()}
           <br />
           <br />
+
+
           {styledUpdates()}
+          
         </div>
+
+
 
         <aside
           className="sidebar"
@@ -197,7 +223,9 @@ const CampaignShow = () => {
             paginate={paginate}
           />
         </aside>
+
       </div>
+      </>
 
   );
 };
