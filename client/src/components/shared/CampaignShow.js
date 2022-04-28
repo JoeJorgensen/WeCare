@@ -199,7 +199,6 @@ const CampaignShow = () => {
         </aside>
       </div>
 
-
   );
 };
 export default CampaignShow;
