@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ProfilePic from '../shared/Images/DefaultProfile.png'
 
 const cardWidth = 280;
 const borderRadius = 8;
@@ -166,7 +167,7 @@ const DonationCardShow = ({
 }) => (
   <Style >
     <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
-      <Screenshot onClick={onClickImg} image={image} />
+      <Screenshot onClick={onClickImg} image={image ? image : ProfilePic} />
       <Title onClick={onClickImg}>{title}</Title>
 
 
