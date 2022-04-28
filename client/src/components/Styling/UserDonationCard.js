@@ -9,13 +9,15 @@ const transition = "all 0.45s ease";
 const Screenshot = styled.figure`
   z-index: 200;
   position: relative;
-  margin: 7px;
+  left: 50px;
+  margin: 0;
   padding: 0;
-  width: 50px;
-  height: 50px;
+  width: 180px;
+  height: 100px;
   background: url(${(props) => props.image}) 0 0 no-repeat;
   background-size: cover;
-  border-radius: 50%;
+  border-radius: ${borderRadius}px ${borderRadius}px ;
+
   overflow: hidden;
   backface-visibility: hidden;
   transition: ${transition};
@@ -140,8 +142,9 @@ const Style = styled.button`
     }
 
     ${Screenshot} {
-      transform: translateY(4px) scale(0.92);
-      border-radius: 50px;
+      transform: translateY(-4px) scale(0.92);
+      border-radius: ${borderRadius - 5}px;
+
 
       &::before {
         background: rgba(0, 0, 0, 0.1);
@@ -152,7 +155,7 @@ const Style = styled.button`
   }
 `;
 
-const DonationCardShow = ({
+const UserDonationCard = ({
   hexa,
   current_amount,
   title,
@@ -164,12 +167,15 @@ const DonationCardShow = ({
   onClickImg,
 
 }) => (
-  <Style >
+  <Style onClick={onClick}>
     <div style={{display:'inline-flex', alignItems:'center', gap: "5px "}}>
-      <Screenshot onClick={onClickImg} image={image} />
-      <Title onClick={onClickImg}>{title}</Title>
+      <Screenshot  image={image} />
 
 
+    </div>
+    <div style={{textAlign:'center', margin:'10px'}}>
+       < Title >{title}</Title>
+        
     </div>
 
 
@@ -196,4 +202,4 @@ const DonationCardShow = ({
   </Style>
 );
 
-export default DonationCardShow;
+export default UserDonationCard;

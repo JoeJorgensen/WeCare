@@ -16,7 +16,7 @@ const navigate = useNavigate()
      {donations.map((c) => (
           <DonationCardShow
             onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
-            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            // onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             key={c.id}
             hexa={"#1DB95F"}
             title={c.name}

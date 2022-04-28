@@ -7,6 +7,7 @@ import Card from "../../providers/Card";
 import CampaignCard from "../Styling/CampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import ProfileCard from "../Styling/Theme/ProfileCard";
+import UserDonationCard from "../Styling/UserDonationCard";
 
 const ProfileShow = () => {
   const [donations, setDonations] = useState([]);
@@ -80,7 +81,7 @@ const ProfileShow = () => {
       <div>
       {donations.map((c) => (
         
-          <DonationCardShow
+          <UserDonationCard
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             key={c.donation_id}
             hexa={"#1DB95F"}
@@ -166,7 +167,7 @@ const ProfileShow = () => {
         >
            {usersCampaigns()}
         </div>
-       
+       {JSON.stringify(donations)}
 
       </div>
     </>
