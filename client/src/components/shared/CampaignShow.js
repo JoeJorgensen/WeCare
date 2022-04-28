@@ -134,16 +134,17 @@ const CampaignShow = () => {
   }
 
   return (
-    <>
+
       <div
         style={{
           margin: "20px",
           display: "flex",
+          flexWrap:'wrap',
           justifyContent: "space-evenly",
         }}
       >
         <div
-          className='main'
+
           style={{
             textAlign: "left",
             marginLeft: "15px",
@@ -162,8 +163,12 @@ const CampaignShow = () => {
 
             display: 'flex',
             paddingLeft: "15px",
+            paddingBottom: "15px",
+
             marginLeft: "15px",
             marginRight: "15px",
+            marginBottom: "15px",
+
             textAlign: "center",
             flexDirection: "column",
             alignItems: "center",
@@ -183,10 +188,10 @@ const CampaignShow = () => {
             {!copied ? "Share Campaign" : "Link Copied!"}
           </Button>
           <br />
-          <br />
+
 
           <DonationPagination donations={currentDonations} loading={loading} />
-          <Pagination
+          <Pagination className='main'
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
@@ -194,10 +199,7 @@ const CampaignShow = () => {
         </aside>
       </div>
 
-      <br />
-      <br />
-      <p>{JSON.stringify(donations)}</p>
-    </>
+
   );
 };
 export default CampaignShow;
