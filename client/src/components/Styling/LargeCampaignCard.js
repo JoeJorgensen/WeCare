@@ -12,7 +12,7 @@ const Screenshot = styled.figure`
   margin: 0;
   padding: 0;
   width: ${cardWidth }px;
-  height: 400px;
+  height: 350px;
   background: url(${(props) => props.image }) 0 0 no-repeat;
   background-size: cover;
   border-radius: ${borderRadius}px ${borderRadius}px 0 0;
@@ -115,7 +115,7 @@ const Style = styled.button`
   margin:0;
   position: relative;
   flex-shrink: 0;
-  width: ${cardWidth}px;
+  width: ${cardWidth};
   text-align: left;
   background: #ffffff;
   border-radius: ${borderRadius}px;

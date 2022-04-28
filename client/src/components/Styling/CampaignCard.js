@@ -13,7 +13,7 @@ const Screenshot = styled.figure`
   margin: 0;
   padding: 0;
   width: ${cardWidth }px;
-  height: 200px;
+  height: 185px;
   background: url(${(props) => props.image }) 0 0 no-repeat;
   background-size: cover;
   border-radius: ${borderRadius}px ${borderRadius}px 0 0;

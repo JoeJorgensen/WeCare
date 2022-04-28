@@ -23,12 +23,14 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
+  const [categories, setCategories] = useState('')
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
     window.scrollTo(0, 0);
+    getCategories()
   }, []);
 
   const copyURL = () => {
@@ -39,6 +41,15 @@ const CampaignShow = () => {
     document.execCommand("copy");
     document.body.removeChild(e);
     setCopied(true);
+  };
+
+  const getCategories = async () => {
+    try {
+      let res = await axios.get("/api/categories");
+      setCategories(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getDonations = async () => {
@@ -118,6 +129,12 @@ const CampaignShow = () => {
     }
   };
 
+  const showCategory = () => {
+   return categories.map((c)=> {
+     return c.id = campaign.id
+   })
+  }
+
   function styledCampaign() {
     return (
       <>
@@ -134,27 +151,37 @@ const CampaignShow = () => {
   }
 
   return (
-    <>
+<>
+<p>{JSON.stringify(categories)}</p>
       <div
         style={{
-          margin: "20px",
+          margin: "auto",
           display: "flex",
+          // flexWrap:'wrap',
           justifyContent: "space-evenly",
         }}
       >
+        
         <div
-          className='main'
+          className="main"
           style={{
             textAlign: "left",
             marginLeft: "15px",
             marginRight: "15px",
+            margin: 'auto',
+            padding: 'auto'
           }}
         >
           {styledCampaign()}
           <br />
           <br />
+
+
           {styledUpdates()}
+          
         </div>
+
+
 
         <aside
           className="sidebar"
@@ -162,8 +189,12 @@ const CampaignShow = () => {
 
             display: 'flex',
             paddingLeft: "15px",
+            paddingBottom: "15px",
+
             marginLeft: "15px",
             marginRight: "15px",
+            marginBottom: "15px",
+
             textAlign: "center",
             flexDirection: "column",
             alignItems: "center",
@@ -183,21 +214,19 @@ const CampaignShow = () => {
             {!copied ? "Share Campaign" : "Link Copied!"}
           </Button>
           <br />
-          <br />
+
 
           <DonationPagination donations={currentDonations} loading={loading} />
-          <Pagination
+          <Pagination className='main'
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
           />
         </aside>
-      </div>
 
-      <br />
-      <br />
-      <p>{JSON.stringify(donations)}</p>
-    </>
+      </div>
+      </>
+
   );
 };
 export default CampaignShow;

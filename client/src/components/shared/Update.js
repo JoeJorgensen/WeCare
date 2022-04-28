@@ -10,7 +10,7 @@ import axios from "axios";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-const Update = ( { id, addUpdate }) => {
+const Update = ({ id, addUpdate }) => {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
   const [comment, setComment] = useState("");
@@ -40,7 +40,7 @@ const Update = ( { id, addUpdate }) => {
   return (
     <div>
       <div>
-        <Button variant="outline-mustard" onClick={handleShow} style={{margin: '10px'}}>
+        <Button variant="outline-mustard" onClick={handleShow} style={{ margin: '10px' }}>
           Add Update
         </Button>
       </div>
@@ -58,6 +58,7 @@ const Update = ( { id, addUpdate }) => {
               <Form>
                 <Form.Label>Image</Form.Label>
                 <FilePond
+                  required
                   allowImageCrop={true}
                   allowImageTransform={true}
                   imageCropAspectRatio={"1:1"}
@@ -72,6 +73,7 @@ const Update = ( { id, addUpdate }) => {
                 >
                   <Form.Label>Comment</Form.Label>
                   <Form.Control
+                    required
                     onChange={(e) => setComment(e.target.value)}
                     as="textarea"
                     rows={3}

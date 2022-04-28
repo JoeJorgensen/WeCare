@@ -38,7 +38,7 @@ const Screenshot = styled.figure`
 const Content = styled.div`
   z-index: 200;
   position: relative;
-  padding: 10px 10px 25px;
+  padding: 5px 5px 20px;
 `;
 
 const Title = styled.span`
