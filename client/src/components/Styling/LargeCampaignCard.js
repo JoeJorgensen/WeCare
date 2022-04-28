@@ -115,7 +115,7 @@ const Style = styled.button`
   margin:0;
   position: relative;
   flex-shrink: 0;
-  width: ${cardWidth}px;
+  width: ${cardWidth};
   text-align: left;
   background: #ffffff;
   border-radius: ${borderRadius}px;

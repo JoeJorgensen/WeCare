@@ -65,6 +65,10 @@ def destroy
   render json: @campaign.destroy
 end
 
+def campaign_plus_categories
+  render json: Campaign.campaign_plus_categories(params[:id])
+end
+
 private
 #function that allows @campaign to find specific campign
 def set_campaign
