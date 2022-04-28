@@ -7,7 +7,7 @@ const Pagination = ({ donationsPerPage, totalDonations, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <nav>
+    <nav >
       <ul className="pagination">
         {pageNumbers.map(number => (
           <li key={number} className="page-item">
