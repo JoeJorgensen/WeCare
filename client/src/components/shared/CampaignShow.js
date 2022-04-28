@@ -8,6 +8,8 @@ import { DateTime } from "luxon";
 import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import UpdateCard from "../Styling/UpdateCard";
+// import '../Styling/Aside.css'
+import ProfilePic from "../shared/Images/DefaultProfile.png"
 import DonationPagination from "../DonationPagination";
 import Pagination from "../Pagination";
 
@@ -41,7 +43,7 @@ const CampaignShow = () => {
 
   const getDonations = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       let res = await axios.get(`/api/donation_by_user/${params.id}`);
       setDonations(res.data);
       setLoading(false);
@@ -49,6 +51,26 @@ const CampaignShow = () => {
       alert("error getting donations");
     }
   };
+
+  function styledDonation() {
+      return (
+        <>
+          {donations.map((c) => (
+            <DonationCardShow
+              onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
+              onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+              key={c.id}
+              hexa={"#1DB95F"}
+              title={c.anonymous ? 'Anonymous' : `${c.name}`}
+              date={DateTime.fromISO(c.created_at).toFormat("DD")}
+              current_amount={c.amount}
+              description={c.comment}
+              image={c.anonymous ? ProfilePic : c.image}
+            />
+          ))}
+        </>
+      )
+  }
 
   const indexOfLastDonation = currentPage * donationsPerPage;
   const indexOfFirstDonation = indexOfLastDonation - donationsPerPage;
@@ -121,7 +143,7 @@ const CampaignShow = () => {
         }}
       >
         <div
-          className="main"
+          className='main'
           style={{
             textAlign: "left",
             marginLeft: "15px",
@@ -137,7 +159,8 @@ const CampaignShow = () => {
         <aside
           className="sidebar"
           style={{
-            display: "flex",
+
+            display: 'flex',
             paddingLeft: "15px",
             marginLeft: "15px",
             marginRight: "15px",
@@ -173,6 +196,7 @@ const CampaignShow = () => {
 
       <br />
       <br />
+      <p>{JSON.stringify(donations)}</p>
     </>
   );
 };
