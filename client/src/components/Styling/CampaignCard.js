@@ -111,7 +111,7 @@ const BottomBar = styled.span`
 
 const Style = styled.button`
   padding: 0;
-  margin:0;
+  margin: 15px;
   position: relative;
   flex-shrink: 0;
   width: ${cardWidth}px;
