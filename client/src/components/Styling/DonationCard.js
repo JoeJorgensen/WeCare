@@ -5,7 +5,6 @@ const cardWidth = 280;
 const borderRadius = 8;
 const transition = "all 0.45s ease";
 
-
 const Screenshot = styled.figure`
   z-index: 200;
   position: relative;
@@ -32,8 +31,6 @@ const Screenshot = styled.figure`
   }
 `;
 
-
-
 const Content = styled.div`
   z-index: 200;
   position: relative;
@@ -55,8 +52,6 @@ const Description = styled.span`
   transition: ${transition};
   transition-delay: 0.04s;
 `;
-
-
 
 const Date = styled.span`
   display: block;
@@ -81,7 +76,6 @@ const Current_amount = styled.span`
   font-size: 0.875em;
   color: #999999;
   transition: ${transition};
-
 `;
 
 const Style = styled.button`
@@ -114,21 +108,15 @@ const Style = styled.button`
       transform: translateY(-10px);
     }
     ${Date} {
-        transform: translateY(-30px) translateX(-35px)
-
-
-      }
-      ${Current_amount} {
-        transform: translateY(-10px);
-
-
-      }
-
+      transform: translateY(-30px) translateX(-35px);
+    }
+    ${Current_amount} {
+      transform: translateY(-10px);
+    }
 
     ${Description} {
       transform: translateY(-12px);
     }
-    
 
     ${BottomBar} {
       border-radius: ${borderRadius - 2}px;
@@ -143,8 +131,6 @@ const Style = styled.button`
         background: rgba(0, 0, 0, 0.1);
       }
     }
-
-    
   }
 `;
 
@@ -155,29 +141,26 @@ const DonationCard = ({
   date,
   description,
   image,
- 
+
   onClick,
+  onClickImg,
 }) => (
   <Style onClick={onClick}>
-    <div style={{display:'inline-flex', alignItems:'center'}}>
-      <Screenshot image={image} />
-      <Title>{title}</Title>
-      <Current_amount>{ current_amount}</Current_amount>
-
+    <div style={{ display: "inline-flex", alignItems: "center" }}>
+      <Screenshot image={image} onClick={onClickImg} />
+      <Title onClick={onClickImg}>{title}</Title>
+      <Current_amount>{current_amount}</Current_amount>
     </div>
 
-    <div style={{ display:'flex', justifyContent:'center'}}>
-         <Date>{date}</Date>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Date>{date}</Date>
     </div>
-     
 
     <hr></hr>
     <Content>
       <Description>{description}</Description>
 
-
-
-      <BottomBar background={'#035EB6'} />
+      <BottomBar background={"#035EB6"} />
     </Content>
   </Style>
 );

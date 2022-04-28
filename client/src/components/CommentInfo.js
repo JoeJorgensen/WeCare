@@ -31,20 +31,14 @@ const Comments = () => {
     }
   };
 
-  const formattedDate = (dateTime) => {
-    dateTime.toDateString({
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
-  };
-
+  
   function styledCards() {
     return (
       <>
         {comments.map((c) => (
           <DonationCard
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+            onClickImg={()=>navigate(`/profile_show/${c.user_id}`)}
             key={c.id}
             title={c.username}
             date={DateTime.fromISO(c.created_at).toFormat("DD")}
@@ -135,6 +129,7 @@ const Comments = () => {
       }}
     >
       {/* {renderData()} */}
+
       {styledCards()}
     </div>
   );
