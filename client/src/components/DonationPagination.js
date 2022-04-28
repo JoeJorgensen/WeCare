@@ -3,6 +3,7 @@ import { DateTime } from "luxon";
 import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import DonationCardShow from "./Styling/DonationCardShow";
+import ProfilePic from './shared/Images/DefaultProfile.png'
 
 
 const DonationPagination = ({donations, loading}) => {
@@ -19,11 +20,11 @@ const navigate = useNavigate()
             // onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             key={c.id}
             hexa={"#1DB95F"}
-            title={c.name}
+            title={c.anonymous ? 'anonymous' : c.name}
             date={DateTime.fromISO(c.created_at).toFormat("DD")}
             current_amount={c.amount}
             description={c.comment}
-            image={c.image}
+            image={c.anonymous ? ProfilePic : c.image}
           />
          
         ))}

@@ -196,7 +196,6 @@ const CampaignShow = () => {
 
       <br />
       <br />
-      <p>{JSON.stringify(donations)}</p>
     </>
   );
 };
