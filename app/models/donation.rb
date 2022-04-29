@@ -10,7 +10,7 @@ class Donation < ApplicationRecord
   end
 
   def self.donation_by_user(id)
-    Donation.find_by_sql(['SELECT campaign_id, donations.id, donations.user_id, donations.created_at, comment, amount, u.name, u.image  FROM donations
+    Donation.find_by_sql(['SELECT donations.anonymous, campaign_id, donations.id, donations.user_id, donations.created_at, comment, amount, u.name, u.image  FROM donations
     INNER JOIN users as u
     ON user_id = u.id 
     WHERE campaign_id = ?',id] )

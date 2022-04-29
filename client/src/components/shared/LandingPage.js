@@ -38,7 +38,7 @@ const LandingPage = () => {
           <br />
           <br />
 
-          <hr></hr>
+
           <h2>
             <Badge pill bg="denim">Coming to an end</Badge>
           </h2>
@@ -46,7 +46,7 @@ const LandingPage = () => {
 
           <CampaignInfo />
 
-          <hr></hr>
+
           <h2>
             <Badge pill bg="denim">Prayers from good people</Badge>
           </h2>

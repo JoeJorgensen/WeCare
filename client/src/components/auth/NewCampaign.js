@@ -85,15 +85,14 @@ const NewCampaign = () => {
   };
 
   return (
-    <div style={{width: '75%', margin: 'auto'}}>
-      <div style={{ textAlign: "center" }}>
+    <div className="mb-3" style={{width: '75%', margin: 'auto', textAlign: 'center'}}>
+      <div>
         <h1>Create New Fundraising</h1>
       </div>
-      <div style={{ 
-        textAlign: "center"
-     }}>
+      <div>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
+          <Form.Label>Image</Form.Label>
             <FilePond
               required
               allowImageCrop={true}
@@ -154,12 +153,14 @@ const NewCampaign = () => {
             </Form.Group>
             <hr />
             <Form.Group>
+
+              <Form.Label>Agree to terms and conditions</Form.Label>
               <Form.Check
                 required
-                label="Agree to terms and conditions"
-                feedback="You must agree before submitting."
-                feedbackType="invalid"
+                type= "checkbox"
               />
+
+              <br />
             </Form.Group>
             <Button type="submit">Submit</Button>
           </div>

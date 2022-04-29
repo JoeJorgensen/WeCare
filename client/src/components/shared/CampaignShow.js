@@ -8,6 +8,8 @@ import { DateTime } from "luxon";
 import LargeCampaignCard from "../Styling/LargeCampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import UpdateCard from "../Styling/UpdateCard";
+// import '../Styling/Aside.css'
+import ProfilePic from "../shared/Images/DefaultProfile.png"
 import DonationPagination from "../DonationPagination";
 import Pagination from "../Pagination";
 
@@ -21,12 +23,14 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
+  const [categories, setCategories] = useState('')
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
     window.scrollTo(0, 0);
+    getCategories()
   }, []);
 
   const copyURL = () => {
@@ -39,9 +43,18 @@ const CampaignShow = () => {
     setCopied(true);
   };
 
+  const getCategories = async () => {
+    try {
+      let res = await axios.get("/api/categories");
+      setCategories(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getDonations = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       let res = await axios.get(`/api/donation_by_user/${params.id}`);
       setDonations(res.data);
       setLoading(false);
@@ -49,6 +62,26 @@ const CampaignShow = () => {
       alert("error getting donations");
     }
   };
+
+  function styledDonation() {
+      return (
+        <>
+          {donations.map((c) => (
+            <DonationCardShow
+              onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
+              onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
+              key={c.id}
+              hexa={"#1DB95F"}
+              title={c.anonymous ? 'Anonymous' : `${c.name}`}
+              date={DateTime.fromISO(c.created_at).toFormat("DD")}
+              current_amount={c.amount}
+              description={c.comment}
+              image={c.anonymous ? ProfilePic : c.image}
+            />
+          ))}
+        </>
+      )
+  }
 
   const indexOfLastDonation = currentPage * donationsPerPage;
   const indexOfFirstDonation = indexOfLastDonation - donationsPerPage;
@@ -96,6 +129,12 @@ const CampaignShow = () => {
     }
   };
 
+  const showCategory = () => {
+   return categories.map((c)=> {
+     return c.id = campaign.id
+   })
+  }
+
   function styledCampaign() {
     return (
       <>
@@ -112,35 +151,49 @@ const CampaignShow = () => {
   }
 
   return (
-    <>
+<>
       <div
         style={{
-          margin: "20px",
+          margin: "auto",
           display: "flex",
+          // flexWrap:'wrap',
           justifyContent: "space-evenly",
         }}
       >
+        
         <div
           className="main"
           style={{
             textAlign: "left",
             marginLeft: "15px",
             marginRight: "15px",
+            margin: 'auto',
+            padding: 'auto'
           }}
         >
           {styledCampaign()}
           <br />
           <br />
+
+
           {styledUpdates()}
+          
         </div>
+
+
 
         <aside
           className="sidebar"
           style={{
-            display: "flex",
+
+            display: 'flex',
             paddingLeft: "15px",
+            paddingBottom: "15px",
+
             marginLeft: "15px",
             marginRight: "15px",
+            marginBottom: "15px",
+
             textAlign: "center",
             flexDirection: "column",
             alignItems: "center",
@@ -160,20 +213,19 @@ const CampaignShow = () => {
             {!copied ? "Share Campaign" : "Link Copied!"}
           </Button>
           <br />
-          <br />
+
 
           <DonationPagination donations={currentDonations} loading={loading} />
-          <Pagination
+          <Pagination className='side'
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
           />
         </aside>
-      </div>
 
-      <br />
-      <br />
-    </>
+      </div>
+      </>
+
   );
 };
 export default CampaignShow;

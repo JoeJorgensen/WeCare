@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import AxiosContainer from "../providers/AxiosContainer";
 import StringifyJSON from "../providers/StringifyJSON";
 import { Card, Button, Badge } from "react-bootstrap";
-import DonationCardShow from "./Styling/DonationCardShow";
+import UserDonationCard from "./Styling/UserDonationCard";
+
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
 
@@ -30,7 +31,7 @@ const MyDonationInfo = () => {
     return (
       <>
         {myDonations.map((c) => (
-          <DonationCardShow
+          <UserDonationCard
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             key={c.id}
             hexa={"#1DB95F"}

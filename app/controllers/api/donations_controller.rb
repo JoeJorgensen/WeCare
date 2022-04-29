@@ -15,6 +15,21 @@ class Api::DonationsController < ApplicationController
 
   def donation_by_user
     puts params[:id]
+    # Needs to map over d and check key to see if it is image or name, and return regular value otherwise
+    # donation = Donation.donation_by_user(params[:id].to_i)
+    # mapped_donation = donation.map{|d| d.anonymous==true ?(  
+    #   puts d.class
+    #   d.to_hash each{|key, value|
+    # if key=='name'
+    #   value='anonymous'
+    # elsif  key=='image'
+    #   value=null
+    # else
+    #   value
+    # end} 
+    # ): d}
+    # puts mapped_donation
+    # render json: mapped_donation
     render json: Donation.donation_by_user(params[:id].to_i)
   end
 

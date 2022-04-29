@@ -7,6 +7,7 @@ import Card from "../../providers/Card";
 import CampaignCard from "../Styling/CampaignCard";
 import DonationCardShow from "../Styling/DonationCardShow";
 import ProfileCard from "../Styling/Theme/ProfileCard";
+import UserDonationCard from "../Styling/UserDonationCard";
 
 const ProfileShow = () => {
   const [donations, setDonations] = useState([]);
@@ -14,7 +15,7 @@ const ProfileShow = () => {
   const [campaigns, setCampaigns] = useState([]);
 
   const params = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     getUserProfiles();
   }, []);
@@ -53,34 +54,27 @@ const ProfileShow = () => {
     });
   };
 
-  const userProfile =()=>{
-    return(
+  const userProfile = () => {
+    return (
       <div>
-      {users.map((c) => (
-        
+        {users.map((c) => (
           <ProfileCard
             key={c.id}
             hexa={"#1DB95F"}
             title={c.name}
-
-
             description={c.bio}
             image={c.image}
           />
+        ))}
+      </div>
+    );
+  };
 
-      ))}
-      
-       </div>
-    )
-  }
-
-
-  const usersDonations = ()=>{
-    return(
+  const usersDonations = () => {
+    return (
       <div>
-      {donations.map((c) => (
-        
-          <DonationCardShow
+        {donations.map((c) => (
+          <UserDonationCard
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             key={c.donation_id}
             hexa={"#1DB95F"}
@@ -90,84 +84,67 @@ const ProfileShow = () => {
             description={c.comment}
             image={c.campaign_image}
           />
+        ))}
+      </div>
+    );
+  };
 
-      ))}
-      
-       </div>
-    )
-  }
-
-  
   function usersCampaigns() {
     return (
-
       <>
-          {campaigns.map((c) => (
-            <CampaignCard
-              onClick={ () => navigate(`/campaign_show/${c.id}`)}
-              key={c.id}
-              title={c.name}
-              description={c.description}
-              current_amount={c.current_amount}
-              goal={c.goal}
-              image={c.image }
-              
-            />
-          ))}
-
-
+        {campaigns.map((c) => (
+          <CampaignCard
+            onClick={() => navigate(`/campaign_show/${c.id}`)}
+            key={c.id}
+            title={c.name}
+            description={c.description}
+            current_amount={c.current_amount}
+            goal={c.goal}
+            image={c.image}
+          />
+        ))}
       </>
-
     );
   }
 
   return (
     <>
-      <div >
-
-        <div style={{textAlign:'center', margin:'15px'}}>
+      <div>
+        <div style={{ textAlign: "center", margin: "15px" }}>
           {userProfile()}
         </div>
         <hr></hr>
-        
-        <br/>
 
-          <h3 style={{textAlign:'center'}}>
-        <Badge bg='denim' > Donations </Badge>
+        <br />
+
+        <h3 style={{ textAlign: "center" }}>
+          <Badge bg="denim"> Donations </Badge>
         </h3>
 
-
-       <div 
+        <div
           style={{
             margin: "15px",
 
             textAlign: "center",
-
-          }}
-       >
-         {usersDonations()}
-       </div>
-
-        
-
-
-        <hr></hr>
-        <br/>
-        <h3 style={{textAlign:'center'}}>
-        <Badge bg='denim' > Campaigns </Badge>
-        </h3>
-        <div 
-           style={{
-            margin: "15px",
-         
-            textAlign: "center",
-
           }}
         >
-           {usersCampaigns()}
+          {usersDonations()}
         </div>
-       
 
+        <hr></hr>
+        <br />
+        <h3 style={{ textAlign: "center" }}>
+          <Badge bg="denim"> Campaigns </Badge>
+        </h3>
+        <div
+          style={{
+            margin: "15px",
+
+            textAlign: "center",
+          }}
+        >
+          {usersCampaigns()}
+        </div>
       </div>
     </>
   );
