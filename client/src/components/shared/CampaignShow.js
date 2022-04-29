@@ -114,9 +114,8 @@ const CampaignShow = () => {
 
   const getCampaign = async () => {
     try {
-      let res = await axios.get(`/api/campaign_plus_categories/${params.id}`);
-      setCampaign(res.data[0]);
-      console.log(res)
+      let res = await axios.get(`/api/campaigns/${params.id}`);
+      setCampaign(res.data);
     } catch (error) {
       alert("error occurred getting campaign");
       console.log(error);
