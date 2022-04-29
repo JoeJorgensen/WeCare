@@ -57,13 +57,8 @@ const Expirations = () => {
   return (
   
     <div
-      style={{
-        //  alignItems: "center"
-        display: "inline-flex",
-        flexWrap: "wrap",
-        justifyContent: "space-evenly",
-        // gap: "30px ",
-      }}
+    className="carousel" 
+     
     >
 
       {styledCards()}

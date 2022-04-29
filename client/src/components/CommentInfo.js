@@ -8,7 +8,7 @@ import AxiosContainer from "../providers/AxiosContainer";
 import Card1 from "../providers/Card";
 import StringifyJSON from "../providers/StringifyJSON";
 import CampaignCard from "./Styling/CampaignCard";
-import DonationCard from "./Styling/DonationCard";
+import DonationCardShow from "./Styling/DonationCardShow";
 import { Pagination } from "react-bootstrap";
 
 const Comments = () => {
@@ -36,11 +36,12 @@ const Comments = () => {
     return (
       <>
         {comments.map((c) => (
-          <DonationCard
+          <DonationCardShow
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
             onClickImg={()=>navigate(`/profile_show/${c.user_id}`)}
             key={c.id}
             title={c.username}
+            current_amount={c.amount}
             date={DateTime.fromISO(c.created_at).toFormat("DD")}
             description={c.comment}
             image={c.image}
@@ -120,12 +121,12 @@ const Comments = () => {
   };
 
   return (
-    <div
+    <div className="carousel"
       style={{
-        display: "inline-flex",
-        flexWrap: "wrap",
-        justifyContent: "space-evenly",
-        gap: "30px ",
+        // display: "inline-flex",
+        // flexWrap: "wrap",
+        // justifyContent: "space-evenly",
+        // gap: "30px ",
       }}
     >
       {/* {renderData()} */}

@@ -24,6 +24,7 @@ c4 = Campaign.create(name: 'New Business', description: 'Opening up a new Busine
 c5 = Campaign.create(name: 'Forge Fundraising', description: 'New Blacksmith in town', image: 'https://nt.global.ssl.fastly.net/images/1431820118708-webericmcdonaldanvilfireattheforgeeastdevonbranscombe.jpg?width=1920&auto=webp&crop=16:7', current_amount: 9500.00, goal: 25000.00, expiration: 'November 1st 2023 10:10', user_id:u4.id)
 c6 = Campaign.create(name: 'Vegas Kids Basketball Program', description: 'AAU team for the community', image: 'https://vegasfamilyevents.com/wp-content/uploads/2019/09/vegas-kids-sports-featured-image-640x480.jpg', current_amount: 4250.00, goal: 22500.00, expiration: 'September 10th 2023 10:10', user_id:u7.id)
 c7 = Campaign.create(name: 'Utah Kids Football Program', description: 'Youth kids, Football 4 Families', image: 'https://az388273.vo.msecnd.net/campsystem/images/1/CampAccountBanner_50e7aa13a8854af69583f3b79048af8b.jpg', current_amount: 7000.00, goal: 26000.00, expiration: 'October 26th 2023 10:10', user_id:u6.id)
+c8 = Campaign.create(name: 'Michaels Steam', description: 'For the best TA ever', image: 'https://png2.cleanpng.com/sh/8431bff8ab91e3bf7ecc23a80a7ec68d/L0KzQYm3VcEyN6ZnfZH0aYP2gLBuTfNwdaF6jNd7LXnmf7B6TgN1bZJyRadqZkXkR4G8UcM0P2Y6RqUDNES0RYS6UcUzPmE5UKc6N0C6SIi1kP5o/kisspng-computer-icons-steam-5af5a705133755.3844153315260485170787.png', current_amount: 1.00, goal: 110.00, expiration: 'September 10th 2023 10:10', user_id:u7.id)
 
 d1 = Donation.create(comment: 'Hope everything is good', amount: 100.00, anonymous: false, user_id:u1.id, campaign_id:c1.id, created_at: 'May 5th 2020 09:10')
 d2 = Donation.create(comment: 'Oh no, the barn', amount: 300.00, anonymous: false, user_id:u2.id, campaign_id:c2.id, created_at: 'June 16th 2021 10:10')
@@ -71,6 +72,7 @@ cat16 = Category.create(name:'Sports')
 cat17 = Category.create(name:'Travel')
 cat18 = Category.create(name:'Volunteer')
 cat19 = Category.create(name:'Wishes')
+
 
 
 camCat1 = CampaignCategory.create(category_id:cat1.id, campaign_id:c1.id)

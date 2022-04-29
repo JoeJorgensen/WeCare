@@ -216,7 +216,7 @@ const CampaignShow = () => {
 
 
           <DonationPagination donations={currentDonations} loading={loading} />
-          <Pagination className='main'
+          <Pagination className='side'
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
