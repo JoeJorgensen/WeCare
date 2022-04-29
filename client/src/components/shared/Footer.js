@@ -7,6 +7,7 @@ import google from "./Images/BlueGoogle+.png"
 
 const Footer = () => {
   return (
+    
     <div className="footer">
       <div>
       <p>WeCare</p>
@@ -34,6 +35,7 @@ const Footer = () => {
         </div>
         </div>
     </div>
+
   );
 };
 

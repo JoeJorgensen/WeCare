@@ -23,12 +23,20 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
+<<<<<<< HEAD
+=======
+  const [categories, setCategories] = useState("");
+>>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
     window.scrollTo(0, 0);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
   }, []);
 
   const copyURL = () => {
@@ -41,6 +49,11 @@ const CampaignShow = () => {
     setCopied(true);
   };
 
+<<<<<<< HEAD
+=======
+  
+
+>>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
   const getDonations = async () => {
     try {
       setLoading(true);
@@ -90,9 +103,13 @@ const CampaignShow = () => {
     }
   };
 
+  const addDonation = (donation) => {
+    setDonations([...donations, donation])
+  }
+
   function styledUpdates() {
     return (
-      <>
+      <div style={{display:'flex', flexDirection:'column-reverse'}}>
         {updates.map((c) => (
           <UpdateCard
             key={c.id}
@@ -104,7 +121,7 @@ const CampaignShow = () => {
             image={c.image}
           />
         ))}
-      </>
+      </ div>
     );
   }
 
@@ -118,6 +135,15 @@ const CampaignShow = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const showCategory = () => {
+    return categories.map((c) => {
+      return (c.id = campaign.id);
+    });
+  };
+
+>>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
   function styledCampaign() {
     return (
       <>
@@ -125,6 +151,7 @@ const CampaignShow = () => {
           key={campaign.id}
           title={campaign.name}
           description={campaign.description}
+
           current_amount={campaign.current_amount}
           goal={campaign.goal}
           image={campaign.image}
@@ -135,16 +162,20 @@ const CampaignShow = () => {
 
   return (
     <>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
       <div
         style={{
-          margin: "auto",
+          marginTop: "20px",
           display: "flex",
-          // flexWrap:'wrap',
+          flexWrap:'wrap',
           justifyContent: "space-evenly",
         }}
       >
         <div
-          className="main"
+          // className="main"
           style={{
             textAlign: "left",
             marginLeft: "15px",
@@ -184,7 +215,7 @@ const CampaignShow = () => {
             <WalletBalance />
           </h4>
 
-          <Donate />
+          <Donate  addDonation={addDonation}/>
           <br />
           <Button variant="outline-warning" onClick={copyURL}>
             {!copied ? "Share Campaign" : "Link Copied!"}
@@ -193,7 +224,11 @@ const CampaignShow = () => {
 
           <DonationPagination donations={currentDonations} loading={loading} />
           <Pagination
+<<<<<<< HEAD
             className="main"
+=======
+            className="side"
+>>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
