@@ -165,8 +165,8 @@ const CampaignShow = () => {
             textAlign: "left",
             marginLeft: "15px",
             marginRight: "15px",
-            margin: "auto",
-            padding: "auto",
+
+
           }}
         >
           {styledCampaign()}
