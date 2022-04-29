@@ -23,10 +23,6 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
-<<<<<<< HEAD
-  const [categories, setCategories] = useState("");
-=======
->>>>>>> 9c1f7d7dbfe93fc18a9231c67fa05ed8bc614b42
 
   useEffect(() => {
     getCampaign();
@@ -45,11 +41,6 @@ const CampaignShow = () => {
     setCopied(true);
   };
 
-<<<<<<< HEAD
-  
-
-=======
->>>>>>> 9c1f7d7dbfe93fc18a9231c67fa05ed8bc614b42
   const getDonations = async () => {
     try {
       setLoading(true);
@@ -130,15 +121,6 @@ const CampaignShow = () => {
     }
   };
 
-<<<<<<< HEAD
-  const showCategory = () => {
-    return categories.map((c) => {
-      return (c.id = campaign.id);
-    });
-  };
-
-=======
->>>>>>> 9c1f7d7dbfe93fc18a9231c67fa05ed8bc614b42
   function styledCampaign() {
     return (
       <>
