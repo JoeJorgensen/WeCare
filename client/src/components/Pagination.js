@@ -10,11 +10,24 @@ const Pagination = ({ donationsPerPage, totalDonations, paginate }) => {
     <nav >
       <ul className="pagination">
         {pageNumbers.map(number => (
+          <nav>
+            <li key={number} className="page-item">
+            <a onClick={()=> paginate(number - 1)}  className="page-link">
+              Prev
+            </a>
+          </li>
           <li key={number} className="page-item">
             <a onClick={()=> paginate(number)}  className="page-link">
               {number}
             </a>
           </li>
+
+            <li key={number} className="page-item">
+            <a onClick={()=> paginate(number + 1)}  className="page-link">
+              Next
+            </a>
+          </li>
+          </nav>
         ))}
       </ul>
     </nav>
