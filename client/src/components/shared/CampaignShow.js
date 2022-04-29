@@ -29,7 +29,7 @@ const CampaignShow = () => {
     getCampaign();
     getUpdates();
     getDonations();
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     getCategories()
   }, []);
 
@@ -121,19 +121,14 @@ const CampaignShow = () => {
 
   const getCampaign = async () => {
     try {
-      let res = await axios.get(`/api/campaigns/${params.id}`);
-      setCampaign(res.data);
+      let res = await axios.get(`/api/campaign_plus_categories/${params.id}`);
+      setCampaign(res.data[0]);
+      console.log(res)
     } catch (error) {
       alert("error occurred getting campaign");
       console.log(error);
     }
   };
-
-  const showCategory = () => {
-   return categories.map((c)=> {
-     return c.id = campaign.id
-   })
-  }
 
   function styledCampaign() {
     return (
@@ -142,6 +137,7 @@ const CampaignShow = () => {
           key={campaign.id}
           title={campaign.name}
           description={campaign.description}
+          category={campaign.category_name}
           current_amount={campaign.current_amount}
           goal={campaign.goal}
           image={campaign.image}

@@ -81,7 +81,7 @@ const NavBar = () => {
       <Container fluid>
         <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} href="/">
           <img
-            className="=weCareLogo"
+            className="weCareLogo"
             src={Logo}
             style={{ height: "50px" }}
           ></img>
