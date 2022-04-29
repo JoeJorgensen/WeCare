@@ -23,14 +23,12 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
-  const [categories, setCategories] = useState("");
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
     window.scrollTo(0, 0);
-
   }, []);
 
   const copyURL = () => {
@@ -42,8 +40,6 @@ const CampaignShow = () => {
     document.body.removeChild(e);
     setCopied(true);
   };
-
-  
 
   const getDonations = async () => {
     try {
@@ -126,12 +122,6 @@ const CampaignShow = () => {
     }
   };
 
-  const showCategory = () => {
-    return categories.map((c) => {
-      return (c.id = campaign.id);
-    });
-  };
-
   function styledCampaign() {
     return (
       <>
@@ -150,7 +140,6 @@ const CampaignShow = () => {
 
   return (
     <>
-
       <div
         style={{
           marginTop: "20px",
@@ -209,7 +198,7 @@ const CampaignShow = () => {
 
           <DonationPagination donations={currentDonations} loading={loading} />
           <Pagination
-            className="side"
+            className="main"
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
