@@ -23,20 +23,13 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
-<<<<<<< HEAD
-=======
   const [categories, setCategories] = useState("");
->>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
 
   useEffect(() => {
     getCampaign();
     getUpdates();
     getDonations();
     window.scrollTo(0, 0);
-<<<<<<< HEAD
-=======
-
->>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
   }, []);
 
   const copyURL = () => {
@@ -49,11 +42,8 @@ const CampaignShow = () => {
     setCopied(true);
   };
 
-<<<<<<< HEAD
-=======
   
 
->>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
   const getDonations = async () => {
     try {
       setLoading(true);
@@ -135,15 +125,12 @@ const CampaignShow = () => {
     }
   };
 
-<<<<<<< HEAD
-=======
   const showCategory = () => {
     return categories.map((c) => {
       return (c.id = campaign.id);
     });
   };
 
->>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
   function styledCampaign() {
     return (
       <>
@@ -162,10 +149,6 @@ const CampaignShow = () => {
 
   return (
     <>
-<<<<<<< HEAD
-=======
-
->>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
       <div
         style={{
           marginTop: "20px",
@@ -224,11 +207,7 @@ const CampaignShow = () => {
 
           <DonationPagination donations={currentDonations} loading={loading} />
           <Pagination
-<<<<<<< HEAD
             className="main"
-=======
-            className="side"
->>>>>>> 6671b743b9c3516f2fa71064a3b396470b6efb01
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
