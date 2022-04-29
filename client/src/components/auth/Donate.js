@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Braintree, { PaymentContext } from "./Payment";
 import axios from "axios";
+import RenderDonationSuccess from "./DonationSuccess";
 import { useContext, useEffect, useState } from "react";
 import {
   Alert,
@@ -57,20 +58,7 @@ function Donate() {
     );
   };
 
-  const donateSuccess = () => {
-    return (
-      <Alert show={show} variant="success">
-        <Alert.Heading>Success!</Alert.Heading>
-        <p> Thanks for your support!</p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="outline-success">
-            Close
-          </Button>
-        </div>
-      </Alert>
-    );
-  };
+  
 
   const getCampaignInfo = async () => {
     let resX = await axios.get(`/api/campaigns/${params.id}`);
@@ -137,7 +125,8 @@ function Donate() {
       handleClose();
 
       document.location.reload()
-      donateSuccess();
+
+      
     }
   };
 
