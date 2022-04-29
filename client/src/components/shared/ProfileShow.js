@@ -23,16 +23,14 @@ const ProfileShow = () => {
   const getUserProfiles = async () => {
     try {
       let res = await axios.get(`/api/users_campaigns_donated_to/${params.id}`);
-      console.log(res.data);
+
       //Profile clicked campaigns that they donated to
       setDonations(res.data.donations);
       //Profile clicked info (bio, img, ect)
       setUsers(res.data.user);
       //Profile clicked campaigns they created
       setCampaigns(res.data.campaigns);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   //User campaigns that they donated to rendering

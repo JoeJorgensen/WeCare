@@ -91,12 +91,12 @@ const CampaignShow = () => {
   };
 
   const addDonation = (donation) => {
-    setDonations([...donations, donation])
-  }
+    setDonations([...donations, donation]);
+  };
 
   function styledUpdates() {
     return (
-      <div style={{display:'flex', flexDirection:'column-reverse'}}>
+      <div style={{ display: "flex", flexDirection: "column-reverse" }}>
         {updates.map((c) => (
           <UpdateCard
             key={c.id}
@@ -108,7 +108,7 @@ const CampaignShow = () => {
             image={c.image}
           />
         ))}
-      </ div>
+      </div>
     );
   }
 
@@ -118,7 +118,6 @@ const CampaignShow = () => {
       setCampaign(res.data);
     } catch (error) {
       alert("error occurred getting campaign");
-      console.log(error);
     }
   };
 
@@ -143,7 +142,7 @@ const CampaignShow = () => {
         style={{
           marginTop: "20px",
           display: "flex",
-          flexWrap:'wrap',
+          flexWrap: "wrap",
           justifyContent: "space-evenly",
         }}
       >
@@ -153,8 +152,6 @@ const CampaignShow = () => {
             textAlign: "left",
             marginLeft: "15px",
             marginRight: "15px",
-
-
           }}
         >
           {styledCampaign()}
@@ -188,7 +185,7 @@ const CampaignShow = () => {
             <WalletBalance />
           </h4>
 
-          <Donate  addDonation={addDonation}/>
+          <Donate addDonation={addDonation} />
           <br />
           <Button variant="outline-warning" onClick={copyURL}>
             {!copied ? "Share Campaign" : "Link Copied!"}

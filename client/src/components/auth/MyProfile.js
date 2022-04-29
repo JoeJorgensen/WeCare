@@ -45,13 +45,11 @@ function MyProfile() {
     data.append("name", name);
     // axios call
     try {
-      console.log("trying to update with data:");
       let res = await axios.put("/api/update_image", data);
-      console.log("after await handleImage");
+
       setUser(res.data);
     } catch (err) {
       alert("error occurred updating");
-      console.log(err);
     }
   };
 
@@ -63,7 +61,6 @@ function MyProfile() {
       if (files) {
         await handleImage();
       }
-      console.log("after await handleImage in handleSubmit");
     } catch (err) {
       alert("error updating user info");
     } finally {
