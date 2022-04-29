@@ -103,6 +103,15 @@
   cursor: pointer;
   filter: brightness(93%);
 }
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    
+}
+
 
 .footer {
   padding: 1rem;
@@ -110,9 +119,10 @@
   position: static;
   bottom: 0;
   left: 0;
+  right:0;
+  height: 6rem;
   width: 100%;
-  min-height: 14vh;
-  margin-top: auto;
+  margin-top: 100vh;
   color: white;
 }
 
