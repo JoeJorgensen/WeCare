@@ -8,7 +8,6 @@ import Card from "../../providers/Card";
 import Logo from "../shared/Images/WecareLogo.png";
 import Update from "../shared/Update.js";
 
-
 const MyCampaigns = () => {
   const navigate = useNavigate();
   const [campaignInfo, setCampaignInfo] = useState([]);
@@ -22,26 +21,22 @@ const MyCampaigns = () => {
   const getUserCampaigns = async () => {
     try {
       let res = await axios.get("/api/campaigns_by_user");
-      console.log("campaigns", res.data);
+
       setCampaignInfo(res.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const getCampaignUpdates = async () => {
     try {
       let res = await axios.get("/api/updates_by_campaign");
-      console.log("updates", res.data);
+
       setUpdates(res.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const addUpdate = (update) => {
-    setUpdates([...updates, update])
-  }
+    setUpdates([...updates, update]);
+  };
 
   const renderCampaignInfo = () => {
     return campaignInfo.map((c) => {
@@ -56,7 +51,7 @@ const MyCampaigns = () => {
             goal={c.goal}
             image={c.image}
           />
-          <Update id={c.id} addUpdate={addUpdate}/>
+          <Update id={c.id} addUpdate={addUpdate} />
         </>
       );
     });
@@ -64,7 +59,6 @@ const MyCampaigns = () => {
 
   const renderUpdates = () => {
     return updates.map((u) => {
-      console.log(u.id);
       return (
         <UpdateCard
           onClick={() => navigate(`/campaign_show/${u.campaign_id}`)}
@@ -80,15 +74,15 @@ const MyCampaigns = () => {
 
   return (
     <Card>
-    <div>
-      <img style={{ height: "145px" }} src={Logo}></img>
-      <h1>My Campaigns</h1>
-      <hr />
-      {renderCampaignInfo()}
-      <h1>My Updates</h1>
-      <hr />
-      {renderUpdates()}
-    </div>
+      <div>
+        <img style={{ height: "145px" }} src={Logo}></img>
+        <h1>My Campaigns</h1>
+        <hr />
+        {renderCampaignInfo()}
+        <h1>My Updates</h1>
+        <hr />
+        {renderUpdates()}
+      </div>
     </Card>
   );
 };

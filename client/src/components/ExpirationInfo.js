@@ -22,7 +22,6 @@ const Expirations = () => {
     try {
       let res = await axios.get("/api/expiration_over_50");
       setExpiration(res.data);
-      console.log(res.data);
     } catch (error) {
       alert("error occurred getting campaign data");
     }
@@ -30,40 +29,24 @@ const Expirations = () => {
 
   function styledCards() {
     return (
-
       <>
-          {expiration.map((e) => (
-            <CampaignCard
-              onClick={ () => navigate(`/campaign_show/${e.id}`)}
-              key={e.id}
-              hexa={'#1DB95F'}
-              title={e.name}
-              description={e.description}
-              current_amount={e.current_amount}
-              goal={e.goal}
-              image={e.image }
-              
-            />
-          ))}
-
-
+        {expiration.map((e) => (
+          <CampaignCard
+            onClick={() => navigate(`/campaign_show/${e.id}`)}
+            key={e.id}
+            hexa={"#1DB95F"}
+            title={e.name}
+            description={e.description}
+            current_amount={e.current_amount}
+            goal={e.goal}
+            image={e.image}
+          />
+        ))}
       </>
-
     );
   }
 
-  
-
-  return (
-  
-    <div
-    className="carousel" 
-     
-    >
-
-      {styledCards()}
-    </div>
-  );
+  return <div className="carousel">{styledCards()}</div>;
 };
 
 export default Expirations;

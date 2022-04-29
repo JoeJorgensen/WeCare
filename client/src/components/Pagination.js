@@ -16,7 +16,7 @@ const Pagination = ({
 
 
   const renderPag = ()=>{
-    if ((currentPage == 1)) {
+    if ((currentPage == 1 && pageNumbers.length > [1])) {
       return (
         <nav className="pagination">
          <nav className="pagination">
@@ -28,7 +28,7 @@ const Pagination = ({
         </nav>
         </nav>
       );
-    } else if ((currentPage == pageNumbers.length - 1 )) {
+    } else if ((currentPage == pageNumbers.length  )) {
       return (
         <nav className="pagination">
         <li key={currentPage - 1} className="page-item">
@@ -37,6 +37,12 @@ const Pagination = ({
             </a>
           </li>
         </nav>
+      );
+    }
+    else if (( pageNumbers.length <= 1 )) {
+      return (
+        <>
+        </>
       );
     } else {
       return (

@@ -37,48 +37,41 @@ const Braintree = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const getCampaignInfo = async () => {
+    let resX = await axios.get(`/api/campaigns/${params.id}`);
+    setCampaignAmount(resX.data);
+  };
+  const insufficientFunds = () => {
+    if (amount <= 0) {
+      return (
+        <>
+          <Button variant="success" disabled>
+            Add Amount
+          </Button>
+        </>
+      );
+    }
 
-  const getCampaignInfo = async()=>{
-    let resX = await axios.get(`/api/campaigns/${params.id}`)
-      setCampaignAmount(resX.data)
-}
-const insufficientFunds = () => {
-   if(amount <= 0 ) {
-    return (
-      <>
-        <Button variant="success"  disabled>
-          Add Amount
-        </Button>
-      </>
-    );
-  }; 
-
-    return (
-      <BraintreeSubmitButton/>
-    )
-};
+    return <BraintreeSubmitButton />;
+  };
 
   const BraintreeSubmitButton = ({ onClick, isDisabled, text }) => {
-    if(amount <= 0 ) {
+    if (amount <= 0) {
       return (
-
-         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          variant="outline-danger"
-          onClick={handleClose}
-          style={{ margin: "4px" }}
-        >
-          Close
-        </Button>
-          <Button 
-           style={{ margin: "4px" }}
-          variant="success"  
-          disabled>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            variant="outline-danger"
+            onClick={handleClose}
+            style={{ margin: "4px" }}
+          >
+            Close
+          </Button>
+          <Button style={{ margin: "4px" }} variant="success" disabled>
             Add Amount
           </Button>
         </div>
       );
-    }; 
+    }
     return (
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
@@ -125,36 +118,20 @@ const insufficientFunds = () => {
     };
 
     try {
-      console.log("campaign_id:", params.id);
-      console.log("campaign amount 1:", campaignAmount.current_amount);
-      console.log(
-        "NEW CAMPAIGN AMOUNT:",
-        campaignAmount.current_amount + amount
-      );
-
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
         donation
       );
-      console.log(res.data);
 
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {
         current_amount: campaignAmount.current_amount + parseInt(amount),
       });
-      console.log(
-        "campaign amount after donation:",
-        campaignAmount.current_amount
-      );
-
-      console.log("donation:", donation);
     } catch (error) {
-      console.log(error);
       alert("error adding donation");
     } finally {
       handleClose();
-      document.location.reload()
+      document.location.reload();
       window.scrollTo(0, 0);
-
     }
   };
 
@@ -168,17 +145,11 @@ const insufficientFunds = () => {
     }
   };
   const handlePaymentMethod = async (payload) => {
-    console.log("amount", amount);
-
-    console.log("payload", payload);
-    console.log("nonce:", payload.nonce);
-
     try {
       let res = await axios.post("/api/payment", { amount, ...payload });
-      console.log("transaction id:", res.data);
     } catch (error) {
       //needs great error handling here
-      console.log("error", error.response);
+
       alert("error receiving payment");
     }
   };
@@ -208,7 +179,7 @@ const insufficientFunds = () => {
                 <InputGroup.Text>$</InputGroup.Text>
 
                 <FormControl
-                type='number'
+                  type="number"
                   value={amount}
                   required
                   placeholder="200"

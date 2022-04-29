@@ -31,7 +31,6 @@ const AuthProvider = ({ children }) => {
     //need correct email and password for this to work
     try {
       let res = await axios.post("/api/auth/sign_in", user);
-      console.log(res);
 
       setUser(res.data.data);
       navigate("/");

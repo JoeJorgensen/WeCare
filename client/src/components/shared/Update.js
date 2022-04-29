@@ -28,10 +28,9 @@ const Update = ({ id, addUpdate }) => {
     data.append("image", image[0].file);
     try {
       let res = await axios.post(`/api/campaigns/${id}/updates`, data);
-      addUpdate(res.data)
+      addUpdate(res.data);
     } catch (error) {
       alert("error occurred adding your new campaign");
-      console.log(error);
     } finally {
       handleClose();
     }
@@ -40,7 +39,11 @@ const Update = ({ id, addUpdate }) => {
   return (
     <div>
       <div>
-        <Button variant="outline-mustard" onClick={handleShow} style={{ margin: '10px' }}>
+        <Button
+          variant="outline-mustard"
+          onClick={handleShow}
+          style={{ margin: "10px" }}
+        >
           Add Update
         </Button>
       </div>
