@@ -13,7 +13,7 @@ const FetchUser = (props) => {
   const checkUser = async () => {
     // if user is authenticated or doesn't have access token
     // we can setLoaded to true and return from the function call
-    //This is checking if there is 100% a token or 100% not a token in order to render or not render our protected routes. 
+    //This is checking if there is 100% a token or 100% not a token in order to render or not render our protected routes.
     if (user || !localStorage.getItem("access-token")) {
       setLoaded(true);
       return;
@@ -24,8 +24,6 @@ const FetchUser = (props) => {
       const res = await axios.get("/api/auth/validate_token");
       setUser(res.data.data);
     } catch (err) {
-      console.log(err);
-      console.log("unable to validate token");
     } finally {
       //Block of code to be executed regardless of the try / catch result
       setLoaded(true);
