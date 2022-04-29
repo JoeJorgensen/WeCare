@@ -1,5 +1,5 @@
 import Badge from "react-bootstrap/esm/Badge";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Navbar from "react-bootstrap/Navbar";
@@ -16,6 +16,7 @@ import Logo from "./Images/WecareLogo.png";
 
 const NavBar = () => {
   const auth = useContext(AuthContext);
+  const navigate = useNavigate()
   const { user } = useContext(AuthContext);
   const renderRightNav = () => {
     if (auth.user) {
@@ -47,7 +48,7 @@ const NavBar = () => {
               />
             }
           >
-            <NavDropdown.Item href="/my_profile">Edit Profile</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>navigate("/my_profile")}>Edit Profile</NavDropdown.Item>
             <NavDropdown.Item onClick={auth.handleLogout}>
               Logout
             </NavDropdown.Item>
@@ -63,9 +64,9 @@ const NavBar = () => {
     }
     return (
       <>
-        <Nav.Link href="/register">Register </Nav.Link>
+        <Nav.Link onClick={()=>navigate("/register")}>Register </Nav.Link>
 
-        <Nav.Link href="/login">Login </Nav.Link>
+        <Nav.Link onClick={()=>navigate("/login")}>Login </Nav.Link>
       </>
     );
   };
@@ -79,7 +80,7 @@ const NavBar = () => {
       sticky="top"
     >
       <Container fluid>
-        <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} href="/">
+        <Navbar.Brand style={{ color: "#065EB6", fontWeight: "bold" }} onClick={()=>navigate("/")}>
           <img
             className="=weCareLogo"
             src={Logo}
@@ -92,12 +93,12 @@ const NavBar = () => {
           id="basic-navbar-nav"
         >
           <Nav>
-            {/* <Nav.Link href="/home">Home</Nav.Link> */}
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/new_campaign">New Campaign</Nav.Link>
-            <Nav.Link href="/my_donations">My Donations</Nav.Link>
-            <Nav.Link href="/my_campaigns">My Campaigns</Nav.Link>
+            {/* <Nav.Link onClick={()=>navigate("/home">Home</Nav.Link> */}
+            <Nav.Link onClick={()=>navigate("/")}>Home</Nav.Link>
+            <Nav.Link onClick={()=>navigate("/about")}>About</Nav.Link>
+            <Nav.Link onClick={()=>navigate("/new_campaign")}>New Campaign</Nav.Link>
+            <Nav.Link onClick={()=>navigate("/my_donations")}>My Donations</Nav.Link>
+            <Nav.Link onClick={()=>navigate("/my_campaigns")}>My Campaigns</Nav.Link>
 
             {renderLeftNav()}
           </Nav>

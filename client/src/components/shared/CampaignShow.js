@@ -94,6 +94,10 @@ const CampaignShow = () => {
     }
   };
 
+  const addDonation = (donation) => {
+    setDonations([...donations, donation])
+  }
+
   function styledUpdates() {
     return (
       <div style={{display:'flex', flexDirection:'column-reverse'}}>
@@ -196,7 +200,7 @@ const CampaignShow = () => {
             <WalletBalance />
           </h4>
 
-          <Donate />
+          <Donate  addDonation={addDonation}/>
           <br />
           <Button variant="outline-warning" onClick={copyURL}>
             {!copied ? "Share Campaign" : "Link Copied!"}

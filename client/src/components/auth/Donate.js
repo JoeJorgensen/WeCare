@@ -15,7 +15,7 @@ import {
   Popover,
 } from "react-bootstrap";
 
-function Donate() {
+function Donate({addDonation}) {
   const params = useParams();
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -25,12 +25,17 @@ function Donate() {
   const [anonymous, setAnonymous] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     getCampaignInfo();
+
+
   }, []);
+
+  
 
   const insufficientFunds = () => {
     if (amount > user.balance) {
@@ -52,7 +57,7 @@ function Donate() {
     }
 
     return (
-      <Button variant="success" onClick={handleSubmit}>
+      <Button variant="success" onClick={handleSubmit} >
         Submit
       </Button>
     );
@@ -88,6 +93,18 @@ function Donate() {
       user_id: user.id,
     };
 
+    
+
+    let cardInfo = {
+      amount,
+      comment,
+      anonymous,
+      user_id: user.id,
+      image:user.image,
+      name:user.name,
+      created_at:comment.created_at
+    }
+
     try {
       console.log("User balance before donation:", user.balance);
       console.log("campaign_id:", params.id);
@@ -101,6 +118,10 @@ function Donate() {
         `/api/campaigns/${params.id}/donations`,
         donation
       );
+      addDonation(cardInfo)
+      setAmount('')
+      setComment('')
+      setAnonymous(false)
       console.log(res.data);
 
       let res1 = await axios.put(`/api/users/${user.id}`, {
@@ -123,8 +144,9 @@ function Donate() {
       alert("error adding donation");
     } finally {
       handleClose();
+      
 
-      document.location.reload()
+
 
       
     }
@@ -183,6 +205,7 @@ function Donate() {
                 <Form.Check
                   type="checkbox"
                   label="Appear anonymous"
+
                   onChange={(e) => setAnonymous(true)}
                 />
               </Form.Group>
