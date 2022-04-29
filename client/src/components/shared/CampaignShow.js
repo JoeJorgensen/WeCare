@@ -152,7 +152,6 @@ const CampaignShow = () => {
 
   return (
 <>
-<p>{JSON.stringify(categories)}</p>
       <div
         style={{
           margin: "auto",
