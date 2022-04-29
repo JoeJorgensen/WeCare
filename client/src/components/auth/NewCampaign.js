@@ -124,7 +124,7 @@ const NewCampaign = () => {
               <Form.Label>Goal</Form.Label>
               <Form.Control
                 required
-                value={goal}
+                value={goal ? goal : ''}
                 onChange={(e) => setGoal(e.target.value)}
                 type="number"
                 placeholder="Enter required amount"
