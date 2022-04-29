@@ -52,25 +52,7 @@ const CampaignShow = () => {
     }
   };
 
-  function styledDonation() {
-    return (
-      <>
-        {donations.map((c) => (
-          <DonationCardShow
-            onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
-            onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
-            key={c.id}
-            hexa={"#1DB95F"}
-            title={c.anonymous ? "Anonymous" : `${c.name}`}
-            date={DateTime.fromISO(c.created_at).toFormat("DD")}
-            current_amount={c.amount}
-            description={c.comment}
-            image={c.anonymous ? ProfilePic : c.image}
-          />
-        ))}
-      </>
-    );
-  }
+  
 
   const indexOfLastDonation = currentPage * donationsPerPage;
   const indexOfFirstDonation = indexOfLastDonation - donationsPerPage;
@@ -197,7 +179,9 @@ const CampaignShow = () => {
 
           <DonationPagination donations={currentDonations} loading={loading} />
           <Pagination
-            className="main"
+            // className="main"
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
             donationsPerPage={donationsPerPage}
             totalDonations={donations.length}
             paginate={paginate}
