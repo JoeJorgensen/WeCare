@@ -23,7 +23,6 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
-  const [categories, setCategories] = useState("");
 
   useEffect(() => {
     getCampaign();
@@ -42,8 +41,6 @@ const CampaignShow = () => {
     document.body.removeChild(e);
     setCopied(true);
   };
-
-  
 
   const getDonations = async () => {
     try {
@@ -150,7 +147,6 @@ const CampaignShow = () => {
 
   return (
     <>
-
       <div
         style={{
           marginTop: "20px",
