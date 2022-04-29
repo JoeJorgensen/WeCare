@@ -173,7 +173,7 @@ const Style = styled.button`
   }
 `;
 
-const LargeCampaignCard = ({ hexa, title, description, image, profile_image, current_amount , goal, onClick}) => (
+const LargeCampaignCard = ({ hexa, title, description, image, profile_image, current_amount , goal, category, onClick}) => (
   <Style onClick={onClick}>
     <Screenshot 
     image={image} />
@@ -183,6 +183,7 @@ const LargeCampaignCard = ({ hexa, title, description, image, profile_image, cur
 
     <Content>
       <Title>{title}</Title>
+      <Description>{category}</Description>
       <Description>{description}</Description>
 
       <Goal>Goal: ${goal}</Goal>
