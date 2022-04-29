@@ -129,7 +129,11 @@ function Donate() {
       
     }
   };
-
+  if (!user) {
+    return <Button variant="outline-primary" disabled>
+   Login to Donate
+  </Button>;
+  }
   return (
     <>
       <Button variant="outline-primary" onClick={handleShow}>
