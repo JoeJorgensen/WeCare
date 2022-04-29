@@ -31,8 +31,6 @@ function Donate({addDonation}) {
 
   useEffect(() => {
     getCampaignInfo();
-
-
   }, []);
 
   
@@ -102,9 +100,9 @@ function Donate({addDonation}) {
       user_id: user.id,
       image:user.image,
       name:user.name,
-      created_at:comment.created_at
+      created_at:(new Date()).toISOString()
     }
-
+    
     try {
       console.log("User balance before donation:", user.balance);
       console.log("campaign_id:", params.id);
@@ -122,7 +120,6 @@ function Donate({addDonation}) {
       setAmount('')
       setComment('')
       setAnonymous(false)
-      console.log(res.data);
 
       let res1 = await axios.put(`/api/users/${user.id}`, {
         balance: Math.max(0, (user.balance -= amount)),
@@ -131,16 +128,8 @@ function Donate({addDonation}) {
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {
         current_amount: (campaignAmount.current_amount += parseInt(amount)),
       });
-      console.log(
-        "campaign amount after donation:",
-        campaignAmount.current_amount
-      );
-
-      console.log("userBalance after donation:", user.balance);
-      console.log(res1.data);
-      console.log("donation:", donation);
     } catch (error) {
-      console.log(error);
+
       alert("error adding donation");
     } finally {
       handleClose();
