@@ -23,7 +23,10 @@ const CampaignShow = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [donationsPerPage] = useState(3);
+<<<<<<< HEAD
   const [categories, setCategories] = useState("");
+=======
+>>>>>>> 9c1f7d7dbfe93fc18a9231c67fa05ed8bc614b42
 
   useEffect(() => {
     getCampaign();
@@ -42,8 +45,11 @@ const CampaignShow = () => {
     setCopied(true);
   };
 
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 9c1f7d7dbfe93fc18a9231c67fa05ed8bc614b42
   const getDonations = async () => {
     try {
       setLoading(true);
@@ -94,12 +100,12 @@ const CampaignShow = () => {
   };
 
   const addDonation = (donation) => {
-    setDonations([...donations, donation])
-  }
+    setDonations([...donations, donation]);
+  };
 
   function styledUpdates() {
     return (
-      <div style={{display:'flex', flexDirection:'column-reverse'}}>
+      <div style={{ display: "flex", flexDirection: "column-reverse" }}>
         {updates.map((c) => (
           <UpdateCard
             key={c.id}
@@ -111,7 +117,7 @@ const CampaignShow = () => {
             image={c.image}
           />
         ))}
-      </ div>
+      </div>
     );
   }
 
@@ -121,16 +127,18 @@ const CampaignShow = () => {
       setCampaign(res.data);
     } catch (error) {
       alert("error occurred getting campaign");
-      console.log(error);
     }
   };
 
+<<<<<<< HEAD
   const showCategory = () => {
     return categories.map((c) => {
       return (c.id = campaign.id);
     });
   };
 
+=======
+>>>>>>> 9c1f7d7dbfe93fc18a9231c67fa05ed8bc614b42
   function styledCampaign() {
     return (
       <>
@@ -138,7 +146,6 @@ const CampaignShow = () => {
           key={campaign.id}
           title={campaign.name}
           description={campaign.description}
-
           current_amount={campaign.current_amount}
           goal={campaign.goal}
           image={campaign.image}
@@ -153,7 +160,7 @@ const CampaignShow = () => {
         style={{
           marginTop: "20px",
           display: "flex",
-          flexWrap:'wrap',
+          flexWrap: "wrap",
           justifyContent: "space-evenly",
         }}
       >
@@ -163,8 +170,6 @@ const CampaignShow = () => {
             textAlign: "left",
             marginLeft: "15px",
             marginRight: "15px",
-            margin: "auto",
-            padding: "auto",
           }}
         >
           {styledCampaign()}
@@ -198,7 +203,7 @@ const CampaignShow = () => {
             <WalletBalance />
           </h4>
 
-          <Donate  addDonation={addDonation}/>
+          <Donate addDonation={addDonation} />
           <br />
           <Button variant="outline-warning" onClick={copyURL}>
             {!copied ? "Share Campaign" : "Link Copied!"}

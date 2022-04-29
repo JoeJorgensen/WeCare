@@ -11,9 +11,7 @@ import { DateTime } from "luxon";
 
 const MyDonationInfo = () => {
   const [myDonations, setMyDonations] = useState([]);
-  const navigate = useNavigate()
-  console.log("MyDonations Being Called:");
-  console.log("donations", myDonations);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getDonations();

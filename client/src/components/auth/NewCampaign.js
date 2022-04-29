@@ -35,9 +35,7 @@ const NewCampaign = () => {
     try {
       let res = await axios.get("/api/categories");
       setCategories(res.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleUpdate = (files) => {
@@ -76,23 +74,25 @@ const NewCampaign = () => {
     try {
       let res = await axios.post("/api/campaigns", data);
       setCampaign(res.data);
-      console.log(campaign);
+
       navigate("/");
     } catch (error) {
       alert("error occurred adding your new campaign");
-      console.log(error);
     }
   };
 
   return (
-    <div className="mb-3" style={{width: '75%', margin: 'auto', textAlign: 'center'}}>
+    <div
+      className="mb-3"
+      style={{ width: "75%", margin: "auto", textAlign: "center" }}
+    >
       <div>
         <h1>Create New Fundraising</h1>
       </div>
       <div>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-          <Form.Label>Image</Form.Label>
+            <Form.Label>Image</Form.Label>
             <FilePond
               required
               allowImageCrop={true}
@@ -104,7 +104,7 @@ const NewCampaign = () => {
               labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
             />
           </Form.Group>
-          <div style={{ border: "1px solid", padding: '10px' }}>
+          <div style={{ border: "1px solid", padding: "10px" }}>
             <h5>Fundraising Details</h5>
             <Form.Group>
               <Form.Label>Title</Form.Label>
@@ -124,7 +124,7 @@ const NewCampaign = () => {
               <Form.Label>Goal</Form.Label>
               <Form.Control
                 required
-                value={goal}
+                value={goal ? goal : ''}
                 onChange={(e) => setGoal(e.target.value)}
                 type="number"
                 placeholder="Enter required amount"
@@ -153,12 +153,8 @@ const NewCampaign = () => {
             </Form.Group>
             <hr />
             <Form.Group>
-
               <Form.Label>Agree to terms and conditions</Form.Label>
-              <Form.Check
-                required
-                type= "checkbox"
-              />
+              <Form.Check required type="checkbox" />
 
               <br />
             </Form.Group>

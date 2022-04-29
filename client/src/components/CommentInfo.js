@@ -15,9 +15,6 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
 
-  console.log("Comment Info Being Called:");
-  console.log("comments", comments);
-
   useEffect(() => {
     getComments();
   }, []);
@@ -31,14 +28,13 @@ const Comments = () => {
     }
   };
 
-  
   function styledCards() {
     return (
       <>
         {comments.map((c) => (
           <DonationCardShow
             onClick={() => navigate(`/campaign_show/${c.campaign_id}`)}
-            onClickImg={()=>navigate(`/profile_show/${c.user_id}`)}
+            onClickImg={() => navigate(`/profile_show/${c.user_id}`)}
             key={c.id}
             title={c.username}
             current_amount={c.amount}
@@ -121,13 +117,16 @@ const Comments = () => {
   };
 
   return (
-    <div className="carousel"
-      style={{
-        // display: "inline-flex",
-        // flexWrap: "wrap",
-        // justifyContent: "space-evenly",
-        // gap: "30px ",
-      }}
+    <div
+      className="carousel"
+      style={
+        {
+          // display: "inline-flex",
+          // flexWrap: "wrap",
+          // justifyContent: "space-evenly",
+          // gap: "30px ",
+        }
+      }
     >
       {/* {renderData()} */}
 
