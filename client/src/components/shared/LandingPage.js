@@ -48,6 +48,8 @@ const LandingPage = () => {
 
 
           <h2>
+          <br />
+
             <Badge pill bg="denim">Prayers from good people</Badge>
           </h2>
           <br />

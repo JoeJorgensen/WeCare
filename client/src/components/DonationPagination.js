@@ -16,7 +16,7 @@ const navigate = useNavigate()
  return<div className="list-group mb-4">
      {donations.map((c) => (
           <DonationCardShow
-            onClickImg={c.anonymous ? '' : () => navigate(`/profile_show/${c.user_id}`)}
+            onClickImg={c.anonymous ? null : () => navigate(`/profile_show/${c.user_id}`)}
             key={c.id}
             hexa={"#1DB95F"}
             title={c.anonymous ? 'anonymous' : c.name}

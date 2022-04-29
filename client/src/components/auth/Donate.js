@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Braintree, { PaymentContext } from "./Payment";
 import axios from "axios";
+import RenderDonationSuccess from "./DonationSuccess";
 import { useContext, useEffect, useState } from "react";
 import {
   Alert,
@@ -14,7 +15,7 @@ import {
   Popover,
 } from "react-bootstrap";
 
-function Donate() {
+function Donate({addDonation}) {
   const params = useParams();
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -24,12 +25,15 @@ function Donate() {
   const [anonymous, setAnonymous] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     getCampaignInfo();
   }, []);
+
+  
 
   const insufficientFunds = () => {
     if (amount > user.balance) {
@@ -51,26 +55,13 @@ function Donate() {
     }
 
     return (
-      <Button variant="success" onClick={handleSubmit}>
+      <Button variant="success" onClick={handleSubmit} >
         Submit
       </Button>
     );
   };
 
-  const donateSuccess = () => {
-    return (
-      <Alert show={show} variant="success">
-        <Alert.Heading>Success!</Alert.Heading>
-        <p> Thanks for your support!</p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="outline-success">
-            Close
-          </Button>
-        </div>
-      </Alert>
-    );
-  };
+  
 
   const getCampaignInfo = async () => {
     let resX = await axios.get(`/api/campaigns/${params.id}`);
@@ -100,6 +91,18 @@ function Donate() {
       user_id: user.id,
     };
 
+    
+
+    let cardInfo = {
+      amount,
+      comment,
+      anonymous,
+      user_id: user.id,
+      image:user.image,
+      name:user.name,
+      created_at:(new Date()).toISOString()
+    }
+    
     try {
       console.log("User balance before donation:", user.balance);
       console.log("campaign_id:", params.id);
@@ -113,7 +116,10 @@ function Donate() {
         `/api/campaigns/${params.id}/donations`,
         donation
       );
-      console.log(res.data);
+      addDonation(cardInfo)
+      setAmount('')
+      setComment('')
+      setAnonymous(false)
 
       let res1 = await axios.put(`/api/users/${user.id}`, {
         balance: Math.max(0, (user.balance -= amount)),
@@ -122,25 +128,23 @@ function Donate() {
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {
         current_amount: (campaignAmount.current_amount += parseInt(amount)),
       });
-      console.log(
-        "campaign amount after donation:",
-        campaignAmount.current_amount
-      );
-
-      console.log("userBalance after donation:", user.balance);
-      console.log(res1.data);
-      console.log("donation:", donation);
     } catch (error) {
-      console.log(error);
+
       alert("error adding donation");
     } finally {
       handleClose();
+      
 
-      document.location.reload()
-      donateSuccess();
+
+
+      
     }
   };
-
+  if (!user) {
+    return <Button variant="outline-primary" disabled>
+   Login to Donate
+  </Button>;
+  }
   return (
     <>
       <Button variant="outline-primary" onClick={handleShow}>
@@ -190,6 +194,7 @@ function Donate() {
                 <Form.Check
                   type="checkbox"
                   label="Appear anonymous"
+
                   onChange={(e) => setAnonymous(true)}
                 />
               </Form.Group>
