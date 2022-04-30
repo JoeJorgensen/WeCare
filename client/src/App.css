@@ -235,3 +235,10 @@ text-align:center;
 font-size: 9em;
 color: white;
 }
+
+.user-profile-image {
+    object-fit: cover;
+    border-radius:  50%;
+    width: 250px;
+    height: 250px;
+}
