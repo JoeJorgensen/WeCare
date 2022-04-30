@@ -9,6 +9,7 @@ import insta from "./Images/instagram.png";
 import google from "./Images/google.png";
 import "./AboutStyle.css";
 import Nav from "react-bootstrap/Nav";
+import DevImages from "./DevImages";
 
 const About = () => {
   return (
@@ -421,6 +422,7 @@ const About = () => {
           <br />
         </h3>
       </div>
+      <DevImages />
     </Card>
   );
 };
