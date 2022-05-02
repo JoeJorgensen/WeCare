@@ -42,6 +42,8 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
     let resX = await axios.get(`/api/campaigns/${params.id}`);
     setCampaign(resX.data);
     setCampaignAmount(resX.data.current_amount);
+    
+    
   };
 
   
@@ -85,9 +87,9 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
   };
 
   const handleSubmit = async (e) => {
-    setCampaignAmount(campaignAmount + parseInt(amount))
     e.preventDefault();
-
+    
+    setCampaignAmount(campaignAmount + parseInt(amount))
     if (!user)
       return (
         <>
