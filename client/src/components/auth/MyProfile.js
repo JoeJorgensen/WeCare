@@ -6,7 +6,7 @@ import axios from "axios";
 import Button from "react-bootstrap/esm/Button";
 import Badge from "react-bootstrap/esm/Badge";
 import Card from "../../providers/Card";
-import { Form } from "react-bootstrap";
+import { Accordion, Form } from "react-bootstrap";
 
 import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
@@ -70,122 +70,107 @@ function MyProfile() {
   };
 
   return (
-    <Card>
-      <br />
-      <br />
-
-      <Badge pill bg="dark">
-        <h1>Profile Page</h1>
-      </Badge>
-      <br />
-      <br />
-      <img
-        style={{
-          objectFit: "cover",
-          borderRadius: "50%",
-          width: "200px",
-          height: "200px",
-        }}
-        src={user.image ? user.image : ProfilePic}
-        width={300}
-      />
-
-      <br />
-      <br />
-
-      <Badge pill bg="denim">
-        <h5>{user.name ? user.name : <p>no name</p>}</h5>
-      </Badge>
-      <hr></hr>
-      <br />
-      <br />
-
-      <div style={{ display: "inline-flex", alignItems: "center" }}>
-        <h5 style={{ margin: "5px" }}>
-          <Badge pill bg="denim">
-            Wallet Balance
-          </Badge>
-        </h5>
-
-        <div
-          style={{
-            border: "1px ",
-            borderRadius: "3px",
-          }}
-        >
-          ${user.balance}
-        </div>
+    <div>
+      <div style={{
+        marginTop: '50px',
+        textAlign: 'center'
+      }}>
+        <img className="user-profile-image"
+          src={user.image ? user.image : ProfilePic}
+        />
+        <br />
+        <h1>{user.name ? user.name : <p>no name</p>}</h1>
       </div>
+
+      <br />
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginLeft: '20%',
+        marginRight: '20%'
+      }}>
+        <div>
+          <h5>${user.balance}</h5>
+          <p>Wallet Balance</p>
+        </div>
+        <AddFunds />
+      </div>
+
       <br />
       <br />
 
-      <AddFunds />
-      <hr></hr>
+      <div style={{
+        marginLeft: '20%',
+        marginRight: '20%'
+      }}>
+        <h5>About</h5>
+        {user.bio ? user.bio : <p>no bio</p>}
+      </div>
 
-      <br />
-      <br />
-      <Badge pill bg="denim">
-        <h5>{user.bio ? user.bio : <p>no bio</p>}</h5>
-      </Badge>
+      <hr />
 
-      <Card>
-        <form onSubmit={handleProfileSubmit}>
-          <Badge pill bg="dark">
-            <h1>Update Profile</h1>
-          </Badge>
-          <br />
-          <br />
+      <div style={{
+        textAlign: 'center',
+        maxWidth: '63%',
+        margin: 'auto'
+      }}>
+        <Accordion >
+          <Accordion.Item eventKey="0">
+            <Accordion.Header><h5>Edit Profile</h5></Accordion.Header>
+            <Accordion.Body>
 
-          <h5>
-            <Badge bg="denim">Name</Badge>
-          </h5>
-          <br />
-          <br />
 
-          <input
-            value={name}
-            required
-            placeholder={user.name}
-            onChange={(e) => setName(e.target.value)}
-          />
+              <form onSubmit={handleProfileSubmit}>
+                <h1>Update Profile</h1>
 
-          <br />
-          <br />
+                <h5>
+                  <Badge bg="denim">Name</Badge>
+                </h5>
 
-          <h5>
-            <Badge bg="denim">Bio</Badge>
-          </h5>
+                <input
+                  value={name}
+                  required
+                  placeholder={user.name}
+                  onChange={(e) => setName(e.target.value)}
+                />
 
-          <br />
-          <br />
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <textarea
-              as="textarea"
-              rows={3}
-              placeholder="About user..."
-              onChange={(e) => setBio(e.target.value)}
-            />
-          </Form.Group>
+                <br />
+                <br />
 
-          <Badge bg="denim">
-            <p style={{ marginBottom: "0px" }}>Image</p>
-          </Badge>
-          <br />
-          <br />
+                <h5>
+                  <Badge bg="denim">Bio</Badge>
+                </h5>
 
-          <FilePond
-            allowImageCrop={true}
-            allowImageTransform={true}
-            imageCropAspectRatio={"1:1"}
-            files={files}
-            allowMultiple={false}
-            onupdatefiles={handleUpdate}
-            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-          />
-          <Button type="submit">Update Profile</Button>
-        </form>
-      </Card>
-    </Card>
+
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                  <textarea
+                    as="textarea"
+                    rows={5}
+                    cols={50}
+                    placeholder="About user..."
+                    onChange={(e) => setBio(e.target.value)}
+                  />
+                </Form.Group>
+
+                <h5><Badge bg="denim">Image</Badge></h5>
+
+                <FilePond
+                  allowImageCrop={true}
+                  allowImageTransform={true}
+                  imageCropAspectRatio={"1:1"}
+                  files={files}
+                  allowMultiple={false}
+                  onupdatefiles={handleUpdate}
+                  labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                />
+                <Button type="submit">Update Profile</Button>
+              </form>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </div>
+    </div>
   );
 }
 

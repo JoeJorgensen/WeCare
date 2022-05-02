@@ -4,6 +4,7 @@ import braintree from "braintree-web-drop-in";
 
 import axios from "axios";
 import {
+  Badge,
   Button,
   Card,
   Form,
@@ -111,9 +112,14 @@ const AddFunds = (props) => {
 
   return (
     <div>
-      <Button variant="outline-success" onClick={handleShow}>
-        Add Funds
-      </Button>
+
+      <h1 style={{margin: '0', cursor: 'pointer'}}>
+        <Badge
+          pill
+          onClick={handleShow}>
+          Add Funds
+        </Badge>
+      </h1>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

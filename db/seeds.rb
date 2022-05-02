@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 
-u1 = User.create(name: 'Jill', email: 'Jill@test.com', password: '123456', balance: 50.00, bio: 'I am a pretty neat guy')
-u2 = User.create(name: 'John', email: 'John@test.com', password: '123456', balance: 80.00)
-u3 = User.create(name: 'Thor', email: 'thor@test.com', password: '123456', balance: 120.00)
-u4 = User.create(name: 'Austin', email: 'austin@test.com', password: '123456', balance: 100000.00 )
-u5 = User.create(name: 'Joe', email: 'joe@test.com', password: '123456', balance: 100000.00 )
-u6 = User.create(name: 'Steve', email: 'steve@test.com', password: '123456', balance: 100000.00 )
-u7 = User.create(name: 'Randy', email: 'randy@test.com', password: '123456', balance: 100000.00 )
+u1 = User.create(name: 'Jill', email: 'Jill@test.com', password: '123456', balance: 50.00, bio: 'I am a pretty neat gal')
+u2 = User.create(name: 'John', email: 'John@test.com', password: '123456', balance: 80.00, bio: 'I am a pretty neat guy')
+u3 = User.create(name: 'Thor', email: 'thor@test.com', password: '123456', balance: 120.00, bio: 'I am the God of Thunder')
+u4 = User.create(name: 'Austin', email: 'austin@test.com', password: '123456', balance: 100000.00, bio: 'Apart of the development team' )
+u5 = User.create(name: 'Joe', email: 'joe@test.com', password: '123456', balance: 100000.00, bio: 'Apart of the development team' )
+u6 = User.create(name: 'Steve', email: 'steve@test.com', password: '123456', balance: 100000.00, bio: 'Apart of the development team' )
+u7 = User.create(name: 'Randy', email: 'randy@test.com', password: '123456', balance: 100000.00, bio: 'Apart of the development team' )
 
 
 
