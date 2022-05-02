@@ -39,19 +39,19 @@ function DevImages(props) {
     <div className="border1">
       <h3>Steven Crass</h3>
       <div className="icons">
-      <a href="">
+      <a href="https://www.instagram.com/stevecrass/">
               <img src={insta} className="fa fa-instagram" width='20px'/>
             </a>
-            <a href="">
+            <a href="https://github.com/TheSteveIsGreat">
               <img src={github} className="fa fa-github" width='20px'/>
             </a>
-            <a href="">
+            <a href="https://twitter.com/TheSteveIsGreat">
               <img src={twitter} className="fa fa-twitter" width='20px'/>
             </a>
-            <a href="">
+            <a href="https://www.facebook.com/steven.crass">
               <img src={facebook} className="fa fa-facebook" width='20px'/>
             </a>
-            <a href="">
+            <a href="https://www.linkedin.com/in/stevecrass/">
               <img src={linkedin} className="fa fa-linkedin" width='20px'/>
             </a>
       </div>
