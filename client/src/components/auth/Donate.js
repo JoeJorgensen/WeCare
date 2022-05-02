@@ -15,7 +15,7 @@ import {
   Popover,
 } from "react-bootstrap";
 
-function Donate({ addDonation }) {
+function Donate({ addDonation, updateCampaign }) {
   const params = useParams();
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -24,14 +24,17 @@ function Donate({ addDonation }) {
   const [comment, setComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [campaign, setCampaign] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     getCampaignInfo();
+
   }, []);
 
+ 
   const insufficientFunds = () => {
     if (amount > user.balance) {
       return (
@@ -60,11 +63,14 @@ function Donate({ addDonation }) {
 
   const getCampaignInfo = async () => {
     let resX = await axios.get(`/api/campaigns/${params.id}`);
-    setCampaignAmount(resX.data);
+    setCampaign(resX.data);
+    setCampaignAmount(resX.data.current_amount);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setCampaignAmount(campaignAmount + parseInt(amount))
 
     if (!user)
       return (
@@ -78,6 +84,16 @@ function Donate({ addDonation }) {
           </Button>
         </>
       );
+
+      let campaignUpdate = {
+        image: campaign.image,
+        description: campaign.description,
+        name: campaign.name,
+        current_amount: campaignAmount + parseInt(amount) ,
+        id: campaign.id,
+        goal: campaign.goal,
+        created_at: new Date().toISOString(),
+        }
 
     let donation = {
       amount,
@@ -101,7 +117,11 @@ function Donate({ addDonation }) {
         `/api/campaigns/${params.id}/donations`,
         donation
       );
+
+      updateCampaign(campaignUpdate)
+
       addDonation(cardInfo);
+
       setAmount("");
       setComment("");
       setAnonymous(false);
@@ -111,7 +131,7 @@ function Donate({ addDonation }) {
       });
       setUser(res1.data);
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {
-        current_amount: (campaignAmount.current_amount += parseInt(amount)),
+        current_amount: (campaignAmount + parseInt(amount)),
       });
     } catch (error) {
       alert("error adding donation");
@@ -128,8 +148,8 @@ function Donate({ addDonation }) {
   }
   return (
     <>
-      <Button variant="outline-primary" onClick={handleShow}>
-        Donate
+      <Button  bg='denim'  onClick={handleShow}>
+        Donate with wallet
       </Button>
 
       <Form>
@@ -181,7 +201,7 @@ function Donate({ addDonation }) {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Braintree />
+
 
             <Button variant="outline-danger" onClick={handleClose}>
               Close

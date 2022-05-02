@@ -12,6 +12,7 @@ import UpdateCard from "../Styling/UpdateCard";
 import ProfilePic from "../shared/Images/DefaultProfile.png";
 import DonationPagination from "../DonationPagination";
 import Pagination from "../Pagination";
+import Braintree from "../auth/Payment";
 
 const CampaignShow = () => {
   const params = useParams();
@@ -76,6 +77,19 @@ const CampaignShow = () => {
     setDonations([...donations, donation]);
   };
 
+  const updateCampaign = (campaignUpdate) => {
+    setCampaign(campaignUpdate)
+  }
+  
+  const updateCampaignCard = (campaignUpdate) => {
+    setCampaign(campaignUpdate)
+  }
+console.log('campaign',campaign)
+
+  const addPayment = (donation) => {
+    setDonations([...donations, donation]);
+  };
+
   function styledUpdates() {
     return (
       <div style={{ display: "flex", flexDirection: "column-reverse" }}>
@@ -107,6 +121,7 @@ const CampaignShow = () => {
     return (
       <>
         <LargeCampaignCard
+          
           key={campaign.id}
           title={campaign.name}
           description={campaign.description}
@@ -166,15 +181,20 @@ const CampaignShow = () => {
             </Badge>
             <WalletBalance />
           </h4>
+          <Braintree updateCampaignCard={updateCampaignCard} addPayment={addPayment}/>
+          <br />
 
-          <Donate addDonation={addDonation} />
+          <Donate updateCampaign={updateCampaign} setCampaign={setCampaign} addDonation={addDonation} />
           <br />
           <Button variant="outline-warning" onClick={copyURL}>
             {!copied ? "Share Campaign" : "Link Copied!"}
           </Button>
           <br />
 
-          <DonationPagination donations={currentDonations} loading={loading} />
+          <div style={{display:'flex', flexDirection:'column-reverse'}}>
+
+          <DonationPagination campaign={campaign} setCampaign={setCampaign} donations={currentDonations} loading={loading} />
+          </div>
           <Pagination
             // className="main"
             currentPage={currentPage}

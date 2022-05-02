@@ -1,7 +1,7 @@
 import react, { useContext, useEffect, useState } from "react";
 import BraintreeDropin from "braintree-dropin-react";
 import braintree from "braintree-web-drop-in";
-
+import Card1 from "../../providers/Card";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -16,9 +16,9 @@ import {
 import React from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
-const Braintree = (props) => {
+const Braintree = ({addPayment, updateCampaignCard}) => {
   const { user } = useContext(AuthContext);
-
+  const params = useParams();
   const [loaded, setLoaded] = useState(false);
   const [token, setToken] = useState("");
   const [amount, setAmount] = useState("");
@@ -26,8 +26,9 @@ const Braintree = (props) => {
   const [anonymous, setAnonymous] = useState(false);
   const [campaignAmount, setCampaignAmount] = useState("");
   const [comment, setComment] = useState("");
+  const [campaign, setCampaign] = useState([])
 
-  const params = useParams();
+
 
   useEffect(() => {
     getToken();
@@ -39,22 +40,13 @@ const Braintree = (props) => {
 
   const getCampaignInfo = async () => {
     let resX = await axios.get(`/api/campaigns/${params.id}`);
-    setCampaignAmount(resX.data);
-  };
-  const insufficientFunds = () => {
-    if (amount <= 0) {
-      return (
-        <>
-          <Button variant="success" disabled>
-            Add Amount
-          </Button>
-        </>
-      );
-    }
-
-    return <BraintreeSubmitButton />;
+    setCampaign(resX.data);
+    setCampaignAmount(resX.data.current_amount);
+    
+    
   };
 
+  
   const BraintreeSubmitButton = ({ onClick, isDisabled, text }) => {
     if (amount <= 0) {
       return (
@@ -96,7 +88,8 @@ const Braintree = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
+    setCampaignAmount(campaignAmount + parseInt(amount))
     if (!user)
       return (
         <>
@@ -109,6 +102,15 @@ const Braintree = (props) => {
           </Button>
         </>
       );
+      let campaignUpdate = {
+      image: campaign.image,
+      description: campaign.description,
+      name: campaign.name,
+      current_amount: campaignAmount + parseInt(amount) ,
+      id: campaign.id,
+      goal: campaign.goal,
+      created_at: new Date().toISOString(),
+      }
 
     let donation = {
       amount,
@@ -116,21 +118,39 @@ const Braintree = (props) => {
       anonymous,
       user_id: user.id,
     };
+    
+    let cardInfo = {
+      amount,
+      comment,
+      anonymous,
+      user_id: user.id,
+      image: user.image,
+      name: user.name,
+      created_at: new Date().toISOString(),
+    };
 
     try {
       let res = await axios.post(
         `/api/campaigns/${params.id}/donations`,
         donation
       );
+      updateCampaignCard(campaignUpdate)
+      
+      addPayment(cardInfo)
+      setAmount("");
+      setComment("");
+      setAnonymous(false);
+
 
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {
-        current_amount: campaignAmount.current_amount + parseInt(amount),
+        current_amount: campaignAmount + parseInt(amount),
       });
     } catch (error) {
       alert("error adding donation");
     } finally {
+      
       handleClose();
-      document.location.reload();
+      
       window.scrollTo(0, 0);
     }
   };
@@ -162,9 +182,9 @@ const Braintree = (props) => {
   }
 
   return (
-    <Card>
-      <Button variant="outline-success" onClick={handleShow}>
-        Pay With Card
+    <Card1>
+      <Button bg='denim' onClick={handleShow}>
+       Donate With Card
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -226,7 +246,7 @@ const Braintree = (props) => {
           </Button>
         </Modal.Footer> */}
       </Modal>
-    </Card>
+    </Card1>
   );
 };
 

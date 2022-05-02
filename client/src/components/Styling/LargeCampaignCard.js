@@ -71,6 +71,9 @@ const Content = styled.div`
 const Title = styled.span`
   display: block;
   margin-bottom: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ white-space: nowrap;
   font-size: 1.25em;
   font-weight: 500;
   transition: ${transition};
@@ -79,6 +82,9 @@ const Title = styled.span`
 const Description = styled.span`
   display: block;
   font-size: 0.875em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   color: #999999;
   transition: ${transition};
   transition-delay: 0.04s;
@@ -115,7 +121,7 @@ const Style = styled.button`
   margin:0;
   position: relative;
   flex-shrink: 0;
-  width: ${cardWidth};
+  width: ${cardWidth}px;
   text-align: left;
   background: #ffffff;
   border-radius: ${borderRadius}px;
@@ -128,7 +134,13 @@ const Style = styled.button`
     transform: scale(1.04);
 
     ${Title},
-    ${Description},
+    
+    ${Description} {
+      transition: ${transition};
+      text-overflow: ellipsis;
+      overflow: scroll;
+     white-space: normal;
+    }
     ${BottomBar} {
       transform: scale(0.92);
     }
@@ -185,6 +197,7 @@ const LargeCampaignCard = ({ hexa, title, description, image, profile_image, cur
       <Title>{title}</Title>
       <Description>{category}</Description>
       <Description>{description}</Description>
+      <br/>
 
       <Goal>Goal: ${goal}</Goal>
 
