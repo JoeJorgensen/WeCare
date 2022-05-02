@@ -13,7 +13,7 @@ const navigate = useNavigate()
     return   <Spinner animation="border" variant="denim" />
 
  }
- return <div style={{display:'flex', flexDirection:'column-reverse'}} className="list-group mb-4">
+ return <div  className="list-group mb-4">
      {donations.map((c) => (
           <DonationCardShow
             onClickImg={c.anonymous ? null : () => navigate(`/profile_show/${c.user_id}`)}

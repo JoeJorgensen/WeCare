@@ -15,7 +15,7 @@ import {
   Popover,
 } from "react-bootstrap";
 
-function Donate({ addDonation }) {
+function Donate({ addDonation, updateCampaign }) {
   const params = useParams();
   const { user, setUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -32,6 +32,7 @@ function Donate({ addDonation }) {
     getCampaignInfo();
   }, []);
 
+ 
   const insufficientFunds = () => {
     if (amount > user.balance) {
       return (
@@ -79,6 +80,16 @@ function Donate({ addDonation }) {
         </>
       );
 
+      let campaignUpdate = {
+        image: campaignAmount.image,
+        description: campaignAmount.description,
+        name: campaignAmount.name,
+        current_amount: campaignAmount.current_amount + parseInt(amount) ,
+        id: campaignAmount.id,
+        goal: campaignAmount.goal,
+        created_at: new Date().toISOString(),
+        }
+
     let donation = {
       amount,
       comment,
@@ -101,7 +112,11 @@ function Donate({ addDonation }) {
         `/api/campaigns/${params.id}/donations`,
         donation
       );
+
+      updateCampaign(campaignUpdate)
+
       addDonation(cardInfo);
+
       setAmount("");
       setComment("");
       setAnonymous(false);
@@ -128,8 +143,8 @@ function Donate({ addDonation }) {
   }
   return (
     <>
-      <Button variant="outline-primary" onClick={handleShow}>
-        Donate
+      <Button  bg='denim'  onClick={handleShow}>
+        Donate with wallet
       </Button>
 
       <Form>
@@ -181,7 +196,7 @@ function Donate({ addDonation }) {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Braintree />
+
 
             <Button variant="outline-danger" onClick={handleClose}>
               Close

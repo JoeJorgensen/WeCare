@@ -5,14 +5,13 @@ const Pagination = ({
   totalDonations,
   paginate,
   currentPage,
-  setCurrentPage,
 }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalDonations / donationsPerPage); i++) {
     pageNumbers.push(i);
   }
-  console.log(pageNumbers)
+
 
 
   const renderPag = ()=>{
