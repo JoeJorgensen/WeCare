@@ -80,6 +80,7 @@ const CampaignShow = () => {
   const updateCampaign = (campaignUpdate) => {
     setCampaign(campaignUpdate)
   }
+  
   const updateCampaignCard = (campaignUpdate) => {
     setCampaign(campaignUpdate)
   }

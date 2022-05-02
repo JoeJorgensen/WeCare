@@ -26,6 +26,7 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
   const [anonymous, setAnonymous] = useState(false);
   const [campaignAmount, setCampaignAmount] = useState("");
   const [comment, setComment] = useState("");
+  const [campaign, setCampaign] = useState([])
 
 
 
@@ -39,7 +40,8 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
 
   const getCampaignInfo = async () => {
     let resX = await axios.get(`/api/campaigns/${params.id}`);
-    setCampaignAmount(resX.data);
+    setCampaign(resX.data);
+    setCampaignAmount(resX.data.current_amount);
   };
 
   
@@ -83,6 +85,7 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
   };
 
   const handleSubmit = async (e) => {
+    setCampaignAmount(campaignAmount + parseInt(amount))
     e.preventDefault();
 
     if (!user)
@@ -98,12 +101,12 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
         </>
       );
       let campaignUpdate = {
-      image: campaignAmount.image,
-      description: campaignAmount.description,
-      name: campaignAmount.name,
-      current_amount: campaignAmount.current_amount + parseInt(amount) ,
-      id: campaignAmount.id,
-      goal: campaignAmount.goal,
+      image: campaign.image,
+      description: campaign.description,
+      name: campaign.name,
+      current_amount: campaignAmount + parseInt(amount) ,
+      id: campaign.id,
+      goal: campaign.goal,
       created_at: new Date().toISOString(),
       }
 
@@ -138,7 +141,7 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
 
 
       let res2 = await axios.put(`/api/campaigns/${params.id}`, {
-        current_amount: campaignAmount.current_amount + parseInt(amount),
+        current_amount: campaignAmount + parseInt(amount),
       });
     } catch (error) {
       alert("error adding donation");
