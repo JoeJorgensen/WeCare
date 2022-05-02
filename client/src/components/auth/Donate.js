@@ -31,6 +31,7 @@ function Donate({ addDonation, updateCampaign }) {
 
   useEffect(() => {
     getCampaignInfo();
+
   }, []);
 
  
