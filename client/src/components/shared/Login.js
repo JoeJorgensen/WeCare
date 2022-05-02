@@ -19,7 +19,13 @@ const Login = () => {
       <div className=" head">
         <h1 className="login">Login</h1>
 
-        <Form onSubmit={handleSubmit} className="container">
+        <Form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <div className="mainbox">
             {/* <!-- Email input --> */}
             <div className="form-outline mb-4">
