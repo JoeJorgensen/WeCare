@@ -5,6 +5,7 @@ const Pagination = ({
   totalDonations,
   paginate,
   currentPage,
+
 }) => {
   const pageNumbers = [];
 
@@ -13,9 +14,11 @@ const Pagination = ({
   }
 
 
-
   const renderPag = ()=>{
-    if ((currentPage == 1 && pageNumbers.length > [1])) {
+    console.log('page number:', currentPage)
+    console.log('pageNumbers:', pageNumbers.length)
+
+    if ((currentPage == 1 && pageNumbers.length > 1)) {
       return (
         <nav className="pagination">
          <nav className="pagination">
@@ -27,7 +30,7 @@ const Pagination = ({
         </nav>
         </nav>
       );
-    } else if ((currentPage == pageNumbers.length  )) {
+    } else if ((currentPage ==  pageNumbers.length && currentPage !== 1  )) {
       return (
         <nav className="pagination">
         <li key={currentPage - 1} className="page-item">

@@ -1,7 +1,7 @@
 import react, { useContext, useEffect, useState } from "react";
 import BraintreeDropin from "braintree-dropin-react";
 import braintree from "braintree-web-drop-in";
-
+import Card1 from "../../providers/Card";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -177,7 +177,7 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
   }
 
   return (
-    <Card>
+    <Card1>
       <Button bg='denim' onClick={handleShow}>
        Donate With Card
       </Button>
@@ -241,7 +241,7 @@ const Braintree = ({addPayment, updateCampaignCard}) => {
           </Button>
         </Modal.Footer> */}
       </Modal>
-    </Card>
+    </Card1>
   );
 };
 
