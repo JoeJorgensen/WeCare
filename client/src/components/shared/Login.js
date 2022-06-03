@@ -19,13 +19,6 @@ const Login = () => {
       <div className=" head">
         <h1 className="login">Login</h1>
 
-<<<<<<< HEAD
-        <Form onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}>
-=======
         <Form
           onSubmit={handleSubmit}
           style={{
@@ -33,7 +26,6 @@ const Login = () => {
             justifyContent: "center",
           }}
         >
->>>>>>> 63980e4b445aa6c4b5e9792c1b0d5b086a1b283b
           <div className="mainbox">
             {/* <!-- Email input --> */}
             <div className="form-outline mb-4">

@@ -73,6 +73,7 @@ function MyProfile() {
     <div>
       <div style={{
         marginTop: '50px',
+        marginBottom: 'auto',
         textAlign: 'center'
       }}>
         <img className="user-profile-image"
@@ -169,6 +170,8 @@ function MyProfile() {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
+        <br/>
+        <br/>
       </div>
     </div>
   );
